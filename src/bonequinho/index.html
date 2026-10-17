@@ -42,6 +42,9 @@
     border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:clamp(15px,2.2vw,19px);line-height:1.45;
     backdrop-filter:blur(8px);box-shadow:0 0 30px rgba(78,240,255,.12);text-align:center;min-height:2.9em;display:flex;align-items:center;justify-content:center}
   .sub.quiet{opacity:.55}
+  .tap{pointer-events:auto;align-self:center;border-color:var(--gold);color:var(--gold);box-shadow:0 0 18px rgba(255,209,102,.35);animation:tap 1.6s ease-in-out infinite}
+  @keyframes tap{50%{transform:translateY(-3px)}}
+  @media (prefers-reduced-motion:reduce){.tap{animation:none}}
   .controls{pointer-events:auto;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
   button{font:600 13px var(--display);color:var(--fg);background:rgba(10,16,38,.85);border:1px solid var(--line);
     border-radius:999px;padding:9px 14px;cursor:pointer;min-width:44px;min-height:40px;transition:background .15s,border-color .15s}
@@ -49,14 +52,8 @@
   button.on{border-color:var(--cyan);box-shadow:0 0 14px rgba(78,240,255,.35)}
   button[disabled]{opacity:.4;cursor:default}
 
-  #intro{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(4,7,18,.78);
     backdrop-filter:blur(6px);z-index:20;padding:16px}
-  .card{max-width:440px;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 22px;
     box-shadow:0 0 60px rgba(78,240,255,.15);text-align:center;display:flex;flex-direction:column;gap:14px}
-  .card h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.01em}
-  .card p{margin:0;color:var(--dim);font-size:14px;line-height:1.5}
-  .card .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .card button.primary{background:linear-gradient(90deg,rgba(78,240,255,.25),rgba(255,95,210,.25));border-color:var(--cyan)}
   .mono{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.06em}
 
   #menu{position:fixed;inset:0;z-index:15;background:rgba(4,7,18,.86);backdrop-filter:blur(6px);overflow:auto;
@@ -96,7 +93,8 @@
 <div id="card"><div class="k" id="cardk"></div><div class="t" id="cardt"></div></div>
 
 <div class="hud bottom">
-  <div class="sub quiet" id="sub">Toque em Iniciar para começar a jornada.</div>
+  <button id="tap" class="tap" hidden>🔈 Toque para ouvir a narração</button>
+  <div class="sub quiet" id="sub">…</div>
   <div class="controls">
     <button id="bPrev" title="Capítulo anterior">◀</button>
     <button id="bPlay" title="Reproduzir ou pausar">Pausar</button>
@@ -106,18 +104,6 @@
   </div>
 </div>
 
-<div id="intro">
-  <div class="card">
-    <div class="mono">HOLOGRAMA · 15 CAPÍTULOS · PT-BR</div>
-    <h1>O Bonequinho Quântico</h1>
-    <p>O bonequinho explica, passo a passo, a física do muito pequeno e como ela vira um computador quântico. A narração é gravada com voz masculina em português (duas opções no menu Capítulos); as legendas aparecem sempre. Deixe o som do aparelho ligado.</p>
-    <div class="row">
-      <button class="primary" id="startVoice">Iniciar com narração</button>
-      <button id="startMute">Só legendas</button>
-    </div>
-    <div class="mono" id="voiceInfo">duas vozes masculinas gravadas em pt-BR</div>
-  </div>
-</div>
 
 <div id="menu" hidden>
   <button class="close" id="bClose">Fechar</button>
@@ -248,7 +234,7 @@ const Speech = {
     if(this.mode==='audio' && key && DUR[this.rec] && DUR[this.rec][key]){
       this.cb=finish; this.pending=()=>this.browser(text,key,finish);
       this.timer=setTimeout(finish,this.estimate(text,key)*1.6+3000);
-      try{ this.el.src='narr/'+this.rec+'/'+key+'.mp3'; this.el.currentTime=0; const p=this.el.play(); if(p) p.catch(()=>{ if(tk===this.token){ this.cb=null; this.browser(text,key,finish); } }); }
+      try{ this.el.src='narr/'+this.rec+'/'+key+'.mp3'; this.el.currentTime=0; const p=this.el.play(); if(p) p.then(()=>{ this.unlocked=true; tapHint(false); }).catch(()=>{ if(tk===this.token){ this.cb=null; if(!this.unlocked){ tapHint(true); clearTimeout(this.timer); this.timer=setTimeout(finish,this.estimate(text,key)); } else this.browser(text,key,finish); } }); }
       catch(e){ this.browser(text,key,finish); }
       return; }
     this.browser(text,key,finish);
@@ -262,6 +248,7 @@ const Speech = {
   stop(){ clearTimeout(this.timer); this.token++; this.cb=null; this.pending=null; try{ this.el.pause(); }catch(e){} if(this.ok){ try{ speechSynthesis.cancel(); }catch(e){} } }
 };
 Speech.init();
+function tapHint(on){ const h=document.getElementById('tap'); if(h) h.hidden=!on; }
 function renderVoiceList(){ const sel=document.getElementById('voiceSel'); if(!sel) return; const vs=Speech.voices(); sel.innerHTML='';
   if(!vs.length){ const o=document.createElement('option'); o.textContent='nenhuma voz em português instalada neste aparelho'; sel.appendChild(o); sel.disabled=true; return; }
   sel.disabled=false; vs.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=v.name+' ('+v.lang+')'+(MALE.test((v.name||'').toLowerCase())?' · masculina':''); if(v===Speech.voice) o.selected=true; sel.appendChild(o); });
@@ -593,7 +580,7 @@ const DEMOS={
 // ───────────────────────── PLAYER ─────────────────────────
 const UI={part:document.getElementById('part'),name:document.getElementById('chname'),prog:document.getElementById('prog'),sub:document.getElementById('sub'),
   play:document.getElementById('bPlay'),prev:document.getElementById('bPrev'),next:document.getElementById('bNext'),voice:document.getElementById('bVoice'),menu:document.getElementById('bMenu'),
-  intro:document.getElementById('intro'),menuBox:document.getElementById('menu'),menuList:document.getElementById('menuList'),card:document.getElementById('card'),cardk:document.getElementById('cardk'),cardt:document.getElementById('cardt')};
+  menuBox:document.getElementById('menu'),menuList:document.getElementById('menuList'),card:document.getElementById('card'),cardk:document.getElementById('cardk'),cardt:document.getElementById('cardt')};
 const P={ch:0,line:0,playing:false,started:false,demo:null,demoT:0,lineStart:0,lineDur:3000,talking:false,cardTimer:null};
 
 function clearDemo(){ while(demoGroup.children.length){ const c=demoGroup.children.pop(); demoGroup.remove(c); c.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material){ (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{ if(m.map) m.map.dispose(); const i=holoMats.indexOf(m); if(i>=0) holoMats.splice(i,1); m.dispose(); }); } }); }
@@ -630,13 +617,13 @@ UI.menu.addEventListener('click',()=>{ UI.menuBox.hidden=false; });
 document.getElementById('bClose').addEventListener('click',()=>{ UI.menuBox.hidden=true; });
 function renderMenu(){ UI.menuList.innerHTML=''; let lastPart=''; CH.forEach((c,i)=>{ if(c.part!==lastPart){ const h=document.createElement('h2'); h.textContent=c.part; UI.menuList.appendChild(h); lastPart=c.part; }
   const b=document.createElement('button'); b.className='it'+(i===P.ch?' cur':''); b.innerHTML='<b>'+String(i).padStart(2,'0')+'</b><span></span>'; b.querySelector('span').textContent=c.title;
-  b.addEventListener('click',()=>{ UI.menuBox.hidden=true; Speech.stop(); if(!P.started) start('1'); P.playing=true; UI.play.textContent='Pausar'; loadChapter(i,true); }); UI.menuList.appendChild(b); }); }
-function start(mode){ P.started=true; setMode(mode); Speech.unlock(); UI.intro.hidden=true; P.playing=true; UI.play.textContent='Pausar'; loadChapter(0,true); }
-document.getElementById('startVoice').addEventListener('click',()=>start('1'));
-document.getElementById('startMute').addEventListener('click',()=>start('off'));
+  b.addEventListener('click',()=>{ UI.menuBox.hidden=true; Speech.stop();  P.playing=true; UI.play.textContent='Pausar'; loadChapter(i,true); }); UI.menuList.appendChild(b); }); }
+function start(mode){ P.started=true; setMode(mode); Speech.unlock(); P.playing=true; UI.play.textContent='Pausar'; loadChapter(0,true); }
+function firstTouch(){ if(Speech.unlocked) return; Speech.unlock(); Speech.unlocked=true; tapHint(false); if(P.playing && P.talking && Speech.mode==='audio'){ Speech.stop(); playLine(); } }
+document.addEventListener('pointerdown',firstTouch,{capture:true}); document.addEventListener('keydown',firstTouch,{capture:true});
 document.addEventListener('visibilitychange',()=>{ if(document.hidden && P.playing){ setPlaying(false); } });
 document.addEventListener('keydown',e=>{ if(e.key===' '&&P.started){ e.preventDefault(); UI.play.click(); } if(e.key==='ArrowRight') UI.next.click(); if(e.key==='ArrowLeft') UI.prev.click(); });
-renderMenu(); setMode('1');
+renderMenu(); start('1');
 
 // ───────────────────────── LAYOUT + LOOP ─────────────────────────
 function layout(){ const w=stage.clientWidth||innerWidth, h=stage.clientHeight||innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
