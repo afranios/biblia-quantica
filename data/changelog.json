@@ -1,6 +1,12 @@
 [
  {
   "date": "17/10/2026",
+  "title": "Fontes de negócios e mobilidade urbana",
+  "body": "Casos Toyota CRDL (semáforos em annealer) e DENSO + Toyota Tsusho (dados de 130 mil veículos) em Oportunidades; revisões sistemáticas MDPI (transporte e logística) e EPJ Quantum Technology (negócios), surveys arXiv, BCG 2025 e McKinsey Technology Trends Outlook 2026 em Fontes; dados completos da pesquisa Fujitsu + FT; ressalva metodológica sobre o Monitor 2026; área restrita com Toyota, sandbox no CCO e aceitação das equipes de campo.",
+  "auto": false
+ },
+ {
+  "date": "17/10/2026",
   "title": "Segunda versão",
   "body": "Página única e site multipágina gerados do mesmo código; capítulo 02 com criostato, pictogramas, código de distância 5 e laço híbrido; régua 2026 a 2035; demonstração do algoritmo de Shor; diagrama de exposição de dados; experimento de escala de equipes; tooltips de termos; níveis de leitura; área restrita cifrada; notícias em arquivo de dados.",
   "auto": false
