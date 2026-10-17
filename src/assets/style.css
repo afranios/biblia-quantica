@@ -346,15 +346,7 @@ footer .wrap{display:grid;gap:10px}
 .recap li::before{counter-increment:rc;content:counter(rc);font-family:var(--display);font-weight:700;color:var(--cyan)}
 
 /* destaque da animação do bonequinho */
-.feature{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;align-items:center;padding:28px;border-radius:22px;border:1px solid var(--line2);background:linear-gradient(135deg,rgba(92,225,255,.1),rgba(255,95,210,.08) 60%,rgba(10,22,54,.6));color:inherit;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.feature{display:block;padding:22px 26px;border-radius:22px;border:1px solid var(--line2);background:linear-gradient(135deg,rgba(92,225,255,.1),rgba(255,95,210,.08) 60%,rgba(10,22,54,.6));color:inherit;text-decoration:none;transition:transform .2s,box-shadow .2s}
 .feature:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 20px 50px -24px rgba(92,225,255,.6)}
 .feature h2{margin:0}
 .feature .btn{width:fit-content}
-.feature-art{position:relative;min-height:260px;border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at 50% 60%,rgba(92,225,255,.18),transparent 60%),repeating-linear-gradient(0deg,rgba(92,225,255,.05) 0 1px,transparent 1px 5px),#060b1d}
-.feature-art .orb{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:1px solid rgba(92,225,255,.6);box-shadow:0 0 40px rgba(92,225,255,.35) inset,0 0 30px rgba(92,225,255,.25);animation:orb 9s linear infinite}
-.feature-art .o2{width:200px;height:200px;margin:-100px 0 0 -100px;border-color:rgba(255,95,210,.5);box-shadow:0 0 30px rgba(255,95,210,.2);animation-duration:14s;animation-direction:reverse}
-
-.feature-art .o3x{width:40px;height:40px;margin:-20px 0 0 -20px;background:radial-gradient(circle,#fff,rgba(255,207,110,.9) 40%,transparent 70%);border:0;animation:none;box-shadow:0 0 30px rgba(255,207,110,.8)}
-@keyframes orb{to{transform:rotate(360deg) skewY(4deg)}}
-@media (max-width:860px){.feature{grid-template-columns:1fr}.feature-art{min-height:240px}}
-@media (prefers-reduced-motion:reduce){.feature-art .orb{animation:none}}
