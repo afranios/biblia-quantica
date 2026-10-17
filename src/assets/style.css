@@ -350,3 +350,5 @@ footer .wrap{display:grid;gap:10px}
 .feature:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 20px 50px -24px rgba(92,225,255,.6)}
 .feature h2{margin:0}
 .feature .btn{width:fit-content}
+
+.hero-actions{padding-block:8px 24px}
