@@ -79,6 +79,8 @@ async function main() {
   fs.writeFileSync(path.join(DIST, 'site/assets/site.js'), sitejs);
   fs.writeFileSync(path.join(DIST, 'site/data/news.json'), JSON.stringify(news, null, 1));
   fs.writeFileSync(path.join(DIST, 'site/data/changelog.json'), JSON.stringify(changelog, null, 1));
+  fs.writeFileSync(path.join(DIST, 'site/CNAME'), 'quantum.spolador.pro.br\n');
+  fs.writeFileSync(path.join(DIST, 'site/.nojekyll'), '');
   for (const c of CH) {
     if (c.restricted) continue;
     let html = read(path.join(SRC, c.file));
