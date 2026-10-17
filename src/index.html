@@ -218,7 +218,7 @@
   var shell2 = new THREE.Mesh(new THREE.SphereGeometry(2.1,16,10), new THREE.MeshBasicMaterial({color:0x9d8cff, wireframe:true, transparent:true, opacity:0.12}));
   sc.add(core, glow, shell, shell2);
   sc.add(new THREE.HemisphereLight(0xa9c4ff,0x201a40,1.0)); var hk=new THREE.DirectionalLight(0xffffff,0.9); hk.position.set(3,6,5); sc.add(hk);
-  var HB=buildBonequinho(THREE); var hero=new THREE.Group(); hero.add(HB.g); HB.g.scale.setScalar(0.78); hero.position.set(-1.75,-1.95,1.2); sc.add(hero);
+  var HB=buildBonequinho(THREE); var hero=new THREE.Group(); hero.add(HB.g); HB.g.scale.setScalar(0.68); hero.position.set(-0.95,-1.7,1.3); sc.add(hero);
   var hst={y0:0,ry:0.35,blinkT:2.5,blink:0}, hlast=performance.now(); HB.g.rotation.y=0.35;
   // axes of the Bloch sphere
   function axis(a,b,c){ var g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(a[0],a[1],a[2]), new THREE.Vector3(b[0],b[1],b[2])]); return new THREE.Line(g,new THREE.LineBasicMaterial({color:c,transparent:true,opacity:.5})); }
