@@ -115,7 +115,7 @@
       <button class="primary" id="startVoice">Iniciar com narração</button>
       <button id="startMute">Só legendas</button>
     </div>
-    <div class="mono" id="voiceInfo">vozes gravadas: Alex e Faber (masculinas, pt-BR)</div>
+    <div class="mono" id="voiceInfo">duas vozes masculinas gravadas em pt-BR</div>
   </div>
 </div>
 
@@ -124,8 +124,8 @@
   <div class="list">
     <h2>Narração</h2>
     <div class="opts">
-      <label><input type="radio" name="mode" id="mode_alex" value="alex" checked> Voz gravada Alex (mais natural)</label>
-      <label><input type="radio" name="mode" id="mode_faber" value="faber"> Voz gravada Faber (sotaque brasileiro mais marcado)</label>
+      <label><input type="radio" name="mode" id="mode_1" value="1" checked> Voz gravada 1</label>
+      <label><input type="radio" name="mode" id="mode_2" value="2"> Voz gravada 2</label>
       <label><input type="radio" name="mode" id="mode_browser" value="browser"> Voz do aparelho</label>
       <label><input type="radio" name="mode" id="mode_off" value="off"> Sem voz, só legendas</label>
       <label class="selrow">Voz do aparelho <select id="voiceSel"></select> <button type="button" id="bTestVoice" class="sm">Testar</button></label>
@@ -222,13 +222,13 @@ const CH = [
 ];
 
 // ───────────────────────── NARRAÇÃO ─────────────────────────
-// Áudio gravado com duas vozes masculinas em pt-BR: Alex (Kokoro 82M, Apache 2.0) e Faber (Piper, MIT), um arquivo por frase em narr/<voz>/.
-const DUR = {"alex": {"00_0": 6.94, "00_1": 7.34, "00_2": 1.68, "01_0": 9.46, "01_1": 5.47, "01_2": 6.82, "01_3": 8.76, "02_0": 9.91, "02_1": 7.54, "02_2": 9.17, "02_3": 4.75, "03_0": 5.93, "03_1": 6.07, "03_2": 9.12, "03_3": 6.96, "04_0": 7.85, "04_1": 7.03, "04_2": 9.98, "04_3": 6.84, "05_0": 8.23, "05_1": 8.38, "05_2": 9.38, "05_3": 8.04, "06_0": 5.88, "06_1": 7.85, "06_2": 9.65, "06_3": 5.66, "07_0": 9.94, "07_1": 5.26, "07_2": 6.7, "07_3": 7.7, "07_4": 5.28, "08_0": 8.57, "08_1": 6.91, "08_2": 7.51, "08_3": 8.21, "09_0": 6.74, "09_1": 6.41, "09_2": 9.89, "09_3": 6.58, "09_4": 6.65, "10_0": 5.02, "10_1": 8.45, "10_2": 8.26, "10_3": 8.3, "10_4": 8.35, "11_0": 10.85, "11_1": 6.02, "11_2": 8.4, "11_3": 6.84, "11_4": 7.25, "12_0": 4.49, "12_1": 8.42, "12_2": 5.52, "12_3": 9.77, "12_4": 4.85, "13_0": 9.53, "13_1": 10.56, "13_2": 4.15, "13_3": 10.82, "14_0": 9.84, "14_1": 4.49, "14_2": 3.58}, "faber": {"00_0": 6.29, "00_1": 6.82, "00_2": 0.98, "01_0": 8.59, "01_1": 5.16, "01_2": 6.1, "01_3": 7.94, "02_0": 8.95, "02_1": 6.74, "02_2": 8.23, "02_3": 3.86, "03_0": 5.33, "03_1": 5.62, "03_2": 8.42, "03_3": 5.86, "04_0": 6.41, "04_1": 6.72, "04_2": 9.19, "04_3": 6.6, "05_0": 7.13, "05_1": 7.73, "05_2": 8.88, "05_3": 7.58, "06_0": 4.82, "06_1": 7.49, "06_2": 9.12, "06_3": 5.28, "07_0": 10.13, "07_1": 4.39, "07_2": 7.01, "07_3": 6.86, "07_4": 5.09, "08_0": 7.3, "08_1": 6.17, "08_2": 6.98, "08_3": 7.51, "09_0": 5.76, "09_1": 6.0, "09_2": 9.62, "09_3": 6.14, "09_4": 5.83, "10_0": 4.37, "10_1": 7.61, "10_2": 7.25, "10_3": 7.63, "10_4": 7.99, "11_0": 9.0, "11_1": 5.42, "11_2": 7.92, "11_3": 6.55, "11_4": 7.15, "12_0": 3.72, "12_1": 8.59, "12_2": 5.38, "12_3": 9.1, "12_4": 3.5, "13_0": 8.18, "13_1": 10.27, "13_2": 3.79, "13_3": 10.49, "14_0": 9.82, "14_1": 3.79, "14_2": 2.76}};
+// Áudio gravado com duas vozes masculinas em pt-BR (1: Kokoro 82M, Apache 2.0; 2: Piper faber-medium, MIT), um arquivo por frase em narr/<voz>/.
+const DUR = {"1": {"00_0": 6.94, "00_1": 7.34, "00_2": 1.68, "01_0": 9.46, "01_1": 5.47, "01_2": 6.82, "01_3": 8.76, "02_0": 9.91, "02_1": 7.54, "02_2": 9.17, "02_3": 4.75, "03_0": 5.93, "03_1": 6.07, "03_2": 9.12, "03_3": 6.96, "04_0": 7.85, "04_1": 7.03, "04_2": 9.98, "04_3": 6.84, "05_0": 8.23, "05_1": 8.38, "05_2": 9.38, "05_3": 8.04, "06_0": 5.88, "06_1": 7.85, "06_2": 9.65, "06_3": 5.66, "07_0": 9.94, "07_1": 5.26, "07_2": 6.7, "07_3": 7.7, "07_4": 5.28, "08_0": 8.57, "08_1": 6.91, "08_2": 7.51, "08_3": 8.21, "09_0": 6.74, "09_1": 6.41, "09_2": 9.89, "09_3": 6.58, "09_4": 6.65, "10_0": 5.02, "10_1": 8.45, "10_2": 8.26, "10_3": 8.3, "10_4": 8.35, "11_0": 10.85, "11_1": 6.02, "11_2": 8.4, "11_3": 6.84, "11_4": 7.25, "12_0": 4.49, "12_1": 8.42, "12_2": 5.52, "12_3": 9.77, "12_4": 4.85, "13_0": 9.53, "13_1": 10.56, "13_2": 4.15, "13_3": 10.82, "14_0": 9.84, "14_1": 4.49, "14_2": 3.58}, "2": {"00_0": 6.29, "00_1": 6.82, "00_2": 0.98, "01_0": 8.59, "01_1": 5.16, "01_2": 6.1, "01_3": 7.94, "02_0": 8.95, "02_1": 6.74, "02_2": 8.23, "02_3": 3.86, "03_0": 5.33, "03_1": 5.62, "03_2": 8.42, "03_3": 5.86, "04_0": 6.41, "04_1": 6.72, "04_2": 9.19, "04_3": 6.6, "05_0": 7.13, "05_1": 7.73, "05_2": 8.88, "05_3": 7.58, "06_0": 4.82, "06_1": 7.49, "06_2": 9.12, "06_3": 5.28, "07_0": 10.13, "07_1": 4.39, "07_2": 7.01, "07_3": 6.86, "07_4": 5.09, "08_0": 7.3, "08_1": 6.17, "08_2": 6.98, "08_3": 7.51, "09_0": 5.76, "09_1": 6.0, "09_2": 9.62, "09_3": 6.14, "09_4": 5.83, "10_0": 4.37, "10_1": 7.61, "10_2": 7.25, "10_3": 7.63, "10_4": 7.99, "11_0": 9.0, "11_1": 5.42, "11_2": 7.92, "11_3": 6.55, "11_4": 7.15, "12_0": 3.72, "12_1": 8.59, "12_2": 5.38, "12_3": 9.1, "12_4": 3.5, "13_0": 8.18, "13_1": 10.27, "13_2": 3.79, "13_3": 10.49, "14_0": 9.82, "14_1": 3.79, "14_2": 2.76}};
 const SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
 const MALE=/daniel|ricardo|antonio|antônio|felipe|rodrigo|joaquim|duarte|thiago|fabio|fábio|humberto|leandro|donato|julio|júlio|rafael|macario|macário|edresson|male|masc/;
 const FEMALE=/luciana|francisca|camila|vitoria|vitória|thalita|brenda|leticia|letícia|fernanda|raquel|giovanna|elza|maria|yara|manuela|catarina|female|fem/;
 const Speech = {
-  mode:'audio', rec:'alex', // mode: 'audio' (gravada: rec = alex|faber) | 'browser' (voz do aparelho) | 'off'
+  mode:'audio', rec:'1', // mode: 'audio' (gravada: rec = '1'|'2') | 'browser' (voz do aparelho) | 'off'
   ok: ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window),
   voice:null, timer:null, el:null, token:0, cb:null,
   init(){ this.el=new Audio(); this.el.preload='auto'; this.el.setAttribute('playsinline',''); this.el.volume=1;
@@ -267,7 +267,7 @@ function renderVoiceList(){ const sel=document.getElementById('voiceSel'); if(!s
   sel.disabled=false; vs.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=v.name+' ('+v.lang+')'+(MALE.test((v.name||'').toLowerCase())?' · masculina':''); if(v===Speech.voice) o.selected=true; sel.appendChild(o); });
   const d=document.getElementById('voiceDiag'); if(d){ const all=Speech.ok?speechSynthesis.getVoices().length:0;
     d.textContent = !Speech.ok ? 'Este navegador não expõe síntese de voz.' : (vs.length ? vs.length+' voz(es) em português de '+all+' no aparelho.' : (all ? all+' vozes no aparelho, nenhuma em português.' : 'Nenhuma voz do sistema disponível aqui. Dentro do app do Claude isso é comum; abra a animação no Safari ou no Chrome para usar as vozes do aparelho.')); }
-  const info=document.getElementById('voiceInfo'); if(info) info.textContent='vozes gravadas: Alex e Faber (masculinas, pt-BR)'; }
+  const info=document.getElementById('voiceInfo'); if(info) info.textContent='duas vozes masculinas gravadas em pt-BR'; }
 if(Speech.ok){ Speech.pick(); speechSynthesis.onvoiceschanged=()=>Speech.pick(); } else { renderVoiceList(); }
 
 // ───────────────────────── 3D ─────────────────────────
@@ -619,10 +619,10 @@ function setPlaying(v){ P.playing=v; UI.play.textContent=v?'Pausar':'Continuar';
 UI.play.addEventListener('click',()=>{ if(UI.play.textContent==='Reiniciar'){ UI.play.textContent='Pausar'; P.playing=true; loadChapter(0,true); return; } setPlaying(!P.playing); });
 UI.prev.addEventListener('click',()=>{ Speech.stop(); loadChapter(P.ch-1,true); if(!P.playing) showLine(); });
 UI.next.addEventListener('click',()=>{ Speech.stop(); loadChapter(P.ch+1,true); if(!P.playing) showLine(); });
-function setMode(m){ if(m==='alex'||m==='faber'){ Speech.mode='audio'; Speech.rec=m; } else Speech.mode=m;
-  UI.voice.textContent=m==='alex'?'Voz: Alex':(m==='faber'?'Voz: Faber':(m==='browser'?'Voz: aparelho':'Sem voz')); UI.voice.classList.toggle('on',m!=='off'); const r=document.querySelector('#mode_'+m); if(r) r.checked=true; }
+function setMode(m){ if(m==='1'||m==='2'){ Speech.mode='audio'; Speech.rec=m; } else Speech.mode=m;
+  UI.voice.textContent=m==='1'?'Voz 1':(m==='2'?'Voz 2':(m==='browser'?'Voz: aparelho':'Sem voz')); UI.voice.classList.toggle('on',m!=='off'); const r=document.querySelector('#mode_'+m); if(r) r.checked=true; }
 function curMode(){ return Speech.mode==='audio'?Speech.rec:Speech.mode; }
-UI.voice.addEventListener('click',()=>{ const next={alex:'faber',faber:'browser',browser:'off',off:'alex'}[curMode()]; setMode(next); Speech.unlock(); if(P.playing){ Speech.stop(); playLine(); } });
+UI.voice.addEventListener('click',()=>{ const next={'1':'2','2':'browser',browser:'off',off:'1'}[curMode()]; setMode(next); Speech.unlock(); if(P.playing){ Speech.stop(); playLine(); } });
 document.querySelectorAll('input[name=mode]').forEach(r=>r.addEventListener('change',()=>{ setMode(r.value); Speech.unlock(); if(P.playing){ Speech.stop(); playLine(); } }));
 document.getElementById('bTestVoice').addEventListener('click',()=>{ if(!Speech.ok){ return; } Speech.unlock(); const u=new SpeechSynthesisUtterance('Olá! Esta é a voz do aparelho em português.'); u.lang='pt-BR'; if(Speech.voice) u.voice=Speech.voice; try{ speechSynthesis.cancel(); speechSynthesis.speak(u); }catch(e){} });
 document.getElementById('voiceSel').addEventListener('change',e=>{ const vs=Speech.voices(); Speech.voice=vs[+e.target.value]||null; if(P.playing && Speech.mode==='browser'){ Speech.stop(); playLine(); } });
@@ -630,13 +630,13 @@ UI.menu.addEventListener('click',()=>{ UI.menuBox.hidden=false; });
 document.getElementById('bClose').addEventListener('click',()=>{ UI.menuBox.hidden=true; });
 function renderMenu(){ UI.menuList.innerHTML=''; let lastPart=''; CH.forEach((c,i)=>{ if(c.part!==lastPart){ const h=document.createElement('h2'); h.textContent=c.part; UI.menuList.appendChild(h); lastPart=c.part; }
   const b=document.createElement('button'); b.className='it'+(i===P.ch?' cur':''); b.innerHTML='<b>'+String(i).padStart(2,'0')+'</b><span></span>'; b.querySelector('span').textContent=c.title;
-  b.addEventListener('click',()=>{ UI.menuBox.hidden=true; Speech.stop(); if(!P.started) start('alex'); P.playing=true; UI.play.textContent='Pausar'; loadChapter(i,true); }); UI.menuList.appendChild(b); }); }
+  b.addEventListener('click',()=>{ UI.menuBox.hidden=true; Speech.stop(); if(!P.started) start('1'); P.playing=true; UI.play.textContent='Pausar'; loadChapter(i,true); }); UI.menuList.appendChild(b); }); }
 function start(mode){ P.started=true; setMode(mode); Speech.unlock(); UI.intro.hidden=true; P.playing=true; UI.play.textContent='Pausar'; loadChapter(0,true); }
-document.getElementById('startVoice').addEventListener('click',()=>start('alex'));
+document.getElementById('startVoice').addEventListener('click',()=>start('1'));
 document.getElementById('startMute').addEventListener('click',()=>start('off'));
 document.addEventListener('visibilitychange',()=>{ if(document.hidden && P.playing){ setPlaying(false); } });
 document.addEventListener('keydown',e=>{ if(e.key===' '&&P.started){ e.preventDefault(); UI.play.click(); } if(e.key==='ArrowRight') UI.next.click(); if(e.key==='ArrowLeft') UI.prev.click(); });
-renderMenu(); setMode('alex');
+renderMenu(); setMode('1');
 
 // ───────────────────────── LAYOUT + LOOP ─────────────────────────
 function layout(){ const w=stage.clientWidth||innerWidth, h=stage.clientHeight||innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
