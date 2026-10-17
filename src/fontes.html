@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fontes · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  .refs{display:grid;gap:6px}
+  .refs li{list-style:none;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--glass);font-size:.9rem;color:var(--fg2);display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+  .refs li>*{min-width:0}
+  .refs{margin:0;padding:0}
+  .refs li b{color:#fff;font-weight:600}
+  .refs li a{font-family:var(--mono);font-size:.72rem;white-space:nowrap}
+  .refs li .m{display:block;font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:2px}
+  @media (max-width:600px){.refs li{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 11 · Fontes</span>
+        <h1>De onde veio cada número</h1>
+        <p class="lead">Critério: fontes primárias (artigos revisados por pares, preprints com dados, releases oficiais, normas) e relatórios de consultorias e institutos reconhecidos. Releases corporativos estão marcados como tal: são números autodeclarados. Data de corte: 16 de outubro de 2026.</p>
+      </div>
+      <div class="toc"><a href="#base">Base documental</a><a href="#hw">Hardware e vantagem</a><a href="#cripto">Criptografia e normas</a><a href="#neg">Negócios e casos</a><a href="#br">Brasil</a><a href="#novas">Acrescentadas em out/2026</a><a href="#metodo">Método e ressalvas</a></div>
+    </div>
+  </section>
+
+  <section class="section" id="base">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Base documental</span><h2>Documentos da pasta de artigos</h2></div>
+      <ul class="refs">
+        <li><div><b>McKinsey &amp; Company, Quantum Technology Monitor 2026</b> (abril de 2026, 103 p.). Fonte principal de mercado, investimento, valor por setor, roadmaps e cibersegurança.<span class="m">relatório · dados até março de 2026</span></div><a href="https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point" target="_blank" rel="noopener">mckinsey.com</a></li>
+        <li><div><b>McKinsey, "Quantum is almost here: Are you and your systems ready?"</b> (abril de 2026, Risk &amp; Resilience). 91% sem roadmap; três riscos; três movimentos.<span class="m">artigo</span></div><a href="https://www.mckinsey.com" target="_blank" rel="noopener">mckinsey.com</a></li>
+        <li><div><b>MIT Technology Review Brasil, "Cibersegurança na Computação Quântica: navegando no novo horizonte"</b> (Marcos Nehme, 26/09/2024).<span class="m">artigo</span></div><a href="https://mittechreview.com.br" target="_blank" rel="noopener">mittechreview.com.br</a></li>
+        <li><div><b>MIT Technology Review Brasil, "IA + computação quântica: convergência pragmática com marcos ainda incipientes"</b> (30/12/2025). Krista Svore (NVIDIA), EmTech MIT 2025.<span class="m">artigo</span></div><a href="https://mittechreview.com.br" target="_blank" rel="noopener">mittechreview.com.br</a></li>
+        <li><div><b>MIT Technology Review Brasil, "Novo computador quântico torna a correção de erros mais simples"</b> (Sophia Chen, 19/11/2025). Quantinuum Helios.<span class="m">artigo</span></div><a href="https://mittechreview.com.br" target="_blank" rel="noopener">mittechreview.com.br</a></li>
+        <li><div><b>MIT Technology Review Brasil, "Que venha o ruído"</b> (Michael Brooks, 16/01/2025). Supressão, mitigação e correção de erros; IBM Condor; Q-CTRL.<span class="m">artigo</span></div><a href="https://mittechreview.com.br" target="_blank" rel="noopener">mittechreview.com.br</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="hw">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Hardware e vantagem</span><h2>Artigos, preprints e releases</h2></div>
+      <ul class="refs">
+        <li><div><b>Google Quantum AI, Willow: correção de erros abaixo do limiar</b> (Nature, dez/2024).<span class="m">artigo revisado por pares + release</span></div><a href="https://blog.google/technology/research/google-willow-quantum-chip/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><div><b>Google Quantum AI, Quantum Echoes: vantagem verificável</b> (Nature, 22/10/2025, DOI 10.1038/s41586-025-09526-6).<span class="m">artigo revisado por pares</span></div><a href="https://blog.google/technology/research/quantum-echoes-willow-verifiable-quantum-advantage/" target="_blank" rel="noopener">blog.google</a></li>
+        <li><div><b>Google Quantum AI, Magic state cultivation on a superconducting quantum processor</b> (Science, 15/10/2026).<span class="m">artigo revisado por pares</span></div><a href="https://quantumcomputingreport.com/google-quantum-ai-demonstrates-magic-state-cultivation-on-willow-processor-in-science-milestone/" target="_blank" rel="noopener">quantumcomputingreport.com</a></li>
+        <li><div><b>Quantinuum, Helios</b> (05/11/2025) e <b>Helix</b> (09/09/2026); IPO (jun/2026); resultados do 2º tri de 2026.<span class="m">releases corporativos</span></div><a href="https://quantinuum.com/blog/introducing-helios-the-most-accurate-quantum-computer-in-the-world" target="_blank" rel="noopener">quantinuum.com</a></li>
+        <li><div><b>IBM, Starling e qLDPC</b> (10/06/2025); <b>Nighthawk e Loon</b> (12/11/2025); <b>US$ 10 bi e Anderon</b> (02/06/2026); <b>HRL</b> (23/07/2026); <b>módulos criogênicos</b> (19/08/2026); roadmap.<span class="m">releases corporativos</span></div><a href="https://www.ibm.com/roadmaps/quantum/" target="_blank" rel="noopener">ibm.com</a></li>
+        <li><div><b>IBM, Quantum Advantage Tracker</b> e os três preprints de jul/2026 (arXiv 2607.25941, 2607.24937, 2607.25998).<span class="m">preprints sem revisão por pares</span></div><a href="https://www.ibm.com/quantum/blog/quantum-advantage-tracker" target="_blank" rel="noopener">ibm.com</a></li>
+        <li><div><b>Caltech, 6.100 átomos</b> e <b>Harvard/MIT/QuEra, 3.000 qubits contínuos</b> (Nature, set/2025).<span class="m">artigos revisados por pares</span></div><a href="https://news.harvard.edu/gazette/story/2025/09/clearing-significant-hurdle-to-quantum-computing" target="_blank" rel="noopener">harvard.edu</a></li>
+        <li><div><b>Atom Computing, código tórico</b> (03/06/2026); <b>Infleqtion, 30 lógicos</b> (24/09/2026); <b>QuEra, 2025</b>; <b>Pasqal, roadmap</b>.<span class="m">releases corporativos</span></div><a href="https://atom-computing.com/atom-computing-reveals-quantum-error-correction-with-toric-code/" target="_blank" rel="noopener">atom-computing.com</a></li>
+        <li><div><b>Microsoft, Majorana 1</b> (Nature, fev/2025), <b>Majorana 2</b> (jun/2026); <b>Legg, crítica</b> (Nature, jun/2026); centro de Maryland (set/2026).<span class="m">artigo + releases + crítica revisada por pares</span></div><a href="https://www.networkworld.com/article/4189610/researchers-cast-new-doubt-on-microsofts-quantum-computing-advance.html" target="_blank" rel="noopener">networkworld.com</a></li>
+        <li><div><b>IonQ</b>: Oxford Ionics (jun/2025), SkyWater e Superion (set/2026).<span class="m">releases corporativos</span></div><a href="https://thequantuminsider.com/2026/09/08/ionq-uses-investor-day-to-detail-superion-roadmap-skywater-strategy-and-quantum-security-plans" target="_blank" rel="noopener">thequantuminsider.com</a></li>
+        <li><div><b>D-Wave, Advantage2</b> (mai/2025); <b>Science, mar/2025</b> e contestações (Flatiron, EPFL).<span class="m">release + artigo + réplicas</span></div><a href="https://www.hpcwire.com/2025/03/13/d-wave-reports-quantum-supremacy-stirs-immediate-challenge-and-rebuttal/" target="_blank" rel="noopener">hpcwire.com</a></li>
+        <li><div><b>Diraq / imec</b> (Nature Communications, 09/07/2026); <b>Rigetti Cepheus-1</b> (07/04/2026); <b>Fujitsu/RIKEN 256 qubits</b> (abr/2025); <b>USTC Zuchongzhi 3.0</b> (PRL, mar/2025); <b>Jiuzhang 4.0</b> (arXiv, ago/2025).<span class="m">artigos e releases</span></div><a href="https://www.riken.jp/en/news_pubs/news/2025/20250422_1/index.html" target="_blank" rel="noopener">riken.jp</a></li>
+        <li><div><b>DARPA, Quantum Benchmarking Initiative</b>: Estágio B (nov/2025) e Estágio C (07/10/2026).<span class="m">fonte governamental</span></div><a href="https://www.darpa.mil/news/2026/four-more-teams-enter-quantum-benchmarking-initiative-final-stage" target="_blank" rel="noopener">darpa.mil</a></li>
+        <li><div><b>Jülich Supercomputing Centre, benchmark independente</b> (arXiv 2610.05928, 08/10/2026).<span class="m">preprint</span></div><a href="https://thequantuminsider.com/?p=2395758" target="_blank" rel="noopener">thequantuminsider.com</a></li>
+        <li><div><b>Hoefler, Häner, Troyer, "Disentangling hype from practicality"</b> (CACM, 2023; arXiv 2307.00523); <b>Müller et al., limites do QAOA</b> (arXiv 2411.19388); <b>Hanussek et al., annealing vs. GPU</b> (arXiv 2509.03952); <b>paint shop binário</b> (arXiv 2604.00607); <b>Ewin Tang, desquantização</b> (2018).<span class="m">artigos acadêmicos</span></div><a href="https://arxiv.org/abs/2307.00523" target="_blank" rel="noopener">arxiv.org</a></li>
+        <li><div><b>Quanta Magazine, "What is the true promise of quantum computing?"</b> (Ewin Tang, 03/04/2025).<span class="m">jornalismo científico</span></div><a href="https://www.quantamagazine.org/what-is-the-true-promise-of-quantum-computing-20250403/" target="_blank" rel="noopener">quantamagazine.org</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="cripto">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Criptografia e normas</span><h2>Padrões, prazos e estimativas</h2></div>
+      <ul class="refs">
+        <li><div><b>NIST, FIPS 203/204/205</b> (13/08/2024); <b>HQC</b> (11/03/2025); <b>FIPS 206</b> (em desenvolvimento); <b>IR 8547</b> (rascunho, 12/11/2024); <b>CSWP 39</b> (mar/2025); transição do SHA-1.<span class="m">normas</span></div><a href="https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization" target="_blank" rel="noopener">csrc.nist.gov</a></li>
+        <li><div><b>NSA, CNSA 2.0 FAQ v2.1</b> (dez/2024), inclusive posição sobre QKD.<span class="m">norma</span></div><a href="https://media.defense.gov/2022/Sep/07/2003071836/-1/-1/0/CSI_CNSA_2.0_FAQ_.PDF" target="_blank" rel="noopener">defense.gov</a></li>
+        <li><div><b>Gidney, "How to factor 2048 bit RSA integers with less than a million noisy qubits"</b> (arXiv 2505.15917, mai/2025).<span class="m">preprint, Google Quantum AI</span></div><a href="https://arxiv.org/abs/2505.15917v1" target="_blank" rel="noopener">arxiv.org</a></li>
+        <li><div><b>Iceberg Quantum, Pinnacle Architecture</b> (arXiv 2602.11457, fev/2026).<span class="m">preprint</span></div><a href="https://www.alphaxiv.org/abs/2602.11457.md" target="_blank" rel="noopener">alphaxiv.org</a></li>
+        <li><div><b>Google Research, ECDLP-256 e divulgação responsável</b> (31/03/2026, arXiv 2603.28846).<span class="m">whitepaper</span></div><a href="https://research.google/blog/safeguarding-cryptocurrency-by-disclosing-quantum-vulnerabilities-responsibly/" target="_blank" rel="noopener">research.google</a></li>
+        <li><div><b>Global Risk Institute / evolutionQ, Quantum Threat Timeline Report 2024 e 2025</b>.<span class="m">pesquisa com especialistas</span></div><a href="https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/" target="_blank" rel="noopener">globalriskinstitute.org</a></li>
+        <li><div><b>Comissão Europeia / NIS Cooperation Group, Coordinated Implementation Roadmap</b> (23/06/2025); slides ENISA.<span class="m">política pública</span></div><a href="https://digital-strategy.ec.europa.eu/en/library/coordinated-implementation-roadmap-transition-post-quantum-cryptography" target="_blank" rel="noopener">ec.europa.eu</a></li>
+        <li><div><b>NCSC (Reino Unido), PQC migration timelines</b> (20/03/2025) e posição sobre QKD (2020).<span class="m">orientação governamental</span></div><a href="https://ncsc.gov.uk/guidance/pqc-migration-timelines" target="_blank" rel="noopener">ncsc.gov.uk</a></li>
+        <li><div><b>ASD/ACSC (Austrália)</b> (set/2025); <b>Canadá ITSM.40.001</b> (jun/2025); <b>BSI TR-02102-1</b> (jan/2026, via fonte secundária); <b>ANSSI</b> (2023); <b>G7 CEG</b> (13/01/2026).<span class="m">orientações governamentais</span></div><a href="https://www.gov.uk/government/publications/advancing-a-coordinated-roadmap-for-the-transition-to-post-quantum-cryptography-in-the-financial-sector" target="_blank" rel="noopener">gov.uk</a></li>
+        <li><div><b>EUA: OMB M-23-02; relatório de custo US$ 7,1 bi (jul/2024); EO 14306 (jun/2025); ordens executivas de 22/06/2026</b>.<span class="m">política pública</span></div><a href="https://www.hklaw.com/en/insights/publications/2026/06/president-trump-signs-two-quantum-executive-orders" target="_blank" rel="noopener">hklaw.com</a></li>
+        <li><div><b>Cloudflare, "The state of the post-quantum Internet in 2025"</b> (28/10/2025); <b>Let's Encrypt, MTC</b> (03/06/2026); <b>Google, cryptography migration timeline</b> (25/03/2026); <b>OpenSSL 3.5</b>; <b>OpenSSH 10.0</b>; <b>Apple PQ3</b>; <b>Signal SPQR</b>.<span class="m">fontes técnicas primárias</span></div><a href="https://blog.cloudflare.com/pq-2025/" target="_blank" rel="noopener">cloudflare.com</a></li>
+        <li><div><b>Mastercard, "Migration to post-quantum cryptography"</b> (2025); <b>FS-ISAC, impacto na indústria de cartões</b> (2025); <b>3GPP TR 33.703</b>; <b>C-V2X e PQC</b> (arXiv 2608.05087); <b>IETF draft pqc-hsm-constrained</b>; <b>CISA, OT e PQC</b> (2022).<span class="m">setoriais e técnicas</span></div><a href="https://www.mastercard.com/content/dam/mccom/shared/news-and-trends/stories/2025/quantum-explainer-and-white-paper/Migration-to-post-quantum-cryptography-WhitePaper_2025.pdf" target="_blank" rel="noopener">mastercard.com</a></li>
+        <li><div><b>Valsorda, "128 bits"</b> (abr/2026), sobre Grover e AES.<span class="m">análise técnica</span></div><a href="https://words.filippo.io/128-bits/" target="_blank" rel="noopener">filippo.io</a></li>
+        <li><div><b>postquantum.com, "Quantum washing"</b> (jul/2026) e hélio-3 (2025).<span class="m">análise setorial</span></div><a href="https://postquantum.com/quantum-snake-oil/quantum-washing-credibility-tax/" target="_blank" rel="noopener">postquantum.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="neg">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Negócios e casos</span><h2>Frameworks e pilotos</h2></div>
+      <ul class="refs">
+        <li><div><b>WEF + Deloitte, Quantum Readiness Toolkit</b> (jun/2023); <b>WEF, Quantum Economy Blueprint</b> (fev/2024); <b>WEF/FCA, roadmap financeiro</b> (jan/2024).<span class="m">frameworks</span></div><a href="https://www3.weforum.org/docs/WEF_Quantum_Readiness_Toolkit_2023.pdf" target="_blank" rel="noopener">weforum.org</a></li>
+        <li><div><b>BCG, "Quantum computing could create up to $850 billion of economic value by 2040"</b> (jul/2024).<span class="m">consultoria</span></div><a href="https://www.bcg.com/press/18july2024-quantum-computing-create-up-to-850-billion-of-economic-value-2040" target="_blank" rel="noopener">bcg.com</a></li>
+        <li><div><b>IBM IBV, "The Enterprise in 2030"</b> (jan/2026); <b>Fujitsu + FT Longitude</b> (mar/2026); <b>McKinsey, talent gap</b> (dez/2022).<span class="m">pesquisas</span></div><a href="https://thequantuminsider.com/2026/01/20/ibm-study-finds-quantum-computing-is-coming-but-enterprises-arent-ready/" target="_blank" rel="noopener">thequantuminsider.com</a></li>
+        <li><div><b>Preços: IBM Quantum</b> e <b>Amazon Braket</b> (out/2026).<span class="m">tabelas oficiais</span></div><a href="https://www.ibm.com/quantum/pricing" target="_blank" rel="noopener">ibm.com/quantum/pricing</a></li>
+        <li><div><b>Volkswagen + D-Wave, Pequim</b> (arXiv 1708.01625) e <b>Lisboa, "Quantum Shuttle"</b> (arXiv 2006.14162; release 29/10/2019).<span class="m">artigos + release</span></div><a href="https://ar5iv.labs.arxiv.org/html/2006.14162" target="_blank" rel="noopener">arxiv.org</a></li>
+        <li><div><b>Ford + Microsoft</b> (dez/2019); <b>Hamburg Port Authority + Fujitsu</b> (dez/2021); <b>DENSO + D-Wave</b>; <b>Fraunhofer CML, QSH</b>; <b>Fujitsu + Nitori</b> (jan/2024).<span class="m">releases e páginas de projeto</span></div><a href="https://medium.com/@ford/mass-navigation-how-ford-is-exploring-the-quantum-world-with-microsoft-to-help-reduce-congestion-a9de6db32338" target="_blank" rel="noopener">medium.com/@ford</a></li>
+        <li><div><b>Pattison Food Group + D-Wave</b>; <b>Ford Otosan + D-Wave</b> (abr/2025); <b>Einride + IonQ</b> (2025); <b>ExxonMobil + IBM</b>; <b>Deutsche Bahn + IQM</b> (jul/2026); <b>Lufthansa + DLR + Kipu</b> (jan/2025); <b>Aramco + Pasqal</b> (mai/2026); <b>Airbus + BMW Quantum Mobility Quest</b> (dez/2024).<span class="m">releases corporativos</span></div><a href="https://thequantuminsider.com/2026/07/20/iqm-and-deutsche-bahn-demonstrate-quantum-algorithm-for-railway-scheduling-on-real-operational-data/" target="_blank" rel="noopener">thequantuminsider.com</a></li>
+        <li><div><b>HSBC + IBM</b> (set/2025); <b>JPMorganChase + Quantinuum, certified randomness</b> (Nature, mar/2025); <b>AstraZeneca + IonQ</b> (jun/2025); <b>E.ON + IBM</b> (dez/2024).<span class="m">releases + artigo</span></div><a href="https://www.jpmorganchase.com/about/technology/news/certified-randomness" target="_blank" rel="noopener">jpmorganchase.com</a></li>
+        <li><div><b>Universidade de Birmingham, gradiômetro quântico</b> (Nature 602, 590, 2022; Physics World); <b>Q-CTRL, GravNav</b> (ago/2026).<span class="m">artigo + release</span></div><a href="https://www.nature.com/articles/s41586-021-04315-3" target="_blank" rel="noopener">nature.com</a></li>
+        <li><div><b>Mercado 2026: Constellation Research</b> (ago/2026); <b>Fast Company</b> (mai/2026); <b>ETF.com</b> (jan/2025); <b>Kerrisdale/Benzinga</b> (mar/2025); <b>Fortune</b> (fev/2026).<span class="m">imprensa financeira</span></div><a href="https://www.constellationr.com/insights/news/quantum-computing-where-we-stand-2026" target="_blank" rel="noopener">constellationr.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="br">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Brasil</span><h2>Política, ecossistema e normas</h2></div>
+      <ul class="refs">
+        <li><div><b>ITI, Instrução Normativa nº 35</b> (30/01/2026; DOU 03/02/2026).<span class="m">norma</span></div><a href="https://convergenciadigital.com.br/governo/iti-certificado-digital-e-assinatura-gov-br-adotam-criptografia-quantica/" target="_blank" rel="noopener">convergenciadigital.com.br</a></li>
+        <li><div><b>Banco Central, declaração sobre PQC</b> (25/03/2026); <b>BCB + Brazil Quantum + Microsoft, Pix</b> (11/05/2022).<span class="m">imprensa + release</span></div><a href="https://news.microsoft.com/pt-br/com-apoio-da-fenasbac-banco-central-brazil-quantum-e-microsoft-exploram-o-uso-de-criptografia-pos-quantica-para-melhorar-seguranca-do-sistema-pix/" target="_blank" rel="noopener">microsoft.com</a></li>
+        <li><div><b>Agência FAPESP, "Computação quântica exige preparação estratégica"</b> (Itaú, 28/08/2026); <b>Baguete, Itaú</b> (set/2026).<span class="m">imprensa científica</span></div><a href="https://agencia.fapesp.br/computacao-quantica-exige-preparacao-estrategica-antes-da-adocao-comercial/59094" target="_blank" rel="noopener">agencia.fapesp.br</a></li>
+        <li><div><b>Bradesco + IBM Quantum Safe</b> (ago/2023); <b>Inter + UFMG</b> (mar/2025); <b>CBPF + ExxonMobil + IBM</b> (ago/2026); <b>IBM no Brasil</b> (jun/2026).<span class="m">imprensa especializada</span></div><a href="https://www.datacenterdynamics.com/br/not%C3%ADcias/cbpf-e-exxonmobil-brasil-usam-computadores-qu%C3%A2nticos-da-ibm-para-criar-solu%C3%A7%C3%B5es-em-energia-e-carbono/" target="_blank" rel="noopener">datacenterdynamics.com</a></li>
+        <li><div><b>CIQUANTA-PB</b> (jun/2026); <b>5ª CNCT e Portaria MCTI 8.194/2024</b>; <b>Embrapii e SENAI CIMATEC (QuIIN)</b> (out/2023); <b>Quantum World Tour Brasil</b> (nov/2025).<span class="m">imprensa + fontes institucionais</span></div><a href="https://convergenciadigital.com.br/governo/paraiba-tera-os-dois-primeiros-computadores-quanticos-operacionais-do-brasil-com-capacidades-de-20-e-100-qubits/" target="_blank" rel="noopener">convergenciadigital.com.br</a></li>
+        <li><div><b>EAF / Telebras, PQC na rede privativa</b> (11/08/2026); <b>Decreto 12.573/2025 (E-Ciber)</b>.<span class="m">imprensa + norma</span></div><a href="https://teletime.com.br/11/08/2026/rede-privativa-quantico/" target="_blank" rel="noopener">teletime.com.br</a></li>
+        <li><div><b>Chile, Estrategia Nacional de Tecnologías Cuánticas 2025-2035</b> (dez/2025).<span class="m">política pública</span></div><a href="https://quantumcomputingreport.com/chile-launches-national-quantum-strategy-2025-2035-prioritizing-sovereign-computing-and-sensing/" target="_blank" rel="noopener">quantumcomputingreport.com</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="novas">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Acrescentadas em 17/10/2026</span><h2>Fontes de base, normas de transporte e Brasil</h2><p class="lead">Verificadas uma a uma em outubro de 2026. Onde a fonte não existe como se costuma citar, o texto diz.</p></div>
+      <h3>Artigos de base</h3>
+      <ul class="refs">
+        <li><div><b>Preskill, "Quantum Computing in the NISQ era and beyond"</b>, Quantum 2, 79 (2018); e <b>"Beyond NISQ: The Megaquop Machine"</b> (palestra Q2B dez/2024; arXiv 2502.17368, 2025).<span class="m">artigos</span></div><a href="https://quantum-journal.org/papers/q-2018-08-06-79/" target="_blank" rel="noopener">quantum-journal.org</a></li>
+        <li><div><b>Nielsen e Chuang, Quantum Computation and Quantum Information</b>, Cambridge, ed. 10º aniversário (2010).<span class="m">livro-texto</span></div><a href="https://www.cambridge.org/9781107002173" target="_blank" rel="noopener">cambridge.org</a></li>
+        <li><div><b>Aaronson, "Read the fine print"</b>, Nature Physics 11, 291 (2015): as condições escondidas nas promessas de aprendizado de máquina quântico.<span class="m">comentário</span></div><a href="https://scottaaronson.com/papers/qml.pdf" target="_blank" rel="noopener">scottaaronson.com</a></li>
+        <li><div><b>Kim et al., "Evidence for the utility of quantum computing before fault tolerance"</b>, Nature 618, 500 (2023); réplicas clássicas: <b>Tindall et al.</b>, PRX Quantum 5, 010308 (2024) e <b>Begušić, Gray e Chan</b>, Science Advances 10, eadk4321 (2024).<span class="m">artigos revisados por pares</span></div><a href="https://www.nature.com/articles/s41586-023-06096-3" target="_blank" rel="noopener">nature.com</a></li>
+        <li><div><b>Bravyi et al., "High-threshold and low-overhead fault-tolerant quantum memory"</b>, Nature 627, 778 (2024): o "gross code" qLDPC da IBM.<span class="m">artigo</span></div><a href="https://www.nature.com/articles/s41586-024-07107-7" target="_blank" rel="noopener">nature.com</a></li>
+        <li><div><b>Bluvstein et al., "Logical quantum processor based on reconfigurable atom arrays"</b>, Nature 626, 58 (2024): 48 qubits lógicos em átomos neutros.<span class="m">artigo</span></div><a href="https://www.nature.com/articles/s41586-023-06927-3" target="_blank" rel="noopener">nature.com</a></li>
+        <li><div><b>Google Quantum AI, "Quantum error correction below the surface code threshold"</b>, Nature 638, 920 (online dez/2024, impresso fev/2025).<span class="m">artigo</span></div><a href="https://www.nature.com/articles/s41586-024-08449-y" target="_blank" rel="noopener">nature.com</a></li>
+        <li><div><b>Shor (1994, FOCS; 1997, SIAM J. Comput.)</b> e <b>Grover (1996, STOC)</b>: os dois algoritmos que definem a ameaça.<span class="m">artigos originais</span></div><a href="https://arxiv.org/abs/quant-ph/9508027" target="_blank" rel="noopener">arxiv.org</a></li>
+      </ul>
+      <h3>Guias e normas de migração</h3>
+      <ul class="refs">
+        <li><div><b>CISA, NSA e NIST, "Quantum-Readiness: Migration to Post-Quantum Cryptography"</b> (21/08/2023): checklist de quatro páginas para infraestrutura crítica.<span class="m">guia governamental</span></div><a href="https://www.cisa.gov/resources-tools/resources/quantum-readiness-migration-post-quantum-cryptography" target="_blank" rel="noopener">cisa.gov</a></li>
+        <li><div><b>NIST SP 800-227, "Recommendations for Key-Encapsulation Mechanisms"</b> (final, 18/09/2025); <b>NIST SP 1800-38, "Migration to Post-Quantum Cryptography"</b> (NCCoE, rascunho preliminar, 2023; sem versão final até out/2026).<span class="m">normas e guias</span></div><a href="https://csrc.nist.gov/pubs/sp/800/227/final" target="_blank" rel="noopener">csrc.nist.gov</a></li>
+        <li><div><b>BIS Innovation Hub, Projeto Leap</b>: fase 1 (jun/2023) e fase 2 (11/12/2025, com Banca d'Italia, Banque de France, Bundesbank, Nexi-Colt e Swift).<span class="m">bancos centrais</span></div><a href="https://www.bis.org/project/leap" target="_blank" rel="noopener">bis.org</a></li>
+        <li><div><b>GSMA Post-Quantum Telco Network Taskforce</b>: PQ.01 (2023) e PQ.03 v2.0 (out/2024). <b>Cloud Security Alliance</b>, Quantum-Safe Security WG e o marco "Y2Q" (14/04/2030). <b>Europol, Quantum Safe Financial Forum, "Call to action"</b> (07/02/2025).<span class="m">setoriais</span></div><a href="https://www.gsma.com/newsroom/gsma_resources/pq-03-post-quantum-cryptography-guidelines-for-telecom-use-cases" target="_blank" rel="noopener">gsma.com</a></li>
+        <li><div><b>ETSI TC CYBER QSC</b>: TR 103 619 (migração em três etapas, 2020), TS 103 744 (troca de chaves híbrida), <b>TR 103 949 (migração em ITS e C-ITS, 2023)</b>. <b>ISO/IEC 14888-4:2024</b> (assinaturas baseadas em hash); ML-KEM e ML-DSA ainda não publicados pela ISO/IEC até out/2026.<span class="m">normas</span></div><a href="https://www.etsi.org/deliver/etsi_tr/103900_103999/103949/01.01.01_60/tr_103949v010101p.pdf" target="_blank" rel="noopener">etsi.org</a></li>
+      </ul>
+      <h3>Transporte e cobrança eletrônica</h3>
+      <ul class="refs">
+        <li><div><b>ISO 17575 (partes 1 a 3, 2016)</b>, interface de cobrança eletrônica autônoma; <b>ISO 19299:2020</b>, security framework da cobrança eletrônica (toda em criptografia clássica); <b>CEN/TC 278</b>, catálogo europeu de normas de EFC.<span class="m">normas</span></div><a href="https://www.iso.org/standard/70373.html" target="_blank" rel="noopener">iso.org</a></li>
+        <li><div><b>IEEE 1609.2-2025</b> (publicada 05/10/2026) e <b>ETSI TS 103 097 V2.2.1</b> (mar/2026): formatos de certificado veicular, só ECDSA, ECIES e AES. <b>EU C-ITS CPOC/CCMS</b>: política de certificados sem menção a PQC.<span class="m">normas</span></div><a href="https://standards.ieee.org/ieee/1609.2/12070/" target="_blank" rel="noopener">standards.ieee.org</a></li>
+        <li><div><b>5GAA e GSMA, "Statement of Intent on the Quantum Threat"</b> (04/03/2025). Não existem, até out/2026: documento do US DOT sobre PQC no SCMS (só proposta de pesquisa "não financiada", jun/2026, e artigos acadêmicos como arXiv 2501.07028); relatório da IBTTA sobre PQC; norma de ANTT, ARTESP ou Senatran que cite criptografia pós-quântica.<span class="m">lacunas documentadas</span></div><a href="https://5gaa.org/content/uploads/2025/03/5gaa-joint-statement.pdf" target="_blank" rel="noopener">5gaa.org</a></li>
+      </ul>
+      <h3>Brasil</h3>
+      <ul class="refs">
+        <li><div><b>CPQD, "Aplicações de tecnologias quânticas em cibersegurança"</b> (R$ 12,2 mi, MCTI via PPI Softex, fev/2025; transmissão por 200 km de fibra, abr/2026).<span class="m">imprensa especializada</span></div><a href="https://teletime.com.br/23/04/2026/cpqd-transmissao-quantica-fibra-optica/" target="_blank" rel="noopener">teletime.com.br</a></li>
+        <li><div><b>Rede Rio Quântica</b> (UFF, CBPF, UFRJ, PUC-Rio; Pesquisa FAPESP 342, ago/2024, "Qubits na Guanabara"); <b>Rede Quântica Recife</b> (UFPE, 2023; fase 2 em 2026); <b>Rede Quandanga</b> (IME, Brasília, 2026).<span class="m">reportagens e documentos das redes</span></div><a href="https://revistapesquisa.fapesp.br/qubits-na-guanabara/" target="_blank" rel="noopener">revistapesquisa.fapesp.br</a></li>
+        <li><div><b>INCT-IQ</b> (CNPq/MCTI, desde 2008); <b>LNCC</b> (Santos Dumont, capacitação em computação quântica e cibersegurança); <b>GT do MCTI para tecnologias quânticas</b> (DOU 21/05/2024).<span class="m">institucionais</span></div><a href="https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/institutos-nacionais-de-ct" target="_blank" rel="noopener">gov.br/cnpq</a></li>
+        <li><div><b>Decreto 12.573/2025 (E-Ciber)</b> e <b>ata da 9ª reunião do CNCiber</b> (25/03/2026): P-Ciber ainda não publicado; nenhum dos dois cita PQC.<span class="m">documentos oficiais</span></div><a href="https://www.gov.br/gsi/pt-br/colegiados-do-gsi/comite-nacional-de-ciberseguranca-cnciber/atas/ata-da-9a-reuniao-ordinaria-do-cnciber-25-de-marco-de-2026" target="_blank" rel="noopener">gov.br/gsi</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="metodo">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Método</span><h2>Ressalvas de leitura</h2></div>
+      <div class="grid2">
+        <div class="panel"><h3>O que está marcado como promessa</h3><p class="small" style="color:var(--fg2)">Todo número de roadmap (qubits lógicos em 2027, 2029, 2030) é meta declarada pela empresa. Preprints (IBM jul/2026, Iceberg, Jülich) não passaram por revisão por pares. Releases corporativos (Q-CTRL, Infleqtion, HSBC, AstraZeneca) são autodeclarados.</p></div>
+        <div class="panel"><h3>O que não foi possível verificar</h3><p class="small" style="color:var(--fg2)">Entrega efetiva do IBM Kookaburra em 2026; Marco 3 do Google; datas firmes da PsiQuantum; preço da HRL; prazos exatos do BSI (fonte secundária); conteúdo da página da Serpro; documento oficial de uma "Estratégia Nacional de Tecnologias Quânticas" brasileira; posição exata de quântica no Hype Cycle da Gartner (paywall).</p></div>
+        <div class="panel"><h3>Projeções de consultoria</h3><p class="small" style="color:var(--fg2)">Faixas da McKinsey e da BCG são ordens de grandeza globais, apresentadas como tal. A área restrita evita usá-las como estimativa para uma empresa específica e constrói o caso a partir de risco regulatório e de processo operacional.</p></div>
+        <div class="panel"><h3>Como atualizar</h3><p class="small" style="color:var(--fg2)">Os pontos a revisar anualmente: estimativas de qubits para RSA/ECC; relatório do GRI; versão final do NIST IR 8547 e do FIPS 206; normas brasileiras (BCB, GSI, ANPD); entregas de Kookaburra, Sol, Superion e Magne; resultados da DARPA QBI; vantagem verificada em qualquer problema de otimização.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

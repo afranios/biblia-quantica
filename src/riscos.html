@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Riscos e PQC · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .breaks td:first-child{color:#fff;font-family:var(--mono);font-size:.85rem}
+  .shor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+  @media (max-width:760px){.shor{grid-template-columns:1fr}}
+  .shor-seq{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:18px 4px}
+  .shor-seq div{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.78rem;color:#07102a;font-weight:600;background:var(--sc,#5ce1ff);position:relative}
+  .shor-seq div small{position:absolute;top:-14px;left:0;right:0;text-align:center;font-size:.6rem;color:var(--muted);font-weight:400}
+  .shor-out{font-family:var(--display);font-size:1.1rem;color:#fff;line-height:1.5}
+  .shor-out b{color:var(--cyan)}
+  .hndl{width:100%;height:auto;display:block}
+  .hndl text{font-family:var(--body);font-size:12px;fill:#e7eefc}
+  .hndl .m{font-family:var(--mono);font-size:10px;fill:#8fa0c6}
+  .mosca{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  @media (max-width:760px){.mosca{grid-template-columns:1fr}}
+  .mosca-bar{display:grid;gap:8px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+  .mosca-bar .row2{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:center}
+  .mosca-bar .trk{height:18px;border-radius:6px;background:rgba(120,160,255,.12);position:relative;overflow:hidden}
+  .mosca-bar .trk i{position:absolute;top:0;bottom:0;left:0;border-radius:6px}
+  .mosca-bar .trk i.x{background:var(--c1)} .mosca-bar .trk i.y{background:var(--c4)} .mosca-bar .trk i.z{background:var(--c2)}
+  .mosca-v{font-family:var(--display);font-size:1.5rem;color:#fff}
+  .mosca-v.bad{color:var(--red)} .mosca-v.ok{color:var(--green)} .mosca-v.mid{color:var(--amber)}
+  .dead{display:grid;gap:8px}
+  .dead .d{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--glass)}
+  .dead .d>*{min-width:0}
+  .dead .d .who{font-family:var(--display);font-weight:600;color:#fff;font-size:.9rem}
+  .dead .d .who small{display:block;font-family:var(--mono);font-size:.64rem;color:var(--muted);letter-spacing:.06em}
+  .dead .d p{font-size:.9rem;color:var(--fg2)}
+  .dead .d .yrs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:4px}
+  @media (max-width:600px){.dead .d{grid-template-columns:1fr}}
+  .adopt li{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;list-style:none;padding:10px 12px;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--fg2)}
+  .adopt{margin:0;padding:0}
+  .adopt li b{color:#fff}
+  .adopt li .ok{color:var(--green);font-family:var(--mono)}
+  .adopt li .mid{color:var(--amber);font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 06 · Riscos e criptografia pós-quântica</span>
+        <h1>A ameaça com data: o que quebra, quando e o que fazer</h1>
+        <p class="lead">De todos os efeitos da computação quântica, o único com prazo regulatório, custo conhecido e consequência física é a quebra da criptografia de chave pública. RSA, curvas elípticas e Diffie-Hellman caem com o algoritmo de Shor; AES e SHA só precisam de chaves maiores. Dados cifrados hoje podem ser gravados e decifrados quando a máquina existir. Os prazos (NIST 2030/2035, UE 2030 para infraestrutura crítica, ICP-Brasil desde jan/2026) são anteriores a qualquer estimativa realista da máquina porque a migração leva uma década. Este capítulo quantifica a ameaça, mapeia as normas e traz uma calculadora para testar a sua exposição.</p>
+      </div>
+      <div class="toc"><a href="#quebra">O que quebra</a><a href="#hndl">Colher agora, decifrar depois</a><a href="#recursos">Quantos qubits</a><a href="#prob">Probabilidades</a><a href="#mosca">Calculadora de Mosca</a><a href="#normas">Padrões NIST</a><a href="#prazos">Prazos por país</a><a href="#brasil">Brasil</a><a href="#adocao">Adoção na indústria</a><a href="#campo">Dispositivos de campo</a><a href="#outros">Outros riscos</a><a href="#quiz">Teste</a></div>
+      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>O que a computação quântica quebra, o que só enfraquece, e por que o risco já começou?</li><li>Quais são os prazos e padrões que organizam a migração?</li><li>Onde a criptografia pós-quântica não cabe, e o que fazer nesses casos?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 17/10/2026</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="quebra" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">A ameaça</span><h2>O que quebra e o que só enfraquece</h2></div>
+      <div class="tbl-wrap"><table class="breaks">
+        <thead><tr><th>Algoritmo</th><th>Onde está</th><th>Efeito do quântico</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td>RSA</td><td>TLS, certificados, assinaturas, NF-e, EMV, remote key loading</td><td><span class="verdict no">quebrado (Shor)</span></td><td>Substituir por ML-KEM / ML-DSA; depreciado após 2030, proibido após 2035 (NIST IR 8547)</td></tr>
+          <tr><td>ECDSA, EdDSA, ECDH</td><td>TLS 1.3, SSH, VPNs, blockchains, V2X, JWT</td><td><span class="verdict no">quebrado (Shor)</span></td><td>Mesma regra; ECC-256 exige hoje menos recursos para quebrar que RSA-2048 (Google, mar/2026)</td></tr>
+          <tr><td>DH, MQV</td><td>IKE/IPsec, legado</td><td><span class="verdict no">quebrado (Shor)</span></td><td>Substituir</td></tr>
+          <tr><td>AES-128</td><td>Cifra de dados, EMV, DUKPT</td><td><span class="verdict mid">enfraquecido em teoria (Grover)</span></td><td>Na prática seguro por décadas (NIST). CNSA 2.0 pede AES-256 como conservadorismo barato</td></tr>
+          <tr><td>AES-256, SHA-384/512, SHA-3</td><td>Tudo</td><td><span class="verdict ok">seguro</span></td><td>Manter; é a base da defesa para dispositivos que não rodam PQC</td></tr>
+          <tr><td>3DES, SHA-1</td><td>PIN de cartões, legados</td><td><span class="verdict no">já depreciados por motivos clássicos</span></td><td>Migrar para AES e SHA-2 independentemente do quântico</td></tr>
+        </tbody>
+      </table></div>
+      <div class="panel">
+        <div class="k">Como Shor quebra RSA: encontrar o período</div>
+        <div class="shor">
+          <div class="stack">
+            <p class="small" style="color:var(--fg2)">RSA esconde dois números primos dentro de N. Shor não fatora diretamente: escolhe um número a e olha a sequência a¹, a², a³... módulo N. Essa sequência se repete com um período r. Para um computador clássico, achar r é tão difícil quanto fatorar. Para o quântico, a interferência revela r de uma vez, e o resto é aritmética de escola. Escolha N e a.</p>
+            <div class="row">
+              <div class="ctl" style="flex:1;min-width:120px"><label for="shor-n">N (número a fatorar)</label><select id="shor-n"><option value="15">15</option><option value="21" selected>21</option><option value="33">33</option><option value="35">35</option><option value="39">39</option><option value="55">55</option></select></div>
+              <div class="ctl" style="flex:1;min-width:120px"><label for="shor-a">a (base)</label><select id="shor-a"></select></div>
+            </div>
+            <div class="shor-out" id="shor-out"></div>
+          </div>
+          <div><div class="k">a^x mod N, para x = 1, 2, 3...</div><div class="shor-seq" id="shor-seq" style="padding-top:14px"></div><p class="src" style="margin-top:8px">Cores iguais marcam o mesmo resto. O computador quântico calcula todos os restos em superposição e usa a transformada de Fourier quântica para ler só o período. Com RSA-2048, N tem 617 dígitos e a sequência tem mais termos que átomos no universo; nenhum computador clássico a percorre.</p></div>
+        </div>
+      </div>
+      <div class="note"><span class="k">Por que Grover preocupa menos</span>O ganho de Grover é quadrático e não paraleliza bem. Estimativa de Filippo Valsorda (abr/2026): quebrar AES-128 exigiria cerca de 2⁴⁷ circuitos paralelos de 724 qubits lógicos rodando uma década. O NIST mantém todos os tamanhos de AES permitidos.</div>
+    </div>
+  </section>
+
+  <section class="section" id="hndl" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Colher agora, decifrar depois</span><h2>Por que o risco já começou</h2>
+        <p class="lead">Um adversário que grave tráfego cifrado hoje (uma VPN entre a praça de pedágio e o data center, um backup, uma transmissão de imagens de placas) poderá decifrá-lo quando tiver a máquina. O Google (mar/2026) trata a cifragem como risco presente por "store-now-decrypt-later" e as assinaturas como risco futuro que precisa ser resolvido antes da máquina existir. No Brasil, a rede privativa do governo federal (EAF, Telebras) declarou em ago/2026 que já incorpora PQC por esse motivo.</p></div>
+      <div class="panel">
+        <div class="k">Por que o relógio dos dados já está correndo</div>
+        <svg class="hndl" viewBox="0 0 820 250" role="img" aria-label="Linha do tempo: dados capturados hoje e decifrados quando a máquina existir">
+          <defs><linearGradient id="crqc" x1="0" x2="1"><stop offset="0" stop-color="#ff5fd2" stop-opacity=".15"/><stop offset=".5" stop-color="#ff5fd2" stop-opacity=".45"/><stop offset="1" stop-color="#ff5fd2" stop-opacity=".15"/></linearGradient></defs>
+          <g class="m"><text x="60" y="22">2026</text><text x="200" y="22">2030</text><text x="340" y="22">2034</text><text x="480" y="22">2038</text><text x="620" y="22">2042</text><text x="760" y="22">2046</text></g>
+          <g stroke="rgba(120,160,255,.2)"><path d="M70 30 V240"/><path d="M210 30 V240"/><path d="M350 30 V240"/><path d="M490 30 V240"/><path d="M630 30 V240"/><path d="M770 30 V240"/></g>
+          <rect x="210" y="30" width="420" height="210" fill="url(#crqc)"/><text x="420" y="48" text-anchor="middle" fill="#ff5fd2" font-weight="700">faixa em que os especialistas concentram a chance de um CRQC</text><text x="420" y="64" text-anchor="middle" class="m">GRI 2025: 28% a 49% até 2035; 51% a 70% até 2040</text>
+          <g><text x="10" y="86" class="m">imagens e placas</text><rect x="70" y="92" width="175" height="12" rx="6" fill="#5ce1ff"/><text x="250" y="102" class="m">retenção de 5 anos (exemplo)</text></g>
+          <g><text x="10" y="128" class="m">dados de pagamento</text><rect x="70" y="134" width="245" height="12" rx="6" fill="#9d8cff"/><text x="320" y="144" class="m">7 anos (exemplo)</text></g>
+          <g><text x="10" y="170" class="m">dados pessoais (LGPD)</text><rect x="70" y="176" width="560" height="12" rx="6" fill="#ffcf6e"/><text x="636" y="186" class="m">vida do titular</text></g>
+          <g><text x="10" y="212" class="m">contratos de concessão</text><rect x="70" y="218" width="700" height="12" rx="6" fill="#4fe3a3"/><text x="620" y="236" class="m">até 30 anos</text></g>
+          <g><circle cx="70" cy="60" r="6" fill="#fff"/><text x="82" y="64">hoje: tráfego cifrado com RSA/ECC é gravado por quem quiser</text></g>
+        </svg>
+        <p class="small muted" style="margin-top:8px">Tudo o que ainda precisa ser secreto quando a máquina chegar já está exposto se for capturado hoje. As barras que entram na faixa rosa são o problema; só dados com retenção curta escapam, e por pouco. Os prazos de retenção são exemplos; use os seus.</p>
+      </div>
+      <div class="grid3">
+        <div class="panel"><div class="k">Risco 1</div><h3>Confidencialidade</h3><p class="small" style="color:var(--fg2)">Dados com vida longa: imagens e placas (retenção regulatória de anos), contratos de concessão de 30 anos, dados pessoais sob LGPD, segredos industriais. O que importa é quanto tempo o dado precisa ficar secreto, não quando foi cifrado.</p></div>
+        <div class="panel"><div class="k">Risco 2</div><h3>Integridade e confiança</h3><p class="small" style="color:var(--fg2)">Assinaturas forjadas em atualizações de firmware, certificados de identidade e documentos. A McKinsey (abr/2026) sobre infraestrutura: "if trust is compromised here, expect to see significant physical disruption, potentially catastrophic."</p></div>
+        <div class="panel"><div class="k">Risco 3</div><h3>Dívida técnica criptográfica</h3><p class="small" style="color:var(--fg2)">Não saber onde está cada chave, certificado e algoritmo. Um banco global estimou ter de trocar "dezenas de milhares de roteadores". A migração do SHA-1 levou 25 anos entre o primeiro ataque (2005) e a retirada total (2030).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recursos" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Quantos qubits</span><h2>As estimativas caem rápido</h2><p class="lead">Qubits físicos estimados para quebrar RSA-2048 (ou ECC-256) em tempo útil, por publicação. Escala logarítmica. Nenhuma máquina existente chega perto: a maior em operação tem cerca de 6.100 átomos sem correção completa, e a melhor corrigida tem 48 qubits lógicos.</p></div>
+      <div class="grid2">
+        <div class="panel"><div class="chart"><canvas id="ch-res"></canvas></div><p class="src" style="margin-top:6px">Gidney e Ekerå 2019; Gidney 2025 (arXiv 2505.15917); Iceberg Quantum 2026 (arXiv 2602.11457, modelagem com qLDPC); Google 2026 (arXiv 2603.28846, ECDLP-256). Mastercard 2025 citava 67,7 milhões para P-256.</p></div>
+        <div class="stack">
+          <div class="stat"><div class="v c">20 milhões · 8 h</div><div class="l">RSA-2048, Gidney e Ekerå, 2019</div></div>
+          <div class="stat"><div class="v vv">&lt; 1 milhão · &lt; 1 semana</div><div class="l">RSA-2048, Gidney, mai/2025: erro 0,1%, ciclo de 1 µs, cultivo de estados mágicos (validado em out/2026)</div></div>
+          <div class="stat"><div class="v m">~94 mil · ~1 mês</div><div class="l">RSA-2048, Iceberg Quantum, fev/2026: arquitetura qLDPC; distâncias conjecturadas, sem decodificador em tempo real; modelagem, não demonstração</div></div>
+          <div class="stat"><div class="v a">&lt; 500 mil · minutos</div><div class="l">ECC-256 (P-256, secp256k1), Google, mar/2026: &lt; 1.450 qubits lógicos; circuitos retidos, prova de conhecimento zero</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prob" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Probabilidades</span><h2>O que os especialistas estimam</h2><p class="lead">Global Risk Institute e evolutionQ (Mosca e Piani) entrevistam anualmente dezenas de pesquisadores sobre a chance de um computador quântico criptograficamente relevante (CRQC: quebra RSA-2048 em 24 h). O relatório 2025 (publicado em mar/2026, 26 especialistas) subiu 15 pontos em relação a 2024 na leitura otimista de 10 anos.</p></div>
+      <div class="grid2">
+        <div class="panel"><div class="chart"><canvas id="ch-gri"></canvas></div><p class="src" style="margin-top:6px">GRI Quantum Threat Timeline 2024 (32 especialistas) e 2025 (26). Barras: faixa entre a leitura pessimista e a otimista do relatório. O relatório 2024 não publicou faixa para 15 anos no sumário executivo.</p></div>
+        <div class="stack">
+          <div class="panel"><h3>Leitura</h3><ul style="margin:8px 0 0;padding-left:1.1em;color:var(--fg2);font-size:.93rem;display:grid;gap:6px"><li>10 anos (~2035): 28% a 49%; 13 de 26 especialistas dão 50% ou mais.</li><li>15 anos: 51% a 70% ("likely").</li><li>20 anos: 92% dão 50% ou mais.</li><li>Posição conservadora: BSI alemão não espera relevância criptanalítica antes de ~2040; Mastercard: "mais provavelmente 20+ anos".</li><li>Jensen Huang (jan/2025): "15 anos seria cedo, 30 tarde, 20 é o consenso".</li></ul></div>
+          <div class="note a"><span class="k">McKinsey, abr/2026</span>"Q-Day is expected to happen after 2028"; muitas empresas de computação quântica projetam 2028 a 2030, e a receita do setor está modelada em cima disso. É uma visão de fornecedor; os especialistas independentes acima são mais cautelosos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="mosca" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Interativo</span><h2>Calculadora de Mosca: X + Y &gt; Z?</h2><p class="lead">X é quanto tempo os dados precisam ficar protegidos. Y é quanto tempo a migração leva. Z é quando a máquina chega. Se X + Y é maior que Z, a organização já está atrasada. Ajuste para o seu caso.</p></div>
+      <div class="panel holo">
+        <div class="mosca">
+          <div class="stack">
+            <div class="ctl"><label for="mx">X · anos de sigilo necessário <output id="mx-o">10</output></label><input type="range" id="mx" min="1" max="30" value="10"><span class="small muted">Imagens de placas: anos. Contratos de concessão: até 30. Dados pessoais: vida do titular.</span></div>
+            <div class="ctl"><label for="my">Y · anos para migrar <output id="my-o">6</output></label><input type="range" id="my" min="1" max="15" value="6"><span class="small muted">Google deu-se 5 anos com controle total da pilha. OT, PKI e equipamentos de campo: 5 a 10. SHA-1 levou 25.</span></div>
+            <div class="ctl"><label for="mz">Z · anos até o CRQC <output id="mz-o">9</output></label><input type="range" id="mz" min="2" max="25" value="9"><span class="small muted">GRI: ~50% em 10 a 15 anos. Fornecedores: 2028 a 2030. BSI: ~2040.</span></div>
+          </div>
+          <div class="stack">
+            <div class="mosca-bar" id="mosca-bar">
+              <div class="row2"><span>X + Y</span><div class="trk"><i class="x" id="mb-x"></i><i class="y" id="mb-y"></i></div></div>
+              <div class="row2"><span>Z</span><div class="trk"><i class="z" id="mb-z"></i></div></div>
+            </div>
+            <div class="mosca-v" id="mosca-v">—</div>
+            <p class="small" style="color:var(--fg2)" id="mosca-msg"></p>
+            <div class="legend"><span><i style="background:var(--c1)"></i>X sigilo</span><span><i style="background:var(--c4)"></i>Y migração</span><span><i style="background:var(--c2)"></i>Z máquina</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="normas" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Padrões</span><h2>O que o NIST já publicou</h2></div>
+      <div class="grid2">
+        <div class="panel"><h3>Algoritmos padronizados (13/08/2024)</h3><ul style="margin:8px 0 0;padding-left:1.1em;color:var(--fg2);font-size:.93rem;display:grid;gap:6px"><li><b>FIPS 203, ML-KEM</b> (ex-Kyber): troca de chaves. Já é padrão em navegadores, OpenSSL 3.5 e OpenSSH 10.</li><li><b>FIPS 204, ML-DSA</b> (ex-Dilithium): assinaturas. Assinatura de ~2.420 bytes e chave de 1.312 bytes (ECDSA: 64 e 64).</li><li><b>FIPS 205, SLH-DSA</b> (ex-SPHINCS+): assinaturas baseadas em hash, conservadoras e lentas.</li><li><b>FIPS 206, FN-DSA</b> (Falcon): em desenvolvimento; rascunho submetido ago/2025, não final.</li><li><b>HQC</b>: selecionado em mar/2025 como KEM reserva baseado em códigos; padrão final previsto para 2027.</li></ul></div>
+        <div class="panel"><h3>Prazos e agilidade</h3><ul style="margin:8px 0 0;padding-left:1.1em;color:var(--fg2);font-size:.93rem;display:grid;gap:6px"><li><b>NIST IR 8547</b> (rascunho, nov/2024): RSA, ECDSA, ECDH, DH a 112 bits "deprecated after 2030" e "disallowed after 2035".</li><li><b>NIST CSWP 39</b> (mar/2025): agilidade criptográfica como requisito de arquitetura: trocar algoritmos sem parar o sistema.</li><li><b>NSA CNSA 2.0</b>: novas aquisições pós-quânticas a partir de 01/01/2027; equipamentos sem suporte fora de operação até 31/12/2030; ML-KEM-1024, ML-DSA-87, AES-256, SHA-384.</li><li><b>Híbridos</b> (clássico + PQC): posição dominante na Europa (UE, ANSSI, BSI) e em Chrome, Signal, OpenSSH; CNSA 2.0 aceita mas prefere PQC puro.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prazos" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Prazos</span><h2>Reguladores convergem em 2030 / 2035</h2></div>
+      <div class="dead">
+        <div class="d"><div class="who">Estados Unidos<small>NIST, NSA, OMB, EO jun/2026</small></div><div><div class="yrs"><span class="chip a">2027 aquisições CNSA 2.0</span><span class="chip m">2030 depreciação</span><span class="chip r">2035 proibição</span></div><p>EO de 22/06/2026: sistemas de alto impacto com PQC em troca de chaves até 31/12/2030 e em assinaturas até 31/12/2031; CBOM obrigatório; contratados com conformidade FIPS até 2030. Custo estimado para agências civis: US$ 7,1 bi (2025 a 2035).</p></div></div>
+        <div class="d"><div class="who">União Europeia<small>Comissão, NIS Cooperation Group, jun/2025</small></div><div><div class="yrs"><span class="chip a">2026 roteiro nacional</span><span class="chip m">2030 infraestrutura crítica</span><span class="chip r">2035 tudo</span></div><p>Até 31/12/2026 todos os Estados com roteiro e transição iniciada; até fim de 2030 casos de alto risco migrados, incluindo "água, energia, saúde, finanças e transportes"; até 2035 migração completa. Híbridos: "esquemas tradicionais não devem ser enfraquecidos".</p></div></div>
+        <div class="d"><div class="who">Reino Unido<small>NCSC, mar/2025</small></div><div><div class="yrs"><span class="chip a">2028 inventário</span><span class="chip m">2031 prioridades</span><span class="chip r">2035 completo</span></div><p>Até 2028: metas, descoberta e inventário concluídos, dependências de fornecedores identificadas. O inventário "não é um registro formal de ativos": precisa capturar dados, tempo de vida e valor para o adversário.</p></div></div>
+        <div class="d"><div class="who">Alemanha<small>BSI TR-02102-1, jan/2026</small></div><div><div class="yrs"><span class="chip m">2030 sensíveis</span><span class="chip m">2031 troca de chaves</span><span class="chip r">2035 assinaturas</span></div><p>Híbrido recomendado (obrigatório para informação classificada). Fonte secundária com correção do autor: confirmar no texto do BSI antes de citar em material público.</p></div></div>
+        <div class="d"><div class="who">Austrália<small>ASD/ACSC, set/2025</small></div><div><div class="yrs"><span class="chip r">2030 fim de RSA/ECC</span></div><p>"Cessar o uso de criptografia assimétrica tradicional até o fim de 2030", o prazo mais agressivo entre governos.</p></div></div>
+        <div class="d"><div class="who">Canadá<small>ITSM.40.001, jun/2025</small></div><div><div class="yrs"><span class="chip a">2026 plano</span><span class="chip m">2031 alta prioridade</span><span class="chip r">2035 restante</span></div><p>Plano inicial por departamento até abril de 2026.</p></div></div>
+        <div class="d"><div class="who">G7<small>Cyber Expert Group, jan/2026</small></div><div><div class="yrs"><span class="chip m">2030 a 2032 crítico</span><span class="chip r">2035 financeiro</span></div><p>Roteiro coordenado para o setor financeiro, não prescritivo, com ênfase em fornecedores e terceiros.</p></div></div>
+        <div class="d"><div class="who">Brasil<small>ITI IN 35, jan/2026; BCB em estudo</small></div><div><div class="yrs"><span class="chip g">2026 ICP-Brasil aceita PQC</span><span class="chip">sem prazo nacional</span></div><p>Veja a seção seguinte.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="brasil" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Brasil</span><h2>O que existe de fato no país</h2></div>
+      <div class="grid2">
+        <div class="panel"><h3>ICP-Brasil já migrou a norma</h3><p class="small" style="color:var(--fg2)">Instrução Normativa ITI nº 35, de 30/01/2026 (DOU 03/02/2026): inclui ML-DSA-65/87 em chaves de AC, ML-DSA-44 em chaves de usuário final e ML-KEM-512/768/1024 em acordo de chaves e envelopes. Cria tipos Selo Eletrônico e Aplicações Específicas. Sem prazos de transição para as ACs. O presidente do ITI chamou a migração de "irreversível"; Assinatura Gov.br (mais de 1 milhão de assinaturas por dia) previa as primeiras assinaturas com PQC no 1º semestre de 2026. Afeta diretamente certificados A1/A3, NF-e e assinatura de contratos.</p></div>
+        <div class="panel"><h3>Banco Central: "estudando"</h3><p class="small" style="color:var(--fg2)">Em 25/03/2026 o BCB disse estar estudando criptografia pós-quântica, sem norma ou prazo. As Resoluções CMN 5.274/2025 e BCB 538/2025 (vigência 01/03/2026) tratam de ciber em geral. Em 2022, BCB, Brazil Quantum, Microsoft e Fenasbac testaram PQC no Pix (assinatura Picnic): "lenta e pesada demais", mas promissora.</p></div>
+        <div class="panel"><h3>Governo federal e setor privado</h3><p class="small" style="color:var(--fg2)">EAF (Telebras) incorpora PQC (ago/2026). O Decreto 12.573/2025 instituiu a nova E-Ciber; o P-Ciber, seu plano de execução, ainda não havia sido publicado em março de 2026 e nenhum dos dois cita criptografia pós-quântica. GSI/PR, ANPD e Anatel: nenhuma orientação específica encontrada. Bradesco iniciou CBOM com IBM Quantum Safe Explorer em 2023 (Open Finance). Itaú mantém inventário criptográfico entre suas 13 pesquisas quânticas.</p></div>
+        <div class="panel"><h3>Pesquisa e redes quânticas no país</h3><p class="small" style="color:var(--fg2)">O CPQD conduz desde 2025 um projeto de R$ 12,2 milhões (MCTI, via PPI Softex) com QKD, PQC, QRNG e um testbed aberto, e em abril de 2026 reportou transmissão quântica por 200 km de fibra em Campinas. A Rede Rio Quântica (UFF, CBPF, UFRJ, PUC-Rio) opera desde 2021 com 21 km de fibra e um enlace óptico de 6,8 km sobre a Baía de Guanabara; Recife tem rede de 7 km (UFPE) e Brasília a rede Quandanga (IME, QKD e PQC, apresentada à Anatel em 2026). São testes de comunicação quântica, não alternativas à migração PQC, mas são os parceiros nacionais para um piloto.</p></div>
+        <div class="panel"><h3>Leitura para uma concessionária</h3><p class="small" style="color:var(--fg2)">Não há prazo brasileiro, mas há três pressões: fornecedores globais de OT e pagamentos seguirão os prazos de EUA e UE (contratados federais dos EUA com FIPS até 2030); a cadeia de certificados ICP-Brasil vai migrar; e seguradoras e auditorias tendem a exigir controles "state of the art", que já incluem TLS híbrido. Quem não tiver inventário em 2028 (marco do NCSC) não terá como responder.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="adocao" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Adoção</span><h2>O que já é padrão de mercado</h2></div>
+      <div class="panel"><ul class="adopt">
+        <li><span class="ok">●</span><span><b>Navegadores:</b> Chrome (desde o 131) e Firefox usam X25519MLKEM768 por padrão. Cloudflare (out/2025): mais de 50% do tráfego humano já com troca de chaves pós-quântica.</span></li>
+        <li><span class="ok">●</span><span><b>OpenSSL 3.5</b> (abr/2025): ML-KEM, ML-DSA, SLH-DSA nativos. <b>OpenSSH 10.0</b> (abr/2025): mlkem768x25519 como troca de chaves padrão; DSA removido.</span></li>
+        <li><span class="ok">●</span><span><b>Mensageria:</b> Apple iMessage PQ3 (iOS 17.4) e Signal SPQR (out/2025, ML-KEM-768 em ratchet contínuo, verificado formalmente).</span></li>
+        <li><span class="ok">●</span><span><b>Nuvem e HSM:</b> AWS KMS com ML-DSA (jun/2025); Google Cloud KMS com ML-DSA e SLH-DSA em GA (jul/2026); Microsoft com APIs PQC em Windows e Linux; Entrust nShield 5 validado no CAVP (set/2025).</span></li>
+        <li><span class="mid">●</span><span><b>Certificados públicos:</b> nenhum certificado PQ em uso em out/2025; Let's Encrypt escolheu Merkle Tree Certificates, com staging no fim de 2026 e produção em 2027. Confiança ampla em navegadores improvável antes de 2027. Google tem meta interna de 2029; Android 17 traz ML-DSA.</span></li>
+        <li><span class="mid">●</span><span><b>Pagamentos (EMV):</b> a proteção antifraude do chip é simétrica (não afetada); RSA aparece em dados de gestão de risco e remote key loading. Experimento Idemia: PQC em cartão Cortex-M3 consumiu quase todo o tempo da transação; Banque de France estima 4 a 6x mais RAM. FS-ISAC: migrar PIN, DUKPT e TR-31 para AES.</span></li>
+        <li><span class="ok">●</span><span><b>Bancos centrais (BIS, Projeto Leap):</b> fase 1 (jun/2023) ligou Banque de France e Bundesbank por canal híbrido pós-quântico; fase 2 (dez/2025, com Banca d'Italia, Nexi-Colt e Swift) assinou transferências de liquidez com PQC em sistema operacional: todos os cenários funcionaram, com latência maior. PQC roda em sistemas transacionais reais.</span></li>
+        <li><span class="mid">●</span><span><b>Telecom:</b> GSMA PQ.03 v2.0 (out/2024) traz orientações de migração para operadoras; 3GPP TR 33.703 (Rel-20, set/2026) estuda PQC standalone e híbrida em 5G; ainda estudo, não norma.</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="section" id="campo" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Dispositivos de campo</span><h2>Onde a PQC não cabe: RFID, DSRC, V2X e OT</h2><p class="lead">Para uma operadora de rodovias, este é o ponto que mais pesa. Assinaturas pós-quânticas são grandes; dispositivos restritos não têm memória, banda ou firmware atualizável. A defesa para eles é simétrica (AES com chaves diversificadas e HSM no backend) e controle de fraude no backend, como o setor de cartões está fazendo.</p></div>
+      <div class="grid2">
+        <div class="panel"><h3>V2X e DSRC</h3><p class="small" style="color:var(--fg2)">Estudo de C-V2X (arXiv 2608.05087, ago/2026): com mensagens IEEE 1609.2, Dilithium-2 e SPHINCS+ não cabem no transport block; só Falcon-512 cabe, e atinge 90% de entrega apenas no nível de tráfego mais leve em linha de visada. "A eficiência espectral, não o tempo de computação, é a restrição primária." Tags RFID passivas (ISO 18000-6C) e OBUs DSRC legadas não executam PQC nem recebem firmware.</p></div>
+        <div class="panel"><h3>OT, SCADA e firmware</h3><p class="small" style="color:var(--fg2)">CISA (2022, 55 funções críticas nacionais): hardware de ICS é "caro de substituir", disperso, de vida longa e dependente de fornecedores; os ciclos de substituição já devem contemplar o risco quântico. IETF: o próprio processo de atualização de firmware precisa ser pós-quântico (LMS/XMSS no CNSA 2.0 desde 2025). Equipamentos comprados em 2026 estarão em campo em 2036, depois do "disallowed after 2035".</p></div>
+      </div>
+      <div class="panel"><h3>O que dizem as normas de pedágio e de ITS</h3><p class="small" style="color:var(--fg2)">A ISO 19299:2020 (security framework da cobrança eletrônica) descreve onde a criptografia vive em um sistema de pedágio e é o ponto de partida natural para o inventário; é toda baseada em criptografia clássica. Os formatos de certificado veicular (IEEE 1609.2-2025 e ETSI TS 103 097 V2.2.1, de março de 2026) listam só ECDSA, ECIES e AES, sem nenhum algoritmo pós-quântico. O único estudo de órgão normativo sobre migração em ITS é o ETSI TR 103 949 (2023): conclui que assinaturas pós-quânticas são pesadas para o rádio veicular e que a perda das raízes de confiança seria uma "ameaça existencial" para a PKI europeia (CCMS), que ainda não publicou plano de migração. Nos EUA, o SCMS também não tem plano oficial; a 5GAA e a GSMA assinaram em março de 2025 apenas uma declaração de intenção. ANTT, ARTESP e Senatran não mencionam criptografia pós-quântica em nenhuma norma de pedágio ou free flow. Em resumo: a operadora que exigir agilidade criptográfica em edital estará à frente dos próprios padrões.</p></div>
+      <div class="note m"><span class="k">Regra de compra</span>Todo edital de equipamento de pista, OBU, câmera, PLC ou HSM a partir de agora deve exigir: suporte a AES-256 e SHA-384; firmware assinado com LMS/XMSS ou ML-DSA; TLS 1.3 com X25519MLKEM768; CBOM entregue com o produto; roadmap PQC datado do fornecedor. Sem isso, a compra é um passivo.</div>
+    </div>
+  </section>
+
+  <section class="section" id="outros" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Outros riscos</span><h2>Além da criptografia</h2></div>
+      <div class="grid4">
+        <div class="panel"><div class="k">Hype e bolha</div><p class="small" style="color:var(--fg2)">Ações caíram ~40% num dia em jan/2025; short sellers e ações coletivas em 2025 e 2026. Risco para quem escolhe fornecedor pelo valor de mercado. Detalhes no capítulo 04.</p></div>
+        <div class="panel"><div class="k">Fornecedor</div><p class="small" style="color:var(--fg2)">Consolidação acelerada (IonQ comprou 7 empresas; IBM comprou HRL). Contratos de longo prazo com startups devem prever continuidade, portabilidade (Qiskit, CUDA-Q) e saída.</p></div>
+        <div class="panel"><div class="k">Geopolítica</div><p class="small" style="color:var(--fg2)">Controles de exportação dos EUA (set/2024); hardware chinês no CIQUANTA-PB; Google retendo circuitos de ataque. Fornecedor é decisão geopolítica.</p></div>
+        <div class="panel"><div class="k">Não se preparar</div><p class="small" style="color:var(--fg2)">Regulatório (prazos de fornecedores e ICP-Brasil), contratual e de seguro (E-Ciber prevê selo e seguro cibernético), operacional (equipamentos comprados sem agilidade) e de dados (LGPD e HNDL).</p></div>
+      </div>
+      <div class="quote">"As with AI, early movers in quantum-safe cybersecurity are setting standards and architectures, making inaction a conscious, and risky, decision."<span class="who">McKinsey Quantum Technology Monitor 2026</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="recap">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Em resumo</span><h2>O que levar deste capítulo</h2></div>
+      <ol class="recap"><li>RSA, ECC e DH caem com Shor; AES e SHA seguem; dados cifrados hoje podem ser decifrados depois.</li><li>FIPS 203/204/205 (2024); depreciação em 2030 e proibição em 2035 (NIST); UE 2030 para transportes; ICP-Brasil já aceita ML-DSA.</li><li>Tags, OBUs e OT não rodam PQC: defesa simétrica, HSM no backend e requisitos de agilidade em toda compra nova.</li></ol>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Teste rápido</span><h2>Verifique o que ficou</h2></div>
+      <div data-quiz><script type="application/json">[
+        {"q":"Qual algoritmo NÃO é quebrado pelo computador quântico?","o":["RSA-2048","ECDSA P-256","AES-256","Diffie-Hellman"],"a":2,"e":"Cifras simétricas e hashes só são enfraquecidos em teoria por Grover; AES-256 e SHA-384 seguem seguros. O NIST mantém todos os tamanhos de AES."},
+        {"q":"O que significa 'colher agora, decifrar depois'?","o":["Comprar qubits antes que fiquem caros","Gravar tráfego cifrado hoje para decifrar quando a máquina existir","Migrar antes do prazo","Vender dados"],"a":1,"e":"Por isso o risco já começou para dados com vida longa (placas, contratos, dados pessoais), independentemente de quando a máquina chega."},
+        {"q":"Segundo o rascunho NIST IR 8547, quando RSA e ECC ficam proibidos?","o":["2027","2030","2035","2040"],"a":2,"e":"Depreciados após 2030, proibidos após 2035. A UE exige infraestrutura crítica (inclusive transportes) migrada até 2030."},
+        {"q":"Qual norma brasileira já aceita algoritmos pós-quânticos?","o":["Resolução BCB 538/2025","Decreto 12.573/2025 (E-Ciber)","Instrução Normativa ITI 35/2026 (ICP-Brasil)","LGPD"],"a":2,"e":"IN ITI 35 inclui ML-DSA e ML-KEM na ICP-Brasil. O BCB está 'estudando'; o E-Ciber não menciona quântica."},
+        {"q":"Qual é a defesa correta para tags RFID e OBUs que não rodam PQC?","o":["Trocar por QKD","Criptografia simétrica com chaves diversificadas, HSM e controle de fraude no backend","Desligar","Aumentar o tamanho da chave RSA"],"a":1,"e":"Dispositivos restritos não têm memória nem banda para assinaturas PQC. A proteção migra para o simétrico e para o backend, como no EMV."}
+      ]</script></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  // Shor period finder
+  (function(){
+    var selN=document.getElementById("shor-n"), selA=document.getElementById("shor-a");
+    function gcd(a,b){ while(b){ var t=b; b=a%b; a=t; } return a; }
+    function fillA(){ var N=+selN.value; selA.innerHTML=""; for(var a=2;a<N;a++){ if(gcd(a,N)===1){ var o=document.createElement("option"); o.value=a; o.textContent=a; selA.appendChild(o);} } }
+    function run(){ var N=+selN.value, a=+selA.value; var seq=[], x=1, r=0; for(var i=1;i<=24;i++){ x=(x*a)%N; seq.push(x); if(x===1&&!r) r=i; }
+      var cols=["#5ce1ff","#9d8cff","#ff5fd2","#ffcf6e","#4fe3a3","#ff8c69","#8fd3ff","#c9b6ff","#ffa6e6","#ffe3a3","#a8f0d0","#ffc4b0"]; var map={}, k=0;
+      document.getElementById("shor-seq").innerHTML=seq.map(function(v,i){ if(map[v]===undefined) map[v]=cols[(k++)%cols.length]; return '<div style="--sc:'+map[v]+'"><small>'+(i+1)+'</small>'+v+'</div>'; }).join("");
+      var out=document.getElementById("shor-out");
+      if(!r){ out.innerHTML="Período maior que 24 nesta amostra; tente outra base."; return; }
+      var half=Math.pow(a,r/2)%N; if(r%2===1){ out.innerHTML="Período <b>r = "+r+"</b> (ímpar). Shor sorteia outra base e tenta de novo; em média basta uma ou duas tentativas."; return; }
+      var h=1; for(var i=0;i<r/2;i++) h=(h*a)%N; if(h===N-1){ out.innerHTML="Período <b>r = "+r+"</b>, mas a^(r/2) ≡ −1 (mod N): caso ruim, tenta-se outra base."; return; }
+      var f1=gcd(h-1,N), f2=gcd(h+1,N);
+      out.innerHTML="Período <b>r = "+r+"</b>. Então a^(r/2) = "+a+"^"+(r/2)+" ≡ "+h+" (mod "+N+").<br>mdc("+h+" − 1, "+N+") = <b>"+f1+"</b> e mdc("+h+" + 1, "+N+") = <b>"+f2+"</b>.<br>"+N+" = "+f1+" × "+f2+". A chave privada de RSA sai daí.";
+    }
+    selN.addEventListener("change", function(){ fillA(); run(); }); selA.addEventListener("change", run); fillA(); run();
+  })();
+  QB.chart("ch-res",{type:"line",data:{labels:["2019","2025","2026 (Iceberg, RSA)","2026 (Google, ECC)"],datasets:[{label:"qubits físicos estimados",data:[20e6,1e6,94e3,5e5],borderColor:QB.pal[0],backgroundColor:QB.pal[0],borderWidth:2,pointRadius:5,tension:0}]},options:{plugins:{legend:{display:false}},scales:{y:{type:"logarithmic",min:1e4,max:1e8,title:{display:true,text:"qubits físicos (log)"},ticks:{callback:function(v){var e=Math.log10(v);return Number.isInteger(e)?(v>=1e6?(v/1e6)+" mi":(v/1e3)+" mil"):"";}}}}}});
+  QB.chart("ch-gri",{type:"bar",data:{labels:["10 anos (~2035)","15 anos (~2040)"],datasets:[{label:"GRI 2024 (piso a teto)",data:[[19,34],null],backgroundColor:QB.pal[3],borderRadius:4,maxBarThickness:36},{label:"GRI 2025 (piso a teto)",data:[[28,49],[51,70]],backgroundColor:QB.pal[0],borderRadius:4,maxBarThickness:36}]},options:{plugins:{legend:{position:"bottom"},tooltip:{callbacks:{label:function(c){ if(!c.raw) return c.dataset.label+": não publicado"; return c.dataset.label+": "+c.raw[0]+"% a "+c.raw[1]+"%";}}}},scales:{y:{min:0,max:100,title:{display:true,text:"probabilidade de CRQC (%)"}}}}});
+  var mx=document.getElementById("mx"), my=document.getElementById("my"), mz=document.getElementById("mz");
+  function upd(){ var x=+mx.value,y=+my.value,z=+mz.value; document.getElementById("mx-o").textContent=x; document.getElementById("my-o").textContent=y; document.getElementById("mz-o").textContent=z;
+    var max=Math.max(x+y,z,1)*1.1; document.getElementById("mb-x").style.width=(x/max*100)+"%"; document.getElementById("mb-y").style.left=(x/max*100)+"%"; document.getElementById("mb-y").style.width=(y/max*100)+"%"; document.getElementById("mb-z").style.width=(z/max*100)+"%";
+    var v=document.getElementById("mosca-v"), m=document.getElementById("mosca-msg"); var gap=(x+y)-z;
+    if(gap>0){ v.className="mosca-v bad"; v.textContent="X + Y = "+(x+y)+" > Z = "+z+": atrasado em "+gap+" ano"+(gap>1?"s":""); m.textContent="Dados cifrados hoje ficarão expostos antes de a migração terminar. Reduza Y (comece agora, priorize o que tem X longo) ou aceite o risco explicitamente no registro de riscos."; }
+    else if(gap>-3){ v.className="mosca-v mid"; v.textContent="X + Y = "+(x+y)+" ≈ Z = "+z+": sem folga"; m.textContent="Folga de "+(-gap)+" ano(s). Qualquer atraso na migração ou aceleração da máquina (as estimativas caíram 20x em um ano) vira exposição."; }
+    else { v.className="mosca-v ok"; v.textContent="X + Y = "+(x+y)+" < Z = "+z+": folga de "+(-gap)+" anos"; m.textContent="Confortável para este conjunto de dados. Repita o cálculo para os dados de vida mais longa (contratos, imagens, dados pessoais) antes de concluir."; } }
+  [mx,my,mz].forEach(function(s){s.addEventListener("input",upd)}); upd();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Oportunidades · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .pools{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+  .pool{padding:20px;border-radius:14px;border:1px solid var(--line);background:var(--glass);position:relative;overflow:hidden}
+  .pool::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,var(--pc,rgba(92,225,255,.3)),transparent 70%)}
+  .pool .v{font-family:var(--display);font-size:1.9rem;color:#fff}
+  .pool p{font-size:.9rem;color:var(--fg2)}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .filters button{background:transparent;border:1px solid var(--line2);color:var(--fg2);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:rgba(92,225,255,.15);color:#fff;border-color:var(--cyan)}
+  .cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+  .case{padding:18px;border:1px solid var(--line);border-radius:12px;background:var(--glass);display:grid;gap:8px;align-content:start;min-width:0}
+  .case[hidden]{display:none}
+  .case h3{font-size:1.05rem;color:#fff}
+  .case .who{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .case p{font-size:.9rem;color:var(--fg2)}
+  .case .proof{font-size:.86rem;color:var(--fg2);border-top:1px dashed var(--line);padding-top:8px}
+  .case .proof b{color:var(--cyan);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:3px}
+  .hz{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 05 · Oportunidades</span>
+        <h1>Onde está o valor, e quanto dele já é real</h1>
+        <p class="lead">O valor estimado é grande (US$ 1,3 a 2,7 trilhões até 2035, segundo a McKinsey) e transporte e logística estão entre os setores com maior fatia (US$ 200 a 500 bilhões). Ao mesmo tempo, nenhum piloto em transporte, logística ou finanças demonstrou até hoje vantagem quântica verificada; os ganhos reais vieram de modelar melhor o problema, com ou sem máquina quântica. Isso é uma oportunidade, não uma decepção. Quem formula seus problemas de otimização agora captura valor com solvers clássicos hoje e fica pronto para trocar o motor quando a vantagem chegar.</p>
+      </div>
+      <div class="toc"><a href="#pools">Três bolsões de valor</a><a href="#setores">Por setor</a><a href="#ttl">Transporte e logística</a><a href="#bench">Experimento</a><a href="#casos">Casos com veredito</a><a href="#horizontes">Três horizontes</a><a href="#sensores">Sensoriamento e comunicação</a><a href="#quiz">Teste</a></div>
+      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>Onde a McKinsey vê valor e quanto disso é real hoje?</li><li>O que os pilotos em transporte e logística demonstraram de fato?</li><li>Quando cada tipo de valor fica disponível?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 17/10/2026</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="pools" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Bolsões de valor</span><h2>Quem ganha o quê até 2035</h2></div>
+      <div class="pools">
+        <div class="pool" style="--pc:rgba(92,225,255,.35)"><div class="k">Indústrias usuárias</div><div class="v">US$ 1,3 a 2,7 tri</div><p>Valor criado em químicos, finanças, farma, transporte, energia, telecom e indústrias avançadas. É o bolsão que interessa a uma empresa usuária, como uma concessionária de rodovias.</p></div>
+        <div class="pool" style="--pc:rgba(157,140,255,.35)"><div class="k">Investidores</div><div class="v">US$ 1,2 a 2 tri</div><p>Valuation das empresas de tecnologia quântica, a um múltiplo de ~20x. Já se reflete nos IPOs e aquisições de 2025 e 2026.</p></div>
+        <div class="pool" style="--pc:rgba(255,95,210,.35)"><div class="k">Empresas de tecnologia quântica</div><div class="v">US$ 60 a 100 bi</div><p>Mercado de hardware, software, nuvem e serviços em 2035; cerca de US$ 200 bi em 2040. Receita 2025: pouco acima de US$ 1 bi.</p></div>
+      </div>
+      <p class="src">McKinsey Quantum Technology Monitor 2026, exhibit "QT creates value across three distinct economic pools". A McKinsey avisa que o valor total "não é inteiramente aditivo" com o de IA generativa.</p>
+    </div>
+  </section>
+
+  <section class="section" id="setores" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Por setor</span><h2>Valor em jogo e mecanismo</h2></div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Setor</th><th>Valor até 2035</th><th>% das vendas</th><th>Mecanismo principal</th><th>Caso emblemático</th></tr></thead>
+        <tbody>
+          <tr><td><b>Químicos</b></td><td class="num">US$ 450 a 800 bi</td><td class="num">5 a 9%</td><td>Simulação de catálise e materiais; P&amp;D 20 a 50% mais barato; ciclo ~3 anos mais curto</td><td>BASF + D-Wave (nov/2025); BASF + Pasqal</td></tr>
+          <tr><td><b>Serviços financeiros</b></td><td class="num">US$ 400 a 600 bi</td><td class="num">3 a 4,5%</td><td>Precificação, risco, otimização de portfólio, aleatoriedade certificada; PQC obrigatória</td><td>HSBC + IBM (set/2025); JPMorgan + Quantinuum (Nature, mar/2025)</td></tr>
+          <tr><td><b>Farmacêutico</b></td><td class="num">até ~US$ 400 bi</td><td class="num">até 12%</td><td>Simulação molecular; pesquisa de 4 a 6 anos para ~1 ano; P&amp;D 5 a 20% mais barato</td><td>AstraZeneca + IonQ + AWS + NVIDIA (jun/2025)</td></tr>
+          <tr><td><b>Indústrias avançadas</b></td><td class="num">US$ 200 a 500 bi</td><td class="num">—</td><td>Materiais, sequenciamento de produção, manufatura</td><td>Ford Otosan + D-Wave (abr/2025); Mitsubishi Chemical + Classiq</td></tr>
+          <tr><td><b>Transporte, viagens e logística</b></td><td class="num">US$ 200 a 500 bi</td><td class="num">2 a 4,5%</td><td>Roteirização, escalas, coordenação de rede, gestão de disrupções, gêmeos digitais híbridos</td><td>Deutsche Bahn + IQM (jul/2026); Einride + IonQ (2025)</td></tr>
+          <tr><td><b>Energia elétrica</b></td><td class="num">US$ 50 a 150 bi</td><td class="num">—</td><td>Despacho, hedging, redes</td><td>E.ON + IBM (dez/2024)</td></tr>
+          <tr><td><b>Óleo e gás</b></td><td class="num">US$ 50 a 150 bi</td><td class="num">—</td><td>Captura de carbono, roteirização marítima, sísmica</td><td>Aramco + Pasqal (mai/2026); CBPF + ExxonMobil + IBM (ago/2026)</td></tr>
+          <tr><td><b>Telecom</b></td><td class="num">US$ 50 a 100 bi</td><td class="num">—</td><td>Otimização de rede; QKD; PQC em 5G (3GPP TR 33.703)</td><td>Deutsche Telekom + IQM</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">McKinsey QTM 2026 (faixas), releases citados em Fontes. "Caso emblemático" indica anúncio ou piloto, não vantagem verificada.</p>
+    </div>
+  </section>
+
+  <section class="section" id="ttl" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Mergulho setorial</span><h2>Transporte, viagens e logística: US$ 200 a 500 bilhões</h2>
+        <p class="lead">A McKinsey descreve o momento do setor como "escalar pilotos de roteirização, agendamento e otimização de cadeia para testes operacionais" e cita "gêmeos digitais híbridos quânticos sendo embutidos em sistemas piloto de gestão de transporte e roteirização de última milha". O impacto estimado por subsegmento até 2035, sobre a base de custos de cada um:</p></div>
+      <div class="grid2">
+        <div class="panel"><div class="chart"><canvas id="ch-ttl"></canvas></div><p class="src" style="margin-top:6px">Impacto no custo (ponto médio da faixa), McKinsey QTM 2026, exhibit "QC in travel, transport, and logistics".</p></div>
+        <div class="stack">
+          <div class="panel"><h3>Transporte de passageiros (ar, ferrovia, ônibus)</h3><p class="small" style="color:var(--fg2)">2,5 a 5% sobre base de US$ 1.103 bi: roteirização, escalas e disrupções em cascata. É o subsegmento mais próximo de uma operadora de rodovias (fluxo, incidentes, equipes).</p></div>
+          <div class="panel"><h3>Transporte físico de carga</h3><p class="small" style="color:var(--fg2)">1 a 3% em roteirização e 2,5 a 10% em milhagem vazia (30% da milhagem é vazia), sobre base de US$ 5.102 bi. Relevante para rodovias que servem corredores de exportação e acessos a portos.</p></div>
+          <div class="panel"><h3>Sensoriamento quântico para carga e infraestrutura</h3><p class="small" style="color:var(--fg2)">Detecção de violação, rastreamento sem GPS, "monitoramento de estabilidade e integridade de infraestrutura (detecção de cavidades)", análise de subsolo de dutos e estruturas, corrosão. Veja a seção de sensoriamento abaixo.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="bench" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Experimento</span><h2>Onde está o ganho: um problema de escala resolvido de três jeitos</h2><p class="lead">Uma semana de escalas de uma equipe de atendimento: 12 pessoas, 21 turnos (7 dias, 3 turnos), 3 pessoas por turno, no máximo 6 turnos e 2 noites por pessoa, sem emendar noite com manhã, e preferências individuais. O custo soma faltas de cobertura, violações e preferências não atendidas. Rode e compare.</p></div>
+      <div class="panel holo">
+        <div class="row" style="margin-bottom:12px"><button class="btn sm primary" id="bn-run">Rodar os três métodos</button><button class="btn sm ghost" id="bn-new">Novo sorteio de preferências</button></div>
+        <div class="grid3" id="bn-out">
+          <div class="stat"><div class="k">Sorteio simples</div><div class="v m" id="bn-c0">—</div><div class="l">custo total · <span id="bn-t0">—</span></div></div>
+          <div class="stat"><div class="k">Regra gulosa (como na planilha)</div><div class="v a" id="bn-c1">—</div><div class="l">custo total · <span id="bn-t1">—</span></div></div>
+          <div class="stat"><div class="k">Modelo formulado + busca local</div><div class="v g" id="bn-c2">—</div><div class="l">custo total · <span id="bn-t2">—</span></div></div>
+        </div>
+        <div class="chart short" style="margin-top:12px"><canvas id="bn-chart"></canvas></div>
+        <p class="small" style="color:var(--fg2);margin-top:10px" id="bn-msg">O método da direita é o que um annealer híbrido ou um QAOA tentaria superar. O salto grande é do meio para a direita, e ele não precisa de computador quântico: precisa de formular o problema (variáveis, restrições, custo) e de um solver decente. É o que Pattison e Ford Otosan capturaram.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="casos" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Casos com veredito · filtre</span><h2>O que foi de fato demonstrado</h2><p class="lead">Cada caso traz o que a fonte oficial relata e um veredito sobre a natureza do resultado. "Quantum-inspired" significa software clássico; "híbrido em produção" significa que o ganho não foi atribuído ao hardware quântico.</p></div>
+      <div class="filters" id="case-filters"><button aria-pressed="true" data-f="all">Todos</button><button aria-pressed="false" data-f="transporte">Transporte e mobilidade</button><button aria-pressed="false" data-f="logistica">Logística e produção</button><button aria-pressed="false" data-f="financas">Finanças</button><button aria-pressed="false" data-f="energia">Energia e química</button><button aria-pressed="false" data-f="sensor">Sensoriamento</button></div>
+      <div class="cases" id="cases">
+        <div class="case" data-s="transporte"><span class="who">Volkswagen + Carris + D-Wave · Lisboa · nov/2019</span><h3>Roteirização de ônibus em quase tempo real</h3><p>9 ônibus, 4 linhas expressas, 23 paradas durante a Web Summit; 1.275 problemas de otimização resolvidos, resposta média 4,69 s. Embedding direto limitado a ~10 veículos × 5 rotas; motoristas desconfiaram do roteamento remoto.</p><div class="proof"><b>Demonstrado</b>Funcionamento do fluxo híbrido por 4 dias. Nenhuma métrica de redução de tempo de viagem publicada.</div><span class="verdict mid">piloto híbrido</span></div>
+        <div class="case" data-s="transporte"><span class="who">Ford + Microsoft · Seattle · dez/2019</span><h3>Roteamento balanceado de 5.000 veículos</h3><p>Simulação com até 5.000 veículos e 10 rotas cada: 73% menos congestionamento total, 8% menos tempo médio, sugestões em 20 s.</p><div class="proof"><b>Demonstrado</b>Algoritmos "quantum-inspired" em hardware clássico. Nenhum computador quântico usado.</div><span class="verdict no">quantum-inspired (clássico)</span></div>
+        <div class="case" data-s="transporte"><span class="who">Hamburg Port Authority + Fujitsu · dez/2021</span><h3>Semáforos da malha portuária</h3><p>Otimização dos semáforos como um grid inteiro com dados reais: até 15% menos tempo de viagem, até 9% menos CO2, otimização em menos de 10 s (Digital Annealer).</p><div class="proof"><b>Demonstrado</b>Ganho operacional com tecnologia quantum-inspired (CMOS). O caso mais próximo de uma via urbana ou acesso a porto.</div><span class="verdict mid">quantum-inspired, ganho real</span></div>
+        <div class="case" data-s="transporte"><span class="who">Deutsche Bahn + IQM · jul/2026</span><h3>Escalonamento ferroviário com dados reais</h3><p>QAOA híbrido com 190 viagens em 5 cidades (~98.500 ciclos possíveis); pipeline completo rodou em QPU da IQM e gerou soluções factíveis; correlação entre tamanho do subproblema quântico e qualidade.</p><div class="proof"><b>Demonstrado</b>Viabilidade técnica em planejamento estático. Sem vantagem sobre o clássico; resposta a disrupções "em princípio".</div><span class="verdict mid">piloto em QPU real</span></div>
+        <div class="case" data-s="transporte"><span class="who">Lufthansa + DLR + Kipu Quantum + Eurowings · jan/2025</span><h3>Malha, frota e tripulação</h3><p>Projeto QCMobility: planejamento estratégico (mais de 100 aeronaves, 13 bases) e tático (rotas, tripulação). Contratos até dez/2026.</p><div class="proof"><b>Demonstrado</b>Nada ainda; projeto em curso.</div><span class="verdict mid">em andamento</span></div>
+        <div class="case" data-s="transporte"><span class="who">DENSO + D-Wave</span><h3>AGVs em fábrica e coordenação de ônibus</h3><p>PoC de AGVs: 15% menos tempo de espera por rota livre. Em ride-sharing e ônibus, soluções boas mais rápidas que solver clássico só em problemas pequenos (menos de 52 variáveis).</p><div class="proof"><b>Demonstrado</b>Ganho em problema pequeno; em escala, soluções factíveis dentro de 10% de margem.</div><span class="verdict mid">PoC</span></div>
+        <div class="case" data-s="logistica"><span class="who">Einride + IonQ · mai e dez/2025</span><h3>Orquestração de frota elétrica e autônoma</h3><p>Colaboração de 3 anos na plataforma Saga; 15 casos de uso avaliados; alocação de embarques com restrições de veículo, motorista e recarga.</p><div class="proof"><b>Demonstrado</b>Só resultado qualitativo: "benchmarks validam a integração". Nenhum número de desempenho.</div><span class="verdict mid">integração, sem números</span></div>
+        <div class="case" data-s="logistica"><span class="who">Ford Otosan + D-Wave · abr/2025</span><h3>Sequenciamento da linha Ford Transit</h3><p>Mais de 1.500 variantes; agendamento por lote de 1.000 veículos caiu de 30 min para menos de 5 min com solvers híbridos Leap. Aplicação em produção.</p><div class="proof"><b>Demonstrado</b>Ganho de processo real. Não atribuído ao hardware quântico (solver híbrido).</div><span class="verdict ok">híbrido em produção</span></div>
+        <div class="case" data-s="logistica"><span class="who">Pattison Food Group + D-Wave · Canadá</span><h3>Escala de motoristas de e-commerce</h3><p>Mais de 100 lojas; 3 a 4 pessoas gastavam tempo semanal montando escalas. Com solver respeitando senioridade e preferências, esforço manual caiu ~80%.</p><div class="proof"><b>Demonstrado</b>Automação de escala. O caso mais parecido com escalas de equipes de atendimento rodoviário.</div><span class="verdict ok">híbrido em produção</span></div>
+        <div class="case" data-s="logistica"><span class="who">Fujitsu + Nitori · jan/2024</span><h3>Última milha em 80 centros de distribuição</h3><p>Digital Annealer para roteirização considerando capacidade, jornada e distância, no Japão.</p><div class="proof"><b>Demonstrado</b>Implantação quantum-inspired; sem resultados quantificados públicos.</div><span class="verdict mid">quantum-inspired</span></div>
+        <div class="case" data-s="energia"><span class="who">ExxonMobil + IBM</span><h3>Roteirização marítima de GNL</h3><p>Maritime inventory routing (mais de 500 navios em 2021) modelado em dispositivos quânticos; "fundação" para soluções futuras.</p><div class="proof"><b>Demonstrado</b>Modelagem; sem resultados, com aviso de hardware protótipo.</div><span class="verdict mid">exploratório</span></div>
+        <div class="case" data-s="energia"><span class="who">Aramco + Pasqal · nov/2025 a mai/2026</span><h3>Primeiro QCaaS comercial do Oriente Médio</h3><p>QPU de átomos neutros com 200 qubits no data center da Aramco em Dhahran; alvos: logística portuária, agendamento de sondas, cadeia, armazenamento de CO2.</p><div class="proof"><b>Demonstrado</b>Instalação. Sem resultados.</div><span class="verdict mid">infraestrutura</span></div>
+        <div class="case" data-s="financas"><span class="who">HSBC + IBM · set/2025</span><h3>Trading algorítmico de bonds</h3><p>Trial com dados de produção do mercado europeu de bonds corporativos: "até 34%" de melhora na previsão de preenchimento de RFQs, abordagem híbrida no Heron.</p><div class="proof"><b>Demonstrado</b>Trial sem revisão por pares; "até"; comparado a "técnicas clássicas padrão do setor", não ao melhor clássico.</div><span class="verdict mid">trial</span></div>
+        <div class="case" data-s="financas"><span class="who">JPMorganChase + Quantinuum + Argonne/ORNL · Nature, mar/2025</span><h3>Aleatoriedade certificada</h3><p>Aleatoriedade gerada em computador de íons de 56 qubits e validada com supercomputadores. Uso em segurança e auditoria.</p><div class="proof"><b>Demonstrado</b>Resultado revisado por pares; aplicação real, nicho.</div><span class="verdict ok">demonstrado</span></div>
+        <div class="case" data-s="financas"><span class="who">Itaú (ICTi) · 2026</span><h3>Portfólio, QML, fraude e inventário criptográfico</h3><p>~100 pesquisadores, 13 pesquisas em tecnologias quânticas; expectativa de aplicações comerciais a partir de 2028/2029. Otimização de portfólio: 28 h para 74 min na D-Wave, mas a versão clássica inspirada resolveu em menos de 2 s.</p><div class="proof"><b>Demonstrado</b>Capacidade interna e franqueza sobre a comparação.</div><span class="verdict ok">programa estruturado</span></div>
+        <div class="case" data-s="energia"><span class="who">AstraZeneca + IonQ + AWS + NVIDIA · jun/2025</span><h3>Reação Suzuki-Miyaura em fluxo híbrido</h3><p>"Mais de 20x" de melhora no tempo total de solução vs. "implementações anteriores", "de meses para dias".</p><div class="proof"><b>Demonstrado</b>Fluxo híbrido funcional; referência de comparação não definida; sem alegação de vantagem.</div><span class="verdict mid">piloto</span></div>
+        <div class="case" data-s="energia"><span class="who">CBPF + ExxonMobil Brasil + IBM · ago/2026</span><h3>Brasil na IBM Quantum Network</h3><p>Projeto financiado pela cláusula de PD&amp;I da ANP: EDPs de propagação de ondas e moléculas de captura de carbono.</p><div class="proof"><b>Demonstrado</b>Entrada do Brasil na rede (mais de 340 organizações). Projeto iniciando.</div><span class="verdict mid">em andamento</span></div>
+        <div class="case" data-s="sensor"><span class="who">Univ. Birmingham · Nature, 2022</span><h3>Gradiômetro de gravidade quântico detecta túnel sob a via</h3><p>Instrumento de átomos frios detectou túnel de utilidades (~2×2 m, ~1 m de profundidade) sob uma via do campus. Danos a dutos no Reino Unido: ~60.000 por ano, ~£2,4 bi. Spin-off Delta.g com Network Rail.</p><div class="proof"><b>Demonstrado</b>Detecção revisada por pares. Custo alto (lasers de centenas de milhares de libras); ainda protótipo.</div><span class="verdict ok">demonstrado</span></div>
+        <div class="case" data-s="sensor"><span class="who">Q-CTRL · ago/2026</span><h3>Navegação gravimétrica sem GPS em alto mar</h3><p>Navio no Mar de Coral, precisão de ~1 milha náutica, operando em mar pesado sem estabilização (produto Ironstone Opal).</p><div class="proof"><b>Demonstrado</b>Release da empresa, sem verificação independente. Sensoriamento já é produto em defesa.</div><span class="verdict mid">produto, sem verificação externa</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="horizontes" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Horizontes</span><h2>Quando cada tipo de valor fica disponível</h2></div>
+      <div class="hz">
+        <div class="phase" style="--ph:var(--green)"><span class="yr">AGORA · 2026 a 2027</span><h3>Valor sem QPU</h3><ul><li>Formular problemas de otimização (escalas, rotas, manutenção) como QUBO/MILP.</li><li>Resolver com Gurobi, OR-Tools, annealers simulados e solvers híbridos.</li><li>Ganhos como os de Pattison (80% menos esforço) e Ford Otosan (30 min para 5).</li><li>Inventário criptográfico e PQC: valor de proteção, com prazo.</li></ul></div>
+        <div class="phase" style="--ph:var(--cyan)"><span class="yr">2028 a 2030</span><h3>Pilotos híbridos com vantagem</h3><ul><li>IBM promete vantagem verificada até o fim de 2026 e Starling tolerante a falhas em 2029.</li><li>Itaú espera aplicações comerciais a partir de 2028/2029.</li><li>Simulação e amostragem primeiro; otimização depois, se houver vantagem.</li><li>Acesso por nuvem (IBM, Braket, Azure, Oracle), sem comprar máquina.</li></ul></div>
+        <div class="phase" style="--ph:var(--vio)"><span class="yr">2030+</span><h3>Escala</h3><ul><li>BCG: "vantagem quântica ampla" entre 2030 e 2040; tolerância a falhas em escala após 2040.</li><li>DARPA avalia "escala de utilidade" até 2033.</li><li>Gêmeos digitais híbridos em sistemas de gestão de tráfego, conforme a McKinsey.</li><li>Sensores quânticos em inspeção de infraestrutura e navegação.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sensores" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Além da computação</span><h2>Sensoriamento e comunicação quântica</h2><p class="lead">Dois mercados menores, mas mais maduros: sensoriamento (US$ 7,1 a 10,1 bi em 2035) e comunicação (US$ 11 a 15 bi). Sensoriamento já é produto em defesa e navegação; comunicação quântica (QKD) é nicho de governo e backbone.</p></div>
+      <div class="grid3">
+        <div class="panel"><h3>Gravimetria e subsolo</h3><p class="small" style="color:var(--fg2)">Mapeamento de vazios, dolinas, túneis e fundações sem escavação (Birmingham, Delta.g). Para rodovias: pavimento, taludes, obras de arte, serviços enterrados. Horizonte: protótipos caros hoje; produto em 5 a 10 anos.</p></div>
+        <div class="panel"><h3>Navegação sem GPS e relógios</h3><p class="small" style="color:var(--fg2)">IMUs quânticos e gravimetria para veículos autônomos e drones em áreas sem sinal (Q-CTRL, Honeywell, Infleqtion). A McKinsey cita "navegação drift-free" e comunicação segura entre veículos. Relógios quânticos para sincronização de redes.</p></div>
+        <div class="panel"><h3>QKD e redes quânticas</h3><p class="small" style="color:var(--fg2)">China fez QKD por satélite entre China e África do Sul (12.900 km, Nature, mar/2025); EuroQCI entra em operação em 2026. NSA e NCSC não recomendam QKD para uso geral; um par de equipamentos custa cerca de US$ 300 mil. Para empresas, a prioridade é PQC (software).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recap">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Em resumo</span><h2>O que levar deste capítulo</h2></div>
+      <ol class="recap"><li>US$ 1,3 a 2,7 tri até 2035 em estimativa; nenhum piloto de negócio demonstrou vantagem verificada.</li><li>Os ganhos reais (Pattison, Ford Otosan, Hamburgo) vieram de formular melhor o problema, com solvers clássicos ou quantum-inspired.</li><li>Valor sem QPU agora; pilotos híbridos quando houver vantagem verificada (2028 a 2030); escala depois de 2030.</li></ol>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Teste rápido</span><h2>Verifique o que ficou</h2></div>
+      <div data-quiz><script type="application/json">[
+        {"q":"Qual é a faixa de valor estimada pela McKinsey para transporte, viagens e logística até 2035?","o":["US$ 20 a 50 bi","US$ 200 a 500 bi","US$ 1,3 a 2,7 tri","US$ 7 a 10 bi"],"a":1,"e":"US$ 200 a 500 bi no mergulho setorial (80 a 400 bi na tabela síntese). US$ 1,3 a 2,7 tri é o total de todas as indústrias."},
+        {"q":"O que o caso Ford + Microsoft (2019) usou?","o":["Um computador quântico da Microsoft","Algoritmos quantum-inspired em hardware clássico","Annealer da D-Wave","QKD"],"a":1,"e":"Nenhum computador quântico foi usado. O resultado de 73% menos congestionamento veio de simulação com software clássico."},
+        {"q":"Qual caso é o mais parecido com escalas de equipes de atendimento rodoviário?","o":["JPMorgan aleatoriedade certificada","Pattison Food Group, escala de motoristas","Google Quantum Echoes","Jiuzhang 4.0"],"a":1,"e":"Pattison automatizou escalas com solver híbrido da D-Wave, com 80% menos esforço manual. O ganho é de processo, replicável com solvers clássicos."},
+        {"q":"Qual resultado de negócio em finanças foi revisado por pares?","o":["HSBC 'até 34%'","JPMorgan aleatoriedade certificada (Nature)","Itaú portfólio na D-Wave","Bradesco CBOM"],"a":1,"e":"Nature, mar/2025. O trial do HSBC não tem revisão por pares e compara com 'técnicas padrão', não com o melhor clássico."},
+        {"q":"Qual é a prioridade prática para proteção de dados: QKD ou PQC?","o":["QKD","PQC","Nenhuma","QRNG"],"a":1,"e":"PQC é software, padronizada (FIPS 203/204/205) e exigida pelos prazos regulatórios. NSA e NCSC não recomendam QKD para uso geral."}
+      ]</script></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  (function(){
+    var P=12, S=21, NEED=3, MAX=6, MAXN=2, pref, chart;
+    function newPref(){ pref=[]; for(var p=0;p<P;p++){ var row=[]; for(var s=0;s<S;s++) row.push(Math.random()<0.25?1:0); pref.push(row);} }
+    function cost(x){ var c=0; for(var s=0;s<S;s++){ var n=0; for(var p=0;p<P;p++) if(x[p][s]) n++; c+=Math.abs(NEED-n)*10; }
+      for(var p=0;p<P;p++){ var tot=0, nights=0; for(var s=0;s<S;s++){ if(x[p][s]){ tot++; c+=pref[p][s]*3; if(s%3===2){ nights++; if(s+1<S && x[p][s+1]) c+=8; } } } if(tot>MAX) c+=(tot-MAX)*6; if(nights>MAXN) c+=(nights-MAXN)*4; } return c; }
+    function empty(){ var x=[]; for(var p=0;p<P;p++){ var r=[]; for(var s=0;s<S;s++) r.push(0); x.push(r);} return x; }
+    function randomX(){ var x=empty(); for(var s=0;s<S;s++){ for(var k=0;k<NEED;k++){ var p=Math.floor(Math.random()*P); x[p][s]=1; } } return x; }
+    function greedy(){ var x=empty(), load=[]; for(var p=0;p<P;p++) load.push(0); for(var s=0;s<S;s++){ var cand=[]; for(var p=0;p<P;p++) cand.push(p); cand.sort(function(a,b){ return (load[a]+pref[a][s]*2)-(load[b]+pref[b][s]*2); }); for(var k=0;k<NEED;k++){ x[cand[k]][s]=1; load[cand[k]]++; } } return x; }
+    function anneal(x0){ var x=x0.map(function(r){return r.slice();}); var c=cost(x), best=c, bx=x.map(function(r){return r.slice();}); var T=6; for(var it=0;it<9000;it++){ var s=Math.floor(Math.random()*S), p1=Math.floor(Math.random()*P), p2=Math.floor(Math.random()*P); if(p1===p2||x[p1][s]===x[p2][s]) continue; x[p1][s]^=1; x[p2][s]^=1; var c2=cost(x); if(c2<=c || Math.random()<Math.exp((c-c2)/T)){ c=c2; if(c<best){ best=c; bx=x.map(function(r){return r.slice();}); } } else { x[p1][s]^=1; x[p2][s]^=1; } T=Math.max(0.15,T*0.9995); } return bx; }
+    function fmt(ms){ return ms<1?"<1 ms":ms.toFixed(0)+" ms"; }
+    function run(){ var t=performance.now(); var x0=randomX(); var c0=cost(x0); var t0=performance.now()-t; t=performance.now(); var x1=greedy(); var c1=cost(x1); var t1=performance.now()-t; t=performance.now(); var x2=anneal(x1); var c2=cost(x2); var t2=performance.now()-t;
+      document.getElementById("bn-c0").textContent=c0; document.getElementById("bn-t0").textContent=fmt(t0); document.getElementById("bn-c1").textContent=c1; document.getElementById("bn-t1").textContent=fmt(t1); document.getElementById("bn-c2").textContent=c2; document.getElementById("bn-t2").textContent=fmt(t2);
+      var data=[c0,c1,c2]; if(chart){ chart.data.datasets[0].data=data; chart.update(); } else chart=QB.chart("bn-chart",{type:"bar",data:{labels:["Sorteio simples","Regra gulosa","Modelo + busca local"],datasets:[{label:"custo (menor é melhor)",data:data,backgroundColor:[QB.pal[1],QB.pal[2],QB.pal[4]],borderRadius:4,maxBarThickness:60}]},options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,title:{display:true,text:"custo"}}}}});
+      document.getElementById("bn-msg").textContent="Neste sorteio, formular o problema e aplicar uma busca local simples reduziu o custo de "+c1+" para "+c2+" ("+Math.round((1-c2/Math.max(1,c1))*100)+"% a menos que a regra gulosa) em "+fmt(t2)+", num navegador. Um annealer híbrido ou um QAOA competiria com este último número, não com os dois primeiros. O ganho que paga o projeto está na formulação."; }
+    newPref(); document.getElementById("bn-run").addEventListener("click", run); document.getElementById("bn-new").addEventListener("click", function(){ newPref(); run(); }); run();
+  })();
+  document.querySelectorAll("#case-filters button").forEach(function(b){ b.addEventListener("click", function(){ document.querySelectorAll("#case-filters button").forEach(function(x){x.setAttribute("aria-pressed","false")}); b.setAttribute("aria-pressed","true"); var f=b.getAttribute("data-f"); document.querySelectorAll("#cases .case").forEach(function(c){ c.hidden = f!=="all" && c.getAttribute("data-s")!==f; }); }); });
+  QB.chart("ch-ttl",{type:"bar",data:{labels:["Passageiros (ar, ferrovia, ônibus)","Carga: milhagem vazia","Hospitalidade","Armazéns","Coordenação de rede de carga","Carga: roteirização"],datasets:[{label:"impacto no custo, ponto médio (%)",data:[3.75,6.25,4,3,2,2],backgroundColor:QB.pal[0],borderRadius:4,maxBarThickness:22}]},options:{indexAxis:"y",plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,title:{display:true,text:"% do custo base até 2035"}}}}});
+};
+</script>
+</body>
+</html>

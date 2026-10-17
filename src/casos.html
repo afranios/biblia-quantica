@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Casos e notícias · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  .feed-ctl{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  @media (max-width:700px){.feed-ctl{grid-template-columns:1fr}}
+  .filters{display:flex;gap:8px;flex-wrap:wrap}
+  .filters button{background:transparent;border:1px solid var(--line2);color:var(--fg2);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .filters button[aria-pressed="true"]{background:rgba(92,225,255,.15);color:#fff;border-color:var(--cyan)}
+  .feed{display:grid;gap:12px}
+  .item{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--glass)}
+  .item>*{min-width:0}
+  .item[hidden]{display:none}
+  .item .d{font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.06em}
+  .item .d b{display:block;color:var(--cyan);font-size:1rem;font-family:var(--display);letter-spacing:0}
+  .item h3{font-size:1.05rem;color:#fff}
+  .item p{font-size:.92rem;color:var(--fg2);margin-top:6px}
+  .item .np{font-size:.86rem;color:var(--fg2);margin-top:6px;padding-top:6px;border-top:1px dashed var(--line)}
+  .item .np b{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:block}
+  .item .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .item .src{margin-top:6px}
+  @media (max-width:600px){.item{grid-template-columns:1fr}}
+  .count{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 09 · Casos e notícias</span>
+        <h1>O que aconteceu de 2024 a 2026, com o que importa e o que não foi provado</h1>
+        <p class="lead">Fatos selecionados por relevância para decisão, não por volume de cobertura. Cada item traz a fonte primária (artigo revisado por pares, release oficial ou relatório), uma leitura do que muda e uma nota sobre o que ainda não foi demonstrado. Filtre por tema ou busque por palavra.</p>
+      </div>
+      <div class="feed-ctl">
+        <div class="filters" id="feed-filters"><button aria-pressed="true" data-f="all">Tudo</button><button aria-pressed="false" data-f="hw">Hardware</button><button aria-pressed="false" data-f="adv">Vantagem</button><button aria-pressed="false" data-f="crypto">Criptografia</button><button aria-pressed="false" data-f="biz">Negócios</button><button aria-pressed="false" data-f="br">Brasil</button><button aria-pressed="false" data-f="money">Mercado e política</button></div>
+        <div class="ctl" style="min-width:220px"><label for="feed-q">Buscar</label><input type="search" id="feed-q" placeholder="ex.: Quantinuum, ITI, DARPA"></div>
+      </div>
+      <div class="count" id="feed-count"></div>
+      <div class="feed" id="feed"></div>
+    </div>
+  </section>
+
+  <section class="section" id="atualizacoes">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Registro</span><h2>Atualizações do guia</h2><p class="lead">O que mudou e quando. As notícias entram toda semana por uma rotina automática que consulta uma lista fechada de fontes; o restante do conteúdo é revisado manualmente.</p></div>
+      <div class="tl" id="changelog"></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  var items = (window.QB_NEWS || []).slice();
+  var names={hw:"hardware",adv:"vantagem",crypto:"criptografia",biz:"negócios",br:"Brasil",money:"mercado e política"};
+  var cls={hw:"c",adv:"v",crypto:"m",biz:"g",br:"a",money:""};
+  var feed=document.getElementById("feed");
+  feed.innerHTML = items.map(function(it,i){ return '<article class="item" data-i="'+i+'" data-tags="'+it.tags.join(" ")+'"><div class="d">'+it.d.replace(/ (\d{4})$/,'')+'<b>'+it.y+'</b></div><div><h3>'+it.t+'</h3><p>'+it.w+'</p><div class="np"><b>O que não foi provado</b>'+it.n+'</div><div class="tags">'+it.tags.map(function(t){return '<span class="chip '+cls[t]+'">'+names[t]+'</span>';}).join('')+'</div><div class="src">Fonte: <a href="'+it.u+'" target="_blank" rel="noopener">'+it.s+'</a></div></div></article>'; }).join("");
+  var f="all", q="";
+  function apply(){ var n=0; feed.querySelectorAll(".item").forEach(function(el){ var it=items[+el.getAttribute("data-i")]; var okf = f==="all" || it.tags.indexOf(f)>=0; var okq = !q || (it.t+" "+it.w+" "+it.n+" "+it.s).toLowerCase().indexOf(q)>=0; el.hidden = !(okf&&okq); if(okf&&okq) n++; }); document.getElementById("feed-count").textContent = n+" de "+items.length+" itens"; }
+  document.querySelectorAll("#feed-filters button").forEach(function(b){ b.addEventListener("click", function(){ document.querySelectorAll("#feed-filters button").forEach(function(x){x.setAttribute("aria-pressed","false")}); b.setAttribute("aria-pressed","true"); f=b.getAttribute("data-f"); apply(); }); });
+  document.getElementById("feed-q").addEventListener("input", function(e){ q=e.target.value.trim().toLowerCase(); apply(); });
+  apply();
+  var cl=document.getElementById("changelog"); if(cl){ cl.innerHTML=(window.QB_CHANGELOG||[]).map(function(e){ return '<div class="tl-item'+(e.auto?" a":"")+'"><span class="d">'+e.date+(e.auto?" · automático":"")+'</span><div class="t">'+e.title+'</div><div class="b">'+e.body+'</div></div>'; }).join("") || '<p class="small muted">Sem registros ainda.</p>'; }
+};
+</script>
+</body>
+</html>

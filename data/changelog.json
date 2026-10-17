@@ -1,0 +1,14 @@
+[
+ {
+  "date": "17/10/2026",
+  "title": "Segunda versão",
+  "body": "Página única e site multipágina gerados do mesmo código; capítulo 02 com criostato, pictogramas, código de distância 5 e laço híbrido; régua 2026 a 2035; demonstração do algoritmo de Shor; diagrama de exposição de dados; experimento de escala de equipes; tooltips de termos; níveis de leitura; área restrita cifrada; notícias em arquivo de dados.",
+  "auto": false
+ },
+ {
+  "date": "16/10/2026",
+  "title": "Primeira versão",
+  "body": "Doze capítulos, simuladores de qubit e de circuito, roadmaps, calculadora de Mosca, autodiagnóstico e matriz de priorização.",
+  "auto": false
+ }
+]

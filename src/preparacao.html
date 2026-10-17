@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Preparação · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .fw{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+  .fw .panel ol{margin:8px 0 0;padding-left:1.2em;color:var(--fg2);font-size:.92rem;display:grid;gap:5px}
+  .assess{display:grid;gap:10px}
+  .assess .q{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--glass);font-size:.92rem;color:var(--fg2)}
+  .assess .q>*{min-width:0}
+  .assess .q .dom{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block}
+  .assess .opts{display:flex;gap:4px}
+  .assess .opts button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line2);background:rgba(6,14,38,.7);color:var(--fg2);font-family:var(--mono);cursor:pointer}
+  .assess .opts button[aria-pressed="true"]{background:linear-gradient(90deg,var(--cyan),var(--vio));color:#07102a;border-color:transparent}
+  @media (max-width:600px){.assess .q{grid-template-columns:1fr}}
+  .reco{display:grid;gap:8px}
+  .reco div{padding:10px 14px;border-left:3px solid var(--cyan);background:rgba(92,225,255,.06);border-radius:0 8px 8px 0;font-size:.92rem;color:var(--fg2)}
+  .cost-out{font-family:var(--display);font-size:1.8rem;color:#fff}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 07 · Preparação</span>
+        <h1>Como e quando se preparar, com orçamento</h1>
+        <p class="lead">A preparação tem duas trilhas com relógios diferentes. A trilha de proteção (inventário criptográfico, agilidade, cláusulas de fornecedor) começa agora, porque os prazos são 2028 a 2035 e a migração leva anos. A trilha de valor (formular problemas, benchmark clássico, pilotos híbridos) começa com custo baixo em 2026 e 2027 e só exige dinheiro de verdade quando houver vantagem verificada, por volta de 2028 a 2030. Nenhuma das duas exige comprar um computador quântico; exige duas a cinco pessoas, acesso por nuvem e disciplina de comparar com o clássico.</p>
+      </div>
+      <div class="toc"><a href="#frameworks">Frameworks</a><a href="#fases">Roadmap em fases</a><a href="#playbook">Playbook de migração PQC</a><a href="#papeis">Papéis</a><a href="#custos">Custos e nuvem</a><a href="#poc">Como rodar um piloto</a><a href="#autodiag">Autodiagnóstico</a><a href="#quiz">Teste</a></div>
+      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>Por onde começar e com quantas pessoas?</li><li>Quanto custa testar em nuvem quântica?</li><li>Como rodar um piloto que produza uma conclusão confiável?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 17/10/2026</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="frameworks" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Frameworks publicados</span><h2>O que WEF, McKinsey e IBM recomendam</h2></div>
+      <div class="fw">
+        <div class="panel"><div class="k">WEF + Deloitte · Quantum Readiness Toolkit · 2023</div><h3>Cinco princípios</h3><ol><li>Governança: risco quântico na estrutura, papéis e patrocínio.</li><li>Conscientização, sem mensagens de medo.</li><li>Risco: tratar como risco cibernético, priorizar por tempo de sensibilidade dos dados.</li><li>Tecnologia: decisões que suportem agilidade criptográfica.</li><li>Ecossistema: fornecedores e pares.</li></ol><p class="small muted" style="margin-top:8px">Ações: CBOM, "referência em criptografias", roadmap com marcos, exercícios de mesa com executivos.</p></div>
+        <div class="panel"><div class="k">McKinsey · Risk &amp; Resilience · abr/2026</div><h3>Três movimentos</h3><ol><li>Avaliar e priorizar por quatro fatores: longevidade, sensibilidade, exposição, criticidade; fasear com migrações de nuvem e contratos.</li><li>Redesenhar a arquitetura para agilidade: isolar criptografia em serviços compartilhados; inventário vivo; híbrido clássico + PQC.</li><li>Prioridade de liderança: grupo multifuncional de tecnologia, risco e negócio.</li></ol></div>
+        <div class="panel"><div class="k">McKinsey · QTM 2026</div><h3>Cinco dimensões de resiliência</h3><ol><li>Avaliação técnica.</li><li>Cenários de risco.</li><li>Processos ciber (inventário, crypto agility).</li><li>Governança.</li><li>Capacidades organizacionais e talento.</li></ol><p class="small muted" style="margin-top:8px">E para valor: tratar quântica como capacidade a construir, não breakthrough a esperar; pilotos híbridos em simulação, otimização e risco; quantum-as-a-service.</p></div>
+        <div class="panel"><div class="k">IBM IBV · The Enterprise in 2030 · jan/2026</div><h3>Mais de 2.000 executivos</h3><ol><li>59% acham que IA habilitada por quântica transformará seu setor até 2030.</li><li>Só 27% esperam usar quântica até 2030.</li><li>Recomendação: skills, parcerias e governança agora, "como fizeram com cloud"; PQC como capacidade básica.</li></ol><p class="small muted" style="margin-top:8px">Fujitsu + FT (mar/2026, 300 executivos): 58% incluirão quântica no planejamento estratégico neste ano.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="fases" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Roadmap genérico</span><h2>Fases e relógios</h2><p class="lead">Síntese das fontes acima com os marcos regulatórios (NCSC 2028/2031/2035, UE 2030/2035) e os roadmaps de hardware (IBM 2029, DARPA 2033). A área restrita adapta isso a uma concessionária de rodovias.</p></div>
+      <div class="phases">
+        <div class="phase" style="--ph:var(--green)"><span class="yr">FASE 1 · 2026 a 2027 · aprender e proteger</span><h3>Custo baixo, urgência alta</h3><ul><li>Dono do tema e patrocínio no comitê de risco.</li><li>Inventário criptográfico (CBOM) de sistemas críticos e de campo.</li><li>Ajustes rápidos: TLS 1.3 híbrido, OpenSSH 10, AES-256.</li><li>Cláusulas de crypto-agility e roadmap PQC em todo edital.</li><li>2 a 5 pessoas formadas; problemas de otimização formulados e resolvidos com solvers clássicos.</li><li>Exercício de mesa com a diretoria.</li></ul></div>
+        <div class="phase" style="--ph:var(--cyan)"><span class="yr">FASE 2 · 2028 a 2030 · migrar e pilotar</span><h3>Dinheiro de verdade</h3><ul><li>Migração das prioridades (PKI, VPNs, pagamentos, firmware) concluída até 2030/2031.</li><li>Troca programada de equipamentos de campo sem agilidade criptográfica.</li><li>Pilotos híbridos por nuvem quando houver vantagem verificada (IBM promete 2026; Starling 2029).</li><li>Parcerias com universidade ou centro (CIMATEC, CIQUANTA, CBPF) para acesso e talento.</li></ul></div>
+        <div class="phase" style="--ph:var(--vio)"><span class="yr">FASE 3 · 2031 a 2035 · escalar</span><h3>Operação</h3><ul><li>Migração completa até 2035 (NIST, UE, NCSC).</li><li>Casos de uso em produção onde houver vantagem (simulação, otimização híbrida, sensores).</li><li>Gêmeos digitais híbridos em gestão de tráfego, conforme a McKinsey.</li><li>Revisão anual: estimativas de CRQC, novos padrões (HQC, FN-DSA).</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="playbook" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Playbook</span><h2>Migração para PQC, passo a passo</h2><p class="lead">A sequência em que NCSC, UE, Canadá e G7 convergem.</p></div>
+      <div class="panel">
+        <svg viewBox="0 0 900 190" style="width:100%;height:auto;display:block" role="img" aria-label="Fluxo da migração: governança, inventário, classificação, ajustes rápidos, PKI, fornecedores, agilidade, e o ciclo que recomeça a cada novo padrão">
+          <defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#5ce1ff"/></marker></defs>
+          <g font-family="Manrope, sans-serif" font-size="12" fill="#e7eefc" text-anchor="middle">
+            <rect x="10" y="50" width="110" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#9d8cff"/><text x="65" y="76">Governança</text><text x="65" y="94" font-size="10" fill="#8fa0c6">dono e risco registrado</text>
+            <rect x="140" y="50" width="110" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#5ce1ff"/><text x="195" y="76">Inventário</text><text x="195" y="94" font-size="10" fill="#8fa0c6">CBOM</text>
+            <rect x="270" y="50" width="110" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#5ce1ff"/><text x="325" y="76">Classificar</text><text x="325" y="94" font-size="10" fill="#8fa0c6">longevidade × sensibilidade</text>
+            <rect x="400" y="50" width="110" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#4fe3a3"/><text x="455" y="76">Ajustes rápidos</text><text x="455" y="94" font-size="10" fill="#8fa0c6">TLS híbrido, SSH, AES-256</text>
+            <rect x="530" y="50" width="110" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#ffcf6e"/><text x="585" y="76">PKI e assinaturas</text><text x="585" y="94" font-size="10" fill="#8fa0c6">raízes, HSM, carimbos</text>
+            <rect x="660" y="50" width="110" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#ffcf6e"/><text x="715" y="76">Fornecedores</text><text x="715" y="94" font-size="10" fill="#8fa0c6">cláusulas e roadmap</text>
+            <rect x="790" y="50" width="100" height="60" rx="10" fill="rgba(10,22,54,.7)" stroke="#ff5fd2"/><text x="840" y="76">Agilidade</text><text x="840" y="94" font-size="10" fill="#8fa0c6">trocar sem parar</text>
+          </g>
+          <g stroke="#5ce1ff" stroke-width="1.5" fill="none" marker-end="url(#fa)"><path d="M120 80 H138"/><path d="M250 80 H268"/><path d="M380 80 H398"/><path d="M510 80 H528"/><path d="M640 80 H658"/><path d="M770 80 H788"/></g>
+          <path d="M840 112 V150 H195 V112" stroke="#ff5fd2" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#fa)"/>
+          <text x="517" y="166" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8fa0c6">a cada novo padrão (HQC, FN-DSA) ou algoritmo quebrado, o ciclo recomeça do inventário, agora em meses</text>
+          <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8fa0c6"><text x="65" y="40" text-anchor="middle">2026</text><text x="325" y="40" text-anchor="middle">até 2028</text><text x="650" y="40" text-anchor="middle">2028 a 2031</text><text x="840" y="40" text-anchor="middle">sempre</text></g>
+        </svg>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><div><h4>Governança e dono</h4><p>CISO e arquitetura, com reporte ao comitê de risco. Registrar "harvest now, decrypt later" no registro de riscos (WEF).</p></div></div>
+        <div class="step"><span class="num">2</span><div><h4>Inventário criptográfico (CBOM)</h4><p>Onde há RSA/ECC: protocolos, certificados, HSMs, VPNs, firmware, APIs de pagamento, OCR/ANPR, SCADA. Padrão CycloneDX 1.6 (criado pela IBM Research). Ferramentas: IBM Quantum Safe Explorer (usado pelo Bradesco), CBOMkit, SandboxAQ AQtive Guard, Keyfactor, Entrust.</p></div></div>
+        <div class="step"><span class="num">3</span><div><h4>Classificar por longevidade × sensibilidade × criticidade</h4><p>O X de Mosca por conjunto de dados. O NCSC pede registrar "tempo de vida esperado e valor para o adversário".</p></div></div>
+        <div class="step"><span class="num">4</span><div><h4>Ajustes rápidos</h4><p>TLS 1.3 com X25519MLKEM768 em bordas, VPNs e APIs (padrão em OpenSSL 3.5, navegadores, Cloudflare); OpenSSH 10; AES-256 e SHA-384 onde for só configuração.</p></div></div>
+        <div class="step"><span class="num">5</span><div><h4>Assinaturas e PKI</h4><p>Planejar troca de raízes e certificados (ICP-Brasil já aceita ML-DSA); renovar carimbos de tempo de documentos de longa duração a cada 5 anos (Mastercard); exigir HSM com ML-DSA validado.</p></div></div>
+        <div class="step"><span class="num">6</span><div><h4>Fornecedores</h4><p>Cláusulas de crypto-agility, roadmap PQC datado, CBOM entregue com o produto. O EO dos EUA de jun/2026 já exige isso de contratados até 2030, o que vai se refletir em fornecedores globais de OT e pagamentos.</p></div></div>
+        <div class="step"><span class="num">7</span><div><h4>Agilidade como requisito de arquitetura</h4><p>NIST CSWP 39: isolar criptografia em serviços, para que a próxima troca (HQC, FN-DSA, ou um ML-KEM quebrado) custe meses, não anos.</p></div></div>
+      </div>
+      <div class="panel"><h3>Guias para copiar</h3><p class="small" style="color:var(--fg2)">O fact sheet "Quantum-Readiness" de CISA, NSA e NIST (ago/2023) é um checklist de quatro páginas para infraestrutura crítica: inventário, fornecedores, roteiro. O NIST SP 800-227 (final em set/2025) diz como usar ML-KEM corretamente em protocolos. O NIST SP 1800-38 (NCCoE, ainda rascunho preliminar) descreve ferramentas de descoberta criptográfica e testes de interoperabilidade com AWS, Cisco, IBM, Microsoft e outros. O ETSI TR 103 619 (2020) organiza a migração em inventário, plano e execução. Para redes móveis, a GSMA PQ.03 v2.0 (2024) cobre os casos de uso de operadoras, dos quais o free flow depende.</p></div>
+      <div class="note a"><span class="k">Quanto tempo leva</span>SHA-1: 25 anos entre o primeiro ataque sério (2005) e a retirada total (2030). Governo civil dos EUA: US$ 7,1 bi em dez anos. Google: 5 anos (2024 a 2029) com controle total da própria pilha. Uma empresa com OT, PKI e fornecedores diversos deve planejar 5 a 10 anos.</div>
+    </div>
+  </section>
+
+  <section class="section" id="papeis" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Organização</span><h2>Papéis mínimos</h2></div>
+      <div class="grid3">
+        <div class="panel"><div class="k">Patrocínio</div><h3>Executivo no comitê de risco</h3><p class="small" style="color:var(--fg2)">Dono do risco quântico e da decisão de orçamento. McKinsey lista "limited executive buy-in" entre as quatro dores dos programas corporativos.</p></div>
+        <div class="panel"><div class="k">Referências</div><h3>Uma pessoa de referência em criptografia e uma em quântica</h3><p class="small" style="color:var(--fg2)">Uma pessoa de segurança (inventário, PQC, fornecedores) e uma de dados/otimização (formulação de problemas, benchmarks, nuvem). Podem ser as mesmas que hoje cuidam de PKI e de pesquisa operacional.</p></div>
+        <div class="panel"><div class="k">Núcleo</div><h3>2 a 5 pessoas, parte do tempo</h3><p class="small" style="color:var(--fg2)">Modelo replicável: o do Inter (bolsas na UFMG com um professor coordenador), não o do Itaú (100 pesquisadores). Treinar quem já faz HPC e otimização, como recomenda a McKinsey.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="custos" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Custos</span><h2>Quanto custa acessar e pilotar</h2><p class="lead">Preços oficiais em out/2026. Ninguém precisa comprar máquina; o acesso é por minuto ou por "shot".</p></div>
+      <div class="grid2">
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Provedor</th><th>Plano</th><th>Preço</th></tr></thead>
+          <tbody>
+            <tr><td>IBM Quantum</td><td>Open</td><td>Gratuito, 10 min/mês de QPU</td></tr>
+            <tr><td>IBM Quantum</td><td>Pay-as-you-go</td><td>US$ 96/min, cobrado por segundo</td></tr>
+            <tr><td>IBM Quantum</td><td>Flex</td><td>US$ 72/min, mín. 400 min/ano (~US$ 29 mil)</td></tr>
+            <tr><td>IBM Quantum</td><td>Premium</td><td>US$ 48/min, mín. 5.200 min/ano (~US$ 250 mil)</td></tr>
+            <tr><td>Amazon Braket</td><td>Por tarefa + shot</td><td>US$ 0,30/tarefa; IonQ Forte US$ 0,08/shot; IQM US$ 0,0015; Rigetti US$ 0,0004; QuEra US$ 0,01</td></tr>
+            <tr><td>Amazon Braket</td><td>Reserva por hora</td><td>IonQ US$ 7.000; Rigetti US$ 4.100; IQM US$ 3.000 a 4.000; QuEra US$ 2.500</td></tr>
+            <tr><td>Amazon Braket</td><td>Simulador SV1</td><td>US$ 0,075/min</td></tr>
+            <tr><td>D-Wave Leap</td><td>Nuvem e AWS Marketplace</td><td>Sob contrato</td></tr>
+          </tbody>
+        </table></div>
+        <div class="stack">
+          <div class="panel"><div class="k">Estimador rápido</div>
+            <div class="stack">
+              <div class="ctl"><label for="cprov">Provedor e plano</label><select id="cprov"><option value="96">IBM pay-as-you-go (US$ 96/min)</option><option value="72">IBM Flex (US$ 72/min)</option><option value="48">IBM Premium (US$ 48/min)</option><option value="116.7">Braket IonQ reserva (US$ 7.000/h)</option><option value="58.3">Braket IQM reserva (US$ 3.500/h)</option><option value="41.7">Braket QuEra reserva (US$ 2.500/h)</option><option value="0.075">Braket simulador SV1 (US$ 0,075/min)</option></select></div>
+              <div class="ctl"><label for="cmin">Minutos de máquina no piloto <output id="cmin-o">120</output></label><input type="range" id="cmin" min="10" max="3000" step="10" value="120"></div>
+              <div class="cost-out" id="cost-out">US$ 11.520</div>
+              <p class="small muted" id="cost-note"></p>
+            </div>
+          </div>
+          <div class="stat"><div class="v c">~US$ 3 mi</div><div class="l">PoC médio em empresas Fortune 500: mais de 100 projetos somando US$ 300 mi (BCG, 2024)</div></div>
+          <div class="stat"><div class="v vv">US$ 6 mi</div><div class="l">orçamento anual médio dos 162 clientes corporativos analisados; 48% gastam menos de US$ 5 mi; 7% mais de US$ 50 mi</div><div class="s">McKinsey QTM 2026</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="poc" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Piloto</span><h2>Como rodar um piloto honesto</h2><p class="lead">Consolidado de IBM IBV, McKinsey, Itaú/FAPESP, Deutsche Bahn/IQM e Ford Otosan. O critério de sucesso é melhorar o processo, não "provar quântica".</p></div>
+      <div class="steps">
+        <div class="step"><span class="num">1</span><div><h4>Um problema, um dono, um KPI</h4><p>Combinatório, com dor real: escala mensal de equipes de atendimento, roteirização de viaturas de inspeção, janelas de obra. KPI em horas, quilômetros ou reais.</p></div></div>
+        <div class="step"><span class="num">2</span><div><h4>Formular como QUBO ou MILP</h4><p>Variáveis binárias, restrições, função objetivo. É a parte que gera valor independentemente do motor.</p></div></div>
+        <div class="step"><span class="num">3</span><div><h4>Comparação com o clássico forte primeiro</h4><p>Gurobi, OR-Tools, annealer simulado, VeloxQ em GPU. Sem isso, qualquer comparação é marketing.</p></div></div>
+        <div class="step"><span class="num">4</span><div><h4>Versão híbrida</h4><p>Solver híbrido da D-Wave ou QAOA em simulador, depois em QPU via Braket ou IBM. Centenas de dólares a dezenas de milhares, pelo estimador acima.</p></div></div>
+        <div class="step"><span class="num">5</span><div><h4>Comparar qualidade, tempo e custo total</h4><p>Incluindo filas de nuvem, embedding e pós-processamento. O caso de Lisboa teve resposta média de 4,69 s, mas filas variáveis.</p></div></div>
+        <div class="step"><span class="num">6</span><div><h4>Publicar internamente com a referência declarada</h4><p>Como o Itaú: "28 h para 74 min na D-Wave; menos de 2 s na versão clássica inspirada". Esse tipo de frase constrói credibilidade para quando a vantagem chegar.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="autodiag" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Interativo</span><h2>Autodiagnóstico de prontidão</h2><p class="lead">Afirmações em três domínios (governança, criptografia, capacidade). Responda de 0 (não) a 3 (completo). O resultado gera recomendações por domínio. Nada é enviado; fica no seu navegador.</p></div>
+      <div class="panel holo">
+        <div class="assess" id="assess"></div>
+        <div class="grid2" style="margin-top:18px">
+          <div><div class="chart short"><canvas id="ch-assess"></canvas></div></div>
+          <div class="stack"><div class="score-box" id="as-score">0 / 36</div><div class="reco" id="as-reco"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recap">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Em resumo</span><h2>O que levar deste capítulo</h2></div>
+      <ol class="recap"><li>Dono do tema, inventário criptográfico, cláusulas de fornecedor e duas a cinco pessoas com tempo dedicado; sem comprar máquina.</li><li>De zero (plano gratuito da IBM) a US$ 96 por minuto; um piloto enxuto cabe em dezenas de milhares de dólares.</li><li>Um problema com dono e indicador, formulado em MILP/QUBO, comparado primeiro com o melhor método clássico, publicado com a referência declarada.</li></ol>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Teste rápido</span><h2>Verifique o que ficou</h2></div>
+      <div data-quiz><script type="application/json">[
+        {"q":"Qual é o primeiro passo técnico da migração PQC?","o":["Comprar HSMs novos","Inventário criptográfico (CBOM)","Contratar QKD","Trocar todos os certificados"],"a":1,"e":"Sem saber onde está cada algoritmo, chave e certificado, não há como priorizar. É o marco de 2028 do NCSC."},
+        {"q":"Quantas pessoas uma empresa usuária precisa para começar?","o":["Um departamento de 100 pesquisadores","2 a 5 pessoas, parte do tempo","Nenhuma, basta o fornecedor","Um físico com doutorado"],"a":1,"e":"O modelo replicável é o do Inter (bolsas em universidade), não o do Itaú. Treinar quem já faz otimização e PKI."},
+        {"q":"Quanto custa um minuto de QPU da IBM em pay-as-you-go?","o":["US$ 1","US$ 96","US$ 1.000","Gratuito"],"a":1,"e":"US$ 96/min cobrado por segundo; 10 min/mês gratuitos no plano Open; simulador Braket a US$ 0,075/min."},
+        {"q":"O que é indispensável num piloto honesto?","o":["Usar o maior número de qubits","Um comparação com o clássico forte (Gurobi, OR-Tools, GPU)","Press release","Comprar a máquina"],"a":1,"e":"Toda alegação de vantagem de 2025 e 2026 caiu diante de um clássico melhor. Sem a referência clássica, a comparação não vale."},
+        {"q":"Quanto tempo levou a retirada completa do SHA-1 pelo NIST?","o":["2 anos","5 anos","25 anos (2005 a 2030)","Ainda não começou"],"a":2,"e":"Ataque sério em 2005, depreciação em 2011, retirada total em 31/12/2030. Migrações criptográficas são lentas; por isso os prazos PQC começam antes da máquina."}
+      ]</script></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  // cost estimator
+  var cp=document.getElementById("cprov"), cm=document.getElementById("cmin");
+  function cost(){ var r=parseFloat(cp.value), m=+cm.value; document.getElementById("cmin-o").textContent=m; var v=r*m; document.getElementById("cost-out").textContent="US$ "+v.toLocaleString("pt-BR",{maximumFractionDigits:0}); document.getElementById("cost-note").textContent = r<1 ? "Simulador: ideal para formular e validar antes de gastar tempo de QPU." : (v<5000 ? "Cabe em orçamento de experimentação sem aprovação especial." : v<50000 ? "Ordem de um piloto enxuto. Exija comparação com o clássico antes." : "Ordem de PoC corporativo (BCG: ~US$ 3 mi em Fortune 500). Só com vantagem verificada no problema."); }
+  cp.addEventListener("change",cost); cm.addEventListener("input",cost); cost();
+  // self assessment
+  var qs=[
+    ["Governança","Existe um executivo dono do risco quântico, com reporte ao comitê de risco."],
+    ["Governança","O risco 'colher agora, decifrar depois' está no registro de riscos corporativo."],
+    ["Governança","A diretoria fez pelo menos um exercício de mesa ou briefing sobre o tema."],
+    ["Governança","Há orçamento (mesmo pequeno) e metas anuais para o programa."],
+    ["Criptografia","Existe inventário criptográfico (CBOM) dos sistemas críticos e de campo."],
+    ["Criptografia","Os dados estão classificados por longevidade e sensibilidade (X de Mosca)."],
+    ["Criptografia","TLS 1.3 híbrido, OpenSSH 10 e AES-256 já estão em uso nas bordas."],
+    ["Criptografia","Editais e contratos exigem crypto-agility, roadmap PQC e CBOM do fornecedor."],
+    ["Capacidade","Há 2 a 5 pessoas formadas em PQC e em modelagem de otimização."],
+    ["Capacidade","Os principais problemas de otimização estão formulados (QUBO/MILP) com comparação com o clássico."],
+    ["Capacidade","Há acesso configurado a pelo menos uma nuvem quântica (IBM, Braket, Azure) ou simulador."],
+    ["Capacidade","Há parceria ou contato ativo com universidade ou centro (CIMATEC, CIQUANTA, CBPF, FAPESP)."]
+  ];
+  var vals=qs.map(function(){return 0;});
+  try{ var saved=JSON.parse(localStorage.getItem("qb-assess")||"null"); if(Array.isArray(saved)&&saved.length===qs.length) vals=saved; }catch(e){}
+  var h=""; qs.forEach(function(q,i){ h+='<div class="q"><div><span class="dom">'+q[0]+'</span>'+q[1]+'</div><div class="opts">'; for(var k=0;k<4;k++){ h+='<button type="button" data-i="'+i+'" data-v="'+k+'" aria-pressed="'+(vals[i]===k?'true':'false')+'">'+k+'</button>'; } h+='</div></div>'; });
+  document.getElementById("assess").innerHTML=h;
+  var chart;
+  function upd(){ var d={Governança:0,Criptografia:0,Capacidade:0}; qs.forEach(function(q,i){ d[q[0]]+=vals[i]; }); var tot=vals.reduce(function(a,b){return a+b;},0);
+    document.getElementById("as-score").textContent=tot+" / 36";
+    var reco=[]; if(d.Governança<6) reco.push("Governança ("+d.Governança+"/12): nomeie o dono, registre o risco HNDL e agende um briefing de 45 minutos com a diretoria. Custo zero, desbloqueia o resto."); else if(d.Governança<10) reco.push("Governança ("+d.Governança+"/12): formalize orçamento e metas anuais; exercício de mesa com cenário de certificado comprometido.");
+    if(d.Criptografia<6) reco.push("Criptografia ("+d.Criptografia+"/12): comece o CBOM pelos sistemas de arrecadação, PKI e VPNs; aplique TLS híbrido nas bordas em 90 dias; insira cláusulas PQC no próximo edital."); else if(d.Criptografia<10) reco.push("Criptografia ("+d.Criptografia+"/12): classifique por longevidade e planeje a troca de raízes de certificado e de equipamentos sem agilidade.");
+    if(d.Capacidade<6) reco.push("Capacidade ("+d.Capacidade+"/12): forme 2 pessoas (uma de segurança, uma de otimização), abra conta gratuita na IBM Quantum e formule um problema de escala de equipes com comparação com o clássico."); else if(d.Capacidade<10) reco.push("Capacidade ("+d.Capacidade+"/12): rode o primeiro piloto híbrido com o estimador de custo acima e publique o resultado com a referência clássica.");
+    if(!reco.length) reco.push("Prontidão alta nos três domínios. Próximo passo: revisão anual das estimativas de CRQC e dos padrões (HQC, FN-DSA), e pilotos onde houver vantagem verificada.");
+    document.getElementById("as-reco").innerHTML=reco.map(function(r){return "<div>"+r+"</div>";}).join("");
+    var data=[d.Governança,d.Criptografia,d.Capacidade];
+    if(chart){ chart.data.datasets[0].data=data; chart.update(); } else { chart=QB.chart("ch-assess",{type:"bar",data:{labels:["Governança","Criptografia","Capacidade"],datasets:[{label:"pontos (máx. 12)",data:data,backgroundColor:[QB.pal[0],QB.pal[1],QB.pal[3]],borderRadius:4,maxBarThickness:48}]},options:{plugins:{legend:{display:false}},scales:{y:{min:0,max:12,ticks:{stepSize:3}}}}}); }
+    try{ localStorage.setItem("qb-assess", JSON.stringify(vals)); }catch(e){}
+  }
+  document.querySelectorAll("#assess button").forEach(function(b){ b.addEventListener("click", function(){ var i=+b.getAttribute("data-i"), v=+b.getAttribute("data-v"); vals[i]=v; b.parentNode.querySelectorAll("button").forEach(function(x){ x.setAttribute("aria-pressed", x===b?"true":"false"); }); upd(); }); });
+  upd();
+};
+</script>
+</body>
+</html>

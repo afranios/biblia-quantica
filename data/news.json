@@ -1,0 +1,623 @@
+[
+ {
+  "d": "15 out 2026",
+  "y": "2026",
+  "t": "Google publica na Science o cultivo de estados mágicos a 99,99% no Willow",
+  "w": "Resolve o gargalo que consumiria 90% a 95% da máquina em destilação de estados T; redução de erro de 40x. É a técnica assumida nas estimativas de quebra de RSA, que ficam mais críveis.",
+  "n": "Demonstrado em um patch pequeno de um chip; escala a milhares de qubits lógicos ainda não.",
+  "tags": [
+   "hw",
+   "crypto"
+  ],
+  "s": "Google Quantum AI / Science",
+  "u": "https://quantumcomputingreport.com/google-quantum-ai-demonstrates-magic-state-cultivation-on-willow-processor-in-science-milestone/"
+ },
+ {
+  "d": "7 out 2026",
+  "y": "2026",
+  "t": "DARPA leva seis empresas ao Estágio C da Quantum Benchmarking Initiative",
+  "w": "Atom Computing, Diraq, IBM e IonQ (até US$ 300 mi cada para três delas) se juntam a Microsoft e PsiQuantum. Quatro tecnologias diferentes na final; objetivo: escala de utilidade até 2033.",
+  "n": "Quantinuum, QuEra, Photonic e Xanadu não foram nomeadas nesta rodada; a DARPA diz que promoções são escalonadas.",
+  "tags": [
+   "money",
+   "hw"
+  ],
+  "s": "DARPA",
+  "u": "https://www.darpa.mil/news/2026/four-more-teams-enter-quantum-benchmarking-initiative-final-stage"
+ },
+ {
+  "d": "9 set 2026",
+  "y": "2026",
+  "t": "Quantinuum demonstra arquitetura Helix no Helios: erro lógico de memória 4,6×10⁻⁵",
+  "w": "Código [[20,2,6]] com portas Clifford lógicas 4,3x melhores que as físicas e overhead 3,5x menor que o código de superfície.",
+  "n": "Resultado da própria empresa; benchmark independente de Jülich (out/2026) confirma liderança em primitivas de correção, mas é preprint.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Quantinuum",
+  "u": "https://quantumcomputingreport.com/quantinuum-demonstrates-helix-quantum-error-correction-architecture-on-helios-hardware/"
+ },
+ {
+  "d": "8 set 2026",
+  "y": "2026",
+  "t": "IonQ detalha Superion 256 e 10K e fecha a compra da SkyWater (US$ 1,8 bi)",
+  "w": "Fábrica própria de chips; 256 qubits a 99,99% com entregas em 2027; receita do 2º tri de US$ 80 mi (+287%).",
+  "n": "Fidelidades do Superion não divulgadas; metas anteriores (4.000 qubits em 2026) foram criticadas por short sellers.",
+  "tags": [
+   "hw",
+   "money"
+  ],
+  "s": "IonQ / The Quantum Insider",
+  "u": "https://thequantuminsider.com/2026/09/08/ionq-uses-investor-day-to-detail-superion-roadmap-skywater-strategy-and-quantum-security-plans"
+ },
+ {
+  "d": "28 ago 2026",
+  "y": "2026",
+  "t": "Itaú: otimização de portfólio caiu de 28 h para 74 min na D-Wave; versão clássica inspirada resolveu em 2 s",
+  "w": "Samuraí Brito (Itaú) descreve 13 pesquisas quânticas e conclui que não há máquina com vantagem clara em problemas comercialmente relevantes. A franqueza sobre a comparação é o modelo a seguir.",
+  "n": "Expectativa de aplicações comerciais a partir de 2028/2029, segundo o próprio banco.",
+  "tags": [
+   "br",
+   "biz"
+  ],
+  "s": "Agência FAPESP",
+  "u": "https://agencia.fapesp.br/computacao-quantica-exige-preparacao-estrategica-antes-da-adocao-comercial/59094"
+ },
+ {
+  "d": "27 ago 2026",
+  "y": "2026",
+  "t": "Q-CTRL demonstra navegação gravimétrica sem GPS em alto mar",
+  "w": "Precisão de ~1 milha náutica em mar pesado, sem estabilização. Sensoriamento quântico já é produto em navegação.",
+  "n": "Release da empresa, sem verificação independente.",
+  "tags": [
+   "hw",
+   "biz"
+  ],
+  "s": "Q-CTRL",
+  "u": "https://thequantuminsider.com/2026/08/27/q-ctrl-demonstrates-gps-free-quantum-gravimetric-navigation-demonstration-in-maritime-field-trial/"
+ },
+ {
+  "d": "19 ago 2026",
+  "y": "2026",
+  "t": "IBM conecta os dois primeiros módulos criogênicos; meta de 1.000 qubits em 2027",
+  "w": "Modularidade é o caminho da IBM para escalar supercondutores; 4 K em menos de 5 dias, abaixo de 15 mK.",
+  "n": "Kookaburra (primeiro módulo qLDPC, prometido para 2026) ainda sem release de entrega até out/2026.",
+  "tags": [
+   "hw"
+  ],
+  "s": "IBM",
+  "u": "https://newsroom.ibm.com/2026-08-19-ibm-connects-its-first-modular-cryogenic-systems-in-milestone-toward-fault-tolerant-quantum-computing"
+ },
+ {
+  "d": "18 ago 2026",
+  "y": "2026",
+  "t": "CBPF entra na IBM Quantum Network com a ExxonMobil Brasil",
+  "w": "Primeiro acesso institucional brasileiro à rede (mais de 340 organizações), financiado pela cláusula de PD&I da ANP. Projetos: EDPs de propagação de ondas e moléculas para captura de carbono.",
+  "n": "Projeto iniciando; sem resultados.",
+  "tags": [
+   "br"
+  ],
+  "s": "DCD Brasil",
+  "u": "https://www.datacenterdynamics.com/br/not%C3%ADcias/cbpf-e-exxonmobil-brasil-usam-computadores-qu%C3%A2nticos-da-ibm-para-criar-solu%C3%A7%C3%B5es-em-energia-e-carbono/"
+ },
+ {
+  "d": "11 ago 2026",
+  "y": "2026",
+  "t": "Rede privativa do governo federal (EAF, Telebras) incorpora criptografia pós-quântica",
+  "w": "Primeira infraestrutura pública brasileira a declarar PQC em operação, citando 'colher agora, decifrar depois'.",
+  "n": "Detalhes técnicos (algoritmos, cobertura) não publicados.",
+  "tags": [
+   "br",
+   "crypto"
+  ],
+  "s": "Teletime / Convergência Digital",
+  "u": "https://teletime.com.br/11/08/2026/rede-privativa-quantico/"
+ },
+ {
+  "d": "30 jul 2026",
+  "y": "2026",
+  "t": "IBM declara 'era da vantagem quântica' com três preprints",
+  "w": "Doped Clifford sampling (97 qubits), Ising de Floquet (74 qubits, Fugaku diverge após ~7 ciclos, reproduzido no Helios) e eco de Loschmidt (56 qubits). Primeira vez que experimentos de vantagem são reproduzidos em hardware de dois fabricantes.",
+  "n": "Nenhum revisado por pares; o próprio Quantum Advantage Tracker os marca como 'candidatos'. Todos em física, não em negócio.",
+  "tags": [
+   "adv"
+  ],
+  "s": "IBM / arXiv",
+  "u": "https://postquantum.com/industry-news/ibm-trusted-quantum-advantage-three-papers"
+ },
+ {
+  "d": "28 jul 2026",
+  "y": "2026",
+  "t": "Google Cloud KMS: ML-DSA e SLH-DSA em disponibilidade geral",
+  "w": "Assinaturas pós-quânticas viram serviço de nuvem; AWS KMS já tinha ML-DSA desde jun/2025. Para empresas usuárias, PQC em nuvem é configuração.",
+  "n": "ML-KEM aparece como GA no post e como preview em artigo vinculado; verificar na documentação.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "Google Cloud",
+  "u": "https://cloud.google.com/blog/products/identity-security/future-proofing-data-integrity-quantum-safe-digital-signatures-in-cloud-kms"
+ },
+ {
+  "d": "23 jul 2026",
+  "y": "2026",
+  "t": "IBM anuncia aquisição da HRL Laboratories (Boeing/GM) para spin qubits de silício",
+  "w": "IBM diversifica a aposta supercondutora com uma segunda tecnologia e sensores quânticos para navegação e defesa.",
+  "n": "Valor não divulgado.",
+  "tags": [
+   "hw",
+   "money"
+  ],
+  "s": "IBM",
+  "u": "https://newsroom.ibm.com/2026-07-23-ibm-to-acquire-hrl-laboratories-to-power-the-future-of-quantum"
+ },
+ {
+  "d": "20 jul 2026",
+  "y": "2026",
+  "t": "Deutsche Bahn e IQM rodam escalonamento ferroviário com dados reais em QPU",
+  "w": "190 viagens em 5 cidades, ~98.500 ciclos possíveis; pipeline híbrido QAOA completo em hardware. O caso mais próximo de uma operação de transporte em máquina real.",
+  "n": "Sem vantagem sobre o clássico; só planejamento estático; resposta a disrupções 'em princípio'.",
+  "tags": [
+   "biz",
+   "adv"
+  ],
+  "s": "IQM / The Quantum Insider",
+  "u": "https://thequantuminsider.com/2026/07/20/iqm-and-deutsche-bahn-demonstrate-quantum-algorithm-for-railway-scheduling-on-real-operational-data/"
+ },
+ {
+  "d": "9 jul 2026",
+  "y": "2026",
+  "t": "Diraq demonstra 8 qubits de spin fabricados em processo CMOS 300 mm na imec",
+  "w": "Qubits saindo de uma linha de semicondutores padrão; metas de milhares de qubits em 2029 e mais de 1 milhão em 2031.",
+  "n": "Oito qubits; integração de controle em escala não demonstrada.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Nature Communications",
+  "u": "https://thequantuminsider.com/2026/07/09/diraq-demonstrates-scaled-foundry-fabricated-silicon-based-qubit-array-made-at-imec/"
+ },
+ {
+  "d": "22 jun 2026",
+  "y": "2026",
+  "t": "EUA: duas ordens executivas sobre criptografia pós-quântica e inovação quântica",
+  "w": "Sistemas de alto impacto com PQC em troca de chaves até 31/12/2030 e assinaturas até 31/12/2031; CBOM obrigatório; contratados federais com conformidade FIPS até 2030. Vai puxar fornecedores globais de OT e pagamentos.",
+  "n": "Aplicável ao governo dos EUA; efeito no Brasil é indireto, via fornecedores.",
+  "tags": [
+   "crypto",
+   "money"
+  ],
+  "s": "Holland & Knight",
+  "u": "https://www.hklaw.com/en/insights/publications/2026/06/president-trump-signs-two-quantum-executive-orders"
+ },
+ {
+  "d": "19 jun 2026",
+  "y": "2026",
+  "t": "Paraíba lança o CIQUANTA-PB: R$ 200 mi e dois computadores de 20 e 100 qubits",
+  "w": "Primeiros computadores quânticos operacionais anunciados no Brasil, com hub de acesso remoto e residência com 156 bolsas.",
+  "n": "Máquinas de origem chinesa (CETC 54), alvo de relatório do Congresso dos EUA; montagem prevista para out/2026.",
+  "tags": [
+   "br",
+   "money"
+  ],
+  "s": "Movimento Econômico / Convergência Digital",
+  "u": "https://convergenciadigital.com.br/governo/paraiba-tera-os-dois-primeiros-computadores-quanticos-operacionais-do-brasil-com-capacidades-de-20-e-100-qubits/"
+ },
+ {
+  "d": "jun 2026",
+  "y": "2026",
+  "t": "Nature publica crítica revisada por pares ao protocolo de Majorana da Microsoft",
+  "w": "Henry Legg (St Andrews) contesta o Topological Gap Protocol; a Microsoft mantém os resultados e abre centro em Maryland para avaliação da DARPA (set/2026).",
+  "n": "A existência dos modos de Majorana nos dispositivos segue em disputa científica.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Nature / Network World",
+  "u": "https://www.networkworld.com/article/4189610/researchers-cast-new-doubt-on-microsofts-quantum-computing-advance.html"
+ },
+ {
+  "d": "3 jun 2026",
+  "y": "2026",
+  "t": "Let's Encrypt escolhe Merkle Tree Certificates para a Web PKI pós-quântica",
+  "w": "Staging no fim de 2026, produção em 2027. Motivo: assinaturas ML-DSA de 2,4 KB tornariam o handshake maior que 10 KB.",
+  "n": "Confiança ampla em navegadores improvável antes de 2027; certificados públicos PQ ainda não existem em escala.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "Let's Encrypt",
+  "u": "https://letsencrypt.org/2026/06/03/pq-certs"
+ },
+ {
+  "d": "2 jun 2026",
+  "y": "2026",
+  "t": "IBM compromete mais de US$ 10 bi em cinco anos e cria a fundição Anderon",
+  "w": "Primeira fundição pure-play de wafers quânticos, com US$ 1 bi da IBM e apoio do Departamento de Comércio; mais de 90 sistemas instalados; Qiskit usado por ~70% dos desenvolvedores.",
+  "n": "Compromisso de investimento, não resultado técnico.",
+  "tags": [
+   "money",
+   "hw"
+  ],
+  "s": "IBM",
+  "u": "https://newsroom.ibm.com/2026-06-02-ibm-commits-more-than-10-billion-to-quantum-computing,-funding-its-roadmap-from-todays-leading-systems-to-the-worlds-first-fault-tolerant-quantum-computers"
+ },
+ {
+  "d": "3 jun 2026",
+  "y": "2026",
+  "t": "Quantinuum precifica IPO a US$ 60: US$ 1,68 bi, Nasdaq QNT",
+  "w": "Primeiro IPO tradicional do setor; guidance 2026 de US$ 28 a 32 mi de receita; caixa de US$ 2,1 bi.",
+  "n": "Receita trimestral de US$ 8 mi contra valuation de dezenas de bilhões: o mercado precifica 2030, não 2026.",
+  "tags": [
+   "money"
+  ],
+  "s": "Quantinuum",
+  "u": "https://www.quantinuum.com/press-releases/quantinuum-announces-pricing-of-upsized-initial-public-offering"
+ },
+ {
+  "d": "19 mai 2026",
+  "y": "2026",
+  "t": "Aramco e Pasqal inauguram o primeiro QCaaS comercial do Oriente Médio",
+  "w": "200 qubits de átomos neutros no data center da Aramco; alvos em logística portuária, agendamento e CO2.",
+  "n": "Instalação; sem resultados publicados.",
+  "tags": [
+   "biz"
+  ],
+  "s": "The Quantum Insider",
+  "u": "https://thequantuminsider.com/2026/05/19/aramco-and-pasqal-launch-saudi-arabias-first-quantum-computer-and-middle-easts-first-commercial-qcaas-platform/"
+ },
+ {
+  "d": "28 abr 2026",
+  "y": "2026",
+  "t": "McKinsey Quantum Technology Monitor 2026: 'a commercial tipping point'",
+  "w": "US$ 12,6 bi investidos em startups em 2025 (6,3x); receita do setor acima de US$ 1 bi; valor em jogo de US$ 1,3 a 2,7 tri até 2035; TTL com US$ 200 a 500 bi. Relatório de referência deste guia.",
+  "n": "Projeções de consultoria; Q-Day 'após 2028' reflete expectativa dos fornecedores.",
+  "tags": [
+   "money",
+   "biz"
+  ],
+  "s": "McKinsey",
+  "u": "https://www.mckinsey.com/capabilities/mckinsey-technology/our-insights/mckinsey-quantum-technology-monitor-2026-a-commercial-tipping-point"
+ },
+ {
+  "d": "14 abr 2026",
+  "y": "2026",
+  "t": "Senado dos EUA avança a reautorização da National Quantum Initiative até 2034",
+  "w": "Aprovação unânime na Comissão de Comércio; inclui 'Quantum Sandbox' e estratégia federal de migração PQC.",
+  "n": "Sem valores na fonte; ainda não lei.",
+  "tags": [
+   "money"
+  ],
+  "s": "Quantum Computing Report",
+  "u": "https://quantumcomputingreport.com/senate-commerce-committee-unanimously-passes-national-quantum-initiative-reauthorization-act/"
+ },
+ {
+  "d": "31 mar 2026",
+  "y": "2026",
+  "t": "Google: ECC-256 quebrável com menos de 500 mil qubits físicos em minutos",
+  "w": "Whitepaper com Dan Boneh e Justin Drake: menos de 1.450 qubits lógicos; redução de ~20x em qubits. Circuitos retidos e prova de conhecimento zero para verificação; governo dos EUA consultado antes.",
+  "n": "Modelagem, não demonstração. Mas muda a ordem de prioridade: ECC (TLS, SSH) antes de RSA.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "Google Research",
+  "u": "https://research.google/blog/safeguarding-cryptocurrency-by-disclosing-quantum-vulnerabilities-responsibly/"
+ },
+ {
+  "d": "25 mar 2026",
+  "y": "2026",
+  "t": "Banco Central diz estar 'estudando' criptografia pós-quântica, sem norma ou prazo",
+  "w": "Declaração em evento; as Resoluções CMN 5.274/2025 e BCB 538/2025 tratam de ciber em geral.",
+  "n": "Nenhuma orientação específica de PQC para o SFN até out/2026.",
+  "tags": [
+   "br",
+   "crypto"
+  ],
+  "s": "Finsiders Brasil",
+  "u": "https://finsidersbrasil.com.br/tecnologia-para-fintechs/bc-estuda-regulacao-para-ia-e-criptografia-quantica/"
+ },
+ {
+  "d": "9 mar 2026",
+  "y": "2026",
+  "t": "Global Risk Institute: 28% a 49% de chance de computador criptograficamente relevante em 10 anos",
+  "w": "Relatório 2025 com 26 especialistas; 51% a 70% em 15 anos; salto de 15 pontos em relação a 2024.",
+  "n": "Opinião de especialistas, com grande dispersão.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "Global Risk Institute",
+  "u": "https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/"
+ },
+ {
+  "d": "fev 2026",
+  "y": "2026",
+  "t": "Iceberg Quantum: RSA-2048 com menos de 100 mil qubits físicos (arquitetura Pinnacle)",
+  "w": "Códigos qLDPC reduzem a estimativa em 10x frente a Gidney 2025.",
+  "n": "Distâncias de código conjecturadas; decodificador em tempo real fora do escopo; modelagem.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "arXiv 2602.11457",
+  "u": "https://www.alphaxiv.org/abs/2602.11457.md"
+ },
+ {
+  "d": "3 fev 2026",
+  "y": "2026",
+  "t": "ITI publica a IN 35: ICP-Brasil aceita ML-DSA e ML-KEM",
+  "w": "Chaves de AC com ML-DSA-65/87, usuário final com ML-DSA-44, acordo de chaves com ML-KEM. Primeira norma vinculante brasileira com algoritmos pós-quânticos; afeta certificados A1/A3, NF-e e contratos.",
+  "n": "Sem prazos de transição para as ACs; sem regra de certificado híbrido.",
+  "tags": [
+   "br",
+   "crypto"
+  ],
+  "s": "ITI / DOU",
+  "u": "https://convergenciadigital.com.br/governo/iti-certificado-digital-e-assinatura-gov-br-adotam-criptografia-quantica/"
+ },
+ {
+  "d": "20 jan 2026",
+  "y": "2026",
+  "t": "IBM IBV: 59% dos executivos esperam transformação por IA quântica até 2030; só 27% esperam usar quântica",
+  "w": "Mais de 2.000 executivos em 33 geografias. Expectativa alta, preparação baixa.",
+  "n": "Pesquisa de opinião, patrocinada por fornecedor.",
+  "tags": [
+   "biz"
+  ],
+  "s": "IBM IBV",
+  "u": "https://thequantuminsider.com/2026/01/20/ibm-study-finds-quantum-computing-is-coming-but-enterprises-arent-ready/"
+ },
+ {
+  "d": "13 jan 2026",
+  "y": "2026",
+  "t": "G7 Cyber Expert Group publica roteiro coordenado de PQC para o setor financeiro",
+  "w": "Fases, dependência de fornecedores e terceiros. Alinha bancos e adquirentes, o que afeta meios de pagamento no pedágio.",
+  "n": "Não prescritivo.",
+  "tags": [
+   "crypto",
+   "money"
+  ],
+  "s": "gov.uk",
+  "u": "https://www.gov.uk/government/publications/advancing-a-coordinated-roadmap-for-the-transition-to-post-quantum-cryptography-in-the-financial-sector"
+ },
+ {
+  "d": "4 dez 2025",
+  "y": "2025",
+  "t": "Einride e IonQ modularizam a orquestração de frota elétrica para processamento quântico",
+  "w": "15 casos de uso avaliados; alocação de embarques com restrições de veículo, motorista e recarga.",
+  "n": "Só resultado qualitativo; nenhum número de desempenho.",
+  "tags": [
+   "biz"
+  ],
+  "s": "IonQ",
+  "u": "https://www.ionq.com/news/einride-and-ionq-partnership-uses-quantum-computing-to-optimize-the-logistics-of-electric-and-autonomous-freight"
+ },
+ {
+  "d": "12 nov 2025",
+  "y": "2025",
+  "t": "IBM lança Nighthawk (120 qubits) e Loon, e abre o Quantum Advantage Tracker",
+  "w": "Decodificação qLDPC em menos de 480 ns, um ano antes do previsto; tracker com revisores externos define o que conta como vantagem.",
+  "n": "Kookaburra (módulo qLDPC) prometido para 2026.",
+  "tags": [
+   "hw",
+   "adv"
+  ],
+  "s": "IBM",
+  "u": "https://newsroom.ibm.com/2025-11-12-ibm-delivers-new-quantum-processors,-software,-and-algorithm-breakthroughs-on-path-to-advantage-and-fault-tolerance"
+ },
+ {
+  "d": "5 nov 2025",
+  "y": "2025",
+  "t": "Quantinuum Helios: 98 qubits, 99,921% de fidelidade, 48 qubits lógicos corrigidos",
+  "w": "Maior fidelidade da indústria; 94 lógicos em estado GHZ; correção em tempo real com GPUs. Roadmap: Sol (2027), Apollo (2029).",
+  "n": "Razão 2:1 vale para códigos de distância curta.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Quantinuum",
+  "u": "https://quantinuum.com/blog/introducing-helios-the-most-accurate-quantum-computer-in-the-world"
+ },
+ {
+  "d": "28 out 2025",
+  "y": "2025",
+  "t": "Cloudflare: mais de 50% do tráfego humano já usa troca de chaves pós-quântica",
+  "w": "Navegadores, OpenSSL, Go e Apple habilitam X25519MLKEM768 por padrão. A troca de chaves migrou; as assinaturas, não.",
+  "n": "Nenhum certificado público pós-quântico em uso; primeiros esperados em 2026 e 2027.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "Cloudflare",
+  "u": "https://blog.cloudflare.com/pq-2025/"
+ },
+ {
+  "d": "22 out 2025",
+  "y": "2025",
+  "t": "Google Quantum Echoes: vantagem verificável, 13.000x, na Nature",
+  "w": "Algoritmo OTOC no Willow, verificável por outro computador quântico; prova de princípio de 'régua molecular' com Berkeley.",
+  "n": "Aplicações reais esperam máquina com correção de erros, segundo o próprio Google.",
+  "tags": [
+   "adv"
+  ],
+  "s": "Google / Nature",
+  "u": "https://blog.google/technology/research/quantum-echoes-willow-verifiable-quantum-advantage/"
+ },
+ {
+  "d": "25 set 2025",
+  "y": "2025",
+  "t": "HSBC e IBM: 'primeiro trading algorítmico habilitado por quântica', até 34% de melhora",
+  "w": "Dados de produção do mercado europeu de bonds corporativos; abordagem híbrida no Heron.",
+  "n": "'Até'; trial sem revisão por pares; a comparação foi com 'técnicas padrão do setor', não com o melhor clássico.",
+  "tags": [
+   "biz"
+  ],
+  "s": "HSBC",
+  "u": "https://www.hsbc.com/news-and-views/news/media-releases/2025/hsbc-demonstrates-worlds-first-known-quantum-enabled-algorithmic-trading-with-ibm"
+ },
+ {
+  "d": "set 2025",
+  "y": "2025",
+  "t": "Átomos neutros em escala: 6.100 (Caltech) e 3.000 em operação contínua (Harvard/QuEra), na Nature",
+  "w": "Coerência de ~13 s e recarga de 300.000 átomos/s; a tecnologia que escala a milhares de qubits sem criogenia.",
+  "n": "Fidelidades de porta ainda abaixo dos íons.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Nature",
+  "u": "https://news.harvard.edu/gazette/story/2025/09/clearing-significant-hurdle-to-quantum-computing"
+ },
+ {
+  "d": "10 set 2025",
+  "y": "2025",
+  "t": "PsiQuantum levanta US$ 1 bi a US$ 7 bi de valuation",
+  "w": "Para sites de máquinas fotônicas em Brisbane e Chicago; chips fabricados na GlobalFoundries.",
+  "n": "Sem datas públicas firmes de entrega; CEO interino desde fev/2026.",
+  "tags": [
+   "money",
+   "hw"
+  ],
+  "s": "Business Wire",
+  "u": "https://www.businesswire.com/news/home/20250910135739/en/PsiQuantum-Raises-$1-Billion-to-Build-Million-Qubit-Scale-Fault-Tolerant-Quantum-Computers"
+ },
+ {
+  "d": "10 jun 2025",
+  "y": "2025",
+  "t": "IBM anuncia Starling: 200 qubits lógicos e 100 milhões de portas em 2029",
+  "w": "Código qLDPC com ~90% menos overhead; Blue Jay (2.000 lógicos) em 2033+. O roadmap mais detalhado do setor.",
+  "n": "Promessa; depende de Kookaburra (2026) e Cockatoo (2027).",
+  "tags": [
+   "hw",
+   "money"
+  ],
+  "s": "IBM",
+  "u": "https://newsroom.ibm.com/2025-06-10-IBM-Sets-the-Course-to-Build-Worlds-First-Large-Scale,-Fault-Tolerant-Quantum-Computer-at-New-IBM-Quantum-Data-Center"
+ },
+ {
+  "d": "21 mai 2025",
+  "y": "2025",
+  "t": "Gidney: RSA-2048 com menos de 1 milhão de qubits ruidosos em menos de uma semana",
+  "w": "Redução de 20x em relação a 2019. Base das estimativas atuais de prazo.",
+  "n": "Premissas: erro 0,1%, ciclo 1 µs, cultivo de estados mágicos (validado em out/2026).",
+  "tags": [
+   "crypto"
+  ],
+  "s": "arXiv 2505.15917",
+  "u": "https://arxiv.org/abs/2505.15917v1"
+ },
+ {
+  "d": "2 abr 2025",
+  "y": "2025",
+  "t": "Ford Otosan coloca solver híbrido da D-Wave em produção na linha Ford Transit",
+  "w": "Agendamento de 1.000 veículos de 30 min para menos de 5 min; mais de 1.500 variantes.",
+  "n": "Ganho de processo; não atribuído ao hardware quântico.",
+  "tags": [
+   "biz"
+  ],
+  "s": "The Quantum Insider",
+  "u": "https://thequantuminsider.com/2025/04/02/ford-otosan-adopts-d-waves-quantum-powered-solvers-to-optimize-ford-transit-production-scheduling/"
+ },
+ {
+  "d": "20 mar 2025",
+  "y": "2025",
+  "t": "NCSC (Reino Unido) publica prazos: 2028 inventário, 2031 prioridades, 2035 completo",
+  "w": "O cronograma mais claro para empresas; o inventário deve registrar tempo de vida e valor do dado para o adversário.",
+  "n": "Orientação, não obrigação legal fora do governo britânico.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "NCSC",
+  "u": "https://ncsc.gov.uk/guidance/pqc-migration-timelines"
+ },
+ {
+  "d": "12 mar 2025",
+  "y": "2025",
+  "t": "D-Wave publica 'além do clássico' na Science; Flatiron e EPFL respondem",
+  "w": "Dinâmica de vidros de spin em até 560 qubits; 'quase um milhão de anos no Frontier'. Simulações clássicas reproduzem partes.",
+  "n": "Problema de física, não otimização; escopo contestado.",
+  "tags": [
+   "adv"
+  ],
+  "s": "HPCwire",
+  "u": "https://www.hpcwire.com/2025/03/13/d-wave-reports-quantum-supremacy-stirs-immediate-challenge-and-rebuttal/"
+ },
+ {
+  "d": "11 mar 2025",
+  "y": "2025",
+  "t": "NIST seleciona HQC como quinto algoritmo pós-quântico (KEM reserva)",
+  "w": "Matemática diferente das redes do ML-KEM; padrão final previsto para 2027. Agilidade criptográfica deve prever a troca.",
+  "n": "Rascunho ainda em elaboração.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "NIST",
+  "u": "https://www.nist.gov/news-events/news/2025/03/nist-selects-hqc-fifth-algorithm-post-quantum-encryption"
+ },
+ {
+  "d": "8 jan 2025",
+  "y": "2025",
+  "t": "Jensen Huang: '20 anos é o consenso'; ações quânticas caem ~40% em um dia",
+  "w": "Mostra a sensibilidade do mercado e a distância entre narrativa e entrega.",
+  "n": "Opinião; a NVIDIA depois lançou o NVQLink e parcerias com Quantinuum e QuEra.",
+  "tags": [
+   "money"
+  ],
+  "s": "ETF.com",
+  "u": "https://www.etf.com/sections/news/quantum-computing-etf-crashes-nvidia-ceo-comments"
+ },
+ {
+  "d": "9 dez 2024",
+  "y": "2024",
+  "t": "Google Willow: correção de erros abaixo do limiar, na Nature",
+  "w": "Erro lógico cai pela metade a cada aumento de distância do código; qubit lógico vive mais que o melhor físico. O resultado que mudou o calendário do setor.",
+  "n": "Um qubit lógico; portas lógicas e escala vieram depois.",
+  "tags": [
+   "hw",
+   "adv"
+  ],
+  "s": "Google",
+  "u": "https://blog.google/technology/research/google-willow-quantum-chip/"
+ },
+ {
+  "d": "12 nov 2024",
+  "y": "2024",
+  "t": "NIST IR 8547 (rascunho): RSA e ECC depreciados após 2030, proibidos após 2035",
+  "w": "O prazo que organiza todos os demais.",
+  "n": "Rascunho; versão final pendente em out/2026.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "NIST",
+  "u": "https://csrc.nist.gov/pubs/ir/8547/ipd"
+ },
+ {
+  "d": "13 ago 2024",
+  "y": "2024",
+  "t": "NIST publica FIPS 203, 204 e 205: ML-KEM, ML-DSA e SLH-DSA",
+  "w": "Os padrões que a indústria inteira passou a implementar; base de TLS híbrido, OpenSSH 10, ICP-Brasil.",
+  "n": "FN-DSA (Falcon) ainda em desenvolvimento.",
+  "tags": [
+   "crypto"
+  ],
+  "s": "NIST",
+  "u": "https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization"
+ },
+ {
+  "d": "6 ago 2024",
+  "y": "2024",
+  "t": "5ª CNCT: Brasil tem 'da ordem de R$ 60 milhões' em tecnologias quânticas contra US$ 42 bi no mundo",
+  "w": "Portaria MCTI 8.194/2024 cria GT para diretrizes nacionais; FAPESP QuTIa com R$ 150 mi em 5 anos.",
+  "n": "'Estratégia Nacional de Tecnologias Quânticas' ainda não publicada como documento oficial até out/2026.",
+  "tags": [
+   "br",
+   "money"
+  ],
+  "s": "Convergência Digital",
+  "u": "https://convergenciadigital.com.br/inovacao/brasil-quer-lugar-na-computacao-quantica-mas-so-tem-r-60-milhoes-mundo-investe-r-240-bilhoes/"
+ },
+ {
+  "d": "1 ago 2023",
+  "y": "2023",
+  "t": "Bradesco inicia inventário criptográfico com IBM Quantum Safe Explorer",
+  "w": "Piloto na aplicação de Open Finance; primeiro CBOM corporativo divulgado no Brasil.",
+  "n": "Uso amplo previsto em 5 a 10 anos, segundo o banco.",
+  "tags": [
+   "br",
+   "crypto"
+  ],
+  "s": "DCD Brasil",
+  "u": "https://www.datacenterdynamics.com/br/not%C3%ADcias/bradesco-inicia-jornada-de-criptografia-pos-quantica-com-a-ibm/"
+ }
+]

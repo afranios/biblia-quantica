@@ -1,0 +1,177 @@
+<title>Bíblia Quântica</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Guia completo de computação quântica, do zero ao negócio, com uma área restrita de aplicação a uma concessionária de rodovias.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  .home-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+  .home-map a{display:grid;gap:8px;padding:20px;border:1px solid var(--line);border-radius:14px;background:var(--glass);color:inherit;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+  .home-map a:hover{text-decoration:none;transform:translateY(-4px);border-color:var(--line2)}
+  .home-map a::after{content:"";position:absolute;inset:auto -40px -40px auto;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,var(--hc,rgba(92,225,255,.25)),transparent 70%);pointer-events:none}
+  .home-map .n{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--cyan)}
+  .home-map h3{color:#fff;font-size:1.1rem}
+  .home-map p{font-size:.9rem;color:var(--fg2)}
+  .home-map .done{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--green);border:1px solid rgba(79,227,163,.4);border-radius:6px;padding:2px 6px;display:none}
+  .home-map a.visited .done{display:block}
+  .trail{display:grid;gap:10px;padding:20px;border-radius:14px;border:1px solid var(--line);background:var(--glass)}
+  .trail ol{margin:0;padding-left:1.2em;font-size:.92rem;color:var(--fg2);display:grid;gap:4px}
+  .essence{display:grid;gap:10px;counter-reset:e}
+  .essence li{list-style:none;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(6,14,38,.5)}
+  .essence li::before{counter-increment:e;content:counter(e,decimal-leading-zero);font-family:var(--mono);color:var(--cyan);font-size:.8rem;padding-top:3px;grid-row:1/3}
+  .essence li b,.essence li span{grid-column:2}
+  .essence li b{color:#fff}
+  .essence li span{color:var(--fg2);font-size:.95rem}
+</style>
+
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+  <div class="wrap">
+    <section class="hero">
+      <div class="stack-lg">
+        <div class="stack">
+          <span class="eyebrow">Guia completo · do zero ao negócio · outubro de 2026</span>
+          <h1 class="title">Computação <span class="holo">quântica</span>, explicada para quem decide.</h1>
+          <p class="lead">Doze capítulos que começam do átomo e terminam no plano de ação: o que é um qubit, como as máquinas funcionam hoje, o que já foi demonstrado, onde está o dinheiro, qual é o risco criptográfico concreto e como uma concessionária de rodovias deve se preparar, em que prazo e com que orçamento.</p>
+        </div>
+        <div class="row">
+          <a class="btn primary" href="fundamentos.html">Começar do zero</a>
+          <a class="btn" href="restrito.html">Área restrita</a>
+          <a class="btn ghost" href="riscos.html">Risco criptográfico</a>
+        </div>
+        <div class="progress" aria-label="Progresso de leitura"><span class="small muted">Sua trilha</span><div class="bar"><i id="prog-bar"></i></div><span class="small mono" id="prog-txt">0/12</span></div>
+      </div>
+      <div class="hero-3d" id="hero-3d" aria-hidden="true"><div class="ring"></div></div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="tk" id="ticker"></div></div>
+
+    <section class="section" id="essencial">
+      <div class="stack-lg">
+        <div class="stack">
+          <span class="eyebrow">Resumo</span>
+          <h2>O estado do tema, em poucas frases</h2>
+        </div>
+        <ol class="essence">
+          <li><b>Um qubit guarda amplitudes, não "0 e 1 ao mesmo tempo".</b><span>A vantagem vem de interferência entre possibilidades, que faz respostas erradas se cancelarem. Não é paralelismo infinito e não acelera qualquer cálculo.</span></li>
+          <li><b>Ninguém tem ainda uma máquina tolerante a falhas em escala útil.</b><span>Os roadmaps de IBM, Quantinuum, Microsoft e IonQ convergem para 2028 a 2029 para as primeiras máquinas com 100 a 200 qubits lógicos. A DARPA avalia se alguém chega a "escala de utilidade" até 2033.</span></li>
+          <li><b>2025 e 2026 foram os anos em que a correção de erros saiu do papel.</b><span>Google abaixo do limiar (dez/2024), 48 qubits lógicos corrigidos na Quantinuum (nov/2025), cultivo de estados mágicos a 99,99% (Google, Science, out/2026).</span></li>
+          <li><b>"Vantagem quântica" já existe, mas em física, não em negócio.</b><span>Google Quantum Echoes (13.000x, Nature, out/2025) e três preprints da IBM (jul/2026) tratam de simulação e amostragem. Nenhum piloto de logística ou finanças demonstrou vantagem verificada.</span></li>
+          <li><b>O dinheiro passou a vir de instituições.</b><span>Investimento em startups quânticas subiu 6,3x em 2025, para US$ 12,6 bilhões. Quantinuum abriu capital (US$ 1,7 bi), IBM comprometeu US$ 10 bi em cinco anos. McKinsey estima US$ 1,3 a 2,7 trilhões de valor em jogo até 2035.</span></li>
+          <li><b>Transporte e logística estão entre os setores com mais valor estimado.</b><span>US$ 200 a 500 bilhões até 2035 (McKinsey), em roteirização, escalas, gestão de disrupções e sensoriamento. Os ganhos reais hoje vêm de modelar melhor o problema, com ou sem QPU.</span></li>
+          <li><b>O risco concreto e datado é criptográfico.</b><span>RSA e curvas elípticas caem com o algoritmo de Shor. Estimativas de recursos caíram de 20 milhões de qubits (2019) para menos de 1 milhão (2025) e menos de 100 mil (2026, em modelagem). Dados cifrados hoje podem ser decifrados depois.</span></li>
+          <li><b>Os prazos regulatórios já estão postos.</b><span>NIST: RSA/ECC depreciados após 2030 e proibidos após 2035. União Europeia: infraestrutura crítica, incluindo transportes, migrada até 2030. ICP-Brasil já aceita ML-DSA e ML-KEM desde janeiro de 2026.</span></li>
+          <li><b>91% das empresas não têm roadmap quântico.</b><span>Trusted Computing Group, dez/2025. O custo de esperar cresce porque inventário criptográfico, agilidade criptográfica e troca de equipamentos de campo levam anos, não meses.</span></li>
+          <li><b>Para uma concessionária de rodovias, a ordem é proteger, aprender e depois pilotar.</b><span>Inventário criptográfico e cláusulas de crypto-agility em 2026 e 2027; formulação dos problemas de otimização e benchmark clássico; pilotos híbridos quando houver vantagem verificada, por volta de 2028 a 2030.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="stack-lg">
+        <div class="stack">
+          <span class="eyebrow">Números que ancoram a discussão</span>
+          <h2>O estado do tema em 2026</h2>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="v c" data-count="12.6" data-dec="1" data-pre="US$ " data-suf=" bi">US$ 12,6 bi</div><div class="l">investidos em startups quânticas em 2025, 6,3x o ano anterior</div><div class="s">McKinsey QTM 2026</div></div>
+          <div class="stat"><div class="v vv" data-count="2.7" data-dec="1" data-pre="US$ " data-suf=" tri">US$ 2,7 tri</div><div class="l">teto do valor em jogo para indústrias até 2035 (piso US$ 1,3 tri)</div><div class="s">McKinsey QTM 2026</div></div>
+          <div class="stat"><div class="v m" data-count="99.99" data-dec="2" data-suf="%">99,99%</div><div class="l">fidelidade de estados mágicos cultivados no chip Willow (Science, 15/10/2026)</div><div class="s">Google Quantum AI</div></div>
+          <div class="stat"><div class="v g" data-count="48">48</div><div class="l">qubits lógicos totalmente corrigidos em 98 físicos no Quantinuum Helios</div><div class="s">Quantinuum, nov/2025</div></div>
+          <div class="stat"><div class="v a" data-count="1" data-pre="&lt; " data-suf=" milhão">&lt; 1 milhão</div><div class="l">de qubits físicos ruidosos para quebrar RSA-2048 em menos de uma semana</div><div class="s">Gidney, arXiv, mai/2025</div></div>
+          <div class="stat"><div class="v c" data-count="2035">2035</div><div class="l">ano em que o NIST proíbe RSA e ECC; depreciação a partir de 2030</div><div class="s">NIST IR 8547</div></div>
+          <div class="stat"><div class="v m" data-count="91" data-suf="%">91%</div><div class="l">das empresas sem roadmap para o risco quântico</div><div class="s">Trusted Computing Group, dez/2025</div></div>
+          <div class="stat"><div class="v vv" data-count="500" data-pre="US$ " data-suf=" bi">US$ 500 bi</div><div class="l">teto de valor estimado em transporte e logística até 2035 (piso US$ 200 bi)</div><div class="s">McKinsey QTM 2026</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="stack-lg">
+        <div class="stack">
+          <span class="eyebrow">Mapa do guia</span>
+          <h2>Os capítulos, em ordem de leitura</h2>
+          <p class="lead">Cada capítulo é autocontido e termina com um teste rápido. A ordem abaixo vai do conceito ao plano. Capítulos já visitados neste navegador ficam marcados.</p>
+        </div>
+        <div class="home-map" id="home-map">
+          <a href="fundamentos.html" style="--hc:rgba(92,225,255,.25)"><span class="n">01 · Fundamentos</span><h3>Do bit ao qubit</h3><p>Superposição, emaranhamento, interferência e medição, com uma esfera de Bloch em 3D e um simulador de circuito de dois qubits.</p><span class="done">visitado</span></a>
+          <a href="como-funciona.html" style="--hc:rgba(157,140,255,.25)"><span class="n">02 · Como funciona</span><h3>Dentro da máquina</h3><p>Sete tecnologias de qubit, criogenia, correção de erros com simulador do limiar, algoritmos e o modelo híbrido com supercomputadores.</p><span class="done">visitado</span></a>
+          <a href="estado-da-arte.html" style="--hc:rgba(255,95,210,.25)"><span class="n">03 · Estado da arte</span><h3>O que já foi demonstrado</h3><p>Linha do tempo 2019 a 2026, roadmaps até 2033, quem lidera cada tecnologia e o que a DARPA está avaliando.</p><span class="done">visitado</span></a>
+          <a href="desafios.html" style="--hc:rgba(255,207,110,.25)"><span class="n">04 · Desafios</span><h3>O que ainda falta</h3><p>Decoerência, escala, cadeia de suprimentos (hélio-3), talento, energia, hype e os resultados que desmontaram promessas.</p><span class="done">visitado</span></a>
+          <a href="oportunidades.html" style="--hc:rgba(79,227,163,.25)"><span class="n">05 · Oportunidades</span><h3>Onde está o valor</h3><p>Valor por setor, casos reais com veredito sobre o que foi de fato provado, e o mergulho em transporte e logística.</p><span class="done">visitado</span></a>
+          <a href="riscos.html" style="--hc:rgba(255,107,107,.25)"><span class="n">06 · Riscos e PQC</span><h3>A ameaça com data</h3><p>Shor, "colher agora, decifrar depois", probabilidades de especialistas, padrões NIST, prazos regulatórios e a calculadora de Mosca.</p><span class="done">visitado</span></a>
+          <a href="preparacao.html" style="--hc:rgba(92,225,255,.25)"><span class="n">07 · Preparação</span><h3>Como e quando se preparar</h3><p>Roadmap em fases, playbook de migração, papéis, custos de nuvem quântica, como rodar um piloto e um autodiagnóstico de prontidão.</p><span class="done">visitado</span></a>
+          <a href="restrito.html" style="--hc:rgba(157,140,255,.3)"><span class="n">08 · Área restrita</span><h3>Aplicação a uma concessionária</h3><p>Conteúdo com código de acesso: onde o quântico toca cobrança, operação de pista, manutenção e logística, matriz de priorização, roadmap até 2035 e os primeiros 90 dias.</p><span class="done">visitado</span></a>
+          <a href="casos.html" style="--hc:rgba(255,95,210,.25)"><span class="n">09 · Casos e notícias</span><h3>O que aconteceu, com filtro</h3><p>Casos e fatos de 2024 a 2026, por categoria, cada um com o que importa e o que ainda não foi provado.</p><span class="done">visitado</span></a>
+          <a href="glossario.html" style="--hc:rgba(79,227,163,.25)"><span class="n">10 · Glossário</span><h3>Termos explicados</h3><p>Cerca de oitenta termos com busca, do qubit ao CBOM. Nos capítulos, os termos sublinhados mostram a definição ao passar o mouse ou tocar.</p><span class="done">visitado</span></a>
+          <a href="fontes.html" style="--hc:rgba(255,207,110,.25)"><span class="n">11 · Fontes</span><h3>De onde veio cada número</h3><p>Relatórios, artigos revisados por pares, normas e releases oficiais, com link.</p><span class="done">visitado</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="stack-lg">
+        <div class="stack">
+          <span class="eyebrow">Trilhas por perfil</span>
+          <h2>Formas de ler</h2>
+          <p class="lead">Além das trilhas abaixo, o seletor "Ler" no cabeçalho filtra cada capítulo por nível: conceito, técnica ou negócio. O guia inteiro continua ali; só o que aparece muda.</p>
+        </div>
+        <div class="grid3">
+          <div class="trail"><span class="chip c">Executivo · 40 min</span><h3>Decidir com segurança</h3><ol><li><a href="index.html#essencial">O resumo desta página</a></li><li><a href="oportunidades.html">Oportunidades</a> (valor e casos)</li><li><a href="riscos.html">Riscos e PQC</a> (ameaça e prazos)</li><li><a href="restrito.html">Área restrita</a> (plano e orçamento, com código de acesso)</li></ol></div>
+          <div class="trail"><span class="chip v">Gestor de tecnologia · 2 h</span><h3>Montar o programa</h3><ol><li><a href="fundamentos.html">Fundamentos</a></li><li><a href="estado-da-arte.html">Estado da arte</a></li><li><a href="preparacao.html">Preparação</a> (playbook, PoC, custos)</li><li><a href="restrito.html">Área restrita</a> (matriz e roadmap)</li><li><a href="casos.html">Casos e notícias</a></li></ol></div>
+          <div class="trail"><span class="chip m">Curioso do zero · 3 h</span><h3>Entender de verdade</h3><ol><li><a href="fundamentos.html">Fundamentos</a> (com simuladores)</li><li><a href="como-funciona.html">Como funciona</a></li><li><a href="desafios.html">Desafios</a></li><li><a href="glossario.html">Glossário</a> sempre à mão</li><li>Depois, os demais capítulos</li></ol></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  // ticker
+  var facts = ["<b>13.000x</b> Google Quantum Echoes vs. melhor algoritmo clássico (Nature, out/2025)","<b>99,921%</b> fidelidade de porta de 2 qubits no Quantinuum Helios","<b>US$ 10 bi</b> compromisso da IBM em 5 anos (jun/2026)","<b>2029</b> IBM Starling: 200 qubits lógicos, 100 milhões de portas","<b>&lt; 500 mil</b> qubits físicos para quebrar ECC-256 em minutos (Google, mar/2026)","<b>2030</b> prazo da UE para infraestrutura crítica, inclusive transportes, migrar para PQC","<b>IN ITI 35/2026</b> ICP-Brasil aceita ML-DSA e ML-KEM","<b>US$ 7,1 bi</b> custo estimado da migração PQC do governo civil dos EUA","<b>6.100</b> átomos em arranjo (Caltech, Nature, set/2025)","<b>28% a 49%</b> probabilidade de CRQC em 10 anos (GRI, 2025)","<b>~US$ 17 mi</b> investimento público brasileiro mapeado pela McKinsey","<b>R$ 200 mi</b> CIQUANTA-PB, dois computadores de 20 e 100 qubits"];
+  var t = document.getElementById("ticker"); if(t){ var s = facts.map(function(f){return "<span>"+f+"</span>"}).join(""); t.innerHTML = s+s; }
+  // progress
+  var v = QB.visited(); var total = 12; var n = Math.min(total, v.length);
+  var pb = document.getElementById("prog-bar"), pt = document.getElementById("prog-txt");
+  if(pb){ setTimeout(function(){ pb.style.width = (n/total*100)+"%"; }, 100); pt.textContent = n+"/"+total; }
+  document.querySelectorAll("#home-map a").forEach(function(a){ if(v.indexOf(a.getAttribute("href"))>=0) a.classList.add("visited"); });
+  // hero 3D qubit
+  var m = document.getElementById("hero-3d"); if(!m || !window.THREE) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var S = m.clientWidth||480; var r = new THREE.WebGLRenderer({antialias:true, alpha:true}); r.setPixelRatio(Math.min(window.devicePixelRatio||1,2)); r.setSize(S,S); m.appendChild(r.domElement);
+  var sc = new THREE.Scene(); var cam = new THREE.PerspectiveCamera(40,1,0.1,100); cam.position.set(0,1.2,7.2); cam.lookAt(0,0,0);
+  var core = new THREE.Mesh(new THREE.SphereGeometry(0.42,32,32), new THREE.MeshBasicMaterial({color:0xffffff}));
+  var glow = new THREE.Mesh(new THREE.SphereGeometry(0.7,32,32), new THREE.MeshBasicMaterial({color:0x5ce1ff, transparent:true, opacity:0.25, blending:THREE.AdditiveBlending}));
+  var shell = new THREE.Mesh(new THREE.SphereGeometry(2.1,28,20), new THREE.MeshBasicMaterial({color:0x5ce1ff, wireframe:true, transparent:true, opacity:0.18}));
+  var shell2 = new THREE.Mesh(new THREE.SphereGeometry(2.1,16,10), new THREE.MeshBasicMaterial({color:0x9d8cff, wireframe:true, transparent:true, opacity:0.12}));
+  sc.add(core, glow, shell, shell2);
+  // axes of the Bloch sphere
+  function axis(a,b,c){ var g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(a[0],a[1],a[2]), new THREE.Vector3(b[0],b[1],b[2])]); return new THREE.Line(g,new THREE.LineBasicMaterial({color:c,transparent:true,opacity:.5})); }
+  sc.add(axis([0,-2.4,0],[0,2.4,0],0xffffff), axis([-2.4,0,0],[2.4,0,0],0x5ce1ff), axis([0,0,-2.4],[0,0,2.4],0xff5fd2));
+  var eq = new THREE.Mesh(new THREE.TorusGeometry(2.1,0.012,8,140), new THREE.MeshBasicMaterial({color:0xff5fd2,transparent:true,opacity:.6})); eq.rotation.x=Math.PI/2; sc.add(eq);
+  // state vector arrow
+  var arrow = new THREE.Group();
+  var shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.03,0.03,2.0,10), new THREE.MeshBasicMaterial({color:0xffcf6e})); shaft.position.y=1.0;
+  var head = new THREE.Mesh(new THREE.ConeGeometry(0.12,0.3,14), new THREE.MeshBasicMaterial({color:0xffcf6e})); head.position.y=2.1;
+  var tip = new THREE.Mesh(new THREE.SphereGeometry(0.1,12,12), new THREE.MeshBasicMaterial({color:0xffffff})); tip.position.y=2.1;
+  arrow.add(shaft, head, tip); sc.add(arrow);
+  // orbiting particles
+  var orb = []; for(var i=0;i<60;i++){ var p=new THREE.Mesh(new THREE.SphereGeometry(0.035,6,6), new THREE.MeshBasicMaterial({color:i%3===0?0xff5fd2:(i%3===1?0x9d8cff:0x5ce1ff)})); p.userData={a:Math.random()*Math.PI*2,b:Math.random()*Math.PI,r:2.3+Math.random()*0.9,s:0.2+Math.random()*0.5}; sc.add(p); orb.push(p); }
+  var t0=performance.now();
+  function f(){ var t=(performance.now()-t0)/1000;
+    if(!reduce){ var th=1.05+Math.sin(t*0.4)*0.5, ph=t*0.9; arrow.rotation.set(0,0,0); arrow.rotateY(ph); arrow.rotateZ(-th);
+      shell.rotation.y=t*0.08; shell2.rotation.y=-t*0.05; shell2.rotation.x=Math.sin(t*0.2)*0.2; glow.scale.setScalar(1+Math.sin(t*2)*0.08);
+      orb.forEach(function(p){ var u=p.userData; var a=u.a+t*u.s; p.position.set(u.r*Math.cos(a)*Math.sin(u.b), u.r*Math.cos(u.b+t*0.1), u.r*Math.sin(a)*Math.sin(u.b)); });
+      sc.rotation.y = Math.sin(t*0.15)*0.25; }
+    r.render(sc,cam); if(!reduce) requestAnimationFrame(f); }
+  f();
+  window.addEventListener("resize", function(){ S=m.clientWidth||480; r.setSize(S,S); if(reduce) r.render(sc,cam); });
+})();
+</script>

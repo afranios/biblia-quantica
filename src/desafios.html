@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Desafios · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  .chal{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}
+  .chal .panel h3{display:flex;align-items:center;gap:10px}
+  .chal .panel h3 i{width:10px;height:10px;border-radius:50%;background:var(--cc,var(--cyan));box-shadow:0 0 10px var(--cc,var(--cyan))}
+  .chal .panel p{font-size:.93rem;color:var(--fg2)}
+  .chal .panel .st{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .claims td:first-child{color:#fff}
+  .dd{display:grid;gap:10px}
+  .dd label{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--glass);cursor:pointer;font-size:.93rem;color:var(--fg2)}
+  .dd input{width:18px;height:18px;margin-top:3px;accent-color:var(--cyan)}
+  .gauge{height:14px;border-radius:99px;background:rgba(120,160,255,.15);overflow:hidden}
+  .gauge i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--amber),var(--green));transition:width .4s}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 04 · Desafios</span>
+        <h1>O que ainda falta, e por que o prazo é incerto</h1>
+        <p class="lead">Os obstáculos da computação quântica deixaram de ser "será que funciona" e passaram a ser "quanto custa escalar". Vira engenharia, com cronograma, o que é bom. Mas engenharia em escala depende de cadeias de suprimento frágeis (hélio-3, lasers, refrigeradores), de uma geração de profissionais que ainda não existe e de um mercado que confunde promessa com produto. Para quem decide, o desafio mais perigoso é o último: separar o que foi demonstrado do que foi anunciado.</p>
+      </div>
+      <div class="toc"><a href="#tecnicos">Desafios técnicos</a><a href="#cadeia">Cadeia de suprimentos</a><a href="#talento">Talento</a><a href="#energia">Energia</a><a href="#hype">Hype e desquantização</a><a href="#geo">Geopolítica</a><a href="#verificador">Verificador de alegações</a><a href="#quiz">Teste</a></div>
+      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>Quais gargalos técnicos separam hoje da tolerância a falhas?</li><li>De que insumos e pessoas a indústria depende?</li><li>Como separar um resultado real de uma alegação de marketing?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 17/10/2026</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="tecnicos" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Técnicos</span><h2>Os gargalos entre hoje e a tolerância a falhas</h2></div>
+      <div class="chal">
+        <div class="panel" style="--cc:var(--cyan)"><h3><i></i>Decoerência</h3><p>Qubits supercondutores vivem 100 a 350 microssegundos; cada porta leva dezenas de nanossegundos. Um algoritmo útil precisa de bilhões de portas. Sem correção de erros no meio do caminho, nada de útil roda.</p><div class="st">Status 2026: contornado pela correção, não resolvido</div></div>
+        <div class="panel" style="--cc:var(--vio)"><h3><i></i>Overhead da correção</h3><p>O código de superfície exige ~1.000 físicos por lógico em escala. Starling (IBM) aposta em qLDPC para cortar 90%; íons e átomos usam razões menores em códigos de distância curta. Um milhão de qubits físicos é a ordem de grandeza para quebrar RSA.</p><div class="st">Status 2026: primeiras demonstrações em todas as plataformas</div></div>
+        <div class="panel" style="--cc:var(--mag)"><h3><i></i>Escala e fiação</h3><p>Cada qubit supercondutor precisa de linhas de controle que entram no criostato. A IBM conectou os dois primeiros módulos criogênicos em ago/2026; a meta de 1.000 qubits via L-couplers é 2027. Átomos neutros escalam a milhares, mas as portas são lentas.</p><div class="st">Status 2026: modularidade em teste</div></div>
+        <div class="panel" style="--cc:var(--amber)"><h3><i></i>Estados mágicos</h3><p>Portas universais exigem estados T; a destilação consumiria 90% a 95% da máquina. O cultivo demonstrado pelo Google (Science, 15/10/2026) com 99,99% de fidelidade é a resposta, ainda em um único chip.</p><div class="st">Status 2026: resolvido em princípio, não em escala</div></div>
+        <div class="panel" style="--cc:var(--green)"><h3><i></i>Decodificação em tempo real</h3><p>Corrigir erros exige um computador clássico decidindo em menos de um microssegundo o que corrigir. IBM: menos de 480 ns para qLDPC; Quantinuum: GPUs NVIDIA no laço. Em escala de milhões de qubits, é um problema de HPC em si.</p><div class="st">Status 2026: demonstrado em pequena escala</div></div>
+        <div class="panel" style="--cc:var(--red)"><h3><i></i>Verificação</h3><p>Como saber se a resposta de uma máquina que o clássico não consegue simular está certa? Resposta parcial: outro computador quântico reproduzir (Quantum Echoes), provas de conhecimento zero (Google, 2026) e benchmarks independentes (Jülich, out/2026).</p><div class="st">Status 2026: metodologia em formação</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cadeia" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Cadeia de suprimentos</span><h2>Do que a máquina depende</h2></div>
+      <div class="grid2">
+        <div class="panel"><h3>Hélio-3</h3><p class="small" style="color:var(--fg2)">Quase todo o hélio-3 vem do decaimento de trítio em arsenais nucleares. Produção terrestre de 22 a 30 mil litros por ano contra demanda de 40 a 60 mil. Rússia fora dos mercados ocidentais desde 2022. Preço no atacado de US$ 1.900 a 2.600 por litro; acima de US$ 10 mil em grau para refrigeradores de diluição. Um refrigerador Bluefors XLD1000 carrega cerca de 40 litros. Supercondutores e spin dependem; íons, átomos neutros e fotônica, não.</p></div>
+        <div class="panel"><h3>Refrigeradores, lasers e terras raras</h3><p class="small" style="color:var(--fg2)">A Bluefors (Finlândia) fabrica a maior parte dos refrigeradores de diluição do mundo. "Lasers e sistemas ópticos especializados" são o gargalo mais citado pela McKinsey para íons e átomos. Terras raras e materiais supercondutores entram na lista de dependências estratégicas. A IBM respondeu criando a Anderon, fundição de wafers quânticos (jun/2026); a IonQ comprou a SkyWater (US$ 1,8 bi) para ter fábrica própria.</p></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="v c">22 a 30 mil L</div><div class="l">produção anual de hélio-3 contra 40 a 60 mil de demanda</div><div class="s">postquantum.com, 2025</div></div>
+        <div class="stat"><div class="v vv">US$ 1 bi</div><div class="l">caixa da IBM para a fundição Anderon, com apoio do Departamento de Comércio</div><div class="s">IBM, jun/2026</div></div>
+        <div class="stat"><div class="v m">set/2024</div><div class="l">regra do BIS (EUA) controlando exportação de computadores quânticos, componentes e software</div><div class="s">BIS</div></div>
+        <div class="stat"><div class="v a">15 a 20%</div><div class="l">da cadeia de valor da computação quântica (~US$ 15 bi) está em componentes</div><div class="s">McKinsey QTM 2026</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="talento" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Pessoas</span><h2>Talento: um candidato para cada três vagas</h2>
+        <p class="lead">A McKinsey estimou (2022) um candidato qualificado para cada três vagas em tecnologias quânticas, com menos de metade das posições preenchidas até 2025 sem intervenção; só 29 de 176 programas universitários pesquisados ofereciam pós-graduação na área. No Monitor 2026, "talent gap" e "limited executive buy-in" aparecem entre as quatro dores principais dos clientes corporativos. Para uma empresa usuária, porém, o perfil que faz diferença é o de otimização e dados, capaz de formular problemas para solvers híbridos; físicos não são necessários.</p></div>
+      <div class="grid3">
+        <div class="panel"><div class="k">No Brasil</div><h3>Formação concentrada em poucos polos</h3><p class="small" style="color:var(--fg2)">SENAI CIMATEC (QuIIN, R$ 60 mi da Embrapii) lançou a primeira pós-graduação em tecnologias quânticas do país; CIQUANTA-PB prevê 156 bolsas e ~500 pessoas formadas em 36 meses; Itaú opera o ICTi com ~100 pesquisadores e 13 projetos quânticos; Inter financia bolsas na UFMG.</p></div>
+        <div class="panel"><div class="k">Perfil para empresa usuária</div><h3>Três competências, não uma</h3><p class="small" style="color:var(--fg2)">Modelagem de otimização (QUBO/MILP), engenharia de software híbrido (Python, Qiskit/CUDA-Q, nuvem) e criptografia aplicada (inventário, PQC). Nenhuma exige doutorado em física.</p></div>
+        <div class="panel"><div class="k">Risco</div><h3>Comprar sem saber avaliar</h3><p class="small" style="color:var(--fg2)">Sem pelo menos duas pessoas capazes de reproduzir um benchmark, a empresa fica refém da narrativa do fornecedor. O verificador de alegações no fim deste capítulo é o mínimo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="energia" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Energia</span><h2>Um argumento a favor, com ressalva</h2>
+        <p class="lead">A McKinsey compara potências: 15.000 kW para um supercomputador contra 25 kW (supercondutor), 10 kW (íons e átomos) e 5 kW (fotônica) para uma QPU. O consumo de TIC deve passar de 710 TWh (2024) para 3.200 TWh em 2030. Dois cuidados com essa comparação: a QPU só substitui o supercomputador nas tarefas em que tem vantagem, que hoje são poucas; e o decodificador clássico que acompanha a correção de erros consome energia como HPC. Kuan Tan (IQM) prevê vantagem energética em 3 a 5 anos para tarefas específicas.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="hype" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Hype</span><h2>Alegações que caíram, e como</h2><p class="lead">Antes de perguntar se algo é quântico, pergunte qual é a melhor alternativa clássica e quem a testou. Casos de 2018 a 2026.</p></div>
+      <div class="tbl-wrap"><table class="claims">
+        <thead><tr><th>Alegação</th><th>Quem</th><th>O que aconteceu</th><th>Lição</th></tr></thead>
+        <tbody>
+          <tr><td>Speedup exponencial em sistemas de recomendação (QML)</td><td>Kerenidis e Prakash, 2016</td><td>Ewin Tang (2018) criou algoritmo clássico equivalente ("desquantização"), derrubando o principal candidato de QML</td><td>Vantagens em álgebra linear dependem de como os dados entram e saem</td></tr>
+          <tr><td>"Supremacia": 10.000 anos no clássico</td><td>Google, 2019</td><td>IBM estimou 2,5 dias; tensor networks reproduziram depois</td><td>Os métodos clássicos também avançam; por isso passou-se a exigir resultados verificáveis</td></tr>
+          <tr><td>"Utilidade antes da tolerância a falhas" (Ising em 127 qubits)</td><td>IBM, Kim et al., Nature, jun/2023</td><td>Tindall e colegas (PRX Quantum, 2024) e Begušić, Gray e Chan (Science Advances, 2024) reproduziram os resultados em computadores comuns com tensor networks</td><td>"Utilidade" também é um alvo que se move</td></tr>
+          <tr><td>Speedups quadráticos (Grover) em otimização</td><td>Promessa comum de fornecedores</td><td>Hoefler, Häner e Troyer (CACM, 2023): não compensam o overhead de correção; só ganhos super-quadráticos em "dados pequenos" são promissores</td><td>Otimização genérica não é o caso de uso forte</td></tr>
+          <tr><td>QAOA supera heurísticas clássicas em Max-kXOR</td><td>Vários</td><td>Müller et al. (arXiv 2411.19388, 2024): heurística de campo médio iguala ou supera; profundidade necessária "extremamente grande"</td><td>Teste contra o melhor clássico, não contra o pior</td></tr>
+          <tr><td>"Além do clássico" em vidros de spin</td><td>D-Wave, Science, mar/2025</td><td>Flatiron (tensor networks) e EPFL (Monte Carlo) reproduziram subconjuntos; D-Wave contesta o escopo</td><td>Simulação de física não é otimização de negócio</td></tr>
+          <tr><td>Vantagem em paint shop binário (sequenciamento automotivo)</td><td>Estudos com QAOA</td><td>arXiv 2604.00607 (abr/2026): algoritmos clássicos melhorados superam</td><td>Vantagem alegada em 2023 pode não existir em 2026</td></tr>
+          <tr><td>Otimização de portfólio 28 h para 74 min na D-Wave</td><td>Itaú, 2026</td><td>A técnica "inspirada em quântica" clássica resolveu em menos de 2 s</td><td>O ganho estava na modelagem, não no hardware</td></tr>
+          <tr><td>Roteamento "quântico" de 73% menos congestionamento</td><td>Ford + Microsoft, 2019</td><td>Simulação com algoritmos "quantum-inspired" em hardware clássico; nenhum computador quântico usado</td><td>Ler a nota de rodapé</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid2">
+        <div class="panel"><h3>O mercado também oscila</h3><ul style="margin:8px 0 0;padding-left:1.1em;color:var(--fg2);font-size:.93rem;display:grid;gap:6px"><li>08/01/2025: Jensen Huang (NVIDIA) diz que "20 anos é o consenso"; IonQ, Rigetti e D-Wave caem ~40% em um dia.</li><li>13/03/2025: Kerrisdale Capital abre posição vendida em IonQ citando metas de 4.000 qubits em 2026 "irrealistas" e múltiplo de ~40x receita.</li><li>Quantum Computing Inc. (QCi) enfrenta ações coletivas de investidores sobre alegações de fábrica e parcerias.</li><li>2026: IonQ cresce receita (US$ 80 mi no 2º tri, +287%); D-Wave fatura US$ 3,1 mi no trimestre com prejuízo de US$ 48 mi; Quantinuum guia US$ 28 a 32 mi no ano após IPO de US$ 1,7 bi.</li></ul></div>
+        <div class="panel"><h3>"Quantum washing"</h3><p class="small" style="color:var(--fg2)">Usar a palavra "quantum" para tomar emprestada credibilidade. Exemplos documentados: QRNG vendido como "criptografia quântica"; algoritmos do NIST reembalados como proprietários; selos "quantum-safe certified" sem norma por trás; alarmismo de "RSA já quebrado"; software "quantum-inspired" apresentado como quântico. O verificador abaixo transforma isso em sete perguntas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="geo" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Geopolítica</span><h2>Controle de exportação, patentes e quem decide o que publicar</h2></div>
+      <div class="grid3">
+        <div class="panel"><h3>Patentes</h3><p class="small" style="color:var(--fg2)">69.269 patentes entre 2000 e 2024. Pedidos: China 37,9 mil (28%) e EUA 37,7 mil (28%). China lidera em computação; EUA em comunicação e sensoriamento. Concedidas: EUA 18,8 mil, Japão 9,4 mil, Alemanha 8,5 mil, China 7,6 mil.</p></div>
+        <div class="panel"><h3>Controles</h3><p class="small" style="color:var(--fg2)">O BIS (EUA) controla desde set/2024 a exportação de computadores quânticos, componentes, materiais e software, alinhado a aliados. O CIQUANTA-PB (Paraíba) receberá máquinas de 20 e 100 qubits de origem chinesa (CETC 54), alvo de relatório do Congresso dos EUA em mar/2026. Decisões de fornecedor terão dimensão geopolítica.</p></div>
+        <div class="panel"><h3>Divulgação seletiva</h3><p class="small" style="color:var(--fg2)">O Google reteve os circuitos do ataque a ECC-256 (mar/2026), publicou uma prova de conhecimento zero e discutiu com o governo dos EUA antes. As estimativas mais agressivas vêm de poucos atores com hardware e capital. Quem tiver o primeiro CRQC decide o que fazer com ele.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="verificador" data-level="negocio">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Interativo</span><h2>Verificador de alegações quânticas</h2><p class="lead">Marque o que o fornecedor, a notícia ou a proposta consegue responder. Adaptado das sete perguntas de due diligence contra "quantum washing" e das práticas do IBM Quantum Advantage Tracker.</p></div>
+      <div class="panel holo">
+        <div class="dd" id="dd">
+          <label><input type="checkbox" value="2"><span><b>Diz qual "quantum".</b> Computação (portas ou annealing), comunicação (QKD), sensoriamento, "quantum-inspired" (clássico) ou PQC (criptografia clássica resistente)?</span></label>
+          <label><input type="checkbox" value="2"><span><b>Nomeia o melhor método clássico comparado</b> e quem o executou (idealmente um terceiro, como Flatiron, Jülich ou um grupo acadêmico).</span></label>
+          <label><input type="checkbox" value="2"><span><b>Tem revisão por pares</b> ou pelo menos preprint com dados e circuitos reproduzíveis (não só press release).</span></label>
+          <label><input type="checkbox" value="1"><span><b>A métrica é a certa:</b> qubits lógicos, fidelidade, erro lógico, tempo total de solução, custo. Não "número de qubits" isolado.</span></label>
+          <label><input type="checkbox" value="1"><span><b>Se é segurança, implementa ML-KEM, ML-DSA ou SLH-DSA</b> (FIPS 203, 204, 205) com validação CAVP/FIPS 140-3, em vez de algoritmo proprietário ou "QRNG".</span></label>
+          <label><input type="checkbox" value="1"><span><b>O anúncio não coincide com captação, IPO ou SPAC</b>, ou, se coincide, a alegação é confirmada por fonte independente.</span></label>
+          <label><input type="checkbox" value="1"><span><b>Você consegue reproduzir o benchmark</b> com dados próprios em simulador ou nuvem antes de contratar.</span></label>
+        </div>
+        <div style="margin-top:18px" class="grid2">
+          <div><div class="k">Credibilidade</div><div class="gauge"><i id="dd-bar"></i></div></div>
+          <div><div class="score-box" id="dd-score">0 / 10</div><p class="small muted" id="dd-msg">Marque os itens.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recap">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Em resumo</span><h2>O que levar deste capítulo</h2></div>
+      <ol class="recap"><li>Overhead de correção, escala e fiação, estados mágicos, decodificação em tempo real e verificação; todos em andamento, nenhum concluído.</li><li>Hélio-3, refrigeradores, lasers e um mercado de trabalho com um candidato para cada três vagas.</li><li>Pergunte qual é o melhor método clássico comparado, quem o executou e se há revisão por pares; use o verificador.</li></ol>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Teste rápido</span><h2>Verifique o que ficou</h2></div>
+      <div data-quiz><script type="application/json">[
+        {"q":"Qual insumo é crítico para qubits supercondutores e de spin, mas não para íons e átomos?","o":["Silício","Hélio-3","Terras raras","Fibra óptica"],"a":1,"e":"Hélio-3 alimenta os refrigeradores de diluição a 15 mK. Produção de 22 a 30 mil litros/ano contra demanda de 40 a 60 mil."},
+        {"q":"O que Ewin Tang mostrou em 2018?","o":["Que o quântico é inútil","Que um algoritmo clássico reproduz o speedup do algoritmo quântico de recomendação","Que QKD é inseguro","Que RSA foi quebrado"],"a":1,"e":"É a 'desquantização': vários candidatos de QML perderam a vantagem alegada."},
+        {"q":"No caso do Itaú (2026), onde estava o ganho de 28 h para 74 min?","o":["No hardware da D-Wave","Na modelagem: a técnica clássica 'inspirada em quântica' resolveu em menos de 2 s","Na nuvem","Em QKD"],"a":1,"e":"Samuraí Brito (Itaú) relatou que a versão clássica inspirada em quântica foi mais rápida. O valor estava em formular melhor o problema."},
+        {"q":"Qual pergunta é a mais importante ao avaliar uma alegação de vantagem?","o":["Quantos qubits tem?","Qual é o melhor método clássico comparado e quem o executou?","Qual a temperatura?","Quantos funcionários tem a empresa?"],"a":1,"e":"Toda alegação de 2025 e 2026 foi respondida por um método clássico melhor em semanas. Sem o método clássico certo do outro lado, a comparação não vale."},
+        {"q":"Qual perfil de talento importa mais para uma empresa usuária?","o":["Físico teórico","Pessoa de otimização e dados que formula problemas para solvers híbridos","Engenheiro criogênico","Advogado"],"a":1,"e":"Modelagem QUBO/MILP, software híbrido e criptografia aplicada. Nenhuma exige doutorado em física."}
+      ]</script></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  var boxes=document.querySelectorAll("#dd input");
+  function upd(){ var s=0; boxes.forEach(function(b){ if(b.checked) s+=+b.value; }); document.getElementById("dd-score").textContent=s+" / 10"; document.getElementById("dd-bar").style.width=(s*10)+"%";
+    document.getElementById("dd-msg").textContent = s>=8 ? "Alta credibilidade. Vale um piloto com comparação com o clássico explícito." : s>=5 ? "Média. Peça o benchmark reproduzível e o nome do método clássico comparado antes de qualquer contrato." : s>=1 ? "Baixa. Trate como marketing até que os itens de peso 2 sejam respondidos." : "Marque os itens."; }
+  boxes.forEach(function(b){ b.addEventListener("change",upd); }); upd();
+};
+</script>
+</body>
+</html>

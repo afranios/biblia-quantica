@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Glossário · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  .gl-ctl{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+  @media (max-width:600px){.gl-ctl{grid-template-columns:1fr}}
+  .cats{display:flex;gap:6px;flex-wrap:wrap}
+  .cats button{background:transparent;border:1px solid var(--line2);color:var(--fg2);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .cats button[aria-pressed="true"]{background:rgba(92,225,255,.15);color:#fff;border-color:var(--cyan)}
+  .gl .term .c{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:8px}
+  .alpha{display:flex;gap:4px;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem}
+  .alpha a{padding:4px 7px;border:1px solid var(--line);border-radius:6px;color:var(--fg2)}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 10 · Glossário</span>
+        <h1>Termos, do qubit ao CBOM</h1>
+        <p class="lead">Definições curtas, em linguagem de negócio, com a referência numérica quando ajuda. Busque por palavra ou filtre por categoria.</p>
+      </div>
+      <div class="gl-ctl">
+        <div class="ctl"><label for="gl-q">Buscar</label><input type="search" id="gl-q" placeholder="ex.: emaranhamento, ML-KEM, QUBO"></div>
+        <div class="cats" id="gl-cats"><button aria-pressed="true" data-c="all">Todos</button><button aria-pressed="false" data-c="fis">Física</button><button aria-pressed="false" data-c="hw">Hardware</button><button aria-pressed="false" data-c="alg">Algoritmos</button><button aria-pressed="false" data-c="cri">Criptografia</button><button aria-pressed="false" data-c="neg">Negócio</button></div>
+      </div>
+      <div class="count small muted" id="gl-count"></div>
+      <div class="gl" id="gl"></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  var T=[
+    ["Qubit","fis","Unidade de informação quântica. Um objeto físico (íon, átomo, circuito supercondutor, fóton, spin) descrito por duas amplitudes, para 0 e para 1. Ao medir, sai 0 ou 1 com probabilidades dadas pelos quadrados das amplitudes."],
+    ["Amplitude","fis","Número (complexo) que pondera cada resultado possível na descrição de um estado quântico. O quadrado do seu módulo é a probabilidade. Amplitudes podem se cancelar; probabilidades não."],
+    ["Superposição","fis","Estado em que as amplitudes de mais de um resultado são diferentes de zero ao mesmo tempo. Não é 'ser 0 e 1'; é carregar pesos para ambos até a medição."],
+    ["Emaranhamento","fis","Correlação entre qubits que não existe no mundo clássico: só o conjunto tem estado definido. Faz o espaço de estados crescer como 2ⁿ. Não permite comunicação mais rápida que a luz."],
+    ["Interferência","fis","Soma de amplitudes com sinais e fases: construtiva reforça, destrutiva cancela. É o mecanismo real da vantagem quântica: fazer respostas erradas se anularem."],
+    ["Medição","fis","Leitura do qubit, que força o resultado 0 ou 1 e destrói a superposição. Programas rodam muitas vezes ('shots') para estimar distribuições."],
+    ["Shot","fis","Uma execução completa de um circuito seguida de medição. Resultados são distribuições sobre milhares de shots; a nuvem cobra por shot ou por minuto."],
+    ["Decoerência","fis","Perda da informação quântica por interação com o ambiente (calor, vibração, radiação). Medida por T1 (relaxação) e T2 (defasagem). Motivo da criogenia e da correção de erros."],
+    ["T1 e T2","fis","Tempos característicos de coerência. Willow ~100 µs; IBM Nighthawk ~350 µs; átomos neutros da Caltech ~13 s."],
+    ["Esfera de Bloch","fis","Representação geométrica de um qubit: polo norte |0⟩, polo sul |1⟩, equador superposições iguais. Portas são rotações."],
+    ["Fase","fis","Ângulo da amplitude. Invisível em uma medição direta, mas decide o que acontece nas portas seguintes. É o que Z, S e T manipulam."],
+    ["Teorema da não clonagem","fis","É impossível copiar um estado quântico desconhecido. Limita backup e depuração; fundamenta a segurança do QKD."],
+    ["Porta quântica","hw","Operação elementar sobre 1 ou 2 qubits (X, H, Z, CNOT...). Circuitos são sequências de portas. Fidelidade de porta é a métrica central de qualidade."],
+    ["Fidelidade","hw","Probabilidade de uma porta fazer o que deveria. Recorde em 2 qubits: 99,921% (Quantinuum Helios, 2025). Abaixo de ~99% a correção de erros não funciona."],
+    ["Limiar (threshold)","hw","Taxa de erro físico abaixo da qual aumentar o código reduz o erro lógico em vez de aumentá-lo (~1% para o código de superfície). Google demonstrou operação abaixo do limiar em dez/2024."],
+    ["Qubit lógico","hw","Qubit 'virtual' codificado em muitos físicos com correção de erros. É a unidade dos roadmaps: IBM Starling 200 (2029), Quantinuum Sol ~100 (2027), QuEra Libra 256 (2028)."],
+    ["Código de superfície","hw","Esquema de correção mais estudado; só conecta vizinhos; exige ~1.000 físicos por lógico em escala útil. Usado por Google e nas estimativas de Gidney."],
+    ["qLDPC / gross code","hw","Família de códigos (low-density parity-check quânticos) com ~90% menos overhead que o código de superfície, mas que exige conexões de longo alcance. Aposta da IBM (Starling) e da Iceberg Quantum."],
+    ["Estado mágico (estado T)","hw","Recurso necessário para portas universais em códigos corrigidos. A destilação consumiria 90% a 95% da máquina; o cultivo (Google, Science, out/2026) o produz com 99,99% em patch pequeno."],
+    ["Decodificador","hw","Computador clássico que lê as síndromes de erro e decide a correção em tempo real (IBM: < 480 ns). Em escala, é um problema de HPC."],
+    ["NISQ","hw","Noisy Intermediate-Scale Quantum: era atual de máquinas de 50 a milhares de qubits ruidosos sem correção completa. Mitigação de erros é o paliativo."],
+    ["Mitigação de erros","hw","Técnicas estatísticas para reduzir o efeito do ruído sem corrigi-lo (extrapolação, pós-seleção). Não escala para programas longos."],
+    ["Volume quântico","hw","Métrica única (IBM) que combina número de qubits e fidelidade. Recorde: 2²⁵ (~33 milhões), Quantinuum H2, mai/2025."],
+    ["Supercondutor (qubit)","hw","Circuito com junções Josephson a ~15 mK. IBM, Google, Rigetti, AWS, Fujitsu. Rápido; coerência curta; depende de hélio-3."],
+    ["Íon aprisionado","hw","Átomo ionizado preso por campos elétricos e manipulado por laser. Quantinuum, IonQ. Maior fidelidade; portas lentas."],
+    ["Átomo neutro","hw","Átomo preso por pinças ópticas, emaranhado via estados de Rydberg. QuEra, Atom Computing, Pasqal, Infleqtion. Escala a milhares; sem criogenia."],
+    ["Fotônica (qubit)","hw","Fótons em chips de fotônica de silício. PsiQuantum, Xanadu. Fabricação em fundição; portas probabilísticas."],
+    ["Spin em silício","hw","Spin de elétron em transistor CMOS. Diraq, Quantum Motion, Intel, HRL/IBM. Potencial de densidade altíssima; poucos qubits hoje."],
+    ["Qubit topológico","hw","Aposta da Microsoft (Majorana): proteção por topologia. Existência dos modos de Majorana contestada em revisão por pares (2026)."],
+    ["Annealing (recozimento quântico)","hw","Máquina da D-Wave que encontra mínimos de energia de problemas QUBO/Ising. Não é universal; não roda Shor."],
+    ["Refrigerador de diluição","hw","Equipamento que leva o chip a ~15 mK usando mistura de hélio-3 e hélio-4. Bluefors (Finlândia) domina o mercado."],
+    ["Hélio-3","hw","Isótopo raro, subproduto de arsenais nucleares; 22 a 30 mil litros/ano de produção contra 40 a 60 mil de demanda. Gargalo para supercondutores e spin."],
+    ["QPU","hw","Quantum Processing Unit: o chip quântico, usado como acelerador ao lado de CPU e GPU em fluxos híbridos."],
+    ["Híbrido (HPC + QPU)","hw","Arquitetura real de uso: o clássico faz a maior parte e chama a QPU para sub-rotinas. Heron + Fugaku; Helios + Oracle Cloud."],
+    ["Qiskit / CUDA-Q / PennyLane","hw","Pilhas de software para programar QPUs. Qiskit (IBM) é usado por ~70% dos desenvolvedores; CUDA-Q (NVIDIA) integra GPUs."],
+    ["Algoritmo de Shor","alg","Fatoração e logaritmo discreto com ganho exponencial. Quebra RSA, ECC e DH. Exige máquina tolerante a falhas (centenas de milhares a 1 milhão de qubits físicos)."],
+    ["Algoritmo de Grover","alg","Busca não estruturada com ganho √N. Contra AES só obriga chaves maiores; na prática, com correção de erros, raramente compensa."],
+    ["QAOA","alg","Quantum Approximate Optimization Algorithm: híbrido variacional para otimização em máquinas ruidosas. Em pilotos (Deutsche Bahn + IQM); sem vantagem comprovada."],
+    ["VQE","alg","Variational Quantum Eigensolver: híbrido para química e materiais em NISQ. Mesma ressalva do QAOA."],
+    ["HHL","alg","Algoritmo para sistemas lineares com condições fortes de entrada e saída; base de vários candidatos de QML depois desquantizados."],
+    ["Simulação quântica","alg","Usar o quântico para imitar sistemas quânticos (moléculas, materiais, magnetismo). Onde estão todas as alegações de vantagem de 2025 e 2026."],
+    ["Amostragem (sampling)","alg","Gerar distribuições que o clássico não reproduz (Sycamore 2019, Quantum Echoes 2025). Uso prático: aleatoriedade certificada."],
+    ["Vantagem quântica","alg","Resolver um problema mais rápido, mais barato ou com mais precisão que todos os métodos clássicos, de forma validável (IBM Tracker). Demonstrada só em física e amostragem até out/2026."],
+    ["Desquantização","alg","Descoberta de um algoritmo clássico que reproduz o ganho de um algoritmo quântico (Ewin Tang, 2018). Derrubou vários candidatos de QML."],
+    ["QUBO","alg","Quadratic Unconstrained Binary Optimization: formato de problema de otimização com variáveis binárias, usado por annealers e QAOA. Formular em QUBO já gera valor com solvers clássicos."],
+    ["MILP","alg","Mixed-Integer Linear Programming: formato clássico de otimização resolvido por Gurobi, CPLEX, OR-Tools. Referência obrigatória antes de qualquer piloto quântico."],
+    ["Quantum-inspired","alg","Software clássico que imita técnicas quânticas (Fujitsu Digital Annealer, Microsoft QIO). Não é computação quântica; frequentemente supera a QPU real."],
+    ["QML","alg","Quantum Machine Learning. Sem vantagem prática comprovada; vários candidatos desquantizados."],
+    ["CRQC","cri","Cryptographically Relevant Quantum Computer: máquina capaz de quebrar RSA-2048 ou ECC-256 em tempo útil. Não existe; GRI estima 28% a 49% de chance em 10 anos."],
+    ["Q-Day","cri","Dia em que um CRQC existe. McKinsey: 'após 2028' (visão de fornecedores); BSI: ~2040."],
+    ["Colher agora, decifrar depois (HNDL)","cri","Harvest now, decrypt later: gravar tráfego cifrado hoje para decifrar quando houver CRQC. Faz o risco começar agora para dados de vida longa."],
+    ["Teorema de Mosca","cri","X + Y > Z: se o tempo de sigilo necessário (X) mais o tempo de migração (Y) excede o tempo até o CRQC (Z), a organização já está atrasada."],
+    ["PQC","cri","Post-Quantum Cryptography: algoritmos clássicos (rodam em computadores comuns) resistentes a ataques quânticos. Padronizados pelo NIST em ago/2024."],
+    ["ML-KEM (FIPS 203)","cri","Mecanismo de encapsulamento de chaves baseado em reticulados (ex-Kyber). Padrão em TLS híbrido (X25519MLKEM768), OpenSSL 3.5, OpenSSH 10, ICP-Brasil."],
+    ["ML-DSA (FIPS 204)","cri","Assinatura digital baseada em reticulados (ex-Dilithium). Assinatura ~2.420 bytes, chave 1.312 bytes. Aceita na ICP-Brasil (IN ITI 35/2026)."],
+    ["SLH-DSA (FIPS 205)","cri","Assinatura baseada em hash (ex-SPHINCS+): conservadora, lenta e grande. Reserva."],
+    ["FN-DSA (FIPS 206)","cri","Falcon: assinatura compacta, ainda em desenvolvimento no NIST (out/2026). Única que cabe em mensagens V2X."],
+    ["HQC","cri","KEM baseado em códigos, selecionado em mar/2025 como reserva com matemática diferente do ML-KEM; padrão final previsto para 2027."],
+    ["LMS / XMSS","cri","Assinaturas baseadas em hash com estado, indicadas pelo CNSA 2.0 para firmware de vida longa desde 2025."],
+    ["NIST IR 8547","cri","Rascunho (nov/2024) que deprecia RSA/ECC/DH após 2030 e os proíbe após 2035."],
+    ["CNSA 2.0","cri","Suíte da NSA para sistemas de segurança nacional dos EUA: ML-KEM-1024, ML-DSA-87, AES-256, SHA-384; aquisições PQC a partir de 2027; tudo migrado até 2035."],
+    ["Híbrido (criptografia)","cri","Combinar algoritmo clássico e pós-quântico de modo que a segurança valha enquanto um resistir. Padrão na Europa, Chrome, Signal, OpenSSH."],
+    ["Agilidade criptográfica","cri","Capacidade de trocar algoritmos em protocolos, software e hardware sem parar o sistema (NIST CSWP 39). Requisito de arquitetura e de compra."],
+    ["CBOM","cri","Cryptography Bill of Materials: inventário de algoritmos, chaves, certificados e bibliotecas, em CycloneDX 1.6. Primeiro passo da migração; marco 2028 do NCSC."],
+    ["QKD","cri","Quantum Key Distribution: distribuição de chaves por fótons, com detecção de espionagem. Não substitui criptografia; NSA e NCSC não recomendam para uso geral; ~US$ 300 mil por par."],
+    ["QRNG","cri","Gerador quântico de números aleatórios. Não é defesa contra computadores quânticos; vendido às vezes como 'criptografia quântica' (quantum washing)."],
+    ["Aleatoriedade certificada","cri","Aleatoriedade gerada em QPU e validada como não reproduzível classicamente (JPMorgan + Quantinuum, Nature, 2025)."],
+    ["ICP-Brasil / IN ITI 35","cri","Norma de 30/01/2026 que inclui ML-DSA e ML-KEM nos certificados e assinaturas brasileiras. Única norma vinculante de PQC no país em out/2026."],
+    ["IEEE 1609.2 / V2X","cri","Padrão de segurança para comunicação veicular. Assinaturas PQC (exceto Falcon-512) não cabem no transport block; a restrição é espectral."],
+    ["Quantum washing","neg","Uso da palavra 'quantum' para tomar emprestada credibilidade: QRNG como criptografia, algoritmos NIST reembalados, selos sem norma, alarmismo."],
+    ["Quantum Advantage Tracker","neg","Repositório aberto da IBM (2025) com submissões e revisores externos para validar alegações de vantagem."],
+    ["DARPA QBI","neg","Quantum Benchmarking Initiative: avaliação independente de se alguma tecnologia chega a 'escala de utilidade' até 2033. Estágio C (out/2026): Atom, Diraq, IBM, IonQ, Microsoft, PsiQuantum."],
+    ["Quantum-as-a-service","neg","Acesso a QPUs por nuvem (IBM Quantum, Amazon Braket, Azure Quantum, Oracle). IBM: US$ 96/min; Braket: por shot ou reserva por hora."],
+    ["Referência em quântica","neg","Pessoa designada para liderar o tema na empresa (WEF). Um de segurança (referência em criptografia) e um de dados/otimização."],
+    ["Exercício de mesa","neg","Simulação de cenário com executivos (por exemplo, certificado de firmware comprometido) para testar governança. Recomendado pelo WEF."],
+    ["Gêmeo digital híbrido","neg","Modelo de simulação de tráfego ou rede com sub-rotinas quânticas, citado pela McKinsey como piloto do setor de transportes."],
+    ["Valor em jogo (value at stake)","neg","Estimativa da McKinsey de valor criado para indústrias usuárias: US$ 1,3 a 2,7 tri até 2035; TTL US$ 200 a 500 bi. Ordem de grandeza, não previsão."],
+    ["Escala de utilidade","neg","Termo da DARPA: máquina cujo valor computacional excede seu custo. Meta de avaliação: 2033."]
+  ];
+  var names={fis:"física",hw:"hardware",alg:"algoritmos",cri:"criptografia",neg:"negócio"};
+  T.sort(function(a,b){ return a[0].localeCompare(b[0],"pt-BR",{sensitivity:"base"}); });
+  var gl=document.getElementById("gl");
+  gl.innerHTML=T.map(function(t,i){ return '<div class="term" data-i="'+i+'"><b>'+t[0]+'</b><span class="c">'+names[t[1]]+'</span><p>'+t[2]+'</p></div>'; }).join("");
+  var c="all", q="";
+  function apply(){ var n=0; gl.querySelectorAll(".term").forEach(function(el){ var t=T[+el.getAttribute("data-i")]; var ok=(c==="all"||t[1]===c) && (!q || (t[0]+" "+t[2]).toLowerCase().indexOf(q)>=0); el.hidden=!ok; if(ok) n++; }); document.getElementById("gl-count").textContent=n+" de "+T.length+" termos"; }
+  document.querySelectorAll("#gl-cats button").forEach(function(b){ b.addEventListener("click",function(){ document.querySelectorAll("#gl-cats button").forEach(function(x){x.setAttribute("aria-pressed","false")}); b.setAttribute("aria-pressed","true"); c=b.getAttribute("data-c"); apply(); }); });
+  document.getElementById("gl-q").addEventListener("input",function(e){ q=e.target.value.trim().toLowerCase(); apply(); });
+  apply();
+};
+</script>
+</body>
+</html>

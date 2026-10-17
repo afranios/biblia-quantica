@@ -1,0 +1,5 @@
+# the restricted chapter is never committed in clear text; only the encrypted blobs in data/
+src/restrito.html
+dist/
+node_modules/
+.DS_Store

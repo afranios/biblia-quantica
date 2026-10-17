@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Como funciona · Bíblia Quântica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  .layers{display:grid;gap:6px}
+  .layer{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:14px 18px;border:1px solid var(--line);border-radius:10px;background:var(--glass);position:relative}
+  .layer>*{min-width:0}
+  .layer::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:10px 0 0 10px;background:var(--lc,var(--cyan))}
+  .layer .n{font-family:var(--display);font-weight:600;color:#fff}
+  .layer .t{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block}
+  .layer p{font-size:.92rem;color:var(--fg2)}
+  @media (max-width:600px){.layer{grid-template-columns:1fr}}
+  .mod{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+  .mod>*{min-width:0}
+  @media (max-width:800px){.mod{grid-template-columns:1fr}}
+  .mod dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.92rem;margin:0}
+  .mod dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .mod dd{margin:0;color:var(--fg2)}
+  .pro{color:var(--green)} .con{color:var(--amber)}
+  .algo{display:grid;gap:8px}
+  .algo .mat{display:flex;gap:4px}
+  .algo .mat i{width:22px;height:6px;border-radius:3px;background:rgba(120,160,255,.18)}
+  .algo .mat i.on{background:var(--cyan)}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:700px){.vs{grid-template-columns:1fr}}
+  .ec-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+  .anat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:18px;align-items:start}
+  @media (max-width:860px){.anat{grid-template-columns:1fr}}
+  .cryo{width:100%;height:auto;display:block}
+  .cryo text{font-family:var(--mono);font-size:11px;fill:#c3cfe9}
+  .cryo .t{fill:#5ce1ff}
+  .cryo .lbl{fill:#fff;font-family:var(--body);font-size:11px}
+  .pict{width:100%;max-width:240px;height:auto;display:block;margin-bottom:10px}
+  .sc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+  @media (max-width:760px){.sc{grid-template-columns:1fr}}
+  .sc-grid{position:relative;aspect-ratio:1/1;max-width:380px;margin-inline:auto;display:grid;grid-template-columns:repeat(9,1fr);grid-template-rows:repeat(9,1fr);gap:0}
+  .sc-grid .dq{grid-column:span 1;display:flex;align-items:center;justify-content:center}
+  .sc-grid .dq button{width:72%;aspect-ratio:1;border-radius:50%;border:2px solid var(--cyan);background:rgba(92,225,255,.12);cursor:pointer;box-shadow:0 0 10px rgba(92,225,255,.25);transition:background .2s,transform .2s}
+  .sc-grid .dq button[aria-pressed="true"]{background:var(--mag);border-color:#fff;box-shadow:0 0 14px var(--mag);transform:scale(1.1)}
+  .sc-grid .pq{display:flex;align-items:center;justify-content:center}
+  .sc-grid .pq i{width:60%;aspect-ratio:1;border-radius:4px;background:rgba(120,160,255,.14);border:1px solid var(--line2);display:block;transition:background .2s}
+  .sc-grid .pq i.on{background:var(--amber);border-color:#fff;box-shadow:0 0 12px var(--amber)}
+  .sc-grid .ln{position:relative}
+  .sc-grid .ln::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(120,160,255,.25)}
+  .sc-grid .ln.v::before{left:50%;right:auto;top:0;bottom:0;height:auto;width:1px}
+  .sc-msg{font-family:var(--display);font-size:1.1rem;color:#fff;min-height:2.6em}
+  .hyb{width:100%;height:auto;display:block}
+  .hyb text{font-family:var(--body);font-size:12px;fill:#e7eefc}
+  .hyb .m{font-family:var(--mono);font-size:10px;fill:#8fa0c6}
+  .hyb .flow{stroke-dasharray:6 6;animation:dash 1.2s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-24}}
+  @media (prefers-reduced-motion:reduce){.hyb .flow{animation:none}}
+</style>
+</head>
+<body>
+<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>
+<header id="site-header" class="hdr"></header>
+
+<main class="page">
+<div class="wrap">
+  <section class="section" style="padding-top:48px">
+    <div class="stack-lg">
+      <div class="stack">
+        <span class="eyebrow">Capítulo 02 · Como funciona</span>
+        <h1>Dentro da máquina: tecnologias, erros e algoritmos</h1>
+        <p class="lead">A era atual tem nome: NISQ, máquinas ruidosas de escala intermediária, termo de John Preskill (2018); o próximo degrau, na mesma linha de raciocínio, é a "máquina megaquop" (2025), capaz de um milhão de operações lógicas confiáveis. Não existe "o" computador quântico. Existem pelo menos sete formas de construir um qubit, cada uma com um líder, um gargalo e um prazo. O que une todas é o mesmo problema (erros) e a mesma solução (codificar muitos qubits físicos em poucos lógicos). E o que o negócio precisa saber é que a máquina será um acelerador ligado a um supercomputador, programado por uma pilha de software que já existe.</p>
+      </div>
+      <div class="toc"><a href="#anatomia">Anatomia</a><a href="#modalidades">Sete tecnologias</a><a href="#erros">Correção de erros (simulador)</a><a href="#algoritmos">Algoritmos</a><a href="#annealing">Annealing vs. portas</a><a href="#hibrido">Híbrido HPC + QPU</a><a href="#naofaz">O que não faz</a><a href="#quiz">Teste</a></div>
+      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>Quais tecnologias de qubit existem e qual é o gargalo de cada uma?</li><li>O que é o limiar de correção de erros e por que 2024 foi a virada?</li><li>Como uma QPU é usada na prática ao lado de um supercomputador?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 17/10/2026</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="anatomia" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Anatomia</span><h2>As camadas de um computador quântico</h2><p class="lead">De cima para baixo, do que o usuário vê ao que fica a 15 milikelvin.</p></div>
+      <div class="anat">
+      <div class="panel">
+        <div class="k">Por dentro de um criostato de diluição</div>
+        <svg class="cryo" viewBox="0 0 500 420" role="img" aria-label="Corte de um criostato de diluição com estágios de temperatura">
+          <defs><linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#8a6a1e"/><stop offset=".5" stop-color="#e8c25a"/><stop offset="1" stop-color="#8a6a1e"/></linearGradient>
+          <radialGradient id="chipglow" r=".6"><stop offset="0" stop-color="#5ce1ff" stop-opacity=".9"/><stop offset="1" stop-color="#5ce1ff" stop-opacity="0"/></radialGradient></defs>
+          <rect x="60" y="14" width="240" height="392" rx="18" fill="rgba(10,22,54,.5)" stroke="rgba(120,160,255,.35)"/>
+          <text x="180" y="34" text-anchor="middle" class="lbl">câmara de vácuo e blindagem magnética</text>
+          <g stroke="rgba(92,225,255,.5)" stroke-width="1.2" fill="none">
+            <path d="M120 44 v330"/><path d="M150 44 v330"/><path d="M180 44 v330"/><path d="M210 44 v330"/><path d="M240 44 v330"/>
+          </g>
+          <g>
+            <rect x="80" y="56" width="200" height="12" rx="3" fill="url(#gold)"/><text x="70" y="66" text-anchor="end" class="t">300 K</text><text x="290" y="66" class="lbl">ambiente, eletrônica</text>
+            <rect x="88" y="116" width="184" height="12" rx="3" fill="url(#gold)"/><text x="70" y="126" text-anchor="end" class="t">50 K</text><text x="290" y="126" class="lbl">primeiro estágio</text>
+            <rect x="96" y="176" width="168" height="12" rx="3" fill="url(#gold)"/><text x="70" y="186" text-anchor="end" class="t">4 K</text><text x="290" y="186" class="lbl">hélio líquido</text>
+            <rect x="104" y="236" width="152" height="12" rx="3" fill="url(#gold)"/><text x="70" y="246" text-anchor="end" class="t">0,8 K</text><text x="290" y="246" class="lbl">evaporador</text>
+            <rect x="112" y="296" width="136" height="12" rx="3" fill="url(#gold)"/><text x="70" y="306" text-anchor="end" class="t">0,1 K</text><text x="290" y="306" class="lbl">placa fria</text>
+            <rect x="120" y="356" width="120" height="12" rx="3" fill="url(#gold)"/><text x="70" y="366" text-anchor="end" class="t">0,015 K</text><text x="290" y="366" class="lbl">câmara de mistura</text>
+          </g>
+          <g><circle cx="180" cy="388" r="26" fill="url(#chipglow)"/><rect x="166" y="378" width="28" height="20" rx="3" fill="#0b1a44" stroke="#5ce1ff"/><path d="M170 382 h20 M170 388 h20 M170 394 h20" stroke="#5ce1ff" stroke-width="1"/><text x="180" y="414" text-anchor="middle" class="lbl">chip com os qubits</text></g>
+          <g><rect x="318" y="392" width="8" height="12" fill="none" stroke="#8fa0c6"/><text x="332" y="402">espaço profundo: 2,7 K</text></g>
+        </svg>
+        <p class="small muted" style="margin-top:8px">Os fios descem por seis placas de cobre e ouro, cada uma mais fria que a anterior, até o chip, a 15 milikelvin: duzentas vezes mais frio que o espaço profundo. O frio final vem de uma mistura de hélio-3 e hélio-4. Íons e átomos neutros dispensam isso; trabalham em câmara de vácuo à temperatura ambiente, com lasers.</p>
+      </div>
+      <div class="layers">
+        <div class="layer" style="--lc:var(--cyan)"><div><span class="t">Camada 5</span><span class="n">Aplicação e algoritmo</span></div><p>Qiskit (IBM, usado por cerca de 70% dos desenvolvedores), CUDA-Q (NVIDIA), PennyLane, Guppy (Quantinuum), Bloqade (QuEra). Python por cima; o circuito é descrito como no simulador do capítulo 01.</p></div>
+        <div class="layer" style="--lc:var(--vio)"><div><span class="t">Camada 4</span><span class="n">Compilação e mitigação</span></div><p>Transpila o circuito para as portas nativas e a conectividade do chip, e aplica supressão e mitigação de erros. A IBM relata mitigação acelerada por HPC que cortou o custo em mais de 100x (nov/2025).</p></div>
+        <div class="layer" style="--lc:var(--mag)"><div><span class="t">Camada 3</span><span class="n">Correção de erros e decodificação</span></div><p>Mede síndromes de erro e corrige em tempo real. Exige decodificadores rápidos: a IBM demonstrou decodificação qLDPC em menos de 480 nanossegundos; a Quantinuum usa GPUs NVIDIA para corrigir durante a execução.</p></div>
+        <div class="layer" style="--lc:var(--amber)"><div><span class="t">Camada 2</span><span class="n">Controle e leitura</span></div><p>Eletrônica de micro-ondas, lasers ou campos elétricos que executam as portas e leem os qubits. Lasers e ópticos especializados são o gargalo de cadeia mais citado pela McKinsey.</p></div>
+        <div class="layer" style="--lc:var(--green)"><div><span class="t">Camada 1</span><span class="n">QPU e ambiente físico</span></div><p>O chip com os qubits e seu habitat: refrigerador de diluição a 15 mK (supercondutores, spin), câmara de ultra-alto vácuo (íons, átomos), fotônica de silício a temperaturas mais altas (fótons). Potência: 5 a 25 kW, contra 15.000 kW de um supercomputador (McKinsey).</p></div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="modalidades" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Tecnologias de qubit</span><h2>Formas de construir um qubit</h2><p class="lead">Nenhuma venceu. O dinheiro de risco (2023 a 2025) foi para íons aprisionados (US$ 4,6 bi), fotônica (US$ 2,8 bi), supercondutores (US$ 2,4 bi), átomos neutros (US$ 0,7 bi) e spin (US$ 0,4 bi). A DARPA levou ao estágio final de avaliação, em outubro de 2026, seis empresas de quatro tecnologias diferentes.</p></div>
+      <div data-tabs>
+        <div class="tabs">
+          <button aria-selected="true">Supercondutores</button><button aria-selected="false">Íons aprisionados</button><button aria-selected="false">Átomos neutros</button><button aria-selected="false">Fotônica</button><button aria-selected="false">Spin em silício</button><button aria-selected="false">Topológico</button><button aria-selected="false">Annealing</button>
+        </div>
+        <div class="tabpanel"><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><rect x="10" y="10" width="200" height="70" rx="8" fill="rgba(10,22,54,.6)" stroke="#5ce1ff"/><path d="M30 45 h20 l6 -14 l12 28 l12 -28 l12 28 l6 -14 h22" fill="none" stroke="#5ce1ff" stroke-width="2"/><circle cx="150" cy="45" r="12" fill="none" stroke="#9d8cff" stroke-width="2"/><path d="M150 33 v-8 M150 57 v8 M138 45 h-8 M162 45 h8" stroke="#9d8cff" stroke-width="2"/><rect x="146" y="41" width="8" height="8" fill="#ff5fd2"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">circuito com junção Josephson</text></svg><h3>Supercondutores</h3><p class="small" style="color:var(--fg2)">Circuitos com junções Josephson resfriados a cerca de 15 mK. Portas em dezenas de nanossegundos. A tecnologia de IBM, Google, Rigetti, AWS, Fujitsu/RIKEN e da chinesa USTC.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>IBM, Google, Rigetti, AWS (cat qubits), Alice &amp; Bob, Fujitsu/RIKEN, USTC</dd><dt>Prós</dt><dd class="pro">Portas rápidas; fabricação em fábricas de semicondutores (IBM em wafers de 300 mm); ecossistema de software maduro</dd><dt>Contras</dt><dd class="con">Coerência curta (100 a 350 µs); só conecta vizinhos; criogenia pesada e dependente de hélio-3; fiação por qubit</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">105</div><div class="l">qubits no Google Willow; fidelidade de 2 qubits 99,88%</div><div class="s">Google, dez/2024</div></div><div class="stat"><div class="v vv">120</div><div class="l">qubits no IBM Nighthawk, T1 ~350 µs, até 5.000 portas de 2 qubits</div><div class="s">IBM, nov/2025</div></div><div class="stat"><div class="v m">108</div><div class="l">qubits no Rigetti Cepheus-1 (12 chiplets), fidelidade mediana 99,1%</div><div class="s">Rigetti, abr/2026</div></div></div></div></div>
+        <div class="tabpanel" hidden><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><rect x="10" y="22" width="200" height="8" rx="4" fill="#3a4e85"/><rect x="10" y="60" width="200" height="8" rx="4" fill="#3a4e85"/><g fill="#ff5fd2"><circle cx="50" cy="45" r="5"/><circle cx="80" cy="45" r="5"/><circle cx="110" cy="45" r="5"/><circle cx="140" cy="45" r="5"/><circle cx="170" cy="45" r="5"/></g><path d="M20 10 L110 45" stroke="#5ce1ff" stroke-width="1.5" opacity=".8"/><path d="M200 10 L140 45" stroke="#5ce1ff" stroke-width="1.5" opacity=".8"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">íons entre eletrodos, laser</text></svg><h3>Íons aprisionados</h3><p class="small" style="color:var(--fg2)">Átomos ionizados (bário, itérbio) presos por campos elétricos e manipulados por laser ou micro-ondas. As maiores fidelidades da indústria e conectividade total entre qubits.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>Quantinuum (Honeywell), IonQ (com Oxford Ionics e SkyWater), AQT</dd><dt>Prós</dt><dd class="pro">Fidelidade recorde (99,921% em 2 qubits); qubits idênticos por natureza; todos conversam com todos; 2 físicos por lógico em códigos simples</dd><dt>Contras</dt><dd class="con">Portas lentas (microssegundos a milissegundos); escalar íons por armadilha é difícil; dependência de lasers</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">98</div><div class="l">qubits no Quantinuum Helios; 48 lógicos totalmente corrigidos; 94 em estado GHZ</div><div class="s">Quantinuum, nov/2025</div></div><div class="stat"><div class="v vv">2²⁵</div><div class="l">volume quântico (~33 milhões), recorde da indústria, Quantinuum H2</div><div class="s">mai/2025</div></div><div class="stat"><div class="v m">256</div><div class="l">qubits a 99,99% é a meta do IonQ Superion 256 (entregas em 2027)</div><div class="s">IonQ, set/2026</div></div></div></div></div>
+        <div class="tabpanel" hidden><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><g fill="#9d8cff"><circle cx="40" cy="25" r="4"/><circle cx="40" cy="43" r="4"/><circle cx="40" cy="61" r="4"/><circle cx="60" cy="25" r="4"/><circle cx="60" cy="43" r="4"/><circle cx="60" cy="61" r="4"/><circle cx="80" cy="25" r="4"/><circle cx="80" cy="43" r="4"/><circle cx="80" cy="61" r="4"/><circle cx="100" cy="25" r="4"/><circle cx="100" cy="43" r="4"/><circle cx="100" cy="61" r="4"/><circle cx="120" cy="25" r="4"/><circle cx="120" cy="43" r="4"/><circle cx="120" cy="61" r="4"/><circle cx="140" cy="25" r="4"/><circle cx="140" cy="43" r="4"/><circle cx="140" cy="61" r="4"/><circle cx="160" cy="25" r="4"/><circle cx="160" cy="43" r="4"/><circle cx="160" cy="61" r="4"/><circle cx="180" cy="25" r="4"/><circle cx="180" cy="43" r="4"/><circle cx="180" cy="61" r="4"/></g><path d="M30 8 L60 25 M100 8 L120 25 M190 8 L160 25" stroke="#5ce1ff" stroke-width="1.5" opacity=".8"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">átomos em pinças ópticas</text></svg><h3>Átomos neutros</h3><p class="small" style="color:var(--fg2)">Átomos (rubídio, césio, estrôncio, itérbio) presos por "pinças ópticas" e emaranhados via estados de Rydberg. A tecnologia que escala a milhares de qubits num único sistema, sem criogenia.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>QuEra, Atom Computing (com Microsoft), Pasqal, Infleqtion, Caltech/Harvard; Google abriu programa em mar/2026</dd><dt>Prós</dt><dd class="pro">Milhares de qubits (6.100 na Caltech); reconfiguração dinâmica; coerência de segundos; sem refrigerador de diluição</dd><dt>Contras</dt><dd class="con">Perda de átomos; portas mais lentas; fidelidade ainda abaixo dos íons</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">6.100</div><div class="l">átomos em arranjo, coerência ~13 s, controle individual 99,98%</div><div class="s">Caltech, Nature, set/2025</div></div><div class="stat"><div class="v vv">48</div><div class="l">qubits lógicos em 280 átomos: primeiro processador lógico em átomos neutros (Bluvstein e colegas)</div><div class="s">Harvard/MIT/QuEra, Nature, fev/2024</div></div><div class="stat"><div class="v vv">&gt; 2 h</div><div class="l">operação contínua com 3.000 qubits, recarga de 300.000 átomos/s</div><div class="s">Harvard/MIT/QuEra, Nature, set/2025</div></div><div class="stat"><div class="v m">jun/2026</div><div class="l">primeira correção de erros completa com código tórico em átomos neutros</div><div class="s">Atom Computing</div></div></div></div></div>
+        <div class="tabpanel" hidden><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><rect x="10" y="10" width="200" height="70" rx="8" fill="rgba(10,22,54,.6)" stroke="#ff5fd2"/><path d="M20 30 C60 30 60 60 100 60 S140 30 200 30" fill="none" stroke="#ff5fd2" stroke-width="2"/><path d="M20 60 C60 60 60 30 100 30 S140 60 200 60" fill="none" stroke="#5ce1ff" stroke-width="2"/><circle cx="24" cy="30" r="3" fill="#fff"/><circle cx="24" cy="60" r="3" fill="#fff"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">fótons em guias de onda</text></svg><h3>Fotônica</h3><p class="small" style="color:var(--fg2)">Fótons como qubits, circuitos em fotônica de silício. Opera em temperaturas mais altas e usa fábricas de chips existentes; a dificuldade é que fótons se perdem e as portas são probabilísticas.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>PsiQuantum (GlobalFoundries), Xanadu, Quandela, USTC (Jiuzhang)</dd><dt>Prós</dt><dd class="pro">Fabricação em fundição; conectividade por fibra; menos criogenia (detectores supercondutores ainda precisam de frio)</dd><dt>Contras</dt><dd class="con">Perda de fótons; portas probabilísticas; nenhum resultado de propósito geral em escala ainda</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">US$ 1 bi</div><div class="l">Série E da PsiQuantum a US$ 7 bi de valuation, para sites em Brisbane e Chicago</div><div class="s">set/2025</div></div><div class="stat"><div class="v vv">3.050</div><div class="l">fótons no Jiuzhang 4.0 (amostragem bosônica, não computação geral)</div><div class="s">USTC, arXiv, ago/2025</div></div></div></div></div>
+        <div class="tabpanel" hidden><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><rect x="30" y="40" width="160" height="30" rx="4" fill="#1a2f66" stroke="#3a4e85"/><rect x="80" y="22" width="60" height="18" rx="3" fill="#3a4e85" stroke="#5ce1ff"/><circle cx="110" cy="55" r="6" fill="#4fe3a3"/><path d="M110 49 v-14 M106 39 l4 -5 l4 5" stroke="#4fe3a3" stroke-width="2" fill="none"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">spin de elétron num transistor</text></svg><h3>Spin em silício</h3><p class="small" style="color:var(--fg2)">O spin de um elétron preso num transistor. Fabricação CMOS de 300 mm e qubits minúsculos: potencial de milhões por chip. Ainda com poucos qubits demonstrados.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>Diraq, Quantum Motion, Silicon Quantum Computing, Intel, HRL (comprada pela IBM em jul/2026)</dd><dt>Prós</dt><dd class="pro">Processo de semicondutor padrão; densidade altíssima; temperatura um pouco mais alta que supercondutores</dd><dt>Contras</dt><dd class="con">Variabilidade entre dispositivos; poucos qubits demonstrados; integração de controle</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">8</div><div class="l">qubits de spin fabricados em processo CMOS 300 mm na imec, com fidelidades &gt; 99%</div><div class="s">Diraq, Nature Communications, jul/2026</div></div><div class="stat"><div class="v vv">Estágio C</div><div class="l">Diraq entre as seis finalistas da DARPA QBI, com até US$ 300 mi</div><div class="s">DARPA, out/2026</div></div></div></div></div>
+        <div class="tabpanel" hidden><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><path d="M30 25 C80 25 80 60 130 60 S180 25 200 25" fill="none" stroke="#5ce1ff" stroke-width="2.5"/><path d="M30 60 C80 60 80 25 130 25 S180 60 200 60" fill="none" stroke="#ff5fd2" stroke-width="2.5"/><path d="M30 42 h170" stroke="#9d8cff" stroke-width="2.5" opacity=".7"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">tranças de quasipartículas</text></svg><h3>Topológico</h3><p class="small" style="color:var(--fg2)">A aposta da Microsoft: qubits protegidos por propriedades topológicas da matéria (modos de Majorana), com erros intrinsecamente raros. A existência desses modos nos dispositivos segue contestada em revisão por pares.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>Microsoft (Majorana 1, fev/2025; Majorana 2, jun/2026)</dd><dt>Prós</dt><dd class="pro">Se funcionar, mais de 1 milhão de qubits num só chip, com pouca correção de erros</dd><dt>Contras</dt><dd class="con">Crítica revisada por pares na Nature (Legg, jun/2026) ao protocolo de detecção; nenhum qubit lógico demonstrado publicamente; avaliação independente pela DARPA em curso</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">2029</div><div class="l">meta da Microsoft para máquina em escala útil, antecipada de 2033</div><div class="s">Microsoft, jun/2026</div></div><div class="stat"><div class="v vv">50</div><div class="l">qubits lógicos no "Magne" (Atom Computing + Microsoft), previsto para 2027 na Dinamarca</div><div class="s">set/2026</div></div></div></div></div>
+        <div class="tabpanel" hidden><div class="mod"><div class="panel"><svg class="pict" viewBox="0 0 240 90" aria-hidden="true"><path d="M10 40 C30 10 50 70 70 50 S110 20 130 55 S170 25 210 60" fill="none" stroke="#5ce1ff" stroke-width="2"/><circle cx="52" cy="46" r="5" fill="#ffcf6e"/><circle cx="188" cy="52" r="5" fill="#ff5fd2"/><path d="M60 40 Q120 0 180 44" fill="none" stroke="#ffcf6e" stroke-width="1" stroke-dasharray="3 3"/><text x="120" y="84" text-anchor="middle" font-size="10" fill="#8fa0c6" font-family="monospace">paisagem de energia, busca do vale</text></svg><h3>Annealing (recozimento)</h3><p class="small" style="color:var(--fg2)">Não é modelo de portas. A máquina da D-Wave encontra mínimos de energia de um problema de otimização codificado em formato QUBO. Útil para uma classe específica de problemas; não é universal e não roda Shor.</p><dl style="margin-top:12px"><dt>Quem</dt><dd>D-Wave (Advantage2: mais de 4.400 qubits, topologia Zephyr)</dd><dt>Prós</dt><dd class="pro">Disponível comercialmente há mais de uma década; solvers híbridos em produção (Ford Otosan, Pattison)</dd><dt>Contras</dt><dd class="con">Nenhuma vantagem demonstrada sobre bons solvers clássicos em otimização; alegação de "supremacia" (Science, mar/2025) foi em simulação de física e foi contestada</dd></dl></div>
+          <div class="stack"><div class="stat"><div class="v c">4.400+</div><div class="l">qubits no Advantage2, 12,5 kW de potência</div><div class="s">D-Wave, mai/2025</div></div><div class="stat"><div class="v vv">US$ 3,1 mi</div><div class="l">receita trimestral da D-Wave no 2º tri de 2026</div><div class="s">Constellation, ago/2026</div></div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="erros" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Correção de erros · interativo</span><h2>O limiar: por que 2024 foi o ano da virada</h2>
+        <p class="lead">Um qubit lógico é feito de muitos físicos, dispostos num código (o mais comum é o código de superfície). A regra é contraintuitiva: se a taxa de erro física está acima de um limiar (cerca de 1%), juntar mais qubits piora o resultado. Abaixo do limiar, cada aumento de "distância" do código reduz o erro lógico exponencialmente. O Google demonstrou isso de forma definitiva no Willow (dez/2024): grades 3×3, 5×5 e 7×7, com o erro caindo pela metade a cada degrau.</p></div>
+      <div class="panel">
+        <div class="k">Brinque com um código de distância 5</div>
+        <div class="sc">
+          <div><div class="sc-grid" id="sc-grid" aria-label="Grade de qubits de dados e verificadores de paridade"></div></div>
+          <div class="stack">
+            <p class="small" style="color:var(--fg2)">Os círculos são 25 qubits físicos de dados; os quadrados são verificadores que medem a paridade dos quatro vizinhos sem ler o valor de nenhum deles. Toque num círculo para introduzir um erro. Os verificadores ao redor acendem: isso é a síndrome, a única informação que o decodificador recebe.</p>
+            <div class="sc-msg" id="sc-msg">Nenhum erro. Todos os verificadores em paridade par.</div>
+            <div class="row"><button class="btn sm primary" id="sc-decode">Decodificar e corrigir</button><button class="btn sm ghost" id="sc-chain">Mostrar uma cadeia invisível</button><button class="btn sm ghost" id="sc-clear">Limpar</button></div>
+            <p class="small muted">Até 2 erros, a síndrome aponta a correção sem ambiguidade. Uma cadeia de 5 erros atravessando a grade deixa todos os verificadores apagados: é um erro lógico, invisível. Por isso a distância do código (aqui 5) decide quantos erros ele tolera, e por isso os roadmaps falam em distância 7, 9 ou mais.</p>
+          </div>
+        </div>
+      </div>
+      <div class="panel holo">
+        <div class="grid2">
+          <div class="stack">
+            <div class="ctl"><label for="perr">Erro físico por porta <output id="perr-o">0,30%</output></label><input type="range" id="perr" min="5" max="200" value="30"></div>
+            <div class="ctl"><label for="dist">Distância do código (d) <output id="dist-o">7</output></label><input type="range" id="dist" min="3" max="25" step="2" value="7"></div>
+            <div class="ec-out">
+              <div class="stat"><div class="v c" id="ec-l">—</div><div class="l">erro lógico por ciclo (modelo p_L ≈ 0,1·(p/p_th)^((d+1)/2))</div></div>
+              <div class="stat"><div class="v vv" id="ec-q">—</div><div class="l">qubits físicos por lógico (2d² − 1)</div></div>
+              <div class="stat"><div class="v m" id="ec-k">—</div><div class="l">qubits físicos para 1.000 lógicos</div></div>
+            </div>
+            <p class="small muted" id="ec-msg"></p>
+          </div>
+          <div><div class="chart" id="ec-chart-wrap"><canvas id="ec-chart"></canvas></div><p class="src" style="margin-top:6px">Modelo didático com limiar de 1%, calibrado pela escala dos resultados do Google (Nature, dez/2024). Valores reais dependem do código e do decodificador.</p></div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><h3>Código de superfície vs. qLDPC</h3><p class="small" style="color:var(--fg2)">O código de superfície precisa de cerca de 1.000 físicos por lógico em escala útil e só conecta vizinhos. Códigos qLDPC (o "gross code" da IBM, publicado por Bravyi e colegas na Nature em 2024) cortam o overhead em cerca de 90%, mas exigem conexões de longo alcance (os "c-couplers" do chip Loon) e decodificação rápida. É a aposta que sustenta o IBM Starling (200 lógicos em 2029).</p></div>
+        <div class="panel"><h3>Razões físico/lógico hoje</h3><div class="bar-list" style="margin-top:8px">
+          <div class="bl"><span class="t">Quantinuum Helios (2025)</span><div class="b" style="width:2%"></div><span class="v">2 : 1</span></div>
+          <div class="bl"><span class="t">AWS Ocelot (cat qubits)</span><div class="b" style="width:9%"></div><span class="v">9 : 1</span></div>
+          <div class="bl"><span class="t">IonQ meta 2027</span><div class="b" style="width:12%"></div><span class="v">12 : 1</span></div>
+          <div class="bl"><span class="t">Google Willow (2024)</span><div class="b" style="width:60%"></div><span class="v">105 : 1</span></div>
+          <div class="bl"><span class="t">Surface code em escala (Gidney)</span><div class="b" style="width:100%"></div><span class="v">~700 : 1</span></div>
+        </div><p class="src" style="margin-top:8px">Razões baixas valem para códigos de distância pequena (detecção e correção limitadas); a comparação justa é por erro lógico alcançado.</p></div>
+      </div>
+      <div class="note g"><span class="k">Estados mágicos, o último gargalo</span>Portas universais exigem "estados T", que até 2026 consumiriam 90% a 95% da máquina em destilação. Em 15/10/2026 o Google publicou na Science o cultivo desses estados no Willow com fidelidade 99,99%, numa região pequena do chip. É a técnica assumida nas estimativas de quebra de RSA; o resultado valida as premissas dos prazos.</div>
+    </div>
+  </section>
+
+  <section class="section" id="algoritmos" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Algoritmos</span><h2>O que cada algoritmo faz e o que exige</h2><p class="lead">Barras indicam maturidade prática em 2026 (de 1, só teoria, a 5, vantagem demonstrada).</p></div>
+      <div class="grid3">
+        <div class="panel algo"><h3>Shor</h3><div class="mat"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p class="small" style="color:var(--fg2)">Fatoração e logaritmo discreto. Quebra RSA, ECC, DH. Exige máquina tolerante a falhas com centenas de milhares a 1 milhão de qubits físicos. Ainda não executado em escala, mas é o algoritmo que define os prazos regulatórios.</p><span class="chip r">ameaça criptográfica</span></div>
+        <div class="panel algo"><h3>Simulação quântica</h3><div class="mat"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p class="small" style="color:var(--fg2)">Química, materiais, magnetismo. Todas as alegações de vantagem de 2025 e 2026 estão aqui: Google OTOC, IBM/RIKEN ferro-enxofre, Qedma Ising, D-Wave vidros de spin. Valor de negócio em farma, químicos e energia.</p><span class="chip g">vantagem alegada</span></div>
+        <div class="panel algo"><h3>Amostragem</h3><div class="mat"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p class="small" style="color:var(--fg2)">Gerar distribuições que o clássico não consegue (Sycamore 2019, Quantum Echoes 2025). Uso prático: aleatoriedade certificada (JPMorgan + Quantinuum, Nature, mar/2025).</p><span class="chip g">demonstrado</span></div>
+        <div class="panel algo"><h3>QAOA / VQE (híbridos variacionais)</h3><div class="mat"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p class="small" style="color:var(--fg2)">Otimização e química em máquinas ruidosas, com um otimizador clássico no laço. Usáveis hoje em pilotos (Deutsche Bahn + IQM, 2026), sem vantagem comprovada. Para Max-kXOR, heurísticas clássicas igualam ou superam (arXiv 2411.19388).</p><span class="chip a">piloto, sem vantagem</span></div>
+        <div class="panel algo"><h3>Grover</h3><div class="mat"><i class="on"></i><i></i><i></i><i></i><i></i></div><p class="small" style="color:var(--fg2)">Busca não estruturada com ganho √N. Com o custo da correção de erros, ganhos quadráticos raramente compensam (Hoefler, Häner, Troyer, CACM 2023). Contra AES só obriga chaves maiores.</p><span class="chip">teoria</span></div>
+        <div class="panel algo"><h3>HHL e álgebra linear / QML</h3><div class="mat"><i class="on"></i><i></i><i></i><i></i><i></i></div><p class="small" style="color:var(--fg2)">Sistemas lineares e aprendizado de máquina. Exigem carregar e ler dados de forma eficiente, o que raramente é possível; vários candidatos foram "desquantizados" por algoritmos clássicos (Ewin Tang, 2018).</p><span class="chip">teoria, contestado</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="annealing" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Dois modelos</span><h2>Annealing vs. modelo de portas</h2></div>
+      <div class="vs">
+        <div class="panel"><h3>Annealing (D-Wave)</h3><ul style="margin:8px 0 0;padding-left:1.1em;color:var(--fg2);font-size:.95rem;display:grid;gap:6px"><li>Resolve só otimização em formato QUBO/Ising.</li><li>Não é universal: não roda Shor, não simula química geral.</li><li>Comercial há mais de dez anos; milhares de qubits de baixa qualidade.</li><li>Em produção via solvers híbridos (o ganho vem da parte clássica e da modelagem).</li><li>Comparação direta com solvers em GPU: o clássico segue mais rápido (arXiv 2509.03952).</li></ul></div>
+        <div class="panel"><h3>Modelo de portas (todos os demais)</h3><ul style="margin:8px 0 0;padding-left:1.1em;color:var(--fg2);font-size:.95rem;display:grid;gap:6px"><li>Universal: qualquer algoritmo quântico, inclusive Shor.</li><li>Programado por circuitos (capítulo 01).</li><li>Frágil: exige correção de erros para programas longos.</li><li>Onde estão todos os roadmaps de tolerância a falhas (2028 a 2033).</li><li>Onde estão as alegações de vantagem de 2025 e 2026.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="hibrido" data-level="tecnica">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Arquitetura real</span><h2>Híbrido: a QPU como acelerador do supercomputador</h2>
+        <p class="lead">O padrão de uso que já existe: o computador clássico faz a maior parte do trabalho e chama a QPU para a sub-rotina em que ela ajuda. Exemplos de 2026: IBM Heron de 77 qubits acoplado aos 152.064 nós do Fugaku (RIKEN); Quantinuum Helios na Oracle Cloud ao lado de GPUs GB200; QuEra no ABCI-Q; Pasqal no Jülich. A McKinsey resume: "a maior parte das cargas seguirá híbrida".</p></div>
+      <div class="panel">
+        <div class="k">O laço híbrido, como roda na prática</div>
+        <svg class="hyb" viewBox="0 0 760 230" role="img" aria-label="Diagrama do fluxo híbrido entre computador clássico e QPU">
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#5ce1ff"/></marker></defs>
+          <rect x="20" y="40" width="210" height="150" rx="12" fill="rgba(10,22,54,.6)" stroke="#9d8cff"/>
+          <text x="125" y="62" text-anchor="middle" font-weight="700">Computador clássico</text><text x="125" y="78" text-anchor="middle" class="m">CPU, GPU, supercomputador</text>
+          <text x="125" y="98" text-anchor="middle" class="m">prepara dados e o modelo</text>
+          <text x="125" y="114" text-anchor="middle" class="m">escolhe parâmetros do circuito</text>
+          <text x="125" y="130" text-anchor="middle" class="m">pós-processa e mitiga erros</text>
+          <text x="125" y="146" text-anchor="middle" class="m">decide o próximo passo</text>
+          <text x="125" y="174" text-anchor="middle" class="m">99% do tempo de máquina</text>
+          <rect x="530" y="40" width="210" height="150" rx="12" fill="rgba(10,22,54,.6)" stroke="#5ce1ff"/>
+          <text x="635" y="66" text-anchor="middle" font-weight="700">QPU (acelerador quântico)</text>
+          <text x="635" y="92" text-anchor="middle" class="m">executa o circuito</text>
+          <text x="635" y="110" text-anchor="middle" class="m">milhares de "shots"</text>
+          <text x="635" y="128" text-anchor="middle" class="m">devolve uma distribuição</text>
+          <text x="635" y="146" text-anchor="middle" class="m">só na sub-rotina em que ajuda</text>
+          <text x="635" y="174" text-anchor="middle" class="m">segundos a minutos por chamada</text>
+          <path class="flow" d="M235 85 H520" stroke="#5ce1ff" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+          <text x="378" y="76" text-anchor="middle">circuito parametrizado</text>
+          <path class="flow" d="M525 150 H240" stroke="#ff5fd2" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+          <text x="378" y="170" text-anchor="middle">contagens dos shots</text>
+          <text x="378" y="118" text-anchor="middle" class="m">repete até convergir</text>
+          <text x="380" y="215" text-anchor="middle" class="m">Exemplos reais: Heron + Fugaku (RIKEN), Helios + GPUs GB200 (Oracle Cloud), QuEra + ABCI-Q, Pasqal + Jülich</text>
+        </svg>
+      </div>
+      <div class="grid3">
+        <div class="panel"><div class="k">Recomendação 1</div><h3>Identificar subproblemas quânticos</h3><p class="small" style="color:var(--fg2)">Dentro de um fluxo de HPC ou de otimização, qual etapa tem estrutura explorável (simulação, amostragem)? O resto fica clássico.</p></div>
+        <div class="panel"><div class="k">Recomendação 2</div><h3>Planejar fluxos híbridos</h3><p class="small" style="color:var(--fg2)">Middleware (Qiskit, CUDA-Q, NVQLink) para orquestrar CPU, GPU e QPU. É engenharia de software convencional, aprendível por equipes de dados.</p></div>
+        <div class="panel"><div class="k">Recomendação 3</div><h3>Treinar quem já faz HPC e otimização</h3><p class="small" style="color:var(--fg2)">As pessoas que modelam problemas de otimização hoje são as mesmas que vão usar QPUs. Formar 2 a 5 delas custa pouco e cria a capacidade de julgar fornecedores.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="naofaz" data-level="conceito">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Limites</span><h2>O que o computador quântico não faz</h2></div>
+      <div class="grid2">
+        <div class="panel"><ul style="margin:0;padding-left:1.1em;color:var(--fg2);font-size:.95rem;display:grid;gap:8px"><li><b>Não acelera tudo.</b> A maioria das tarefas de TI (bancos de dados, ERP, web, vídeo) não tem estrutura quântica explorável.</li><li><b>Não substitui CPU e GPU.</b> É acelerador para sub-rotinas específicas.</li><li><b>Não resolve problemas NP-completos em tempo polinomial.</b> Otimização difícil continua difícil; o ganho, quando existe, é parcial.</li><li><b>Não dá resposta determinística.</b> O resultado é uma distribuição; precisa de repetição e verificação.</li></ul></div>
+        <div class="panel"><ul style="margin:0;padding-left:1.1em;color:var(--fg2);font-size:.95rem;display:grid;gap:8px"><li><b>Não copia estados</b> (teorema da não clonagem), o que limita backup, depuração e algumas arquiteturas.</li><li><b>Não armazena big data.</b> Carregar dados clássicos num estado quântico é lento; algoritmos que dependem disso raramente compensam.</li><li><b>Não é "IA quântica" ainda.</b> Krista Svore (NVIDIA): a computação quântica é "uma extensão da IA" no sentido de alimentar modelos, mas QAOA/QSVM seguem "sem vantagem prática comprovada" (MIT Tech Review Brasil, dez/2025).</li><li><b>Não é rápido em tudo que tem "quantum" no nome.</b> "Quantum-inspired" é software clássico; QRNG é gerador de números aleatórios, não criptografia.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="recap">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Em resumo</span><h2>O que levar deste capítulo</h2></div>
+      <ol class="recap"><li>Nenhuma tecnologia venceu: íons lideram em fidelidade, átomos em escala, supercondutores em velocidade e ecossistema.</li><li>Abaixo de ~1% de erro físico, mais qubits reduzem o erro lógico; o Google demonstrou isso em dez/2024 e os códigos qLDPC cortam o custo.</li><li>A QPU é um acelerador chamado por sub-rotinas dentro de um fluxo clássico; a maior parte das cargas seguirá híbrida.</li></ol>
+    </div>
+  </section>
+
+  <section class="section" id="quiz">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">Teste rápido</span><h2>Verifique o que ficou</h2></div>
+      <div data-quiz><script type="application/json">[
+        {"q":"O que acontece se a taxa de erro física está acima do limiar e você aumenta a distância do código?","o":["O erro lógico cai","O erro lógico sobe","Nada muda","A máquina esquenta"],"a":1,"e":"Acima do limiar, mais qubits físicos introduzem mais erros do que corrigem. Por isso só depois de qubits com erro abaixo de ~1% a correção passou a funcionar (Google, dez/2024)."},
+        {"q":"Qual tecnologia tem hoje a maior fidelidade de porta de 2 qubits?","o":["Supercondutores","Íons aprisionados","Fotônica","Annealing"],"a":1,"e":"Quantinuum Helios: 99,921% (nov/2025). Supercondutores estão em torno de 99,8% a 99,9%."},
+        {"q":"Qual afirmação sobre annealing (D-Wave) é correta?","o":["Roda o algoritmo de Shor","É universal","Resolve apenas otimização em formato QUBO/Ising","Já demonstrou vantagem em logística"],"a":2,"e":"Annealing é especializado em otimização em formato específico. Sua alegação de 'supremacia' (2025) foi em simulação de física e foi contestada."},
+        {"q":"Onde estão todas as alegações de vantagem quântica de 2025 e 2026?","o":["Otimização de rotas","Finanças","Simulação de física e amostragem","Aprendizado de máquina"],"a":2,"e":"Google Quantum Echoes (OTOC), IBM/RIKEN (clusters ferro-enxofre), Qedma (Ising), D-Wave (vidros de spin). Nada em otimização de negócio."},
+        {"q":"O que é o modelo híbrido HPC + QPU?","o":["Dois computadores quânticos ligados","A QPU como acelerador de sub-rotinas dentro de um fluxo clássico","Um supercomputador resfriado a 15 mK","Um simulador"],"a":1,"e":"É o padrão real de uso: Heron + Fugaku, Helios + Oracle Cloud. O clássico faz a maior parte; a QPU entra onde tem vantagem."}
+      ]</script></div>
+    </div>
+  </section>
+</div>
+</main>
+<div class="wrap" id="site-pager"></div>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+QB.onReady = function(){
+  // surface-code toy
+  (function(){
+    var g=document.getElementById("sc-grid"); if(!g) return;
+    var N=5, err=[]; for(var i=0;i<N*N;i++) err.push(false);
+    var h=""; for(var r=0;r<9;r++){ for(var c=0;c<9;c++){
+      if(r%2===0&&c%2===0){ var i=(r/2)*N+(c/2); h+='<div class="dq"><button type="button" data-i="'+i+'" aria-pressed="false" aria-label="qubit de dados '+(i+1)+'"></button></div>'; }
+      else if(r%2===1&&c%2===1){ h+='<div class="pq"><i data-p="'+((r-1)/2)+'-'+((c-1)/2)+'"></i></div>'; }
+      else if(r%2===0){ h+='<div class="ln"></div>'; } else { h+='<div class="ln v"></div>'; }
+    } }
+    g.innerHTML=h;
+    function upd(){ var n=0, lit=0; err.forEach(function(e){ if(e) n++; });
+      for(var pr=0;pr<N-1;pr++) for(var pc=0;pc<N-1;pc++){ var par=(err[pr*N+pc]?1:0)+(err[pr*N+pc+1]?1:0)+(err[(pr+1)*N+pc]?1:0)+(err[(pr+1)*N+pc+1]?1:0); var el=g.querySelector('[data-p="'+pr+'-'+pc+'"]'); var on=par%2===1; el.classList.toggle("on",on); if(on) lit++; }
+      g.querySelectorAll("button").forEach(function(b){ b.setAttribute("aria-pressed", err[+b.getAttribute("data-i")]?"true":"false"); });
+      var m=document.getElementById("sc-msg");
+      if(n===0) m.textContent="Nenhum erro. Todos os verificadores em paridade par.";
+      else if(lit===0) m.textContent=n+" erros e nenhum verificador aceso: erro lógico invisível. A cadeia atravessou o código sem deixar síndrome.";
+      else if(n<=2) m.textContent=n+" erro"+(n>1?"s":"")+", "+lit+" verificador"+(lit>1?"es":"")+" aceso"+(lit>1?"s":"")+". A síndrome aponta a correção sem ambiguidade.";
+      else m.textContent=n+" erros, "+lit+" verificadores acesos. Acima de 2 erros o decodificador pode escolher a correção errada e criar um erro lógico.";
+    }
+    g.addEventListener("click", function(e){ var b=e.target.closest("button"); if(!b) return; var i=+b.getAttribute("data-i"); err[i]=!err[i]; upd(); });
+    document.getElementById("sc-clear").addEventListener("click", function(){ err=err.map(function(){return false;}); upd(); });
+    document.getElementById("sc-chain").addEventListener("click", function(){ err=err.map(function(){return false;}); for(var c=0;c<N;c++) err[2*N+c]=true; upd(); });
+    document.getElementById("sc-decode").addEventListener("click", function(){ var n=err.filter(Boolean).length; var lit=g.querySelectorAll(".pq i.on").length; var m=document.getElementById("sc-msg"); if(n===0){ m.textContent="Nada a corrigir."; return; } if(lit===0){ m.textContent="O decodificador não vê nada para corrigir: o erro lógico passou. Só um código de distância maior evitaria isso."; return; } if(n<=2){ err=err.map(function(){return false;}); upd(); m.textContent="Corrigido: a síndrome identificou os qubits com erro e o decodificador os desfez, sem nunca ler o estado lógico."; } else { err=err.map(function(){return false;}); upd(); m.textContent="Corrigido neste caso, mas com "+n+" erros em distância 5 a correção já é uma aposta; em hardware real parte dessas apostas falha."; } });
+    upd();
+  })();
+  var pe=document.getElementById("perr"), dd=document.getElementById("dist"), pth=0.01, chart;
+  function pl(p,d){ return 0.1*Math.pow(p/pth,(d+1)/2); }
+  function fmtP(x){ if(x>=0.01) return (x*100).toFixed(1).replace(".",",")+"%"; return x.toExponential(1).replace(".",",").replace("e-","×10⁻"); }
+  function upd(){ var p=+pe.value/10000, d=+dd.value; document.getElementById("perr-o").textContent=(p*100).toFixed(2).replace(".",",")+"%"; document.getElementById("dist-o").textContent=d;
+    var L=pl(p,d), q=2*d*d-1; document.getElementById("ec-l").textContent=fmtP(Math.min(1,L)); document.getElementById("ec-q").textContent=q.toLocaleString("pt-BR"); document.getElementById("ec-k").textContent=(q*1000).toLocaleString("pt-BR");
+    var msg = p>=pth ? "Acima do limiar: aumentar d só piora. Foi o estado da arte até 2023." : (L<1e-6 ? "Abaixo de 10⁻⁶: faixa dos roadmaps de tolerância a falhas (Quantinuum Sol: 10⁻⁵; QuEra Libra: 10⁻⁶)." : "Abaixo do limiar: cada +2 em d reduz o erro lógico por um fator ~"+(pth/p).toFixed(1).replace(".",",")+". Google Willow operava perto de p = 0,1%.");
+    document.getElementById("ec-msg").textContent=msg;
+    var ds=[3,5,7,9,11,13,15,17,19,21,23,25];
+    var series=[[0.001,"p = 0,1% (Willow)"],[0.003,"p = 0,3%"],[0.007,"p = 0,7%"],[0.012,"p = 1,2% (acima do limiar)"]];
+    var data=series.map(function(s,i){ return {label:s[1], data:ds.map(function(x){return Math.min(1,pl(s[0],x));}), borderColor:QB.pal[i], backgroundColor:QB.pal[i], borderWidth:2, pointRadius:3, tension:.2}; });
+    data.push({label:"sua configuração", data:ds.map(function(x){return Math.min(1,pl(p,x));}), borderColor:"#ffffff", backgroundColor:"#fff", borderWidth:2, borderDash:[5,4], pointRadius:0});
+    if(chart){ chart.data.datasets=data; chart.update(); return; }
+    chart = QB.chart("ec-chart",{type:"line", data:{labels:ds, datasets:data}, options:{scales:{y:{type:"logarithmic", min:1e-12, max:1, title:{display:true,text:"erro lógico por ciclo"}, ticks:{callback:function(v){ var e=Math.log10(v); return Number.isInteger(e)&&e%2===0?"10^"+e:""; }}}, x:{title:{display:true,text:"distância do código (d)"}}}, plugins:{legend:{position:"bottom"}}}});
+  }
+  pe.addEventListener("input",upd); dd.addEventListener("input",upd); upd();
+};
+</script>
+</body>
+</html>
