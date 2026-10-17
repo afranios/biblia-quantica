@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Animação 3D holográfica em 15 capítulos: o bonequinho explica física quântica e computação quântica, narrado em português.">
+<title>O Bonequinho Quântico · Bíblia Quântica</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;600&display=swap">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  [hidden]{display:none!important}
+  img{max-width:100%}
+  /* Layout: full-bleed 3D stage, chapter header pinned top, subtitles + transport pinned bottom. Single dark holographic look by choice. */
+  :root{
+    --bg:#040712; --fg:#dfe9ff; --dim:#7f8fb3;
+    --cyan:#4ef0ff; --magenta:#ff5fd2; --gold:#ffd166; --green:#55e39a;
+    --panel:rgba(6,10,26,.72); --line:rgba(78,240,255,.28);
+    --display:'Sora',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,Menlo,monospace;
+    color-scheme:dark;
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--display);overflow:hidden;
+    padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+  #stage{position:fixed;inset:0;display:block;width:100%;height:100%}
+  #stage canvas{display:block;width:100%;height:100%}
+  .scan{position:fixed;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(78,240,255,.035) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
+  .vignette{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,transparent 55%,rgba(4,7,18,.85) 100%)}
+
+  .hud{position:fixed;left:0;right:0;pointer-events:none;
+    padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .top{top:0;padding-top:calc(env(safe-area-inset-top,0px) + 14px);display:flex;flex-direction:column;gap:6px}
+  .back{pointer-events:auto;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;width:fit-content}
+  .back:hover{color:var(--cyan)}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);opacity:.85}
+  .chtitle{font-weight:600;font-size:clamp(17px,2.6vw,24px);text-wrap:balance;text-shadow:0 0 18px rgba(78,240,255,.35)}
+  .bar{height:2px;background:rgba(255,255,255,.08);border-radius:2px;max-width:420px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--magenta));transition:width .4s linear}
+
+  .bottom{bottom:0;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 12px);display:flex;flex-direction:column;gap:10px;align-items:stretch}
+  .sub{pointer-events:auto;align-self:center;max-width:min(680px,100%);min-width:0;background:var(--panel);
+    border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:clamp(15px,2.2vw,19px);line-height:1.45;
+    backdrop-filter:blur(8px);box-shadow:0 0 30px rgba(78,240,255,.12);text-align:center;min-height:2.9em;display:flex;align-items:center;justify-content:center}
+  .sub.quiet{opacity:.55}
+  .controls{pointer-events:auto;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  button{font:600 13px var(--display);color:var(--fg);background:rgba(10,16,38,.85);border:1px solid var(--line);
+    border-radius:999px;padding:9px 14px;cursor:pointer;min-width:44px;min-height:40px;transition:background .15s,border-color .15s}
+  button:hover{background:rgba(78,240,255,.14)} button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+  button.on{border-color:var(--cyan);box-shadow:0 0 14px rgba(78,240,255,.35)}
+  button[disabled]{opacity:.4;cursor:default}
+
+  #intro{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(4,7,18,.78);
+    backdrop-filter:blur(6px);z-index:20;padding:16px}
+  .card{max-width:440px;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px 22px;
+    box-shadow:0 0 60px rgba(78,240,255,.15);text-align:center;display:flex;flex-direction:column;gap:14px}
+  .card h1{margin:0;font-size:26px;font-weight:600;letter-spacing:-.01em}
+  .card p{margin:0;color:var(--dim);font-size:14px;line-height:1.5}
+  .card .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .card button.primary{background:linear-gradient(90deg,rgba(78,240,255,.25),rgba(255,95,210,.25));border-color:var(--cyan)}
+  .mono{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.06em}
+
+  #menu{position:fixed;inset:0;z-index:15;background:rgba(4,7,18,.86);backdrop-filter:blur(6px);overflow:auto;
+    padding:calc(env(safe-area-inset-top,0px) + 20px) max(16px,env(safe-area-inset-right,0px)) 30px max(16px,env(safe-area-inset-left,0px))}
+  #menu .list{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:6px}
+  #menu h2{font-size:14px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin:18px 0 6px}
+  #menu .it{display:flex;gap:12px;align-items:center;text-align:left;border-radius:12px;padding:10px 14px;min-height:48px}
+  #menu .it b{font-family:var(--mono);font-size:12px;color:var(--magenta);min-width:28px}
+  #menu .it.cur{border-color:var(--magenta)}
+  .opts{display:flex;flex-direction:column;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
+  .opts label{display:flex;gap:10px;align-items:center;min-height:28px}
+  .opts .selrow{flex-wrap:wrap} .opts select{font:13px var(--display);color:var(--fg);background:rgba(10,16,38,.9);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:100%;min-width:0;flex:1}
+  .close{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(16px,env(safe-area-inset-right,0px))}
+
+  #card{position:fixed;left:0;right:0;top:38%;text-align:center;pointer-events:none;opacity:0;transition:opacity .6s;
+    padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  #card.show{opacity:1}
+  #card .k{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--magenta)}
+  #card .t{font-size:clamp(24px,5vw,44px);font-weight:600;text-shadow:0 0 30px rgba(78,240,255,.5);text-wrap:balance}
+
+  @media (prefers-reduced-motion:reduce){ .bar i{transition:none} #card{transition:none} }
+</style>
+
+</head>
+<body>
+<div id="stage"></div>
+<div class="scan"></div>
+<div class="vignette"></div>
+
+<div class="hud top">
+  <a class="back" href="../">← Bíblia Quântica</a>
+  <div class="eyebrow" id="part">Parte 1 · Física quântica</div>
+  <div class="chtitle" id="chname">Abertura</div>
+  <div class="bar"><i id="prog"></i></div>
+</div>
+
+<div id="card"><div class="k" id="cardk"></div><div class="t" id="cardt"></div></div>
+
+<div class="hud bottom">
+  <div class="sub quiet" id="sub">Toque em Iniciar para começar a jornada.</div>
+  <div class="controls">
+    <button id="bPrev" title="Capítulo anterior">◀</button>
+    <button id="bPlay" title="Reproduzir ou pausar">Pausar</button>
+    <button id="bNext" title="Próximo capítulo">▶</button>
+    <button id="bVoice" class="on" title="Alternar a narração">Voz: gravada</button>
+    <button id="bMenu" title="Capítulos">Capítulos</button>
+  </div>
+</div>
+
+<div id="intro">
+  <div class="card">
+    <div class="mono">HOLOGRAMA · 15 CAPÍTULOS · PT-BR</div>
+    <h1>O Bonequinho Quântico</h1>
+    <p>O bonequinho explica, passo a passo, a física do muito pequeno e como ela vira um computador quântico. A narração é gravada com voz masculina em português; as legendas aparecem sempre. Deixe o som do aparelho ligado.</p>
+    <div class="row">
+      <button class="primary" id="startVoice">Iniciar com narração</button>
+      <button id="startMute">Só legendas</button>
+    </div>
+    <div class="mono" id="voiceInfo">voz gravada: masculina, pt-BR</div>
+  </div>
+</div>
+
+<div id="menu" hidden>
+  <button class="close" id="bClose">Fechar</button>
+  <div class="list">
+    <h2>Narração</h2>
+    <div class="opts">
+      <label><input type="radio" name="mode" id="mode_audio" value="audio" checked> Voz gravada (masculina, pt-BR)</label>
+      <label><input type="radio" name="mode" id="mode_browser" value="browser"> Voz do aparelho</label>
+      <label><input type="radio" name="mode" id="mode_off" value="off"> Sem voz, só legendas</label>
+      <label class="selrow">Voz do aparelho <select id="voiceSel"></select></label>
+    </div>
+  </div>
+  <div class="list" id="menuList"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+// ───────────────────────── ROTEIRO ─────────────────────────
+const CH = [
+ {part:'Abertura', title:'Oi, eu sou o bonequinho', demo:'intro', lines:[
+  'Oi! Eu sou o bonequinho do Afranio. Hoje eu vou te mostrar, passo a passo, como funciona um computador quântico.',
+  'Não precisa saber nada de física antes. A gente vai construir a ideia aos poucos, começando pelo mundo muito pequeno.',
+  'Vem comigo.']},
+ {part:'Parte 1 · Física quântica', title:'O mundo muito pequeno', demo:'cloud', lines:[
+  'Tudo o que a gente vê no dia a dia segue regras bem conhecidas. Uma bola está aqui ou ali, parada ou em movimento. Nunca as duas coisas ao mesmo tempo.',
+  'Quando a gente desce para o tamanho de um átomo ou de um elétron, essas regras param de funcionar.',
+  'Lá embaixo, as partículas se comportam como ondas espalhadas. A bola vira uma nuvem de possibilidades.',
+  'Esse mundo é descrito pela mecânica quântica. E a gente precisa de quatro ideias dela: superposição, medição, interferência e emaranhamento.']},
+ {part:'Parte 1 · Física quântica', title:'Superposição', demo:'coin', lines:[
+  'Primeira ideia: superposição. Pensa numa moeda girando no ar. Enquanto gira, ela não é cara nem coroa. Ela carrega as duas possibilidades ao mesmo tempo.',
+  'Uma partícula quântica faz algo parecido. Ela pode estar numa combinação de dois estados, com uma quantidade de cada um.',
+  'Essa quantidade se chama amplitude. E a amplitude não é só um número comum: ela tem tamanho e também fase, como uma seta apontando em alguma direção.',
+  'Guarda essa seta. A fase é o segredo de tudo o que vem depois.']},
+ {part:'Parte 1 · Física quântica', title:'Medição', demo:'measure', lines:[
+  'Segunda ideia: medição. Enquanto ninguém olha, a nuvem de possibilidades existe inteira.',
+  'Quando a gente mede, a natureza escolhe um único resultado. A nuvem desaparece e sobra um ponto.',
+  'A chance de cada resultado é o tamanho da amplitude elevado ao quadrado. Amplitude grande, resultado provável. Amplitude pequena, resultado raro.',
+  'E não dá para espiar sem perturbar. Medir muda o sistema. Isso vai ser uma limitação e também uma proteção.']},
+ {part:'Parte 1 · Física quântica', title:'Interferência', demo:'slits', lines:[
+  'Terceira ideia: interferência. Ondas se somam. Crista com crista fica mais alto. Crista com vale se cancela.',
+  'Como as amplitudes são setas, dois caminhos para o mesmo resultado podem se reforçar ou se anular, dependendo da fase.',
+  'No famoso experimento das duas fendas, cada partícula passa pelas duas fendas em superposição, e os caminhos interferem. O resultado é um padrão de listras.',
+  'Isso é o que um computador quântico explora: fazer os caminhos errados se cancelarem e os caminhos certos se reforçarem.']},
+ {part:'Parte 1 · Física quântica', title:'Emaranhamento', demo:'entangle', lines:[
+  'Quarta ideia: emaranhamento. Duas partículas podem ser preparadas de um jeito que o estado de uma só faz sentido junto com o da outra.',
+  'Separa as duas, uma aqui e outra do outro lado da galáxia. Mede a primeira. No mesmo instante, o resultado da segunda fica definido.',
+  'Não é mensagem viajando mais rápido que a luz. É uma correlação que já estava combinada no estado conjunto. Mas é uma correlação impossível no mundo clássico.',
+  'Para a computação, o emaranhamento é o que permite que muitos qubits formem um único estado gigante, em vez de vários estados separados.']},
+ {part:'Parte 2 · Computação quântica', title:'Bit e qubit', demo:'qubit', lines:[
+  'Agora vamos para o computador. Um bit clássico é um interruptor: zero ou um. Só isso.',
+  'Um qubit é um sistema quântico de dois níveis. Ele pode ser zero, um, ou uma superposição dos dois, com amplitudes e fases.',
+  'A gente desenha o estado de um qubit como uma seta dentro de uma esfera: a esfera de Bloch. Polo norte é zero, polo sul é um, e qualquer outro ponto é uma superposição.',
+  'A longitude dessa seta é a fase. A latitude diz o quanto de zero e o quanto de um.']},
+ {part:'Parte 2 · Computação quântica', title:'Portas quânticas', demo:'gates', lines:[
+  'Um programa clássico muda bits com portas lógicas: E, OU, NÃO. Um programa quântico muda qubits com portas quânticas, que são rotações da seta na esfera.',
+  'A porta X é o não quântico: gira a seta de cima para baixo e troca zero por um.',
+  'A porta Hadamard é a mais famosa: pega um zero puro e leva para o equador, criando uma superposição igual de zero e um.',
+  'E existem portas de dois qubits, como a CNOT, que faz um qubit controlar a rotação do outro. É ela que cria emaranhamento.',
+  'Um circuito quântico é só uma sequência dessas rotações, aplicadas no tempo certo.']},
+ {part:'Parte 2 · Computação quântica', title:'Muitos qubits', demo:'expo', lines:[
+  'Aqui está o pulo do gato. Com um qubit, a superposição tem dois estados. Com dois qubits, quatro. Com três, oito.',
+  'Com trezentos qubits, o número de estados em superposição passa do número de átomos no universo observável.',
+  'Um computador quântico guarda amplitudes para todos esses estados ao mesmo tempo e transforma todos juntos a cada porta.',
+  'Mas atenção: na hora de medir, só sai um resultado. Não dá para ler todas as respostas. Esse é o truque e também a armadilha.']},
+ {part:'Parte 2 · Computação quântica', title:'A receita de um algoritmo', demo:'recipe', lines:[
+  'Então como se tira proveito disso? Quase todo algoritmo quântico segue a mesma receita em três passos.',
+  'Passo um: usar portas Hadamard para colocar os qubits em superposição de todas as entradas possíveis.',
+  'Passo dois: aplicar portas que mudam as fases de um jeito esperto, para que os caminhos que levam a respostas erradas se cancelem e os que levam à resposta certa se reforcem.',
+  'Passo três: medir. Se a interferência foi bem feita, a resposta certa sai com alta probabilidade.',
+  'Projetar o passo dois é a arte. É por isso que só alguns problemas têm algoritmos quânticos conhecidos.']},
+ {part:'Parte 2 · Computação quântica', title:'Exemplo: a busca de Grover', demo:'grover', lines:[
+  'Um exemplo concreto: procurar um item numa lista desordenada de N posições.',
+  'Um computador clássico, na média, precisa olhar metade da lista. O algoritmo de Grover acha em cerca de raiz quadrada de N tentativas.',
+  'Ele começa com todas as posições em superposição, com amplitudes iguais. Depois marca a resposta certa invertendo a fase dela.',
+  'Em seguida, uma operação de reflexão faz a amplitude marcada crescer e as outras encolherem. Repete isso raiz de N vezes e mede.',
+  'Outro exemplo famoso é o algoritmo de Shor, que fatora números grandes rápido e por isso ameaça a criptografia usada hoje na internet.']},
+ {part:'Parte 2 · Computação quântica', title:'Ruído e correção de erros', demo:'noise', lines:[
+  'Agora a parte difícil. Um qubit em superposição é extremamente frágil. Qualquer vibração, calor ou campo elétrico perdido funciona como uma medição acidental.',
+  'Isso se chama decoerência. A seta perde a fase, a nuvem desmancha e o cálculo vira ruído.',
+  'A solução é correção de erros quântica: espalhar a informação de um qubit lógico por dezenas ou centenas de qubits físicos emaranhados.',
+  'Medindo só os sintomas, sem olhar o conteúdo, dá para detectar e consertar erros sem destruir a superposição.',
+  'Hoje a corrida da indústria é exatamente essa: baixar a taxa de erro e aumentar o número de qubits lógicos confiáveis.']},
+ {part:'Parte 2 · Computação quântica', title:'O hardware', demo:'hardware', lines:[
+  'Como se constrói um qubit de verdade? Existem várias famílias.',
+  'Circuitos supercondutores: pequenos anéis de metal resfriados a quase zero absoluto, dentro desses lustres dourados que você já viu em fotos.',
+  'Íons presos: átomos carregados flutuando em campos elétricos e manipulados com lasers.',
+  'Átomos neutros, fótons e spins em silício completam a lista. Cada abordagem troca velocidade, estabilidade e facilidade de escala de um jeito diferente.',
+  'Ninguém sabe ainda qual vai ganhar. É possível que mais de uma conviva.']},
+ {part:'Parte 2 · Computação quântica', title:'Para que serve', demo:'uses', lines:[
+  'Última parada: para que serve isso tudo? Um computador quântico não é um computador normal mais rápido. Ele é bom em uma classe específica de problemas.',
+  'Simular moléculas e materiais, porque a natureza lá embaixo já é quântica. Otimização de rotas, carteiras e logística em alguns casos. E quebrar ou fortalecer criptografia.',
+  'Para e-mail, planilha ou vídeo, seu notebook continua imbatível.',
+  'A tarefa de hoje, para uma empresa, é dupla: migrar a criptografia para algoritmos pós-quânticos antes que as máquinas cheguem, e mapear quais problemas do negócio têm cara de problema quântico.']},
+ {part:'Encerramento', title:'Recapitulando', demo:'recap', lines:[
+  'Recapitulando: superposição cria todas as possibilidades, interferência seleciona a certa, emaranhamento junta tudo num estado só, e a medição entrega a resposta.',
+  'Foi assim que a física do muito pequeno virou uma nova forma de computar.',
+  'Obrigado por vir comigo. Até a próxima!']},
+];
+
+// ───────────────────────── NARRAÇÃO ─────────────────────────
+// Áudio gravado com voz masculina em pt-BR (Piper, voz "edresson", CC BY 4.0), um arquivo por frase em narr/.
+const DUR = {"00_0": 9.67, "00_1": 9.51, "00_2": 0.89, "01_0": 12.3, "01_1": 5.46, "01_2": 8.75, "01_3": 12.56, "02_0": 12.8, "02_1": 10.0, "02_2": 11.36, "02_3": 5.69, "03_0": 8.88, "03_1": 7.47, "03_2": 13.56, "03_3": 8.31, "04_0": 10.16, "04_1": 8.67, "04_2": 12.43, "04_3": 8.23, "05_0": 9.43, "05_1": 11.39, "05_2": 13.98, "05_3": 9.95, "06_0": 7.26, "06_1": 11.65, "06_2": 12.93, "06_3": 7.44, "07_0": 12.83, "07_1": 6.22, "07_2": 8.72, "07_3": 9.27, "07_4": 6.48, "08_0": 11.89, "08_1": 9.64, "08_2": 8.36, "08_3": 10.45, "09_0": 8.99, "09_1": 7.58, "09_2": 12.59, "09_3": 7.58, "09_4": 8.59, "10_0": 6.03, "10_1": 13.45, "10_2": 11.31, "10_3": 9.8, "10_4": 10.32, "11_0": 12.56, "11_1": 8.25, "11_2": 10.16, "11_3": 8.52, "11_4": 11.55, "12_0": 5.09, "12_1": 10.42, "12_2": 7.97, "12_3": 14.26, "12_4": 5.8, "13_0": 11.1, "13_1": 14.58, "13_2": 5.75, "13_3": 15.99, "14_0": 16.09, "14_1": 6.19, "14_2": 3.79};
+const SILENT='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=';
+const MALE=/daniel|ricardo|antonio|antônio|felipe|rodrigo|joaquim|duarte|thiago|fabio|fábio|humberto|leandro|donato|julio|júlio|rafael|macario|macário|edresson|male|masc/;
+const FEMALE=/luciana|francisca|camila|vitoria|vitória|thalita|brenda|leticia|letícia|fernanda|raquel|giovanna|elza|maria|yara|manuela|catarina|female|fem/;
+const Speech = {
+  mode:'audio', // 'audio' (gravada) | 'browser' (voz do aparelho) | 'off'
+  ok: ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window),
+  voice:null, timer:null, el:null, token:0, cb:null,
+  init(){ this.el=new Audio(); this.el.preload='auto'; this.el.setAttribute('playsinline',''); this.el.volume=1;
+    this.el.addEventListener('ended',()=>{ if(this.cb) this.cb(); });
+    this.el.addEventListener('error',()=>{ if(this.pending){ const f=this.pending; this.pending=null; f(); } }); },
+  unlock(){ try{ this.el.src=SILENT; const p=this.el.play(); if(p) p.catch(()=>{}); }catch(e){}
+    if(this.ok){ try{ const u=new SpeechSynthesisUtterance(' '); u.volume=0; speechSynthesis.speak(u); }catch(e){} } },
+  voices(){ if(!this.ok) return []; const vs=speechSynthesis.getVoices().filter(v=>(v.lang||'').toLowerCase().replace('_','-').startsWith('pt'));
+    const rank=v=>{ const n=(v.name||'').toLowerCase(), l=(v.lang||'').toLowerCase().replace('_','-'); let s=0; if(MALE.test(n)) s+=20; if(FEMALE.test(n)) s-=20; if(l==='pt-br') s+=5; if(/natural|neural|premium|enhanced|melhorada/.test(n)) s+=2; return s; };
+    return vs.sort((a,b)=>rank(b)-rank(a)); },
+  pick(){ const vs=this.voices(); if(!this.voice || !vs.includes(this.voice)) this.voice=vs[0]||null; renderVoiceList(); },
+  estimate(text,key){ if(key && DUR[key]) return DUR[key]*1000; const w=text.trim().split(/\s+/).length; return Math.max(2200, w*390+600); },
+  say(text,key,onend){
+    this.stop(); const tk=++this.token; let done=false;
+    const finish=()=>{ if(done||tk!==this.token) return; done=true; clearTimeout(this.timer); this.cb=null; this.pending=null; onend(); };
+    if(this.mode==='off'){ this.timer=setTimeout(finish,this.estimate(text,key)); return; }
+    if(this.mode==='audio' && key && DUR[key]){
+      this.cb=finish; this.pending=()=>this.browser(text,key,finish);
+      this.timer=setTimeout(finish,this.estimate(text,key)*1.6+3000);
+      try{ this.el.src='narr/'+key+'.mp3'; this.el.currentTime=0; const p=this.el.play(); if(p) p.catch(()=>{ if(tk===this.token){ this.cb=null; this.browser(text,key,finish); } }); }
+      catch(e){ this.browser(text,key,finish); }
+      return; }
+    this.browser(text,key,finish);
+  },
+  browser(text,key,finish){
+    if(!this.ok){ clearTimeout(this.timer); this.timer=setTimeout(finish,this.estimate(text,key)); return; }
+    const u=new SpeechSynthesisUtterance(text); u.lang='pt-BR'; u.rate=1.0; u.pitch=0.95; if(this.voice) u.voice=this.voice;
+    u.onend=finish; u.onerror=finish; clearTimeout(this.timer); this.timer=setTimeout(finish,this.estimate(text,null)*1.9+1500);
+    try{ speechSynthesis.cancel(); speechSynthesis.speak(u); }catch(e){ finish(); }
+  },
+  stop(){ clearTimeout(this.timer); this.token++; this.cb=null; this.pending=null; try{ this.el.pause(); }catch(e){} if(this.ok){ try{ speechSynthesis.cancel(); }catch(e){} } }
+};
+Speech.init();
+function renderVoiceList(){ const sel=document.getElementById('voiceSel'); if(!sel) return; const vs=Speech.voices(); sel.innerHTML='';
+  if(!vs.length){ const o=document.createElement('option'); o.textContent='nenhuma voz em português instalada neste aparelho'; sel.appendChild(o); sel.disabled=true; return; }
+  sel.disabled=false; vs.forEach((v,i)=>{ const o=document.createElement('option'); o.value=i; o.textContent=v.name+' ('+v.lang+')'+(MALE.test((v.name||'').toLowerCase())?' · masculina':''); if(v===Speech.voice) o.selected=true; sel.appendChild(o); });
+  const info=document.getElementById('voiceInfo'); if(info) info.textContent='voz gravada: masculina, pt-BR · reserva do aparelho: '+(Speech.voice?Speech.voice.name:'nenhuma'); }
+if(Speech.ok){ Speech.pick(); speechSynthesis.onvoiceschanged=()=>Speech.pick(); } else { renderVoiceList(); }
+
+// ───────────────────────── 3D ─────────────────────────
+const T=THREE;
+const stage=document.getElementById('stage');
+const renderer=new T.WebGLRenderer({antialias:true, alpha:false, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, 1.6));
+renderer.setClearColor(0x040712,1);
+stage.appendChild(renderer.domElement);
+const scene=new T.Scene();
+scene.fog=new T.FogExp2(0x040712, 0.045);
+const camera=new T.PerspectiveCamera(50,1,0.1,200);
+scene.add(new T.HemisphereLight(0xa9c4ff,0x201a40,0.9));
+const key=new T.DirectionalLight(0xffffff,0.9); key.position.set(3,6,5); scene.add(key);
+const rimL=new T.PointLight(0x4ef0ff,1.2,12); rimL.position.set(2,2,2); scene.add(rimL);
+const rimR=new T.PointLight(0xff5fd2,0.8,12); rimR.position.set(-3,1,-1); scene.add(rimR);
+
+// hologram shader
+const holoVert=`varying vec3 vN; varying vec3 vV; varying vec3 vW;
+void main(){ vec4 wp=modelMatrix*vec4(position,1.0); vW=wp.xyz; vN=normalize(normalMatrix*normal);
+ vec4 mv=modelViewMatrix*vec4(position,1.0); vV=-mv.xyz; gl_Position=projectionMatrix*mv; }`;
+const holoFrag=`uniform vec3 color; uniform float time; uniform float base; uniform float opacity;
+varying vec3 vN; varying vec3 vV; varying vec3 vW;
+void main(){ float f=pow(1.0-abs(dot(normalize(vN),normalize(vV))),2.0);
+ float scan=0.65+0.35*sin(vW.y*28.0-time*3.5); float a=(base+f*0.9)*scan*opacity;
+ gl_FragColor=vec4(color*(0.55+f*0.9), a); }`;
+const holoMats=[];
+function holo(hex, base=0.12, opacity=1){
+  const m=new T.ShaderMaterial({uniforms:{color:{value:new T.Color(hex)},time:{value:0},base:{value:base},opacity:{value:opacity}},
+    vertexShader:holoVert,fragmentShader:holoFrag,transparent:true,depthWrite:false,blending:T.AdditiveBlending,side:T.DoubleSide});
+  holoMats.push(m); return m;
+}
+function glow(hex,op=0.9){ return new T.MeshBasicMaterial({color:hex,transparent:true,opacity:op,depthWrite:false,blending:T.AdditiveBlending}); }
+function wire(hex,op=0.25){ return new T.MeshBasicMaterial({color:hex,wireframe:true,transparent:true,opacity:op,depthWrite:false,blending:T.AdditiveBlending}); }
+function lineMat(hex,op=0.8){ return new T.LineBasicMaterial({color:hex,transparent:true,opacity:op,blending:T.AdditiveBlending,depthWrite:false}); }
+function label(text,color='#8ff6ff',h=0.42,font='bold 54px "Space Mono", ui-monospace, Menlo, monospace'){
+  const c=document.createElement('canvas'); c.width=512; c.height=128; const x=c.getContext('2d');
+  x.font=font; x.textAlign='center'; x.textBaseline='middle'; x.shadowColor=color; x.shadowBlur=18; x.fillStyle=color;
+  x.fillText(text,256,66);
+  const tx=new T.CanvasTexture(c); tx.minFilter=T.LinearFilter;
+  const s=new T.Sprite(new T.SpriteMaterial({map:tx,transparent:true,depthWrite:false,depthTest:false}));
+  s.scale.set(h*4,h,1); s.userData.setText=(t)=>{x.clearRect(0,0,512,128);x.fillText(t,256,66);tx.needsUpdate=true;}; return s;
+}
+const ease=(a,b,t)=>a+(b-a)*Math.max(0,Math.min(1,t));
+const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
+function seg(p,a,b){ return smooth((p-a)/(b-a)); }
+
+// ambiente surreal
+const env=new T.Group(); scene.add(env);
+(function buildEnv(){
+  const grid=new T.GridHelper(80,80,0x1f5f6f,0x14303d); grid.position.y=-2.25; grid.material.transparent=true; grid.material.opacity=0.55; env.add(grid);
+  const g2=new T.GridHelper(80,16,0x4ef0ff,0x4ef0ff); g2.position.y=-2.24; g2.material.transparent=true; g2.material.opacity=0.12; env.add(g2);
+  const n=900, pos=new Float32Array(n*3);
+  for(let i=0;i<n;i++){ pos[i*3]=(Math.random()-.5)*70; pos[i*3+1]=Math.random()*26-4; pos[i*3+2]=(Math.random()-.5)*70-10; }
+  const sg=new T.BufferGeometry(); sg.setAttribute('position',new T.BufferAttribute(pos,3));
+  const stars=new T.Points(sg,new T.PointsMaterial({color:0x9fd8ff,size:0.07,transparent:true,opacity:0.8,depthWrite:false,blending:T.AdditiveBlending}));
+  env.add(stars); env.userData.stars=stars;
+  const polys=[]; const geos=[new T.IcosahedronGeometry(2.2,0),new T.OctahedronGeometry(2.6,0),new T.DodecahedronGeometry(1.8,0),new T.TorusKnotGeometry(1.4,0.35,80,10),new T.TetrahedronGeometry(2.4,0)];
+  const spots=[[-9,4,-9],[10,5,-12],[-11,-1,-14],[8,-1,-6],[0,8,-16],[-6,9,-10],[12,1,-18]];
+  spots.forEach((s,i)=>{ const m=new T.Mesh(geos[i%geos.length], i%2?wire(0x4ef0ff,0.22):wire(0xff5fd2,0.18)); m.position.set(...s); m.userData.r=0.1+Math.random()*0.15; env.add(m); polys.push(m); });
+  env.userData.polys=polys;
+  // ilhas flutuantes: discos finos
+  const isl=[];
+  for(let i=0;i<7;i++){ const d=new T.Mesh(new T.CylinderGeometry(0.6+Math.random()*1.4,0.3,0.18,24), holo(i%2?0x4ef0ff:0xffd166,0.08,0.7));
+    d.position.set((Math.random()-.5)*26,-1+Math.random()*7,-8-Math.random()*14); d.userData.b=Math.random()*6; env.add(d); isl.push(d); }
+  env.userData.isl=isl;
+})();
+
+// ───────────────────────── BONEQUINHO ─────────────────────────
+const avatar=new T.Group(); scene.add(avatar);
+const AV={};
+(function buildAvatar(){
+  const toon=(hex)=>new T.MeshToonMaterial({color:hex});
+  const outline=(mesh,s=1.06)=>{ const o=new T.Mesh(mesh.geometry,new T.MeshBasicMaterial({color:0x0b1020,side:T.BackSide})); o.scale.setScalar(s); mesh.add(o); };
+  const skin=toon(0xf3c9a4), hoodie=toon(0x1f5f3a), hoodieD=toon(0x174a2d), pants=toon(0x2a3550), shoe=toon(0xe8eefc), hair=toon(0xf5d64b);
+  // pernas
+  const legG=new T.CylinderGeometry(0.11,0.12,0.62,16);
+  [-0.15,0.15].forEach(x=>{ const l=new T.Mesh(legG,pants); l.position.set(x,0.33,0); outline(l); avatar.add(l);
+    const s=new T.Mesh(new T.BoxGeometry(0.24,0.12,0.36),shoe); s.position.set(x,0.06,0.05); outline(s,1.08); avatar.add(s); });
+  // corpo (moletom verde floresta)
+  const body=new T.Mesh(new T.CylinderGeometry(0.36,0.42,0.82,20),hoodie); body.position.y=1.03; outline(body); avatar.add(body);
+  const belly=new T.Mesh(new T.SphereGeometry(0.42,20,14,0,Math.PI*2,0,Math.PI/2),hoodie); belly.position.y=1.03; belly.scale.y=0.55; avatar.add(belly);
+  const hood=new T.Mesh(new T.TorusGeometry(0.33,0.11,12,24),hoodieD); hood.position.y=1.46; hood.rotation.x=Math.PI/2; outline(hood); avatar.add(hood);
+  const pocket=new T.Mesh(new T.BoxGeometry(0.42,0.16,0.08),hoodieD); pocket.position.set(0,0.78,0.38); avatar.add(pocket);
+  // braços com pivô no ombro
+  function arm(side){ const p=new T.Group(); p.position.set(side*0.42,1.38,0);
+    const a=new T.Mesh(new T.CylinderGeometry(0.1,0.09,0.62,14),hoodie); a.position.y=-0.31; outline(a); p.add(a);
+    const h=new T.Mesh(new T.SphereGeometry(0.12,16,12),skin); h.position.y=-0.66; outline(h,1.1); p.add(h);
+    p.rotation.z=side*0.18; avatar.add(p); return p; }
+  AV.armL=arm(-1); AV.armR=arm(1);
+  // cabeça
+  const head=new T.Group(); head.position.y=2.02; avatar.add(head); AV.head=head;
+  const hm=new T.Mesh(new T.SphereGeometry(0.52,32,24),skin); outline(hm,1.05); head.add(hm);
+  const hairCap=new T.Mesh(new T.SphereGeometry(0.545,32,20,0,Math.PI*2,0,Math.PI*0.52),hair); hairCap.position.y=0.04; outline(hairCap,1.04); head.add(hairCap);
+  const spikeG=new T.ConeGeometry(0.1,0.34,10);
+  const spikes=[[0,0.55,0,0,0],[0.22,0.5,0.08,0.45,0.2],[-0.22,0.5,0.08,-0.45,0.2],[0.12,0.53,-0.22,0.2,-0.5],[-0.12,0.53,-0.22,-0.2,-0.5],[0.34,0.42,-0.05,0.75,0.1],[-0.34,0.42,-0.05,-0.75,0.1],[0.05,0.55,0.26,0.1,0.55],[-0.1,0.54,0.24,-0.2,0.5]];
+  spikes.forEach(s=>{ const m=new T.Mesh(spikeG,hair); m.position.set(s[0],s[1],s[2]); m.rotation.z=-s[3]; m.rotation.x=s[4]; outline(m,1.1); head.add(m); });
+  // franja
+  for(let i=-2;i<=2;i++){ const f=new T.Mesh(new T.ConeGeometry(0.075,0.22,8),hair); f.position.set(i*0.11,0.36,0.42); f.rotation.x=Math.PI*0.72; f.rotation.z=i*0.1; head.add(f); }
+  // olhos verdes escuros
+  AV.eyes=[];
+  [-0.19,0.19].forEach(x=>{ const e=new T.Group(); e.position.set(x,0.06,0.45); head.add(e);
+    const w=new T.Mesh(new T.SphereGeometry(0.1,18,14),new T.MeshToonMaterial({color:0xffffff})); w.scale.z=0.6; e.add(w);
+    const p=new T.Mesh(new T.SphereGeometry(0.058,16,12),new T.MeshToonMaterial({color:0x1b4d2b})); p.position.z=0.06; e.add(p);
+    const q=new T.Mesh(new T.SphereGeometry(0.03,10,8),new T.MeshBasicMaterial({color:0x08140c})); q.position.z=0.1; e.add(q);
+    const hl=new T.Mesh(new T.SphereGeometry(0.016,8,6),new T.MeshBasicMaterial({color:0xffffff})); hl.position.set(0.025,0.03,0.12); e.add(hl);
+    AV.eyes.push(e); });
+  [-0.19,0.19].forEach(x=>{ const b=new T.Mesh(new T.BoxGeometry(0.17,0.035,0.03),hair); b.position.set(x,0.2,0.48); b.rotation.z=x>0?-0.15:0.15; head.add(b); });
+  const nose=new T.Mesh(new T.SphereGeometry(0.045,10,8),toon(0xe9b58d)); nose.position.set(0,-0.04,0.52); head.add(nose);
+  const mouth=new T.Mesh(new T.SphereGeometry(0.07,14,10),new T.MeshToonMaterial({color:0x8a3b3b})); mouth.position.set(0,-0.2,0.46); mouth.scale.set(1.3,0.45,0.5); head.add(mouth); AV.mouth=mouth;
+  // disco holográfico sob os pés
+  const disc=new T.Mesh(new T.RingGeometry(0.55,0.75,48),glow(0x4ef0ff,0.7)); disc.rotation.x=-Math.PI/2; disc.position.y=0.01; avatar.add(disc);
+  const disc2=new T.Mesh(new T.CircleGeometry(0.55,48),glow(0x4ef0ff,0.12)); disc2.rotation.x=-Math.PI/2; disc2.position.y=0.005; avatar.add(disc2); AV.disc=disc;
+})();
+
+// pedestal + cone do holograma
+const holoRoot=new T.Group(); scene.add(holoRoot);
+const demoGroup=new T.Group(); holoRoot.add(demoGroup);
+(function(){
+  const em=new T.Mesh(new T.CylinderGeometry(0.5,0.65,0.14,32),new T.MeshToonMaterial({color:0x1a2340})); em.position.y=-2.05; holoRoot.add(em);
+  const ring=new T.Mesh(new T.RingGeometry(0.42,0.5,48),glow(0xff5fd2,0.8)); ring.rotation.x=-Math.PI/2; ring.position.y=-1.97; holoRoot.add(ring);
+  const cone=new T.Mesh(new T.ConeGeometry(2.2,3.9,40,1,true),glow(0x4ef0ff,0.06)); cone.position.y=0; cone.rotation.x=Math.PI; holoRoot.add(cone);
+  holoRoot.userData.ring=ring;
+})();
+
+// ───────────────────────── DEMOS ─────────────────────────
+function cloudPoints(n,spread,hex,size){
+  const pos=new Float32Array(n*3), base=new Float32Array(n*3);
+  for(let i=0;i<n;i++){ const r=spread*Math.cbrt(Math.random()), th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1);
+    base[i*3]=r*Math.sin(ph)*Math.cos(th); base[i*3+1]=r*Math.sin(ph)*Math.sin(th); base[i*3+2]=r*Math.cos(ph); }
+  pos.set(base);
+  const g=new T.BufferGeometry(); g.setAttribute('position',new T.BufferAttribute(pos,3));
+  const p=new T.Points(g,new T.PointsMaterial({color:hex,size:size,transparent:true,opacity:1,depthWrite:false,blending:T.AdditiveBlending}));
+  p.userData.base=base; return p;
+}
+function jitter(p,t,amp,shrink=1){ const a=p.geometry.attributes.position.array, b=p.userData.base;
+  for(let i=0;i<a.length;i+=3){ a[i]=b[i]*shrink+Math.sin(t*2.1+i)*amp; a[i+1]=b[i+1]*shrink+Math.cos(t*1.7+i*0.7)*amp; a[i+2]=b[i+2]*shrink+Math.sin(t*2.6+i*0.3)*amp; }
+  p.geometry.attributes.position.needsUpdate=true; }
+function bloch(g,r=1){
+  const s=new T.Group(); g.add(s);
+  s.add(new T.Mesh(new T.SphereGeometry(r,18,12),wire(0x4ef0ff,0.18)));
+  s.add(new T.Mesh(new T.SphereGeometry(r*0.995,32,24),holo(0x4ef0ff,0.03,0.6)));
+  const eq=new T.Mesh(new T.TorusGeometry(r,0.012,8,64),glow(0x8ff6ff,0.8)); eq.rotation.x=Math.PI/2; s.add(eq);
+  const ax=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0,-r*1.25,0),new T.Vector3(0,r*1.25,0)]),lineMat(0x8ff6ff,0.6)); s.add(ax);
+  const l0=label('|0⟩','#ffffff',0.32); l0.position.y=r*1.45; s.add(l0);
+  const l1=label('|1⟩','#ffffff',0.32); l1.position.y=-r*1.45; s.add(l1);
+  const arrow=new T.ArrowHelper(new T.Vector3(0,1,0),new T.Vector3(0,0,0),r*0.98,0xff5fd2,r*0.28,r*0.14); s.add(arrow);
+  const tip=new T.Mesh(new T.SphereGeometry(r*0.07,12,10),glow(0xff5fd2)); s.add(tip);
+  s.userData={arrow,tip,r};
+  s.userData.set=(theta,phi)=>{ const d=new T.Vector3(Math.sin(theta)*Math.cos(phi),Math.cos(theta),Math.sin(theta)*Math.sin(phi)); arrow.setDirection(d); tip.position.copy(d).multiplyScalar(r*0.98); };
+  return s;
+}
+function bars(g,n,w,gap,hex){ const arr=[]; const total=n*(w+gap)-gap;
+  for(let i=0;i<n;i++){ const m=new T.Mesh(new T.BoxGeometry(w,1,w),holo(hex,0.2)); m.position.x=-total/2+w/2+i*(w+gap); g.add(m); arr.push(m); }
+  return arr; }
+function setBar(m,v,scale){ const h=Math.max(0.02,Math.abs(v)*scale); m.scale.y=h; m.position.y=(v>=0?h/2:-h/2); }
+
+const DEMOS={
+ intro:{ build(g){ const k=new T.Mesh(new T.TorusKnotGeometry(0.75,0.22,120,16),holo(0x4ef0ff,0.15)); g.add(k); this.k=k;
+    const c=cloudPoints(500,1.8,0xff5fd2,0.05); g.add(c); this.c=c;
+    const t=label('ψ','#ff9bea',0.9,'bold 90px "Sora", system-ui, sans-serif'); t.position.y=1.6; g.add(t); },
+   update(t,p){ this.k.rotation.x=t*0.5; this.k.rotation.y=t*0.35; jitter(this.c,t,0.04); this.c.rotation.y=-t*0.2; } },
+
+ cloud:{ build(g){ this.ball=new T.Mesh(new T.SphereGeometry(0.55,32,24),new T.MeshToonMaterial({color:0x4ea1ff,transparent:true})); g.add(this.ball);
+    this.cloud=cloudPoints(900,1.4,0x8ff6ff,0.045); g.add(this.cloud);
+    this.lab=label('bola → nuvem de possibilidades','#8ff6ff',0.3); this.lab.position.y=-1.55; g.add(this.lab); },
+   update(t,p){ const m=Math.max(0,Math.min(1,p*1.7)); this.ball.material.opacity=1-m; this.ball.scale.setScalar(1-m*0.6); this.ball.rotation.y=t;
+    this.cloud.material.opacity=m; jitter(this.cloud,t,0.05); this.cloud.rotation.y=t*0.3; } },
+
+ coin:{ build(g){ const coin=new T.Group(); g.add(coin); this.coin=coin;
+    const c=new T.Mesh(new T.CylinderGeometry(0.75,0.75,0.08,48),holo(0xffd166,0.25)); coin.add(c);
+    const z=label('0','#ffd166',0.45); z.position.y=0.1; coin.add(z); const o=label('1','#ffd166',0.45); o.position.y=-0.1; o.rotation.x=Math.PI; coin.add(o);
+    coin.position.set(-0.9,0.3,0);
+    const ph=new T.Group(); g.add(ph); ph.position.set(1.1,0.2,0); this.ph=ph;
+    const ring=new T.Mesh(new T.TorusGeometry(0.7,0.015,8,64),glow(0x8ff6ff,0.7)); ph.add(ring);
+    this.arrow=new T.ArrowHelper(new T.Vector3(1,0,0),new T.Vector3(0,0,0),0.68,0xff5fd2,0.22,0.12); ph.add(this.arrow);
+    const l=label('amplitude: tamanho + fase','#ff9bea',0.28); l.position.y=-1.05; ph.add(l);
+    const l2=label('superposição','#ffd166',0.28); l2.position.set(-0.9,-0.85,0); g.add(l2); },
+   update(t,p){ this.coin.rotation.x=t*7; this.coin.rotation.y=Math.sin(t)*0.3;
+    const a=t*1.4; this.arrow.setDirection(new T.Vector3(Math.cos(a),Math.sin(a),0)); this.arrow.setLength(0.45+0.23*Math.sin(t*0.7),0.22,0.12); this.ph.visible=p>0.4; } },
+
+ measure:{ build(g){ this.cloud=cloudPoints(900,1.3,0x8ff6ff,0.045); g.add(this.cloud);
+    this.dot=new T.Mesh(new T.SphereGeometry(0.14,16,12),glow(0xffffff)); g.add(this.dot);
+    this.plane=new T.Mesh(new T.PlaneGeometry(3.2,3.2),glow(0xff5fd2,0.18)); this.plane.rotation.y=Math.PI/2; g.add(this.plane);
+    const lab=label('detector','#ff9bea',0.26); lab.position.set(0,1.9,0); g.add(lab);
+    this.lab2=label('','#ffffff',0.28); this.lab2.position.y=-1.7; g.add(this.lab2); this.rnd=[0.4,-0.3,0.2]; },
+   update(t,p){ const T0=6, u=(t%T0)/T0; // 0-0.45 nuvem, 0.45-0.65 varredura, 0.65-1 ponto
+    if(u<0.45){ this.cloud.material.opacity=Math.min(1,u*4); jitter(this.cloud,t,0.05); this.dot.scale.setScalar(0.001); this.plane.position.x=-1.8; this.lab2.userData.setText('nuvem de amplitudes'); }
+    else if(u<0.65){ const s=(u-0.45)/0.2; this.plane.position.x=-1.8+3.6*s; const shrink=1-s*0.9; jitter(this.cloud,t,0.05*(1-s),shrink); this.cloud.material.opacity=1-s; this.dot.scale.setScalar(s*1.2); this.dot.position.set(this.rnd[0]*(1-s),this.rnd[1]*(1-s),this.rnd[2]*(1-s)); this.lab2.userData.setText('medindo…'); }
+    else { this.plane.position.x=3; this.cloud.material.opacity=0; this.dot.scale.setScalar(1.2+0.1*Math.sin(t*6)); this.dot.position.set(0,0,0); this.lab2.userData.setText('um único resultado'); if(u>0.98){ this.rnd=[Math.random()-.5,Math.random()-.5,Math.random()-.5]; } }
+    this.cloud.rotation.y=t*0.3; } },
+
+ slits:{ build(g){ const wv=`uniform float time; varying float vH; void main(){ vec3 p=position; float k=11.0; float w=0.0;
+      if(p.y<-1.0){ w=0.8*sin(p.y*k-time*4.0); } else { vec2 s1=vec2(-0.45,-1.0), s2=vec2(0.45,-1.0); float d1=distance(p.xy,s1), d2=distance(p.xy,s2);
+      w=(sin(d1*k-time*4.0)/(1.0+d1*1.2)+sin(d2*k-time*4.0)/(1.0+d2*1.2))*0.9; } vH=w; p.z+=w*0.1;
+      gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0); }`;
+    const wf=`varying float vH; void main(){ vec3 c=vH>0.0?vec3(0.3,0.95,1.0):vec3(1.0,0.37,0.82); gl_FragColor=vec4(c,abs(vH)*0.9); }`;
+    this.wm=new T.ShaderMaterial({uniforms:{time:{value:0}},vertexShader:wv,fragmentShader:wf,transparent:true,depthWrite:false,blending:T.AdditiveBlending,side:T.DoubleSide});
+    const plane=new T.Mesh(new T.PlaneGeometry(3.6,4.2,110,120),this.wm); plane.rotation.x=-Math.PI/2; plane.position.y=-0.9; g.add(plane);
+    const wall=new T.Group(); g.add(wall); wall.position.set(0,-0.6,1.0);
+    [[-1.3,1.4],[0,0.6],[1.3,1.4]].forEach(w=>{ const m=new T.Mesh(new T.BoxGeometry(w[1],0.7,0.1),holo(0xffd166,0.25)); m.position.x=w[0]; wall.add(m); });
+    // tela com listras
+    const c=document.createElement('canvas'); c.width=512; c.height=64; const x=c.getContext('2d'); const img=x.createImageData(512,64);
+    for(let i=0;i<512;i++){ const px=-1.8+3.6*i/512; const d1=Math.hypot(px+0.45,3.0), d2=Math.hypot(px-0.45,3.0); const I=Math.pow(Math.cos(11*(d1-d2)/2),2)*Math.pow(Math.max(0,Math.cos(px*0.5)),0.8);
+      for(let j=0;j<64;j++){ const o=(j*512+i)*4; img.data[o]=120*I; img.data[o+1]=240*I; img.data[o+2]=255*I; img.data[o+3]=255*Math.min(1,I*1.2); } }
+    x.putImageData(img,0,0); const tx=new T.CanvasTexture(c);
+    const screen=new T.Mesh(new T.PlaneGeometry(3.6,0.9),new T.MeshBasicMaterial({map:tx,transparent:true,blending:T.AdditiveBlending,depthWrite:false,side:T.DoubleSide}));
+    screen.position.set(0,-0.45,-2.0); g.add(screen); this.screen=screen;
+    const f=new T.Mesh(new T.PlaneGeometry(3.6,0.9),wire(0x4ef0ff,0.2)); f.position.copy(screen.position); g.add(f);
+    const l=label('duas fendas → listras','#8ff6ff',0.28); l.position.y=1.5; g.add(l); },
+   update(t,p){ this.wm.uniforms.time.value=t; this.screen.material.opacity=0.3+0.7*seg(p,0.35,0.6); } },
+
+ entangle:{ build(g){ this.a=new T.Mesh(new T.SphereGeometry(0.42,32,24),holo(0x4ef0ff,0.18)); this.a.position.x=-1.5; g.add(this.a);
+    this.b=new T.Mesh(new T.SphereGeometry(0.42,32,24),holo(0x4ef0ff,0.18)); this.b.position.x=1.5; g.add(this.b);
+    this.arA=new T.ArrowHelper(new T.Vector3(0,1,0),new T.Vector3(-1.5,0,0),0.5,0xff5fd2,0.18,0.1); this.arB=new T.ArrowHelper(new T.Vector3(0,-1,0),new T.Vector3(1.5,0,0),0.5,0xff5fd2,0.18,0.1); g.add(this.arA,this.arB);
+    const n=120, pos=new Float32Array(n*3); this.tg=new T.BufferGeometry(); this.tg.setAttribute('position',new T.BufferAttribute(pos,3));
+    g.add(new T.Line(this.tg,lineMat(0xff9bea,0.9)));
+    const la=label('A','#ffffff',0.3); la.position.set(-1.5,0.9,0); g.add(la); const lb=label('B','#ffffff',0.3); lb.position.set(1.5,0.9,0); g.add(lb);
+    this.lab=label('estado conjunto','#ff9bea',0.28); this.lab.position.y=-1.5; g.add(this.lab);
+    this.flashA=new T.Mesh(new T.SphereGeometry(0.6,24,16),glow(0xffffff,0)); this.flashA.position.x=-1.5; g.add(this.flashA);
+    this.flashB=this.flashA.clone(); this.flashB.material=glow(0xffffff,0); this.flashB.position.x=1.5; g.add(this.flashB); this.res=1; },
+   update(t,p){ const a=this.tg.attributes.position.array; const n=a.length/3; const T0=4, u=(t%T0)/T0;
+    for(let i=0;i<n;i++){ const s=i/(n-1); a[i*3]=-1.5+3*s; a[i*3+1]=Math.sin(s*Math.PI*4+t*5)*0.18*Math.sin(s*Math.PI); a[i*3+2]=Math.cos(s*Math.PI*3+t*4)*0.18*Math.sin(s*Math.PI); }
+    this.tg.attributes.position.needsUpdate=true;
+    if(u<0.5){ // antes de medir: setas girando
+      const ang=t*3; this.arA.setDirection(new T.Vector3(Math.sin(ang),Math.cos(ang),0)); this.arB.setDirection(new T.Vector3(-Math.sin(ang),-Math.cos(ang),0));
+      this.flashA.material.opacity=0; this.flashB.material.opacity=0; this.lab.userData.setText('estado conjunto, nada definido'); if(u>0.49) this.res=Math.random()<0.5?1:-1; }
+    else { const f=Math.max(0,1-(u-0.5)*6); this.flashA.material.opacity=f*0.6; this.flashB.material.opacity=f*0.6;
+      this.arA.setDirection(new T.Vector3(0,this.res,0)); this.arB.setDirection(new T.Vector3(0,-this.res,0)); this.lab.userData.setText(this.res>0?'A mediu ↑, então B é ↓':'A mediu ↓, então B é ↑'); }
+    this.a.rotation.y=t; this.b.rotation.y=-t; } },
+
+ qubit:{ build(g){ const bit=new T.Group(); g.add(bit); bit.position.set(-1.45,0,0); this.bit=bit;
+    bit.add(new T.Mesh(new T.BoxGeometry(0.8,1.1,0.4),holo(0xffd166,0.15)));
+    this.lamp=new T.Mesh(new T.SphereGeometry(0.2,16,12),glow(0xffd166)); this.lamp.position.y=0.22; bit.add(this.lamp);
+    this.bl=label('bit = 0','#ffd166',0.3); this.bl.position.y=-1.0; bit.add(this.bl);
+    const bs=bloch(g,0.85); bs.position.set(1.0,0.1,0); this.bs=bs; const l=label('qubit: esfera de Bloch','#8ff6ff',0.28); l.position.set(1.0,-1.5,0); g.add(l); },
+   update(t,p){ const on=Math.floor(t)%2===0; this.lamp.material.opacity=on?1:0.12; this.lamp.scale.setScalar(on?1.1:0.8); this.bl.userData.setText(on?'bit = 1':'bit = 0');
+    const th=p<0.5? Math.min(Math.PI/2.2, (t*0.4)%(Math.PI/2.2)) : (0.6+0.5*Math.sin(t*0.6)); this.bs.userData.set(th,t*1.3); this.bs.rotation.y=t*0.15; } },
+
+ gates:{ build(g){ this.bs=bloch(g,0.95); this.bs.position.set(-0.3,0.1,0); this.gl=label('','#ff9bea',0.5); this.gl.position.set(1.6,1.0,0); g.add(this.gl);
+    this.hint=label('','#8ff6ff',0.28); this.hint.position.y=-1.55; g.add(this.hint);
+    this.mini=bloch(g,0.4); this.mini.position.set(1.7,-0.6,0); this.mini.visible=false;
+    this.link=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0.6,0.1,0),new T.Vector3(1.4,-0.5,0)]),lineMat(0xff9bea,0.9)); this.link.visible=false; g.add(this.link); },
+   update(t,p){ const steps=[['X','|0⟩ → |1⟩',0,Math.PI,0,0],['X','|1⟩ → |0⟩',Math.PI,0,0,0],['H','|0⟩ → equador (0 e 1 iguais)',0,Math.PI/2,0,0],['H','equador → |0⟩',Math.PI/2,0,0,0],['Z','fase: meia volta no equador',Math.PI/2,Math.PI/2,0,Math.PI],['CNOT','controle emaranha o alvo',Math.PI/2,Math.PI/2,0,0]];
+    const D=2.6, i=Math.floor(t/D)%steps.length, u=smooth((t%D)/D*1.4), s=steps[i];
+    this.bs.userData.set(ease(s[2],s[3],u),ease(s[4],s[5],u)); this.gl.userData.setText('porta '+s[0]); this.hint.userData.setText(s[1]);
+    const cn=s[0]==='CNOT'; this.mini.visible=cn; this.link.visible=cn; if(cn){ this.mini.userData.set(ease(0,Math.PI/2,u),t*4); }
+    this.bs.rotation.y=t*0.1; } },
+
+ expo:{ build(g){ this.cubes=[]; const geo=new T.BoxGeometry(0.17,0.17,0.17); const mat=holo(0x4ef0ff,0.35);
+    for(let i=0;i<256;i++){ const m=new T.Mesh(geo,mat); const x=i%8, y=Math.floor(i/8)%8, z=Math.floor(i/64); m.position.set((x-3.5)*0.24,(y-3.5)*0.24,(z-1.5)*0.3); g.add(m); this.cubes.push(m); }
+    this.lab=label('','#ffd166',0.34); this.lab.position.y=1.5; g.add(this.lab); this.lab2=label('','#8ff6ff',0.26); this.lab2.position.y=-1.5; g.add(this.lab2); },
+   update(t,p){ const k=1+Math.floor(((t*0.55)%8)); const n=Math.pow(2,k); this.cubes.forEach((c,i)=>{ c.visible=i<n; c.rotation.y=t*0.5; });
+    this.lab.userData.setText(k+' qubit'+(k>1?'s':'')+'  →  2^'+k+' = '+n+' estados'); this.lab2.userData.setText(p>0.3?'300 qubits: 2^300 ≈ 10^90 estados':'todos juntos, em superposição'); demoGroup.rotation.y=Math.sin(t*0.3)*0.4; } },
+
+ recipe:{ build(g){ this.b=bars(g,8,0.26,0.1,0x4ef0ff); this.lab=label('','#ffd166',0.3); this.lab.position.y=1.55; g.add(this.lab);
+    this.base=new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(-1.5,0,0),new T.Vector3(1.5,0,0)]),lineMat(0x8ff6ff,0.5)); g.add(this.base); this.win=5; },
+   update(t,p){ const D=9, u=(t%D)/D; let txt='';
+    this.b.forEach((m,i)=>{ let v,ph=0;
+      if(u<0.22){ v=i===0?1:0; txt='passo 0: tudo em |000⟩'; }
+      else if(u<0.45){ const s=smooth((u-0.22)/0.1); v=i===0?ease(1,0.354,s):ease(0,0.354,s); txt='passo 1: Hadamard → todas as entradas'; }
+      else if(u<0.75){ const s=smooth((u-0.45)/0.3); ph=i===this.win?0:s*Math.PI; v=i===this.win?ease(0.354,1,s):ease(0.354,0.08,s)*Math.cos(ph*0.5); txt='passo 2: fases esperta → interferência'; }
+      else { const s=(u-0.75)/0.25; v=i===this.win?1:0.08; txt='passo 3: medir → resposta certa com alta chance'; if(i===this.win) m.material.uniforms.color.value.setHex(Math.floor(s*8)%2?0xffffff:0xffd166); }
+      if(u<0.75) m.material.uniforms.color.value.setHex(i===this.win&&u>0.45?0xffd166:0x4ef0ff);
+      setBar(m,v,1.6); });
+    this.lab.userData.setText(txt); } },
+
+ grover:{ build(g){ this.N=16; this.b=bars(g,16,0.14,0.06,0x4ef0ff); this.tgt=11; this.amp=new Array(16).fill(1/4); this.shown=this.amp.slice(); this.step=0; this.last=0;
+    this.lab=label('','#ffd166',0.3); this.lab.position.y=1.6; g.add(this.lab); this.lab2=label('','#8ff6ff',0.26); this.lab2.position.y=-1.55; g.add(this.lab2);
+    g.add(new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(-1.7,0,0),new T.Vector3(1.7,0,0)]),lineMat(0x8ff6ff,0.5)));
+    this.mk=new T.Mesh(new T.ConeGeometry(0.08,0.2,8),glow(0xffd166)); this.mk.position.set(this.b[this.tgt].position.x,-0.35,0); this.mk.rotation.x=Math.PI; g.add(this.mk); },
+   update(t,p,dt){ if(t-this.last>1.7){ this.last=t; this.step++; const k=this.step%9; // 0 reset,1 oracle,2 diff,3 oracle,4 diff,5 oracle,6 diff,7 medir,8 pausa
+      if(k===0){ this.amp.fill(1/4); } else if(k<=6){ if(k%2===1){ this.amp[this.tgt]*=-1; } else { const m=this.amp.reduce((a,b)=>a+b,0)/this.N; this.amp=this.amp.map(a=>2*m-a); } }
+      this.k=k; }
+    const k=this.k||0; const names=['início: amplitudes iguais','oráculo: inverte a fase do alvo','difusão: reflete sobre a média','oráculo','difusão','oráculo','difusão','medir!','√16 = 4 passos, ~3 iterações'];
+    for(let i=0;i<16;i++){ this.shown[i]+= (this.amp[i]-this.shown[i])*Math.min(1,dt*6); const m=this.b[i]; setBar(m,this.shown[i],1.5);
+      m.material.uniforms.color.value.setHex(i===this.tgt?(k===7&&Math.floor(t*6)%2?0xffffff:0xffd166):0x4ef0ff); }
+    const pr=Math.round(this.amp[this.tgt]*this.amp[this.tgt]*100);
+    this.lab.userData.setText(names[k]); this.lab2.userData.setText('chance de achar o alvo: '+pr+'%'); this.mk.position.y=-0.35+0.05*Math.sin(t*5); } },
+
+ noise:{ build(g){ this.bs=bloch(g,0.75); this.bs.position.set(-1.35,0.2,0); this.cells=[]; const grid=new T.Group(); g.add(grid); grid.position.set(1.15,0.1,0);
+    for(let i=0;i<9;i++){ const m=new T.Mesh(new T.SphereGeometry(0.16,16,12),glow(0x55e39a,0.9)); m.position.set(((i%3)-1)*0.5,(Math.floor(i/3)-1)*0.5,0); grid.add(m); this.cells.push(m); }
+    for(let i=0;i<9;i++) for(let j=i+1;j<9;j++){ const a=this.cells[i].position,b=this.cells[j].position; if(a.distanceTo(b)<0.55) grid.add(new T.Line(new T.BufferGeometry().setFromPoints([a,b]),lineMat(0x55e39a,0.35))); }
+    this.ring=new T.Mesh(new T.TorusGeometry(0.3,0.02,8,32),glow(0xff5fd2,0)); grid.add(this.ring); this.grid=grid;
+    this.l1=label('decoerência','#ff9bea',0.28); this.l1.position.set(-1.35,-1.1,0); g.add(this.l1); this.l2=label('qubit lógico (9 físicos)','#8ff6ff',0.26); this.l2.position.set(1.15,-1.1,0); g.add(this.l2); this.bad=4; this.lastE=0; },
+   update(t,p,dt){ const u=(t%5)/5; const jit=u*u*1.4; this.bs.userData.set(Math.PI/2+Math.sin(t*9)*jit*0.6, t*2+Math.sin(t*13)*jit*2); this.bs.userData.arrow.setLength(0.74*(1-u*0.7),0.22,0.1);
+    const e=(t%3)/3; if(e<0.4){ this.cells[this.bad].material.color.setHex(0xff4d6d); this.ring.material.opacity=0; }
+    else if(e<0.75){ this.ring.position.copy(this.cells[this.bad].position); this.ring.material.opacity=1; this.ring.scale.setScalar(1+(e-0.4)*3); this.cells[this.bad].material.color.setHex(0xffd166); }
+    else { this.cells[this.bad].material.color.setHex(0x55e39a); this.ring.material.opacity=0; if(e>0.97){ this.bad=Math.floor(Math.random()*9); } }
+    this.grid.rotation.y=Math.sin(t*0.5)*0.4; } },
+
+ hardware:{ build(g){ const fr=new T.Group(); g.add(fr); fr.position.set(-1.1,0.0,0); this.fr=fr;
+    const rad=[0.85,0.72,0.6,0.48,0.36,0.26];
+    rad.forEach((r,i)=>{ const d=new T.Mesh(new T.CylinderGeometry(r,r,0.06,40),holo(0xffd166,0.3)); d.position.y=1.3-i*0.5; fr.add(d);
+      if(i<rad.length-1){ for(let k=0;k<3;k++){ const a=k*Math.PI*2/3; const rod=new T.Mesh(new T.CylinderGeometry(0.02,0.02,0.5,6),glow(0xffd166,0.6)); rod.position.set(Math.cos(a)*r*0.8,1.3-i*0.5-0.25,Math.sin(a)*r*0.8); fr.add(rod); } } });
+    const chip=new T.Mesh(new T.BoxGeometry(0.3,0.05,0.3),holo(0x4ef0ff,0.6)); chip.position.y=-1.3; fr.add(chip);
+    const temps=['300 K','50 K','4 K','0,8 K','0,1 K','15 mK']; temps.forEach((s,i)=>{ const l=label(s,'#ffd166',0.2); l.position.set(rad[i]+0.45,1.3-i*0.5,0); fr.add(l); });
+    const lf=label('supercondutor (quase 0 absoluto)','#ffd166',0.24); lf.position.y=-1.75; fr.add(lf);
+    const ion=new T.Group(); g.add(ion); ion.position.set(1.4,0.1,0); this.ion=ion; this.ions=[];
+    for(let i=0;i<6;i++){ const m=new T.Mesh(new T.SphereGeometry(0.09,14,10),glow(0x8ff6ff)); m.position.y=(i-2.5)*0.36; ion.add(m); this.ions.push(m); }
+    [-0.12,0.12].forEach(x=>{ const e=new T.Mesh(new T.CylinderGeometry(0.02,0.02,2.6,6),holo(0x4ef0ff,0.4)); e.position.x=x*3; ion.add(e); });
+    this.laser=new T.Mesh(new T.CylinderGeometry(0.015,0.015,1.6,6),glow(0xff5fd2,0.9)); this.laser.rotation.z=Math.PI/2; ion.add(this.laser);
+    const li=label('íons presos + lasers','#ff9bea',0.24); li.position.y=-1.75; ion.add(li); },
+   update(t,p){ this.fr.rotation.y=t*0.35; this.ions.forEach((m,i)=>{ m.position.x=Math.sin(t*3+i)*0.04; }); const k=Math.floor(t*1.5)%6; this.laser.position.y=(k-2.5)*0.36; this.laser.material.opacity=0.5+0.5*Math.sin(t*20);
+    const w=p>0.3; this.ion.visible=true; this.ion.scale.setScalar(w?1:0.75); } },
+
+ uses:{ build(g){ this.items=[]; const mk=(fn,txt,col)=>{ const grp=new T.Group(); fn(grp); const l=label(txt,col,0.26); l.position.y=-1.0; grp.add(l); g.add(grp); this.items.push(grp); };
+    mk(grp=>{ const c=new T.Mesh(new T.SphereGeometry(0.22,20,14),holo(0x4ef0ff,0.3)); grp.add(c); const ps=[[0.5,0.3,0],[-0.45,0.35,0.1],[0.1,-0.5,0.3],[-0.2,-0.3,-0.45]];
+      ps.forEach(q=>{ const a=new T.Mesh(new T.SphereGeometry(0.14,16,12),holo(0xff5fd2,0.3)); a.position.set(...q); grp.add(a); grp.add(new T.Line(new T.BufferGeometry().setFromPoints([new T.Vector3(0,0,0),new T.Vector3(...q)]),lineMat(0x8ff6ff,0.8))); }); },'química e materiais','#8ff6ff');
+    mk(grp=>{ const ns=[]; for(let i=0;i<7;i++){ const a=i/7*Math.PI*2; const n=new T.Mesh(new T.SphereGeometry(0.08,12,10),glow(0xffd166)); n.position.set(Math.cos(a)*0.6,Math.sin(a)*0.6,0); grp.add(n); ns.push(n.position); }
+      for(let i=0;i<7;i++) for(let j=i+1;j<7;j++) if((i*3+j)%2) grp.add(new T.Line(new T.BufferGeometry().setFromPoints([ns[i],ns[j]]),lineMat(0xffd166,0.25)));
+      const path=[0,2,5,1]; for(let i=0;i<path.length-1;i++){ const l=new T.Line(new T.BufferGeometry().setFromPoints([ns[path[i]],ns[path[i+1]]]),lineMat(0x55e39a,1)); grp.add(l); } },'otimização e logística','#ffd166');
+    mk(grp=>{ const b=new T.Mesh(new T.BoxGeometry(0.7,0.55,0.3),holo(0x55e39a,0.3)); b.position.y=-0.15; grp.add(b); const sh=new T.Mesh(new T.TorusGeometry(0.22,0.05,8,24,Math.PI),holo(0x55e39a,0.4)); sh.position.y=0.15; grp.add(sh);
+      const k=new T.Mesh(new T.CylinderGeometry(0.04,0.04,0.2,8),glow(0x0b1020,1)); k.position.y=-0.2; grp.add(k); },'criptografia pós-quântica','#55e39a'); },
+   update(t,p){ this.items.forEach((it,i)=>{ const a=t*0.4+i*Math.PI*2/3; it.position.set(Math.cos(a)*1.3,0.2+Math.sin(a*2)*0.1,Math.sin(a)*0.8); it.rotation.y=t*0.6; const s=0.75+0.35*(0.5+0.5*Math.sin(a+Math.PI/2)); it.scale.setScalar(s); }); } },
+
+ recap:{ build(g){ this.orbs=[]; const defs=[['superposição',0x4ef0ff],['interferência',0xff5fd2],['emaranhamento',0xffd166],['medição',0x55e39a]];
+    defs.forEach((d,i)=>{ const o=new T.Group(); const m=new T.Mesh(new T.SphereGeometry(0.3,24,18),holo(d[1],0.25)); o.add(m); const l=label(d[0],'#'+d[1].toString(16).padStart(6,'0'),0.26); l.position.y=-0.55; o.add(l); g.add(o); this.orbs.push(o); });
+    this.c=cloudPoints(700,2.2,0xffffff,0.04); g.add(this.c); this.k=new T.Mesh(new T.TorusKnotGeometry(0.5,0.16,100,14),holo(0xffffff,0.12)); g.add(this.k); },
+   update(t,p){ this.orbs.forEach((o,i)=>{ const a=t*0.6+i*Math.PI/2; o.position.set(Math.cos(a)*1.4,Math.sin(a*1.3)*0.5,Math.sin(a)*1.0); }); jitter(this.c,t,0.03); this.c.rotation.y=t*0.15; this.k.rotation.set(t*0.4,t*0.6,0); const s=1+0.6*seg(p,0.6,1); this.c.scale.setScalar(s); } }
+};
+
+// ───────────────────────── PLAYER ─────────────────────────
+const UI={part:document.getElementById('part'),name:document.getElementById('chname'),prog:document.getElementById('prog'),sub:document.getElementById('sub'),
+  play:document.getElementById('bPlay'),prev:document.getElementById('bPrev'),next:document.getElementById('bNext'),voice:document.getElementById('bVoice'),menu:document.getElementById('bMenu'),
+  intro:document.getElementById('intro'),menuBox:document.getElementById('menu'),menuList:document.getElementById('menuList'),card:document.getElementById('card'),cardk:document.getElementById('cardk'),cardt:document.getElementById('cardt')};
+const P={ch:0,line:0,playing:false,started:false,demo:null,demoT:0,lineStart:0,lineDur:3000,talking:false,cardTimer:null};
+
+function clearDemo(){ while(demoGroup.children.length){ const c=demoGroup.children.pop(); demoGroup.remove(c); c.traverse(o=>{ if(o.geometry) o.geometry.dispose(); if(o.material){ (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{ if(m.map) m.map.dispose(); const i=holoMats.indexOf(m); if(i>=0) holoMats.splice(i,1); m.dispose(); }); } }); }
+  demoGroup.rotation.set(0,0,0); demoGroup.position.set(0,0,0); }
+function loadChapter(i,autoplay){
+  P.ch=Math.max(0,Math.min(CH.length-1,i)); P.line=0; const c=CH[P.ch];
+  UI.part.textContent=c.part; UI.name.textContent=c.title; UI.prog.style.width='0%';
+  clearDemo(); const d=Object.create(DEMOS[c.demo]); d.build(demoGroup); P.demo=d; P.demoT=0;
+  UI.cardk.textContent=(P.ch===0?'':'Capítulo '+P.ch+' · ')+c.part; UI.cardt.textContent=c.title; UI.card.classList.add('show'); clearTimeout(P.cardTimer); P.cardTimer=setTimeout(()=>UI.card.classList.remove('show'),2600);
+  UI.prev.disabled=P.ch===0; UI.next.disabled=P.ch===CH.length-1;
+  renderMenu();
+  if(autoplay) setTimeout(()=>{ if(P.playing && P.ch===i) playLine(); }, 900); else showLine();
+}
+function showLine(){ const c=CH[P.ch]; UI.sub.textContent=c.lines[P.line]; UI.sub.classList.remove('quiet'); }
+function playLine(){
+  if(!P.playing) return; const c=CH[P.ch]; if(P.line>=c.lines.length){ nextChapter(true); return; }
+  showLine(); const text=c.lines[P.line]; const key=String(P.ch).padStart(2,'0')+'_'+P.line; P.talking=true; P.lineStart=performance.now(); P.lineDur=Speech.estimate(text,key);
+  Speech.say(text,key,()=>{ P.talking=false; if(!P.playing) return; setTimeout(()=>{ if(!P.playing) return; P.line++; UI.prog.style.width=(100*P.line/c.lines.length)+'%'; playLine(); }, 550); });
+}
+function nextChapter(auto){ if(P.ch>=CH.length-1){ P.playing=false; UI.play.textContent='Reiniciar'; UI.sub.textContent='Fim. Toque em Reiniciar para ver de novo.'; return; } loadChapter(P.ch+1,true); }
+function setPlaying(v){ P.playing=v; UI.play.textContent=v?'Pausar':'Continuar'; if(v){ playLine(); } else { Speech.stop(); P.talking=false; } }
+
+UI.play.addEventListener('click',()=>{ if(UI.play.textContent==='Reiniciar'){ UI.play.textContent='Pausar'; P.playing=true; loadChapter(0,true); return; } setPlaying(!P.playing); });
+UI.prev.addEventListener('click',()=>{ Speech.stop(); loadChapter(P.ch-1,true); if(!P.playing) showLine(); });
+UI.next.addEventListener('click',()=>{ Speech.stop(); loadChapter(P.ch+1,true); if(!P.playing) showLine(); });
+function setMode(m){ Speech.mode=m; UI.voice.textContent=m==='audio'?'Voz: gravada':(m==='browser'?'Voz: aparelho':'Sem voz'); UI.voice.classList.toggle('on',m!=='off'); const r=document.querySelector('#mode_'+m); if(r) r.checked=true; }
+UI.voice.addEventListener('click',()=>{ const next={audio:'browser',browser:'off',off:'audio'}[Speech.mode]; setMode(next); Speech.unlock(); if(P.playing){ Speech.stop(); playLine(); } });
+document.querySelectorAll('input[name=mode]').forEach(r=>r.addEventListener('change',()=>{ setMode(r.value); Speech.unlock(); if(P.playing){ Speech.stop(); playLine(); } }));
+document.getElementById('voiceSel').addEventListener('change',e=>{ const vs=Speech.voices(); Speech.voice=vs[+e.target.value]||null; if(P.playing && Speech.mode==='browser'){ Speech.stop(); playLine(); } });
+UI.menu.addEventListener('click',()=>{ UI.menuBox.hidden=false; });
+document.getElementById('bClose').addEventListener('click',()=>{ UI.menuBox.hidden=true; });
+function renderMenu(){ UI.menuList.innerHTML=''; let lastPart=''; CH.forEach((c,i)=>{ if(c.part!==lastPart){ const h=document.createElement('h2'); h.textContent=c.part; UI.menuList.appendChild(h); lastPart=c.part; }
+  const b=document.createElement('button'); b.className='it'+(i===P.ch?' cur':''); b.innerHTML='<b>'+String(i).padStart(2,'0')+'</b><span></span>'; b.querySelector('span').textContent=c.title;
+  b.addEventListener('click',()=>{ UI.menuBox.hidden=true; Speech.stop(); if(!P.started) start('audio'); P.playing=true; UI.play.textContent='Pausar'; loadChapter(i,true); }); UI.menuList.appendChild(b); }); }
+function start(mode){ P.started=true; setMode(mode); Speech.unlock(); UI.intro.hidden=true; P.playing=true; UI.play.textContent='Pausar'; loadChapter(0,true); }
+document.getElementById('startVoice').addEventListener('click',()=>start('audio'));
+document.getElementById('startMute').addEventListener('click',()=>start('off'));
+document.addEventListener('visibilitychange',()=>{ if(document.hidden && P.playing){ setPlaying(false); } });
+document.addEventListener('keydown',e=>{ if(e.key===' '&&P.started){ e.preventDefault(); UI.play.click(); } if(e.key==='ArrowRight') UI.next.click(); if(e.key==='ArrowLeft') UI.prev.click(); });
+renderMenu(); setMode('audio');
+
+// ───────────────────────── LAYOUT + LOOP ─────────────────────────
+function layout(){ const w=stage.clientWidth||innerWidth, h=stage.clientHeight||innerHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix();
+  const portrait=w/h<0.9;
+  if(portrait){ camera.position.set(0,0.3,9.6); camera.lookAt(0,-0.1,0); avatar.position.set(-0.95,-2.15,0.6); avatar.scale.setScalar(0.95); holoRoot.position.set(0.35,0.95,-0.4); demoGroup.scale.setScalar(0.72); }
+  else { camera.position.set(0,0.4,7.6); camera.lookAt(0,0.1,0); avatar.position.set(-2.1,-2.15,0.4); avatar.scale.setScalar(1); holoRoot.position.set(1.35,0.25,0); demoGroup.scale.setScalar(0.95); }
+  avatar.rotation.y=0.35;
+}
+layout(); addEventListener('resize',layout);
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let last=performance.now(), blinkT=2.5, blink=0;
+function frame(now){ requestAnimationFrame(frame); const dt=Math.min(0.05,(now-last)/1000); last=now; const t=now/1000;
+  // ambiente
+  env.userData.polys.forEach(m=>{ m.rotation.x+=dt*m.userData.r*0.6; m.rotation.y+=dt*m.userData.r; });
+  env.userData.isl.forEach(d=>{ d.position.y+=Math.sin(t*0.5+d.userData.b)*dt*0.15; });
+  env.userData.stars.rotation.y=t*0.01; holoMats.forEach(m=>m.uniforms.time.value=t);
+  holoRoot.userData.ring.scale.setScalar(1+0.08*Math.sin(t*3));
+  // bonequinho
+  const talk=P.talking;
+  avatar.position.y+= (Math.sin(t*1.8)*0.03 - (avatar.position.y-(camera.aspect<0.9?-2.15:-2.15)))*0.1;
+  AV.head.rotation.x=Math.sin(t*1.3)*0.04+(talk?Math.sin(t*6)*0.03:0); AV.head.rotation.y=talk?0.25+Math.sin(t*0.9)*0.08:Math.sin(t*0.5)*0.12;
+  const targetR=talk?-1.35:0.18; AV.armR.rotation.z+= (targetR-AV.armR.rotation.z)*dt*4; AV.armR.rotation.x=talk?-0.35+Math.sin(t*2.2)*0.08:0;
+  AV.armL.rotation.z=-0.18+Math.sin(t*1.8)*0.05;
+  AV.mouth.scale.y=talk?0.45+0.75*Math.abs(Math.sin(t*14))*(0.5+0.5*Math.abs(Math.sin(t*3.7))):0.45;
+  blinkT-=dt; if(blinkT<0){ blink=0.16; blinkT=2.2+Math.random()*3; } if(blink>0){ blink-=dt; const s=blink>0.08?0.08:0.95; AV.eyes.forEach(e=>e.scale.y=blink>0?0.1:1); } else AV.eyes.forEach(e=>e.scale.y=1);
+  AV.disc.rotation.z=t*0.6;
+  // demo
+  if(P.demo){ P.demoT+=dt; const c=CH[P.ch]; const frac=Math.min(1,(now-P.lineStart)/P.lineDur); const p=Math.min(1,(P.line+(P.talking?frac:0))/c.lines.length); P.demo.update(reduced?P.demoT*0.4:P.demoT,p,dt); }
+  demoGroup.position.y=Math.sin(t*0.9)*0.06;
+  camera.position.x=Math.sin(t*0.12)*0.25; camera.lookAt(camera.aspect<0.9?0:0, camera.aspect<0.9?-0.1:0.1, 0);
+  renderer.render(scene,camera);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>

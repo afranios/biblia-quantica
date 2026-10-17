@@ -80,6 +80,8 @@ async function main() {
   fs.writeFileSync(path.join(DIST, 'site/data/news.json'), JSON.stringify(news, null, 1));
   fs.writeFileSync(path.join(DIST, 'site/data/changelog.json'), JSON.stringify(changelog, null, 1));
   fs.writeFileSync(path.join(DIST, 'site/CNAME'), 'quantum.spolador.pro.br\n');
+  // animação do bonequinho (página independente + áudio da narração)
+  fs.cpSync(path.join(SRC, 'bonequinho'), path.join(DIST, 'site', 'bonequinho'), { recursive: true });
   fs.writeFileSync(path.join(DIST, 'site/.nojekyll'), '');
   for (const c of CH) {
     if (c.restricted) continue;
