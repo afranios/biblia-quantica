@@ -72,6 +72,10 @@ async function main() {
   fs.mkdirSync(path.join(DIST, 'single'), { recursive: true });
   const css = read(path.join(SRC, 'assets/style.css'));
   const sitejs = read(path.join(SRC, 'assets/site.js'));
+  // versão curta dos assets compartilhados na URL, para furar o cache da CDN a cada alteração
+  const crypto = require('crypto'); const ver = s => crypto.createHash('sha1').update(s).digest('hex').slice(0, 8);
+  const cssV = 'assets/style.css?v=' + ver(css), jsV = 'assets/site.js?v=' + ver(sitejs);
+  const withVersions = h => h.split('href="assets/style.css"').join('href="' + cssV + '"').split('src="assets/site.js"').join('src="' + jsV + '"');
   const hasRestrictedSrc = exists(path.join(SRC, 'restrito.html'));
 
   // ---------- multi-page site ----------
@@ -91,7 +95,7 @@ async function main() {
       html = html.replace('<div class="bg-grad"></div>', '</head>\n<body>\n<div class="bg-grad"></div>') + '\n</body>\n</html>\n';
     }
     html = html.replace('<script src="assets/site.js"></script>', dataScript + '\n<script src="assets/site.js"></script>');
-    fs.writeFileSync(path.join(DIST, 'site', c.file), html);
+    fs.writeFileSync(path.join(DIST, 'site', c.file), withVersions(html));
   }
   // restricted page shell
   {
@@ -99,7 +103,7 @@ async function main() {
     if (hasRestrictedSrc) { const p = parts('restrito.html'); payload = { css: p.css, html: p.body, js: p.js }; }
     const blob = await restrictedBlob('site', payload);
     const shell = '<!doctype html>\n<html lang="pt-BR">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<title>Área restrita · Bíblia Quântica</title>\n<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">\n<link rel="stylesheet" href="assets/style.css">\n<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>\n<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>\n</head>\n<body>\n<div class="bg-grad"></div><div class="bg-grid"></div><div id="bg3d"></div>\n<header id="site-header" class="hdr"></header>\n<main class="page" id="restrito-mount"></main>\n<div class="wrap" id="site-pager"></div>\n<footer id="site-footer"></footer>\n' + dataScript + '\n<script src="assets/site.js"></script>\n<script>window.QB_LOCK=' + JSON.stringify(blob) + ';\nQB.onReady=function(){ QB.lock(document.getElementById("restrito-mount"), window.QB_LOCK, function(){ QB.enhance(document.getElementById("restrito-mount")); }); };\n</script>\n</body>\n</html>\n';
-    fs.writeFileSync(path.join(DIST, 'site', 'restrito.html'), shell);
+    fs.writeFileSync(path.join(DIST, 'site', 'restrito.html'), withVersions(shell));
   }
 
   // ---------- single file ----------
