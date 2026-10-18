@@ -35,8 +35,7 @@
   .sci{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
   .sc{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--glass);display:grid;grid-template-columns:76px 1fr;gap:14px;min-width:0;align-items:start}
   .sc .ph{position:relative;width:76px;height:76px;border-radius:50%;overflow:hidden;border:1px solid var(--line2);box-shadow:0 0 18px rgba(92,225,255,.22);background:var(--bg2)}
-  .sc .ph svg,.sc .ph img{position:absolute;inset:0;width:100%;height:100%;display:block}
-  .sc .ph img{object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.08) brightness(1.05)}
+  .sc .ph svg{position:absolute;inset:0;width:100%;height:100%;display:block}
   .sc .yr{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
   .sc h3{font-size:1.05rem;margin:2px 0 0}
   .sc .life{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:2px}
@@ -80,42 +79,42 @@
 
       <div class="sci">
         <div class="sc">
-          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-planck" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ce1ff"/><stop offset="1" stop-color="#9d8cff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-planck)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">MP</text></svg><img src="assets/img/planck.jpg" alt="Retrato de Max Planck" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-planck" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ce1ff"/><stop offset="1" stop-color="#9d8cff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-planck)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">MP</text></svg></div>
           <div><div class="yr">1900 · Berlim</div><h3>Max Planck</h3><div class="life">1858 a 1947 · Alemanha · Nobel de 1918</div>
             <p class="what">Para explicar a luz que um corpo aquecido emite, admitiu que a energia só é trocada em pacotes, múltiplos de uma constante minúscula, h. Chamou o pacote de quantum. Era uma saída de cálculo que ele mesmo demorou anos a aceitar como física.</p>
             <div class="f">E = h·ν</div>
             <p class="lk"><b>No qubit:</b> a diferença de energia entre |0⟩ e |1⟩ de um qubit supercondutor, dividida por h, dá a frequência de micro-ondas (4 a 8 GHz) com que ele é controlado. Toda porta começa na constante de Planck.</p></div>
         </div>
         <div class="sc">
-          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-einstein" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ce1ff"/><stop offset="1" stop-color="#ff5fd2"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-einstein)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">AE</text></svg><img src="assets/img/einstein.jpg" alt="Retrato de Albert Einstein" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-einstein" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ce1ff"/><stop offset="1" stop-color="#ff5fd2"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-einstein)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">AE</text></svg></div>
           <div><div class="yr">1905 · Berna</div><h3>Albert Einstein</h3><div class="life">1879 a 1955 · Alemanha · Nobel de 1921</div>
             <p class="what">Levou o pacote de Planck a sério: a própria luz é feita de quanta, depois batizados fótons. Com isso explicou o efeito fotoelétrico, e foi por esse trabalho, não pela relatividade, que recebeu o Nobel. Passou o resto da vida desconfiando da teoria que ajudou a fundar.</p>
             <div class="f">E = h·ν por fóton</div>
             <p class="lk"><b>No qubit:</b> o fóton é o qubit das máquinas fotônicas (PsiQuantum, Jiuzhang) e de toda a comunicação quântica. A objeção dele de 1935 ao emaranhamento está em <a href="#emaranhamento">Emaranhamento</a>.</p></div>
         </div>
         <div class="sc">
-          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-bohr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d8cff"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-bohr)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">NB</text></svg><img src="assets/img/bohr.jpg" alt="Retrato de Niels Bohr" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-bohr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d8cff"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-bohr)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">NB</text></svg></div>
           <div><div class="yr">1913 · Copenhague</div><h3>Niels Bohr</h3><div class="life">1885 a 1962 · Dinamarca · Nobel de 1922</div>
             <p class="what">Propôs que o elétron no átomo só ocupa certas órbitas, com energias discretas, e salta entre elas absorvendo ou emitindo um quantum. Em 1927 formulou a complementaridade: aspectos como onda e partícula não aparecem no mesmo experimento, mas os dois são necessários para descrever o sistema.</p>
             <div class="f">Eₙ: níveis discretos</div>
             <p class="lk"><b>No qubit:</b> um qubit supercondutor é um átomo artificial do qual se usam só os dois níveis mais baixos. E a fase que o simulador da esfera de Bloch mostra invisível à medição direta é complementaridade em ação.</p></div>
         </div>
         <div class="sc">
-          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-heis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf6e"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-heis)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">WH</text></svg><img src="assets/img/heisenberg.jpg" alt="Retrato de Werner Heisenberg" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-heis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf6e"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-heis)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">WH</text></svg></div>
           <div><div class="yr">1925 · Helgoland</div><h3>Werner Heisenberg</h3><div class="life">1901 a 1976 · Alemanha · Nobel de 1932</div>
             <p class="what">Aos 23 anos, isolado numa ilha do mar do Norte para fugir da alergia, abandonou a pergunta sobre a órbita do elétron e passou a descrever só o que se mede: frequências e intensidades, organizadas em tabelas que Born e Jordan reconheceram como matrizes. Em 1927 derivou a relação de incerteza.</p>
             <div class="f">Δx·Δp ≥ ħ/2</div>
             <p class="lk"><b>No qubit:</b> as portas X, Y, Z e H da <a href="#esfera">esfera de Bloch</a> são matrizes 2×2 agindo sobre o estado. Um programa quântico é mecânica matricial executada em hardware.</p></div>
         </div>
         <div class="sc">
-          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-schr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fd2"/><stop offset="1" stop-color="#9d8cff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-schr)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">ES</text></svg><img src="assets/img/schrodinger.jpg" alt="Retrato de Erwin Schrödinger" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-schr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fd2"/><stop offset="1" stop-color="#9d8cff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-schr)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">ES</text></svg></div>
           <div><div class="yr">1926 · Zurique</div><h3>Erwin Schrödinger</h3><div class="life">1887 a 1961 · Áustria · Nobel de 1933</div>
             <p class="what">Chegou aos mesmos resultados por outro caminho: uma equação de onda cuja solução, a função de onda ψ, evolui de forma contínua e previsível. Em 1935 inventou o gato para mostrar o quanto a teoria fica estranha quando levada ao mundo dos objetos grandes.</p>
             <div class="f">iħ ∂ψ/∂t = Ĥψ</div>
             <p class="lk"><b>No qubit:</b> <a href="#superposicao">Superposição é onda</a> é a versão de um qubit dessa ideia. As amplitudes α e β são a função de onda reduzida a dois pontos.</p></div>
         </div>
         <div class="sc">
-          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-born" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe3a3"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-born)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">MB</text></svg><img src="assets/img/born.jpg" alt="Retrato de Max Born" loading="lazy" onerror="this.remove()"></div>
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-born" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe3a3"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-born)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">MB</text></svg></div>
           <div><div class="yr">1926 · Göttingen</div><h3>Max Born</h3><div class="life">1882 a 1970 · Alemanha · Nobel de 1954</div>
             <p class="what">Deu significado à onda de Schrödinger: o quadrado da amplitude é a probabilidade de encontrar o sistema naquele resultado. A teoria passou a prever estatísticas, não trajetórias. Foi ele também quem cunhou o nome "mecânica quântica". O Nobel pela regra demorou 28 anos.</p>
             <div class="f">P = |ψ|²</div>
@@ -156,7 +155,7 @@
         </div>
       </div>
 
-      <div class="note"><span class="k">Para ir além</span>Carlo Rovelli, <i>Helgoland</i> (Adelphi, 2020); edição brasileira <i>O abismo vertiginoso: um mergulho nas ideias e nos efeitos da física quântica</i> (Objetiva, 2021). As datas e atribuições desta seção seguem a Encyclopaedia Britannica e as biografias oficiais em NobelPrize.org; a lista de seis é uma escolha editorial, não um consenso. Retratos em domínio público, via Wikimedia Commons.</div>
+      <div class="note"><span class="k">Para ir além</span>Carlo Rovelli, <i>Helgoland</i> (Adelphi, 2020); edição brasileira <i>O abismo vertiginoso: um mergulho nas ideias e nos efeitos da física quântica</i> (Objetiva, 2021). As datas e atribuições desta seção seguem a Encyclopaedia Britannica e as biografias oficiais em NobelPrize.org; a lista de seis é uma escolha editorial, não um consenso.</div>
     </div>
   </section>
 
