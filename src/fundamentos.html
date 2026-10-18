@@ -31,6 +31,26 @@
   .myth b{color:#fff}
   .myth p{font-size:.93rem;color:var(--fg2);margin-top:4px}
   .wave{width:100%;height:120px;display:block}
+  /* origens: cartões dos fundadores */
+  .sci{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+  .sc{padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--glass);display:grid;grid-template-columns:76px 1fr;gap:14px;min-width:0;align-items:start}
+  .sc .ph{position:relative;width:76px;height:76px;border-radius:50%;overflow:hidden;border:1px solid var(--line2);box-shadow:0 0 18px rgba(92,225,255,.22);background:var(--bg2)}
+  .sc .ph svg,.sc .ph img{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .sc .ph img{object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.08) brightness(1.05)}
+  .sc .yr{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
+  .sc h3{font-size:1.05rem;margin:2px 0 0}
+  .sc .life{font-family:var(--mono);font-size:.7rem;color:var(--faint);margin-top:2px}
+  .sc .what{font-size:.9rem;color:var(--fg2);margin-top:8px}
+  .sc .f{font-family:var(--mono);font-size:.86rem;color:var(--amber);margin-top:8px}
+  .sc .lk{font-size:.82rem;margin-top:8px;color:var(--fg2);padding-top:8px;border-top:1px dashed var(--line)}
+  .sc .lk b{color:var(--cyan);font-weight:600}
+  .ideas .panel{border-color:rgba(157,140,255,.38)}
+  .ideas .panel .k{color:var(--vio)}
+  .interp{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+  .interp li{display:grid;grid-template-columns:auto 1fr;gap:10px;font-size:.9rem;color:var(--fg2);align-items:baseline}
+  .interp li b{font-family:var(--display);color:#fff;font-size:.9rem;white-space:nowrap}
+  .tl.compact .tl-item{padding:8px 0 8px 16px}
+  .tl.compact .tl-item .b{font-size:.9rem}
 </style>
 </head>
 <body>
@@ -44,18 +64,105 @@
       <div class="stack">
         <span class="eyebrow">Capítulo 01 · Fundamentos</span>
         <h1>Do bit ao qubit, sem matemática além da necessária</h1>
-        <p class="lead">A ideia central: um computador quântico não testa todas as respostas ao mesmo tempo; ele organiza possibilidades para que as erradas se cancelem e a certa sobre. Tudo o que importa para o negócio (por que é difícil construir, por que ameaça a criptografia, por que não acelera qualquer cálculo) decorre dessa frase. Este capítulo a desmonta em oito conceitos, com dois simuladores para você mexer.</p>
+        <p class="lead">A ideia central: um computador quântico não testa todas as respostas ao mesmo tempo; ele organiza possibilidades para que as erradas se cancelem e a certa sobre. Tudo o que importa para o negócio (por que é difícil construir, por que ameaça a criptografia, por que não acelera qualquer cálculo) decorre dessa frase. Este capítulo a desmonta em nove passos, começando por quem descobriu essas regras, com dois simuladores para você mexer.</p>
       </div>
       <div class="toc">
-        <a href="#bit">Bit vs. qubit</a><a href="#superposicao">Superposição</a><a href="#esfera">Esfera de Bloch (3D)</a><a href="#emaranhamento">Emaranhamento</a><a href="#interferencia">Interferência</a><a href="#medicao">Medição</a><a href="#decoerencia">Decoerência</a><a href="#circuito">Simulador de circuito</a><a href="#escala">Por que 2ⁿ importa</a><a href="#analogias">Analogias para a diretoria</a><a href="#mitos">Mitos</a><a href="#quiz">Teste</a>
+        <a href="#origens">Origens</a><a href="#bit">Bit vs. qubit</a><a href="#superposicao">Superposição</a><a href="#esfera">Esfera de Bloch (3D)</a><a href="#emaranhamento">Emaranhamento</a><a href="#interferencia">Interferência</a><a href="#medicao">Medição</a><a href="#decoerencia">Decoerência</a><a href="#circuito">Simulador de circuito</a><a href="#escala">Por que 2ⁿ importa</a><a href="#analogias">Analogias para a diretoria</a><a href="#mitos">Mitos</a><a href="#quiz">Teste</a>
       </div>
-      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>O que um qubit guarda, e por que isso não é o mesmo que 'ser 0 e 1 ao mesmo tempo'?</li><li>De onde vem, de fato, a vantagem de um algoritmo quântico?</li><li>Por que a decoerência obriga à criogenia e à correção de erros?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 17/10/2026</div></div>
+      <div class="panel" style="margin-top:4px"><div class="k">Ao terminar, você deve saber responder</div><ul class="ask"><li>O que um qubit guarda, e por que isso não é o mesmo que 'ser 0 e 1 ao mesmo tempo'?</li><li>De onde vem, de fato, a vantagem de um algoritmo quântico?</li><li>Por que a decoerência obriga à criogenia e à correção de erros?</li></ul><div class="src" style="margin-top:8px">Tempo de leitura estimado: <span class="rt">—</span> · Revisado em 18/10/2026</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="origens" data-level="conceito">
+    <div class="stack-lg">
+      <div class="stack"><span class="eyebrow">1 de 9</span><h2>Antes do qubit: de Planck a Helgoland</h2>
+        <p class="lead">As regras que um computador quântico explora foram descobertas entre 1900 e 1927 por meia dúzia de físicos que tentavam entender átomos e luz, não construir máquinas. Saber o que cada um resolveu torna o qubit menos estranho: superposição, matrizes, probabilidade e medição têm, cada uma, um nome e uma data. O físico Carlo Rovelli reconta esse período em <i>O abismo vertiginoso</i>; três ideias do livro voltam ao longo deste capítulo.</p></div>
+
+      <div class="sci">
+        <div class="sc">
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-planck" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ce1ff"/><stop offset="1" stop-color="#9d8cff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-planck)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">MP</text></svg><img src="assets/img/planck.jpg" alt="Retrato de Max Planck" loading="lazy" onerror="this.remove()"></div>
+          <div><div class="yr">1900 · Berlim</div><h3>Max Planck</h3><div class="life">1858 a 1947 · Alemanha · Nobel de 1918</div>
+            <p class="what">Para explicar a luz que um corpo aquecido emite, admitiu que a energia só é trocada em pacotes, múltiplos de uma constante minúscula, h. Chamou o pacote de quantum. Era uma saída de cálculo que ele mesmo demorou anos a aceitar como física.</p>
+            <div class="f">E = h·ν</div>
+            <p class="lk"><b>No qubit:</b> a diferença de energia entre |0⟩ e |1⟩ de um qubit supercondutor, dividida por h, dá a frequência de micro-ondas (4 a 8 GHz) com que ele é controlado. Toda porta começa na constante de Planck.</p></div>
+        </div>
+        <div class="sc">
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-einstein" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5ce1ff"/><stop offset="1" stop-color="#ff5fd2"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-einstein)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">AE</text></svg><img src="assets/img/einstein.jpg" alt="Retrato de Albert Einstein" loading="lazy" onerror="this.remove()"></div>
+          <div><div class="yr">1905 · Berna</div><h3>Albert Einstein</h3><div class="life">1879 a 1955 · Alemanha · Nobel de 1921</div>
+            <p class="what">Levou o pacote de Planck a sério: a própria luz é feita de quanta, depois batizados fótons. Com isso explicou o efeito fotoelétrico, e foi por esse trabalho, não pela relatividade, que recebeu o Nobel. Passou o resto da vida desconfiando da teoria que ajudou a fundar.</p>
+            <div class="f">E = h·ν por fóton</div>
+            <p class="lk"><b>No qubit:</b> o fóton é o qubit das máquinas fotônicas (PsiQuantum, Jiuzhang) e de toda a comunicação quântica. A objeção dele de 1935 ao emaranhamento está em <a href="#emaranhamento">Emaranhamento</a>.</p></div>
+        </div>
+        <div class="sc">
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-bohr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9d8cff"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-bohr)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">NB</text></svg><img src="assets/img/bohr.jpg" alt="Retrato de Niels Bohr" loading="lazy" onerror="this.remove()"></div>
+          <div><div class="yr">1913 · Copenhague</div><h3>Niels Bohr</h3><div class="life">1885 a 1962 · Dinamarca · Nobel de 1922</div>
+            <p class="what">Propôs que o elétron no átomo só ocupa certas órbitas, com energias discretas, e salta entre elas absorvendo ou emitindo um quantum. Em 1927 formulou a complementaridade: aspectos como onda e partícula não aparecem no mesmo experimento, mas os dois são necessários para descrever o sistema.</p>
+            <div class="f">Eₙ: níveis discretos</div>
+            <p class="lk"><b>No qubit:</b> um qubit supercondutor é um átomo artificial do qual se usam só os dois níveis mais baixos. E a fase que o simulador da esfera de Bloch mostra invisível à medição direta é complementaridade em ação.</p></div>
+        </div>
+        <div class="sc">
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-heis" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf6e"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-heis)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">WH</text></svg><img src="assets/img/heisenberg.jpg" alt="Retrato de Werner Heisenberg" loading="lazy" onerror="this.remove()"></div>
+          <div><div class="yr">1925 · Helgoland</div><h3>Werner Heisenberg</h3><div class="life">1901 a 1976 · Alemanha · Nobel de 1932</div>
+            <p class="what">Aos 23 anos, isolado numa ilha do mar do Norte para fugir da alergia, abandonou a pergunta sobre a órbita do elétron e passou a descrever só o que se mede: frequências e intensidades, organizadas em tabelas que Born e Jordan reconheceram como matrizes. Em 1927 derivou a relação de incerteza.</p>
+            <div class="f">Δx·Δp ≥ ħ/2</div>
+            <p class="lk"><b>No qubit:</b> as portas X, Y, Z e H da <a href="#esfera">esfera de Bloch</a> são matrizes 2×2 agindo sobre o estado. Um programa quântico é mecânica matricial executada em hardware.</p></div>
+        </div>
+        <div class="sc">
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-schr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff5fd2"/><stop offset="1" stop-color="#9d8cff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-schr)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">ES</text></svg><img src="assets/img/schrodinger.jpg" alt="Retrato de Erwin Schrödinger" loading="lazy" onerror="this.remove()"></div>
+          <div><div class="yr">1926 · Zurique</div><h3>Erwin Schrödinger</h3><div class="life">1887 a 1961 · Áustria · Nobel de 1933</div>
+            <p class="what">Chegou aos mesmos resultados por outro caminho: uma equação de onda cuja solução, a função de onda ψ, evolui de forma contínua e previsível. Em 1935 inventou o gato para mostrar o quanto a teoria fica estranha quando levada ao mundo dos objetos grandes.</p>
+            <div class="f">iħ ∂ψ/∂t = Ĥψ</div>
+            <p class="lk"><b>No qubit:</b> <a href="#superposicao">Superposição é onda</a> é a versão de um qubit dessa ideia. As amplitudes α e β são a função de onda reduzida a dois pontos.</p></div>
+        </div>
+        <div class="sc">
+          <div class="ph"><svg viewBox="0 0 76 76" aria-hidden="true"><defs><linearGradient id="g-born" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4fe3a3"/><stop offset="1" stop-color="#5ce1ff"/></linearGradient></defs><circle cx="38" cy="38" r="36" fill="rgba(9,20,52,.9)" stroke="url(#g-born)" stroke-width="1.5"/><text x="38" y="46" text-anchor="middle" font-family="Chakra Petch, sans-serif" font-weight="700" font-size="24" fill="#fff">MB</text></svg><img src="assets/img/born.jpg" alt="Retrato de Max Born" loading="lazy" onerror="this.remove()"></div>
+          <div><div class="yr">1926 · Göttingen</div><h3>Max Born</h3><div class="life">1882 a 1970 · Alemanha · Nobel de 1954</div>
+            <p class="what">Deu significado à onda de Schrödinger: o quadrado da amplitude é a probabilidade de encontrar o sistema naquele resultado. A teoria passou a prever estatísticas, não trajetórias. Foi ele também quem cunhou o nome "mecânica quântica". O Nobel pela regra demorou 28 anos.</p>
+            <div class="f">P = |ψ|²</div>
+            <p class="lk"><b>No qubit:</b> é a regra que este capítulo usa o tempo todo: P(0) = |α|². Em <a href="#medicao">Medição e shots</a> ela decide por que programas rodam milhares de vezes.</p></div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="stack" style="gap:6px"><span class="eyebrow">O abismo vertiginoso</span><h3>Três ideias de Rovelli que ajudam a ler o resto do capítulo</h3>
+          <p class="small muted" style="max-width:var(--col)">Carlo Rovelli, físico italiano da gravidade quântica em loop, publicou <i>Helgoland</i> em 2020 (no Brasil, <i>O abismo vertiginoso</i>, Objetiva, 2021). Não é um livro sobre computação; é sobre o que a ilha de Heisenberg revelou e o que ainda não foi digerido um século depois. Três ideias dele são úteis aqui. A segunda é uma interpretação, e está marcada como tal.</p></div>
+        <div class="grid3 ideas">
+          <div class="panel"><div class="k">Ideia 1 · o movimento de Helgoland</div><h3>Descrever só o que se observa</h3><p class="small" style="color:var(--fg2)">Heisenberg não resolveu a pergunta "onde está o elétron entre uma medição e outra"; ele a abandonou. A teoria passou a relacionar observações com observações, e deu certo. <b style="color:#fff">Um programa quântico é isso na prática:</b> prepara-se o estado, aplicam-se portas, mede-se. Não existe espiar o meio do caminho, como a seção de Medição lembra. A computação quântica funciona sem responder a pergunta que Heisenberg deixou de lado.</p></div>
+          <div class="panel"><div class="k">Ideia 2 · interpretação relacional</div><h3>Propriedades são relativas a quem interage</h3><p class="small" style="color:var(--fg2)">Para Rovelli, o estado de um sistema não é um fato absoluto; é uma relação entre ele e o sistema com que interage. Um qubit não "está" em superposição ou colapsado em si; está assim em relação ao aparelho, ao ambiente, a você. <b style="color:#fff">É a leitura mais clara da Decoerência adiante:</b> o ambiente não perturba um estado privado, ele estabelece fatos em relação a si mesmo, e o que era superposição para o computador vira estatística comum. Isolar é caro porque qualquer interação conta. <span class="chip v" style="margin-top:6px">interpretação, não resultado experimental</span></p></div>
+          <div class="panel"><div class="k">Ideia 3 · emaranhamento</div><h3>Correlação, não mensagem</h3><p class="small" style="color:var(--fg2)">Nenhum dos dois qubits emaranhados tem estado próprio; a informação está na relação entre eles e só aparece quando alguém compara os resultados. Rovelli usa isso para dissolver a "ação fantasmagórica" de Einstein: nada viaja, porque não havia uma propriedade local para ser alterada. <b style="color:#fff">É a razão de fundo</b> de o emaranhamento não permitir comunicação mais rápida que a luz (mito 6, abaixo) e, ao mesmo tempo, de ele denunciar um espião na distribuição quântica de chaves.</p></div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>Quem a lista de seis deixa de fora</h3>
+          <div class="tl compact" style="margin-top:10px">
+            <div class="tl-item v"><div class="d">1928 a 1939</div><div class="t">Paul Dirac</div><div class="b">Mostrou que matrizes e ondas eram a mesma teoria, previu a antimatéria e criou a notação |0⟩ e |1⟩ usada neste capítulo.</div></div>
+            <div class="tl-item v"><div class="d">1932</div><div class="t">John von Neumann</div><div class="b">Deu à teoria sua forma matemática definitiva (espaços de Hilbert) e a primeira teoria formal da medição. Anos depois, desenhou a arquitetura dos computadores clássicos.</div></div>
+            <div class="tl-item m"><div class="d">1964</div><div class="t">John Bell</div><div class="b">Transformou a disputa entre Einstein e Bohr num experimento. Clauser, Aspect e Zeilinger o fizeram (Nobel de 2022) e a natureza ficou do lado quântico. O "estado de Bell" do simulador leva o nome dele.</div></div>
+            <div class="tl-item a"><div class="d">1981 a 1994</div><div class="t">Feynman, Deutsch, Shor</div><div class="b">Feynman propõe simular a natureza com um computador quântico; Deutsch define a máquina universal; Shor mostra que ela fatora números grandes. Começa a história que o capítulo 03 conta.</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>O que a matemática não decide</h3>
+          <p class="small" style="color:var(--fg2);margin-bottom:12px">Todas as interpretações abaixo preveem os mesmos números em todo experimento já feito. Divergem sobre o que a função de onda <i>é</i>. Para construir e usar um computador quântico, nenhuma delas é necessária.</p>
+          <ul class="interp">
+            <li><b>Copenhague</b><span>Bohr e Heisenberg: a medição é um ato primitivo; a teoria descreve resultados, não a realidade entre eles.</span></li>
+            <li><b>Muitos mundos</b><span>Everett, 1957: não há colapso; todos os resultados acontecem, em ramos que não se comunicam.</span></li>
+            <li><b>Variáveis ocultas</b><span>De Broglie e Bohm: existe uma realidade definida por baixo, mas não local, como Bell exige.</span></li>
+            <li><b>QBism</b><span>A função de onda é o grau de crença de quem a usa, não uma propriedade do mundo.</span></li>
+            <li><b>Relacional</b><span>Rovelli: estados e propriedades existem só em relação a outros sistemas. É a tese do livro.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="note"><span class="k">Para ir além</span>Carlo Rovelli, <i>Helgoland</i> (Adelphi, 2020); edição brasileira <i>O abismo vertiginoso: um mergulho nas ideias e nos efeitos da física quântica</i> (Objetiva, 2021). As datas e atribuições desta seção seguem a Encyclopaedia Britannica e as biografias oficiais em NobelPrize.org; a lista de seis é uma escolha editorial, não um consenso. Retratos em domínio público, via Wikimedia Commons.</div>
     </div>
   </section>
 
   <section class="section" id="bit" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">1 de 8</span><h2>Bit e qubit</h2>
+      <div class="stack"><span class="eyebrow">2 de 9</span><h2>Bit e qubit</h2>
         <p class="lead">Um bit é um interruptor: 0 ou 1. Um qubit é um objeto físico (a corrente num circuito supercondutor, um íon, um átomo, um fóton, o spin de um elétron) cujo estado é descrito por dois números chamados amplitudes. A amplitude de "0" e a amplitude de "1" podem ser ambas diferentes de zero ao mesmo tempo. Isso se chama superposição.</p></div>
       <div class="bitqubit">
         <div class="bq"><div class="k">Bit clássico</div><div class="big">0 <span class="muted">ou</span> 1</div><p class="small muted" style="margin-top:8px">Um estado por vez. Ler não altera. Copiar é trivial. 8 bits = 1 byte, 256 combinações possíveis, mas só uma ocupada.</p></div>
@@ -68,7 +175,7 @@
 
   <section class="section" id="superposicao" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">2 de 8</span><h2>Superposição é onda, não moeda</h2>
+      <div class="stack"><span class="eyebrow">3 de 9</span><h2>Superposição é onda, não moeda</h2>
         <p class="lead">A analogia da "moeda girando" é popular e enganosa. A analogia correta é a de uma onda: assim como uma onda sonora pode ser a soma de duas notas, o estado de um qubit é a soma ponderada de |0⟩ e |1⟩. E ondas fazem algo que moedas não fazem: interferem.</p></div>
       <div class="panel">
         <div class="k">Duas ondas somadas · arraste o deslocamento de fase</div>
@@ -81,7 +188,7 @@
 
   <section class="section" id="esfera" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">3 de 8 · interativo</span><h2>A esfera de Bloch</h2>
+      <div class="stack"><span class="eyebrow">4 de 9 · interativo</span><h2>A esfera de Bloch</h2>
         <p class="lead">Todo estado de um qubit cabe num ponto da superfície de uma esfera. O polo norte é |0⟩, o polo sul é |1⟩, o equador são superposições com pesos iguais. As portas lógicas são rotações dessa esfera. Gire, aplique portas e meça.</p></div>
       <div class="bloch-wrap">
         <div id="bloch" aria-label="Esfera de Bloch interativa"></div>
@@ -123,8 +230,8 @@
 
   <section class="section" id="emaranhamento" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">4 de 8</span><h2>Emaranhamento</h2>
-        <p class="lead">Dois qubits emaranhados não têm estados individuais; só o par tem. Medir um define instantaneamente o resultado do outro, a qualquer distância, mas sem transmitir informação (você não escolhe o que sai). Einstein chamou isso de "ação fantasmagórica à distância". É o recurso que faz o espaço de estados crescer como 2ⁿ em vez de 2n.</p></div>
+      <div class="stack"><span class="eyebrow">5 de 9</span><h2>Emaranhamento</h2>
+        <p class="lead">Dois qubits emaranhados não têm estados individuais; só o par tem. Medir um define instantaneamente o resultado do outro, a qualquer distância, mas sem transmitir informação (você não escolhe o que sai). Einstein chamou isso de "ação fantasmagórica à distância" (1935, com Podolsky e Rosen); a resposta que a física deu, e a leitura de Rovelli, estão em <a href="#origens">Origens</a>. É o recurso que faz o espaço de estados crescer como 2ⁿ em vez de 2n.</p></div>
       <div class="grid2">
         <div class="panel"><h3>O estado de Bell</h3><p class="mono" style="color:var(--cyan);font-size:1rem">(|00⟩ + |11⟩) / √2</p><p class="small" style="color:var(--fg2);margin-top:8px">Metade das vezes mede-se 00, metade 11, nunca 01 ou 10. Os dois qubits concordam sempre, embora cada um, sozinho, seja aleatório. Monte esse estado no simulador abaixo com H no qubit 0 seguido de CNOT.</p></div>
         <div class="panel"><h3>Por que importa para o negócio</h3><ul style="margin:0;padding-left:1.1em;color:var(--fg2);font-size:.95rem;display:grid;gap:6px"><li>É o que diferencia um computador quântico de um computador probabilístico comum.</li><li>Estados GHZ de 94 qubits lógicos já foram criados (Quantinuum Helios, nov/2025).</li><li>Na comunicação quântica (QKD), é o que denuncia um espião: interceptar quebra a correlação.</li><li>É frágil: qualquer interação com o ambiente o destrói. Daí a criogenia a 15 milikelvin.</li></ul></div>
@@ -134,7 +241,7 @@
 
   <section class="section" id="interferencia" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">5 de 8</span><h2>Interferência: a fonte real da vantagem</h2>
+      <div class="stack"><span class="eyebrow">6 de 9</span><h2>Interferência: a fonte real da vantagem</h2>
         <p class="lead">Se superposição fosse tudo, bastaria "testar todas as respostas e ler". Não funciona: a leitura sorteia uma. O que os algoritmos fazem é levar as amplitudes de respostas erradas se cancelarem e as de respostas certas se somarem, de modo que, ao medir, a resposta certa apareça com alta probabilidade. É por isso que só alguns problemas têm algoritmos quânticos rápidos: aqueles em que existe uma estrutura matemática para orquestrar esse cancelamento.</p></div>
       <div class="grid3">
         <div class="panel"><div class="k">Tem estrutura</div><h3>Fatoração (Shor)</h3><p class="small" style="color:var(--fg2)">Periodicidade escondida nos números. Ganho exponencial. É o que quebra RSA e curvas elípticas.</p></div>
@@ -147,14 +254,14 @@
 
   <section class="section" id="medicao" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">6 de 8</span><h2>Medição e "shots"</h2>
-        <p class="lead">Medir um qubit força a escolha: 0 ou 1, com as probabilidades dadas pelas amplitudes. Depois da medição, a superposição acabou. Consequências práticas: o resultado de um programa quântico é uma distribuição estatística, obtida repetindo o circuito centenas ou milhares de vezes; não existe "ler o estado intermediário" para depurar; e o custo em nuvem é cobrado por "shot" ou por minuto de máquina (ver capítulo 07).</p></div>
+      <div class="stack"><span class="eyebrow">7 de 9</span><h2>Medição e "shots"</h2>
+        <p class="lead">Medir um qubit força a escolha: 0 ou 1, com as probabilidades dadas pelas amplitudes ao quadrado (a regra de Born, de 1926). Depois da medição, a superposição acabou. Consequências práticas: o resultado de um programa quântico é uma distribuição estatística, obtida repetindo o circuito centenas ou milhares de vezes; não existe "ler o estado intermediário" para depurar; e o custo em nuvem é cobrado por "shot" ou por minuto de máquina (ver capítulo 07).</p></div>
     </div>
   </section>
 
   <section class="section" id="decoerencia" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">7 de 8</span><h2>Decoerência: o inimigo</h2>
+      <div class="stack"><span class="eyebrow">8 de 9</span><h2>Decoerência: o inimigo</h2>
         <p class="lead">O ambiente "mede" os qubits o tempo todo: vibrações, calor, radiação, campos magnéticos. Cada interação destrói um pouco da superposição. O tempo que um qubit sobrevive é medido por T1 e T2. Hoje: cerca de 100 microssegundos no Google Willow, 350 microssegundos no IBM Nighthawk, 13 segundos em átomos neutros da Caltech. Nesse intervalo é preciso executar todo o cálculo, ou corrigir os erros no meio do caminho.</p></div>
       <div class="stats">
         <div class="stat"><div class="v c">~100 µs</div><div class="l">T1 do Google Willow (105 qubits supercondutores)</div><div class="s">Google, dez/2024</div></div>
@@ -168,7 +275,7 @@
 
   <section class="section" id="circuito" data-level="conceito">
     <div class="stack-lg">
-      <div class="stack"><span class="eyebrow">8 de 8 · interativo</span><h2>Simulador de circuito com dois qubits</h2>
+      <div class="stack"><span class="eyebrow">9 de 9 · interativo</span><h2>Simulador de circuito com dois qubits</h2>
         <p class="lead">Um programa quântico é um circuito: fios (qubits) e portas aplicadas em sequência, da esquerda para a direita. Monte o seu. Comece pelo preset "Bell" e veja aparecer o emaranhamento: só 00 e 11 saem.</p></div>
       <div class="panel holo">
         <div class="row" style="margin-bottom:14px"><button class="btn sm" data-preset="bell">Preset: estado de Bell</button><button class="btn sm" data-preset="super">Preset: superposição total</button><button class="btn sm" data-preset="hh">Preset: H, H (desfaz)</button><button class="btn sm ghost" data-preset="clear">Limpar</button></div>
@@ -237,6 +344,7 @@
     <div class="stack-lg">
       <div class="stack"><span class="eyebrow">Teste rápido</span><h2>Verifique o que ficou</h2></div>
       <div data-quiz><script type="application/json">[
+        {"q":"Qual foi a decisão de Heisenberg em Helgoland, em 1925?","o":["Calcular a órbita exata do elétron","Descrever só grandezas observáveis, organizadas em tabelas que são matrizes","Provar que a luz é uma onda","Medir a constante de Planck com mais precisão"],"a":1,"e":"Heisenberg deixou de lado a pergunta sobre a trajetória do elétron e relacionou observações com observações. As portas de um computador quântico são as matrizes que nasceram ali."},
         {"q":"O que a superposição permite, de fato?","o":["Calcular todas as respostas e lê-las de uma vez","Descrever o sistema com pesos (amplitudes) para vários resultados ao mesmo tempo","Armazenar infinitos bits em um qubit","Comunicação instantânea"],"a":1,"e":"Superposição é a descrição com amplitudes. A leitura devolve um único resultado; o ganho vem da interferência entre amplitudes."},
         {"q":"Por que aplicar a porta H duas vezes a |0⟩ devolve |0⟩?","o":["Porque a máquina desfaz a última operação","Porque a segunda H faz as amplitudes de |1⟩ se cancelarem por interferência","Porque a medição é aleatória","Porque H é a identidade"],"a":1,"e":"H cria superposição; a segunda H recombina as amplitudes de forma que o caminho para |1⟩ se anula. É interferência destrutiva, o mecanismo central dos algoritmos."},
         {"q":"Qual é a fonte principal da vantagem quântica?","o":["Paralelismo infinito","Velocidade de clock maior","Interferência orquestrada entre amplitudes em problemas com estrutura","Temperatura baixa"],"a":2,"e":"Sem estrutura explorável, não há como fazer as respostas erradas se cancelarem. Fatoração e simulação de moléculas têm essa estrutura; busca genérica, pouco."},

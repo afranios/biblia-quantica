@@ -125,7 +125,20 @@ QB.onReady = function(){
     ["Exercício de mesa","neg","Simulação de cenário com executivos (por exemplo, certificado de firmware comprometido) para testar governança. Recomendado pelo WEF."],
     ["Gêmeo digital híbrido","neg","Modelo de simulação de tráfego ou rede com sub-rotinas quânticas, citado pela McKinsey como piloto do setor de transportes."],
     ["Valor em jogo (value at stake)","neg","Estimativa da McKinsey de valor criado para indústrias usuárias: US$ 1,3 a 2,7 tri até 2035; TTL US$ 200 a 500 bi. Ordem de grandeza, não previsão."],
-    ["Escala de utilidade","neg","Termo da DARPA: máquina cujo valor computacional excede seu custo. Meta de avaliação: 2033."]
+    ["Escala de utilidade","neg","Termo da DARPA: máquina cujo valor computacional excede seu custo. Meta de avaliação: 2033."],
+    ["Constante de Planck (h)","fis","Constante que fixa o tamanho do pacote de energia: E = h·ν. Planck, 1900. Define a frequência de micro-ondas usada para controlar um qubit supercondutor. ħ (h-barra) é h dividido por 2π."],
+    ["Quantum (plural: quanta)","fis","Pacote indivisível de energia ou de outra grandeza. O nome deu origem a 'mecânica quântica' (Born, 1924) e a tudo o que este guia chama de quântico."],
+    ["Fóton","fis","O quantum de luz, proposto por Einstein em 1905 para explicar o efeito fotoelétrico. É o qubit das máquinas fotônicas e o portador em toda comunicação quântica."],
+    ["Mecânica matricial","fis","Primeira formulação da mecânica quântica (Heisenberg, Born e Jordan, 1925): só grandezas observáveis, representadas por matrizes. As portas quânticas são matrizes nessa tradição."],
+    ["Função de onda (ψ)","fis","Descrição completa de um estado quântico, introduzida por Schrödinger em 1926. Para um qubit, reduz-se às duas amplitudes α e β. Equivalente à mecânica matricial, como Dirac mostrou."],
+    ["Equação de Schrödinger","fis","Equação que diz como a função de onda evolui no tempo, de forma contínua e determinista. Quem introduz o acaso é a medição, não a equação."],
+    ["Regra de Born","fis","Probabilidade de um resultado = quadrado do módulo da amplitude (Born, 1926). É o elo entre a matemática do qubit e o que sai do detector: P(0) = |α|²."],
+    ["Princípio da incerteza","fis","Heisenberg, 1927: pares de grandezas como posição e momento não podem ser conhecidos juntos com precisão arbitrária (Δx·Δp ≥ ħ/2). Não é limitação de instrumento; é da natureza."],
+    ["Complementaridade","fis","Bohr, 1927: descrições como onda e partícula se excluem num mesmo experimento, mas ambas são necessárias. Num qubit, a fase é invisível à medição direta e ainda assim decide a porta seguinte."],
+    ["Interpretação de Copenhague","fis","Leitura de Bohr e Heisenberg: a teoria descreve resultados de medições; perguntar o que acontece entre elas não tem resposta. Interpretação dominante no século XX."],
+    ["Interpretação relacional","fis","Proposta de Carlo Rovelli (1996; livro O abismo vertiginoso, 2020): propriedades de um sistema existem só em relação a outro sistema com que ele interage. Uma interpretação entre várias, sem teste que a separe das demais."],
+    ["Teorema de Bell","fis","John Bell, 1964: nenhuma teoria local com variáveis ocultas reproduz as correlações do emaranhamento. Confirmado por Clauser, Aspect e Zeilinger (Nobel de 2022). O 'estado de Bell' é o exemplo mínimo."],
+    ["Notação de Dirac","fis","Escrita |0⟩, |1⟩, |ψ⟩ (bra-ket), criada por Paul Dirac em 1939. É a notação padrão de toda a computação quântica."]
   ];
   var names={fis:"física",hw:"hardware",alg:"algoritmos",cri:"criptografia",neg:"negócio"};
   T.sort(function(a,b){ return a[0].localeCompare(b[0],"pt-BR",{sensitivity:"base"}); });
