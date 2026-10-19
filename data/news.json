@@ -1,5 +1,110 @@
 [
  {
+  "d": "17 out 2026",
+  "y": "2026",
+  "t": "RIKEN opera cinco qubits de spin de silício ao mesmo tempo acima de 99,9%, na Nature Physics",
+  "w": "Cinco qubits de spin em silício (28Si/SiGe) acionados em paralelo por uma única linha de micro-ondas, com fidelidade de porta de um qubit de pelo menos 99,90% nos cinco e acima de 99,99% em grupos de dois e três. Antes, acionar qubits em paralelo derrubava a fidelidade de 99,9% para cerca de 99,5%. Uma linha de controle compartilhada reduz fiação e calor no criostato, o que pesa na aposta de IBM (HRL), Diraq e Intel em qubits de silício saídos de linhas CMOS.",
+  "n": "Só portas de um qubit; portas de dois qubits simultâneas não foram medidas. O resultado com cinco qubits fica no limiar de 99,9%, não folgado acima dele. Cinco qubits não demonstram correção de erros.",
+  "tags": [
+   "hw"
+  ],
+  "s": "RIKEN / Nature Physics",
+  "u": "https://quantumcomputingreport.com/riken-demonstrates-high-fidelity-simultaneous-control-of-silicon-spin-qubits-above-99-9-threshold"
+ },
+ {
+  "d": "16 out 2026",
+  "y": "2026",
+  "t": "Harvard, Anthropic e QuEra usam LLM para redesenhar circuitos quânticos com até 9.100 vezes menos recursos",
+  "w": "Um modelo de linguagem propôs programas completos de circuitos tolerantes a falhas e um avaliador clássico pontuou cada um por qubits vezes portas, em ciclos repetidos. Em oito sub-rotinas (química, otimização, simulação, teoria dos números), o custo espaço-tempo caiu de 4,1 a mais de 9.100 vezes frente aos melhores projetos publicados. No decodificador DQI, as portas Toffoli caíram de 100 milhões para 930 mil. Na soma de pontos de curva elíptica, passo central do ataque de Shor ao ECC, um projeto usa 17 vezes menos portas com 12% mais qubits. Estimativas de recursos para quebrar chaves ou rodar um caso de uso podem envelhecer rápido.",
+  "n": "Preprint sem revisão por pares; o ganho de 9.100 vezes é de uma única sub-rotina e os demais ficam entre 4 e 39 vezes. Resultados em simulador clássico, não em hardware; um dos projetos aceita falha em cerca de 1 em 10 mil execuções.",
+  "tags": [
+   "hw",
+   "crypto"
+  ],
+  "s": "Harvard / Anthropic / QuEra, arXiv",
+  "u": "https://arxiv.org/abs/2610.22367"
+ },
+ {
+  "d": "15 out 2026",
+  "y": "2026",
+  "t": "D-Wave entrega Advantage2 de mais de 4.400 qubits a Como, na Itália, em contrato de 10 milhões de euros",
+  "w": "A Swiss Quantum Technology comprou 50% da capacidade do sistema por cinco anos, com opção de adquirir a máquina inteira, para abrir acesso a universidades e empresas europeias pela nuvem Leap. É o primeiro annealer da D-Wave instalado na Itália e um modelo de contrato (capacidade compartilhada em vez de compra) que vale observar para consórcios no Brasil, como o CIQUANTA-PB.",
+  "n": "Release da empresa; o sistema chegou mas ainda não estava operacional na inauguração de 16 de outubro. A alegação de superar um supercomputador em simulação de materiais não foi verificada de forma independente.",
+  "tags": [
+   "biz",
+   "money",
+   "hw"
+  ],
+  "s": "D-Wave / The Quantum Insider",
+  "u": "https://thequantuminsider.com/2026/10/15/dwave-delivers-italy-first-annealing-quantum-computer"
+ },
+ {
+  "d": "14 out 2026",
+  "y": "2026",
+  "t": "IonQ levanta US$ 2 bilhões com a Heights Capital a US$ 40 por ação, com prêmio de 15%",
+  "w": "20,5 milhões de ações e 29,5 milhões de warrants pré-financiados a US$ 40 (15% acima do fechamento de 13 de outubro), mais 100 milhões de warrants de sete anos a US$ 69,46. J.P. Morgan como único underwriter. Somado ao caixa anterior, dá à IonQ fôlego para a fábrica da SkyWater e para as aquisições em curso. Para fornecedores e clientes, reduz o risco de contraparte no curto prazo.",
+  "n": "Destino dos recursos não detalhado no release. Se os warrants forem exercidos, são até 150 milhões de ações novas; a diluição total não foi informada.",
+  "tags": [
+   "money",
+   "hw"
+  ],
+  "s": "IonQ",
+  "u": "https://investors.ionq.com/news/news-details/2026/IonQ-Announces-Pricing-of-2-0-Billion-Equity-Offering/default.aspx"
+ },
+ {
+  "d": "14 out 2026",
+  "y": "2026",
+  "t": "Inteli vira ICT e inicia projeto com computadores quânticos da IBM para simulações de risco",
+  "w": "O instituto paulista, fundado em 2019, foi reconhecido como Instituição Científica, Tecnológica e de Inovação. O primeiro projeto compara três abordagens em simulações de decisão (medição de risco e planejamento operacional): clássica, com números aleatórios gerados por hardware quântico e híbrida, acessando máquinas da IBM pela IBM Quantum Platform. Entrega prevista: um MVP de software que liga sistemas clássicos à nuvem quântica. Setores-alvo: manufatura, saúde, agro, energia e telecom.",
+  "n": "Sem valores, prazos ou contagem de qubits divulgados. Projeto em fase de pesquisa; a própria reportagem registra que não substitui sistemas em uso e que o uso comercial depende de ganhos ainda não demonstrados.",
+  "tags": [
+   "br",
+   "biz"
+  ],
+  "s": "Exame",
+  "u": "https://exame.com/carreira/inteli-vira-ict-e-abre-frente-de-pesquisa-em-computacao-quantica-com-a-ibm/"
+ },
+ {
+  "d": "13 out 2026",
+  "y": "2026",
+  "t": "Gartner: receita global de computação quântica de US$ 869,9 milhões em 2026; mais da metade das startups fecha até 2030",
+  "w": "Previsão de US$ 1,1 bilhão em 2027 (+22,9% em 2026). Setor público lidera gastos até 2027 (US$ 245 milhões) e bancos, seguradoras e financeiras assumem a liderança de 2028 a 2030 (US$ 289 milhões em 2028), com otimização de portfólio, risco e fraude. A consultoria espera que mais de 50% das startups do setor encerrem atividades até 2030, por falta de receita e por abordagens de qubit que não chegam à tolerância a falhas. Para quem contrata fornecedor, risco de continuidade entra no contrato.",
+  "n": "Previsão de consultoria, não medição; a Gartner diz que 'a era inicial da vantagem quântica chegou' sem citar caso revisado por pares. Os valores em reais da manchete não têm câmbio informado.",
+  "tags": [
+   "money",
+   "biz"
+  ],
+  "s": "Gartner / Convergência Digital",
+  "u": "https://convergenciadigital.com.br/mercado/computacao-quantica-tera-receita-de-r-5-bilhoes-ainda-este-ano/"
+ },
+ {
+  "d": "12 out 2026",
+  "y": "2026",
+  "t": "IonQ compra a Elisity, de Zero Trust, por até US$ 1,3 bilhão em ações para vender migração pós-quântica",
+  "w": "Transação toda em ações, com até US$ 150 milhões em earnouts e colar de US$ 33,07 a US$ 49,61 por ação; fechamento previsto para o 4º trimestre de 2026. A Elisity tem mais de 100 implantações corporativas de microssegmentação e a IonQ quer acoplar inventário criptográfico e dados de risco ao motor IdentityGraph, para gerir migrações de PQC de vários anos. Sinal de que fabricantes de hardware quântico estão comprando receita em segurança de rede enquanto a máquina não paga a conta.",
+  "n": "Valor máximo, que varia com a ação da IonQ; métricas do earnout não divulgadas; receita da Elisity 'dobrou' sem números. Integração é plano, não produto. Depende de aprovação regulatória.",
+  "tags": [
+   "crypto",
+   "money",
+   "biz"
+  ],
+  "s": "IonQ / Quantum Computing Report",
+  "u": "https://quantumcomputingreport.com/ionq-to-acquire-elisity-for-up-to-1-3-billion-to-integrate-zero-trust-with-post-quantum-cybersecurity/"
+ },
+ {
+  "d": "12 out 2026",
+  "y": "2026",
+  "t": "JPMorganChase e Quantinuum publicam na Physical Review X algoritmos com 12 qubits lógicos em 97 físicos",
+  "w": "Código Steane [[7,1,3]] com todos os componentes lógicos tolerantes a falhas, nos processadores H2 e Helios. QAOA (otimização binária de portfólio e LABS) e HHL (equação de Poisson). Com até 8 qubits lógicos e 9 portas T lógicas, o circuito codificado se saiu tão bem quanto o não codificado; o maior, com 12 qubits lógicos e 2.132 portas físicas de dois qubits, ainda ficou acima do aleatório. Infidelidade por porta T lógica de 2,6 por mil. É o ponto em que um banco mede o algoritmo inteiro, e não só a memória, sob correção de erros.",
+  "n": "Perto do ponto de equilíbrio, não além dele; o maior circuito só superou o acaso. Escala pequena, sem vantagem sobre o clássico. Preprint de março de 2026 agora revisado por pares.",
+  "tags": [
+   "hw",
+   "biz"
+  ],
+  "s": "JPMorganChase / Quantinuum, Physical Review X",
+  "u": "https://arxiv.org/abs/2603.04584"
+ },
+ {
   "d": "15 out 2026",
   "y": "2026",
   "t": "Google publica na Science o cultivo de estados mágicos a 99,99% no Willow",
