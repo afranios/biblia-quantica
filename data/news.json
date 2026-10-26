@@ -1,5 +1,91 @@
 [
  {
+  "d": "22 out 2026",
+  "y": "2026",
+  "t": "Vence o prazo da OMB para os planos de migração pós-quântica das agências federais dos EUA",
+  "w": "O memorando M-26-15, de 24 de junho, deu 120 dias às agências civis para entregar ao Diretor Nacional de Cibersegurança um plano com inventário criptográfico, priorização por risco, marcos por fase, cronograma de TLS 1.3, arquitetura criptoágil, coordenação com fornecedores e estimativa de orçamento e pessoal. O calendário que esses planos seguem: inventário em 2026 e 2027, pilotos em 2027 e 2028, troca de chaves nos sistemas prioritários entre 2028 e 2030, assinaturas digitais até 2031 e o restante até 2035, com TLS 1.3 obrigatório até 2 de janeiro de 2030. Quem vende ao governo americano, direta ou indiretamente, passa a receber essas exigências em contrato.",
+  "n": "A OMB não divulgou quantos planos recebeu nem seu conteúdo. Auditoria do GAO de 6 de outubro concluiu que nenhuma das 24 grandes agências cumpria integralmente as três práticas preparatórias: processo de inventário, orçamento e testes de PQC. Sistemas de segurança nacional seguem regras próprias da NSA (CNSSP 15).",
+  "tags": [
+   "crypto",
+   "money"
+  ],
+  "s": "OMB (Casa Branca)",
+  "u": "https://www.whitehouse.gov/wp-content/uploads/2026/06/M-26-15-Execution-of-the-Migration-to-Post-Quantum-Cryptography.pdf"
+ },
+ {
+  "d": "21 out 2026",
+  "y": "2026",
+  "t": "Rutgers e IBM controlam em tempo real a dinâmica de 100 qubits em um Heron, na Nature Physics",
+  "w": "Em um processador Heron de 156 qubits, o grupo alternou um circuito que embaralha informação entre qubits vizinhos com medições e reinicializações de qubits individuais, em cadeias de até 100 qubits, com cerca de 5.000 portas de dois qubits e 5.000 medições com reset no meio do circuito. Variando a proporção entre as duas etapas, observou a transição prevista pela teoria entre regime caótico e regime controlado, perto de metade do tempo em medição. Medir e agir enquanto o circuito roda é a operação básica da correção de erros, e aqui foi feita em escala que simuladores clássicos só acompanham até cerca de duas dezenas de qubits.",
+  "n": "Não é correção de erros de um cálculo útil, e sim um experimento de física de muitos corpos. Acima do tamanho simulável classicamente, a concordância com a previsão depende do próprio modelo teórico. A afirmação de maior demonstração do tipo é dos autores. Resultado revisado por pares.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Rutgers / IBM, Nature Physics",
+  "u": "https://thequantuminsider.com/2026/10/21/rutgers-and-ibm-demonstrate-real-time-control-across-100-qubits/"
+ },
+ {
+  "d": "21 out 2026",
+  "y": "2026",
+  "t": "Google Quantum AI abre competição de US$ 150 mil para IA comprimir circuitos quânticos com verificação clássica",
+  "w": "Três tarefas no Kaggle: inverso da raiz quadrada para simulação de fusão por confinamento inercial, decodificador Reed-Solomon para o algoritmo DQI em otimização e fatoração do hamiltoniano FeMoCo para química. Cada uma vem com circuito de referência e verificador abertos (Apache 2.0); a biblioteca kickmix testa circuitos por fuzzing a 60 bilhões de portas por segundo em um núcleo de CPU, e a pontuação é por qubits e portas. Prêmios de US$ 50 mil, 25 mil e 10 mil aos três primeiros, mais prêmios parciais; marco intermediário em 20 de novembro e prazo de liderança em 4 de janeiro de 2027. O Google diz que o Gemini já superou internamente os melhores circuitos publicados nas três tarefas.",
+  "n": "O fuzzing atesta correção aproximada com alta confiança, não equivalência exata, e só vale para sub-rotinas de estrutura clássica verificável. Os circuitos do Gemini não foram divulgados; só um hash, a ser aberto no fim da competição. O artigo companheiro (arXiv 2610.23832) não traz números de ganho.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Google Quantum AI",
+  "u": "https://opensource.googleblog.com/2026/10/announcing-verifiable-quantum-circuit-compilation-competition-on-kaggle.html"
+ },
+ {
+  "d": "20 out 2026",
+  "y": "2026",
+  "t": "NowSecure: 97% de 136.711 aplicativos móveis não têm código de criptografia pós-quântica detectável",
+  "w": "Inspeção estática dos binários de apps iOS e Android nos 90 dias até 5 de outubro: 4.241 apps (3,1%) traziam algoritmos ou bibliotecas pós-quânticas; entre os mais populares nos EUA, menos de 1 em 10. Mais de 3.100 apps ainda usavam algoritmos legados fracos, como DES e RC4. A empresa cita pesquisa da Gartner com CISOs em 2026: 45% não começaram nenhuma atividade de PQC e 39% estão em planejamento ou testes iniciais. Recomenda plano de migração de pelo menos dois anos para apps móveis, começando pelo inventário de SDKs e bibliotecas de terceiros, que costumam ser a maior parte do código criptográfico de um app.",
+  "n": "Release de fornecedor que vende a ferramenta de análise. Código presente no binário não prova uso em tempo de execução, e a ausência não exclui proteção pelo sistema operacional, pela pilha de rede ou pelo servidor (o TLS híbrido do navegador ou do sistema não aparece no app). A amostra de apps populares não tem tamanho informado.",
+  "tags": [
+   "crypto",
+   "biz"
+  ],
+  "s": "NowSecure / The Quantum Insider",
+  "u": "https://www.nowsecure.com/press-releases/97-of-mobile-apps-show-no-quantum-safe-encryption-nowsecure-analysis-of-more-than-136000-apps-finds/"
+ },
+ {
+  "d": "19 out 2026",
+  "y": "2026",
+  "t": "Quantinuum reporta fidelidade lógica de memória de 99,9995% no Helios com código de cores de distância 7",
+  "w": "Cerca de 5 erros não corrigidos por milhão de ciclos de extração de síndrome, 10 vezes menos que o recorde da própria empresa em setembro (arquitetura Helix). Distâncias 3, 5 e 7 testadas; cada passo de distância reduziu o erro lógico em média 12 vezes (Λ = 12), contra Λ = 1,56 do melhor código de cores em supercondutores. Portas Clifford lógicas de dois qubits tiveram Λ = 9 de 3 para 5. Decodificação abaixo de um milissegundo. A empresa estima 30 mil qubits físicos para 100 qubits lógicos na sua arquitetura, contra cerca de 900 mil em supercondutores, e mantém a meta de máquina tolerante a falhas (Apollo) em 2029.",
+  "n": "Estatística fina: 580 mil disparos com só 3 falhas observadas; o Λ das portas tem barra de erro de +8/-4. Preprint da empresa, sem revisão por pares nem verificação independente. Comparações com outros grupos misturam distâncias e famílias de código. Preparação de estados mágicos abaixo do limiar ainda não foi demonstrada em escala.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Quantinuum",
+  "u": "https://www.quantinuum.com/press-releases/quantinuum-breaks-error-correction-world-record-by-10x-validating-its-leading-path-to-fault-tolerant-quantum-computing-by-2029"
+ },
+ {
+  "d": "19 out 2026",
+  "y": "2026",
+  "t": "NVIDIA simula cultivo de estados mágicos com 104 qubits e ruído realista em 8.192 GPUs do JUPITER",
+  "w": "No supercomputador exascale de Jülich (GH200), a maior simulação de um circuito tolerante a falhas até agora, segundo a empresa; o trabalho anterior do centro chegava a 50 qubits sem ruído. O desenvolvimento no sistema GB200 NVL72 do centro de pesquisa quântica da NVIDIA reduziu de semanas para dias o ciclo de simulação, com cuQuantum e a camada lógica do CUDA-Q. Cultivo de estados mágicos é a técnica que o Google demonstrou em hardware na Science neste mês e que, segundo a NVIDIA, pode exigir 90% menos qubits físicos que a destilação. O uso prático é testar projetos de processador e de decodificador antes de fabricá-los.",
+  "n": "Release da NVIDIA; o número de 90% não tem baseline declarado nem verificação independente. É simulação clássica, não hardware quântico; se o ganho se confirma em processadores reais depende de experimento. Sem tempos exatos de execução nem artigo técnico divulgados.",
+  "tags": [
+   "hw"
+  ],
+  "s": "NVIDIA / The Quantum Insider",
+  "u": "https://thequantuminsider.com/2026/10/19/nvidia-runs-simulation-of-fault-tolerant-quantum-computing-at-julich-supercomputing-centre/"
+ },
+ {
+  "d": "19 out 2026",
+  "y": "2026",
+  "t": "Leiden e Riverlane: decodificador correlacionado perde distância efetiva do código de superfície abaixo do limiar",
+  "w": "A reponderação dos decodificadores correlacionados de duas passagens (MWPM e LCD correlacionados, padrão nos experimentos de código de superfície) desconta várias arestas parceiras de uma vez e torna baratas cadeias logicamente erradas. Com ruído de circuito abaixo de 10⁻³, falhas de (d-1)/2 erros, que um código de distância d deveria corrigir, passam a causar erro lógico; na distância 3 e p = 10⁻⁵, a taxa de falha fica 4,4 vezes maior que a do decodificador não correlacionado. Uma regularização dependente da taxa de erro restaura a escala nominal (0,55 vez a taxa do não correlacionado) sem custo extra. Projeções de recursos que assumem decodificação correlacionada precisam do ajuste.",
+  "n": "Preprint (arXiv 2610.26785, 19 de outubro) sem revisão por pares. Comparação numérica mostrada só na distância 3; parâmetros da regularização não detalhados no resumo. Implicações para decodificação em tempo real e códigos qLDPC são sugeridas, não demonstradas.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Universidade de Leiden / Riverlane, arXiv",
+  "u": "https://arxiv.org/abs/2610.26785"
+ },
+ {
   "d": "17 out 2026",
   "y": "2026",
   "t": "RIKEN opera cinco qubits de spin de silício ao mesmo tempo acima de 99,9%, na Nature Physics",

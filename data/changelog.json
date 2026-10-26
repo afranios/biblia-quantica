@@ -1,5 +1,11 @@
 [
  {
+  "date": "26/10/2026",
+  "title": "Notícias da semana",
+  "body": "7 itens acrescentados: Vence o prazo da OMB para os planos de migração pós-quântica das agências federais dos EUA; Rutgers e IBM controlam em tempo real a dinâmica de 100 qubits em um Heron, na Nature Physics; Google Quantum AI abre competição de US$ 150 mil para IA comprimir circuitos quânticos com verificação clássica; NowSecure: 97% de 136.711 aplicativos móveis não têm código de criptografia pós-quântica detectável; Quantinuum reporta fidelidade lógica de memória de 99,9995% no Helios com código de cores de distância 7; NVIDIA simula cultivo de estados mágicos com 104 qubits e ruído realista em 8.192 GPUs do JUPITER; Leiden e Riverlane: decodificador correlacionado perde distância efetiva do código de superfície abaixo do limiar",
+  "auto": true
+ },
+ {
   "date": "19/10/2026",
   "title": "Notícias da semana",
   "body": "8 itens acrescentados: RIKEN opera cinco qubits de spin de silício ao mesmo tempo acima de 99,9%, na Nature Physics; Harvard, Anthropic e QuEra usam LLM para redesenhar circuitos quânticos com até 9.100 vezes menos recursos; D-Wave entrega Advantage2 de mais de 4.400 qubits a Como, na Itália, em contrato de 10 milhões de euros; IonQ levanta US$ 2 bilhões com a Heights Capital a US$ 40 por ação, com prêmio de 15%; Inteli vira ICT e inicia projeto com computadores quânticos da IBM para simulações de risco; Gartner: receita global de computação quântica de US$ 869,9 milhões em 2026; mais da metade das startups fecha até 2030; IonQ compra a Elisity, de Zero Trust, por até US$ 1,3 bilhão em ações para vender migração pós-quântica; JPMorganChase e Quantinuum publicam na Physical Review X algoritmos com 12 qubits lógicos em 97 físicos",
