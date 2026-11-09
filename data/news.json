@@ -1,5 +1,107 @@
 [
  {
+  "d": "6 nov 2026",
+  "y": "2026",
+  "t": "Dois computadores quânticos chineses, de 20 e 100 qubits, chegam ao Porto de Suape a caminho do Ciquanta, na Paraíba",
+  "w": "A carga, fabricada pela CETC-IQC e avaliada em cerca de R$ 80 milhões (100 milhões de yuans), desembarcou em 5 de novembro em um contêiner padrão e segue para a Estação das Artes, em João Pessoa, prédio adaptado com blindagem eletromagnética. Cerca de 20 técnicos chineses farão a montagem em rodízio, com transferência dos protocolos de operação a pesquisadores brasileiros; estabilização em dezembro e operação estável a partir de janeiro de 2027. A máquina de 100 qubits fica com os cálculos pesados e a de 20 com treinamento e teste de chips. Pesquisadores já podem pedir horas no site do Ciquanta. Projeto da Paraíba (Secties) com o MCTI, dentro do CIQUANTA-PB de R$ 200 milhões.",
+  "n": "Texto baseado em comunicados oficiais da Secties e do MCTI. Nenhum dado de desempenho (fidelidade, conectividade, tempo de coerência) dos processadores foi divulgado, e a CETC-IQC não tem resultados revisados por pares comparáveis aos de IBM, Google ou Quantinuum. Os prazos são projeções. Termos do contrato, suporte de longo prazo e eventuais restrições de exportação não foram informados.",
+  "tags": [
+   "br",
+   "hw",
+   "money"
+  ],
+  "s": "Secties-PB / MCTI, Convergência Digital",
+  "u": "https://convergenciadigital.com.br/governo/primeiros-computadores-quanticos-da-america-latina-desembarcam-no-brasil-em-forca-tarefa-que-custou-r-80-milhoes/"
+ },
+ {
+  "d": "6 nov 2026",
+  "y": "2026",
+  "t": "IBM instala um Quantum System Two com Nighthawk em Chicago, primeiro computador quântico da empresa em Illinois",
+  "w": "O sistema fica inicialmente no Hyde Park Labs, da Universidade de Chicago, e depois irá para o Illinois Quantum and Microelectronics Park (IQMP), campus de 128 acres ainda em construção, onde será a âncora do National Quantum Algorithm Center, criado em 2024. Projetos já definidos: simulação molecular para fármacos com Deloitte, AbbVie e Northwestern; otimização de rede elétrica com EPRI e a Universidade de Illinois; física de altas energias e computação quântica distribuída com o Fermilab. O chip Nighthawk tem 120 qubits em malha quadrada. A IBM e a Universidade de Chicago reivindicam, em preprint de julho, vantagem quântica com verificação de correção em circuitos de 70 qubits.",
+  "n": "Release da empresa, sem valores de investimento, preço de acesso ou data da mudança para o IQMP. A alegação de vantagem quântica (arXiv 2607.25941) é preprint sem revisão por pares, em circuito desenhado para ser verificável, não em problema de negócio. Os projetos com AbbVie, Deloitte e EPRI não têm resultados divulgados.",
+  "tags": [
+   "hw",
+   "biz"
+  ],
+  "s": "IBM (PR Newswire)",
+  "u": "https://www.prnewswire.com/news-releases/ibm-unveils-its-most-advanced-quantum-computer-in-chicago-marking-a-milestone-for-illinoiss-quantum-future-302932368.html"
+ },
+ {
+  "d": "5 nov 2026",
+  "y": "2026",
+  "t": "Oak Ridge, IBM e AMD montam em Poughkeepsie plataforma conjunta de correção de erros com Nighthawk e GPUs MI355X",
+  "w": "O Nighthawk de 120 qubits fica ao lado do sistema Umbra do laboratório, com GPUs AMD Instinct MI355X e CPUs EPYC de 5ª geração, para que os decodificadores acompanhem a vazão de mais de 100 mil circuitos por segundo do chip sem atraso de rede. O alvo declarado é o da Q Competition do Departamento de Energia dos EUA: 100 qubits lógicos executando 100 mil operações difíceis até o fim de 2028. O melhor resultado atual da IBM é de 70 qubits lógicos e 438 operações; falta multiplicar por cerca de 230. Primeira aplicação: simulação de materiais magnéticos para comparar com dados do Spallation Neutron Source. A plataforma alimenta o projeto do Starling, previsto para 2029.",
+  "n": "Anúncio de lançamento sem nenhum resultado medido: não há taxa de erro lógico, latência de decodificação nem código demonstrado. Códigos concatenados e decodificadores conscientes do algoritmo são planos. A meta de 2028 é do programa federal, não um compromisso de entrega da IBM. O acesso de terceiros à plataforma não foi descrito.",
+  "tags": [
+   "hw"
+  ],
+  "s": "IBM / ORNL / AMD",
+  "u": "https://newsroom.ibm.com/2026-11-05-oak-ridge-national-lab,-ibm,-and-amd-launch-new-co-design-platform-for-quantum-error-correction"
+ },
+ {
+  "d": "5 nov 2026",
+  "y": "2026",
+  "t": "Quantinuum fatura US$ 9,1 milhões no trimestre, eleva previsão anual e fecha maior contrato de nuvem com banco global",
+  "w": "A receita do terceiro trimestre de 2026 subiu 233% sobre os US$ 2,7 milhões de um ano antes; a previsão para 2026 passou de US$ 28 a 32 milhões para US$ 31 a 34 milhões. Prejuízo líquido de US$ 118 milhões (contra US$ 52 milhões) e caixa de US$ 1,94 bilhão. O maior contrato de nuvem da história da empresa é uma extensão plurianual com uma instituição financeira global não nomeada, com acesso garantido até o Apollo, a máquina tolerante a falhas prevista para 2029. A plataforma Nexus chegou a 215 organizações. O Sol, próximo sistema, tem montagem prevista para o primeiro trimestre de 2027 e entrega no segundo semestre, com meta de 100 qubits lógicos e erro lógico de 1 em 100 mil.",
+  "n": "Valor do contrato e nome do cliente não divulgados. A receita ainda é pequena diante de um prejuízo trimestral 13 vezes maior, e a previsão é projeção da empresa. As metas do Sol e do Apollo são cronograma, não resultado. Métricas ajustadas excluem custos a critério da empresa.",
+  "tags": [
+   "money",
+   "biz"
+  ],
+  "s": "Quantinuum",
+  "u": "https://www.quantinuum.com/press-releases/quantinuum-reports-third-quarter-2026-results-and-raises-full-year-revenue-outlook"
+ },
+ {
+  "d": "5 nov 2026",
+  "y": "2026",
+  "t": "IonQ fatura US$ 173,8 milhões no trimestre, com carteira de US$ 1,2 bilhão e prejuízo operacional de US$ 433 milhões",
+  "w": "A receita cresceu 336% sobre os US$ 39,9 milhões de um ano antes, mas US$ 83,5 milhões vieram da fundição SkyWater, comprada em 2026, em seu primeiro trimestre completo; a plataforma quântica faturou US$ 90,3 milhões (+127%). A previsão para 2026 subiu para US$ 505 a 515 milhões. Obrigações de desempenho remanescentes dobraram para US$ 1,2 bilhão (US$ 689 milhões da plataforma). Caixa e investimentos de US$ 1,7 bilhão, cerca de US$ 3,7 bilhões com a oferta de US$ 2 bilhões fechada em 16 de outubro. Única empresa de íons aprisionados no Estágio C do programa de benchmarking da DARPA, com valor potencial de até US$ 300 milhões. Contratos citados: US$ 33 milhões com a SDT (Coreia do Sul).",
+  "n": "O lucro líquido de US$ 564 milhões é contábil: vem de um ganho não caixa de US$ 896 milhões na reavaliação de warrants; a operação perdeu US$ 433 milhões, 2,6 vezes mais que um ano antes. Parte do crescimento é aquisição, não orgânico. Os US$ 300 milhões da DARPA são valor potencial. 'Recorde' e métricas ajustadas são definições da empresa.",
+  "tags": [
+   "money"
+  ],
+  "s": "IonQ",
+  "u": "https://investors.ionq.com/news/news-details/2026/IonQ-Announces-Record-3Q26-Revenues-and-Raises-FY2026-Guidance-to-505---515-Million-as-Backlog-Grows-to-1-2-Billion/default.aspx"
+ },
+ {
+  "d": "5 nov 2026",
+  "y": "2026",
+  "t": "FCA, reguladora financeira britânica, cria grupo para testar aprendizado de máquina quântico contra fraude e lavagem",
+  "w": "O Quantum Experimentation Group começa no primeiro trimestre de 2027 e recebe inscrições de empresas financeiras, fornecedores de computação quântica e laboratórios de pesquisa do Reino Unido até 31 de dezembro de 2026. Os participantes recebem um conjunto de dados sintéticos comum da FCA para desenvolver e comparar abordagens quânticas e clássicas, começando por detecção de lavagem de dinheiro e fraude. A reguladora quer entender barreiras, riscos e implicações regulatórias e compartilhar aprendizados sem expor informação comercial. Segundo a própria FCA, é a primeira iniciativa desse tipo em um regulador financeiro: supervisores começam a pedir evidência sobre casos de uso.",
+  "n": "Não há resultado ainda, nem evidência de que aprendizado de máquina quântico supere métodos clássicos em detecção de fraude. Orçamento, número de vagas e critérios de seleção não foram definidos; inscrição não garante participação nem equivale a aprovação regulatória. Dados sintéticos podem não refletir padrões reais de crime financeiro.",
+  "tags": [
+   "biz",
+   "money"
+  ],
+  "s": "FCA (Reino Unido)",
+  "u": "https://www.fca.org.uk/firms/quantum-experimentation-group"
+ },
+ {
+  "d": "4 nov 2026",
+  "y": "2026",
+  "t": "Yonsei liga o Nighthawk em Seul, primeiro processador dessa geração instalado fora dos EUA em cliente da IBM",
+  "w": "O System One do campus de Songdo, que operava desde 2024 com um Eagle de 127 qubits, recebeu o Nighthawk r2: 120 qubits programáveis em malha quadrada, com 218 acopladores sintonizáveis e reset ativo. Vazão de mais de 100 mil circuitos por segundo, 25 vezes a do Eagle, e estimativa precisa de observáveis em circuitos com mais de 7.500 portas, a meta de 2026 do roteiro da IBM. Em testes com circuitos candidatos a vantagem quântica, rodou até 10 vezes mais rápido sem perda de precisão. Uso previsto: simulações híbridas de sistemas biológicos (mitocôndrias, síndrome de Leigh) e formação de pós-graduandos. É a primeira troca de processador em um sistema instalado na sede de um cliente da IBM.",
+  "n": "Números de desempenho são da IBM e da universidade, sem benchmark independente. 'Primeiro fora dos EUA' é afirmação do comunicado. Termos financeiros, regime de acesso e agenda de uso não foram divulgados. O ganho de velocidade em circuitos de vantagem quântica não vem acompanhado de resultado novo em problema real.",
+  "tags": [
+   "hw"
+  ],
+  "s": "IBM Coreia / Yonsei",
+  "u": "https://kr.newsroom.ibm.com/announcements?item=122848"
+ },
+ {
+  "d": "2 nov 2026",
+  "y": "2026",
+  "t": "HKMA e HKUST lançam kit de criptografia pós-quântica para bancos de Hong Kong; índice de prontidão está em 2,3 de 10",
+  "w": "A autoridade monetária de Hong Kong mediu em julho de 2026 um Quantum Preparedness Index médio de 2,3 em 10 entre os bancos licenciados e quer 10 em 10 até 2030. O kit, lançado em 2 de novembro no fórum FiNETech8, cobre governança com responsabilização de diretoria e conselho, inventário de ativos criptográficos e dependências de terceiros (gateways SWIFT, HSMs, motores de transação), priorização pelo tempo de sigilo do dado contra a captura para decifrar depois, questionários padronizados para fornecedores e cronograma de transição. As auditorias de transição entram nas revisões de supervisão da HKMA. Para bancos no Brasil, é um modelo pronto de como um supervisor pode cobrar a migração.",
+  "n": "O documento é orientação e ferramenta, não norma com sanção; o único prazo é 2030, sem marcos intermediários. A fórmula do índice não foi divulgada e 2,3 é média setorial. A própria HKMA diz que a migração real dos sistemas ainda está em estágio inicial. Não vale fora de Hong Kong; o Banco Central do Brasil segue sem norma ou prazo.",
+  "tags": [
+   "crypto",
+   "money"
+  ],
+  "s": "HKMA / Governo de Hong Kong",
+  "u": "https://www.info.gov.hk/gia/general/202611/02/P2026110200587.htm"
+ },
+ {
   "d": "30 out 2026",
   "y": "2026",
   "t": "E.ON, Qoro e NQCC distribuem otimização de rede elétrica de 1.710 variáveis em 41 blocos nos Heron da IBM",

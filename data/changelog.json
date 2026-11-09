@@ -1,5 +1,11 @@
 [
  {
+  "date": "09/11/2026",
+  "title": "Notícias da semana",
+  "body": "8 itens acrescentados: Dois computadores quânticos chineses, de 20 e 100 qubits, chegam ao Porto de Suape a caminho do Ciquanta, na Paraíba; IBM instala um Quantum System Two com Nighthawk em Chicago, primeiro computador quântico da empresa em Illinois; Oak Ridge, IBM e AMD montam em Poughkeepsie plataforma conjunta de correção de erros com Nighthawk e GPUs MI355X; Quantinuum fatura US$ 9,1 milhões no trimestre, eleva previsão anual e fecha maior contrato de nuvem com banco global; IonQ fatura US$ 173,8 milhões no trimestre, com carteira de US$ 1,2 bilhão e prejuízo operacional de US$ 433 milhões; FCA, reguladora financeira britânica, cria grupo para testar aprendizado de máquina quântico contra fraude e lavagem; Yonsei liga o Nighthawk em Seul, primeiro processador dessa geração instalado fora dos EUA em cliente da IBM; HKMA e HKUST lançam kit de criptografia pós-quântica para bancos de Hong Kong; índice de prontidão está em 2,3 de 10",
+  "auto": true
+ },
+ {
   "date": "02/11/2026",
   "title": "Notícias da semana",
   "body": "8 itens acrescentados: E.ON, Qoro e NQCC distribuem otimização de rede elétrica de 1.710 variáveis em 41 blocos nos Heron da IBM; Alice & Bob estima 22.593 qubits de gato e 3,14 dias para quebrar RSA-2048, 40 vezes menos que a conta do Google; IDEMIA obtém certificação EMVCo para cartão de pagamento com ML-KEM e ML-DSA e troca de algoritmo em campo; PsiQuantum apresenta chave óptica 8×8 para data centers de IA, derivada da fotônica do computador quântico; Universidade de Sydney roda código de superfície por 170 rodadas no Nighthawk r2 da IBM, com Bell lógico acima de 93%; NIST fecha o IR 8547: todo RSA e ECC depreciado após 2030 e proibido após 2035, sem folga para chaves maiores; IBM liga dois Nighthawk de 120 qubits por cabos supercondutores de 80 cm com 99% de fidelidade de transferência; Intel compra a Classiq, de software de síntese de circuitos quânticos, por cerca de US$ 2,3 bilhões",
