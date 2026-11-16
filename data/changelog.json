@@ -1,5 +1,11 @@
 [
  {
+  "date": "16/11/2026",
+  "title": "Notícias da semana",
+  "body": "7 itens acrescentados: Benchmark em nove processadores na nuvem: o maior estado GHZ certificado tem 27 qubits em chips de 120 a 156; Atom Computing assina acordo definitivo de até US$ 100 milhões com o Departamento de Comércio dos EUA; ENISA registra o primeiro certificado EUCC de uma plataforma de gestão de chaves pós-quânticas, o Phio TX; Q-CTRL levanta US$ 290 milhões em Série C liderada pela Salesforce Ventures e passa de US$ 1 bilhão de valor; IBM anuncia o Nighthawk r3 de 520 qubits e sistema de 1.040 qubits com dois chips ligados em 2027; Google usa agentes de IA com provas formais em Lean para cortar em até 11 vezes o custo de algoritmos quânticos; D-Wave fatura US$ 4,5 milhões no trimestre e assina acordo de até US$ 100 milhões do CHIPS para máquinas maiores",
+  "auto": true
+ },
+ {
   "date": "09/11/2026",
   "title": "Notícias da semana",
   "body": "8 itens acrescentados: Dois computadores quânticos chineses, de 20 e 100 qubits, chegam ao Porto de Suape a caminho do Ciquanta, na Paraíba; IBM instala um Quantum System Two com Nighthawk em Chicago, primeiro computador quântico da empresa em Illinois; Oak Ridge, IBM e AMD montam em Poughkeepsie plataforma conjunta de correção de erros com Nighthawk e GPUs MI355X; Quantinuum fatura US$ 9,1 milhões no trimestre, eleva previsão anual e fecha maior contrato de nuvem com banco global; IonQ fatura US$ 173,8 milhões no trimestre, com carteira de US$ 1,2 bilhão e prejuízo operacional de US$ 433 milhões; FCA, reguladora financeira britânica, cria grupo para testar aprendizado de máquina quântico contra fraude e lavagem; Yonsei liga o Nighthawk em Seul, primeiro processador dessa geração instalado fora dos EUA em cliente da IBM; HKMA e HKUST lançam kit de criptografia pós-quântica para bancos de Hong Kong; índice de prontidão está em 2,3 de 10",

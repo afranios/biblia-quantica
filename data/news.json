@@ -1,5 +1,94 @@
 [
  {
+  "d": "15 nov 2026",
+  "y": "2026",
+  "t": "Benchmark em nove processadores na nuvem: o maior estado GHZ certificado tem 27 qubits em chips de 120 a 156",
+  "w": "Consórcio basco (Gradiant, UPV/EHU, BCAM) rodou o mesmo teste de emaranhamento GHZ em nove máquinas de cinco fabricantes, via IBM Quantum, Amazon Braket e CESGA, com compilação padrão e sem mitigação de erros. O maior estado que passou no limiar de fidelidade 0,5 foi de 27 qubits no ibm_phoenix (Nighthawk r2, 120 qubits) e 24 no Heron r2 de 156; o Rigetti Cepheus-1 (107 qubits) parou em 4 e o OQC Qmio (32) em 3. O íon aprisionado AQT IBEX Q1 emaranhou seus 12 qubits inteiros. Com critério estrito, só quatro das nove máquinas certificam emaranhamento em algum tamanho. O erro efetivo por qubit no GHZ foi cerca de 10 vezes a mediana de erro de porta publicada pelos fabricantes.",
+  "n": "Preprint (arXiv 2611.14114) sem revisão por pares, com uma única rodada de acesso por máquina, em datas diferentes e sem otimização de compilação ou escolha de qubits; fabricantes com mitigação e roteamento próprios obtêm números melhores. GHZ mede uma coisa só, não desempenho em aplicação. Google, Quantinuum, IonQ e QuEra não estavam na amostra.",
+  "tags": [
+   "hw"
+  ],
+  "s": "Gradiant / UPV/EHU / BCAM, arXiv",
+  "u": "https://arxiv.org/abs/2611.14114"
+ },
+ {
+  "d": "13 nov 2026",
+  "y": "2026",
+  "t": "Atom Computing assina acordo definitivo de até US$ 100 milhões com o Departamento de Comércio dos EUA",
+  "w": "O contrato fecha a carta de intenção de 21 de maio, parte do pacote de US$ 2 bilhões em recursos do CHIPS para nove empresas de hardware e fundição quântica. O dinheiro vai para desenvolver componentes críticos internamente, montar bancadas de teste paralelas e levar a cadeia de fornecedores à escala de manufatura de sistemas de átomos neutros tolerantes a falhas. A empresa é a única de átomos neutros no Estágio C do programa de benchmarking da DARPA (até US$ 300 milhões potenciais), vendeu em 2025 seu primeiro sistema local à QuNorth e já operou plataformas com mais de 1.000 qubits.",
+  "n": "Comunicado da empresa, sem o texto do acordo: os US$ 100 milhões são teto, pagos em parcelas condicionadas a marcos não divulgados. Nenhum resultado técnico novo acompanha o anúncio; as alegações de pioneirismo (primeiro computador comercial com qubits lógicos, abaixo do limiar) são da empresa. Prazo de entrega e contrapartidas de participação não foram informados.",
+  "tags": [
+   "money",
+   "hw"
+  ],
+  "s": "Atom Computing / The Quantum Insider",
+  "u": "https://thequantuminsider.com/2026/11/13/atom-computing-finalizes-100-million-u-s-department-of-commerce-rd-award/"
+ },
+ {
+  "d": "13 nov 2026",
+  "y": "2026",
+  "t": "ENISA registra o primeiro certificado EUCC de uma plataforma de gestão de chaves pós-quânticas, o Phio TX",
+  "w": "O certificado EUCC-3095-2026-000003, emitido em 10 de novembro pela DEKRA sob supervisão do Centro Criptológico Nacional da Espanha, cobre o PhioTX-V 4.5.6 da Quantum Xchange: software que gera e distribui chaves simétricas por fora do caminho dos dados, com algoritmos pós-quânticos e QKD, e as entrega a equipamentos de criptografia já instalados pelas interfaces ETSI GS QKD 014 e Cisco SKIP, sem troca de hardware. Nível de garantia substancial, Common Criteria 2022 EAL2, válido até 9 de novembro de 2031 em toda a União Europeia. O produto já tinha validação FIPS nos EUA. Compras públicas e setores regulados na Europa passam a ter um item pós-quântico certificado nos 27 países.",
+  "n": "EAL2 é nível básico de avaliação: testes funcionais e análise de vulnerabilidade superficial (AVA_VAN 2), não prova de segurança dos algoritmos nem de implementação resistente a canais laterais. A alegação de ser o primeiro é da empresa. O certificado vale só para a versão 4.5.6; cada atualização exige manutenção de garantia. Não há cliente europeu anunciado.",
+  "tags": [
+   "crypto",
+   "biz"
+  ],
+  "s": "ENISA (registro EUCC) / Quantum Computing Report",
+  "u": "https://certification.enisa.europa.eu/certificates/eucc-3095-2026-000003-i-00_en"
+ },
+ {
+  "d": "12 nov 2026",
+  "y": "2026",
+  "t": "Q-CTRL levanta US$ 290 milhões em Série C liderada pela Salesforce Ventures e passa de US$ 1 bilhão de valor",
+  "w": "A rodada (A$ 415 milhões), ampliada duas vezes por excesso de demanda, é a maior já feita por uma empresa de software do setor. Lideram Salesforce Ventures, com Bullhound Capital e Affinity Partners como âncoras; entram AMD Ventures, EDGE Group, o fundo soberano australiano NRFC, MPower e SPARX, e voltam Lockheed Martin Ventures, In-Q-Tel, DCVC, Main Sequence e Square Peg. A empresa vende Fire Opal e Boulder Opal (supressão de ruído e calibração automática, usados em máquinas da IBM e de outros fabricantes) e o Ironstone Opal, navegação magnética quântica sem GPS testada em voo com Airbus e Lockheed. Com a Série B de US$ 113 milhões (2024), a Q-CTRL soma mais de US$ 430 milhões captados.",
+  "n": "Comunicado da empresa: receita, número de clientes e valuation exato não foram divulgados; 'unicórnio' é afirmação da Q-CTRL. Software de controle depende de o hardware de terceiros escalar. O Ironstone Opal tem resultados de campo próprios, sem avaliação pública independente de precisão em rotas comerciais.",
+  "tags": [
+   "money",
+   "biz"
+  ],
+  "s": "Q-CTRL",
+  "u": "https://q-ctrl.com/blog/q-ctrl-secures-us-290-million-series-c-funding-led-by-salesforce-ventures-to-accelerate-the-convergence-of-quantum-and-ai"
+ },
+ {
+  "d": "11 nov 2026",
+  "y": "2026",
+  "t": "IBM anuncia o Nighthawk r3 de 520 qubits e sistema de 1.040 qubits com dois chips ligados em 2027",
+  "w": "A IBM detalhou o Nighthawk r3: 520 qubits programáveis (2.034 físicos), malha quadrada, meta de 10.000 operações de dois qubits com precisão e 10 acopladores L para ligar chips. Dois r3 unidos formam o sistema de 1.040 qubits previsto para 2027. O Nighthawk r2, em operação desde setembro, roda mais de 7.500 operações em 120 qubits a 100 mil amostras por segundo; E.ON, Algorithmiq e Q-CTRL já executaram 34 bilhões de circuitos, com ganhos de até 19 vezes sobre o Heron (E.ON 15 vezes em rede elétrica, Oak Ridge 12 vezes em materiais magnéticos). A transferência de estado entre chips chegou a 99,3%, meta 99,9%. A plataforma ganha orquestração gerenciada de trabalhos híbridos com GPUs.",
+  "n": "Anúncio de roteiro: o r3 ainda não existe e 10.000 operações é meta, não medida. Os ganhos de velocidade são relatos dos parceiros, sem revisão independente, e velocidade não é vantagem quântica. 1.040 qubits em dois chips não equivale a um chip de 1.040: a porta entre chips (94,75% no r1) fica bem abaixo da porta local. Preço de acesso não foi divulgado.",
+  "tags": [
+   "hw"
+  ],
+  "s": "IBM",
+  "u": "https://newsroom.ibm.com/2026-11-11-ibm-quantum-nighthawk-demonstrates-new-levels-of-speed-and-quality,-with-plans-to-scale-beyond-1,000-qubits-in-2027"
+ },
+ {
+  "d": "10 nov 2026",
+  "y": "2026",
+  "t": "Google usa agentes de IA com provas formais em Lean para cortar em até 11 vezes o custo de algoritmos quânticos",
+  "w": "Google DeepMind e Google Quantum AI puseram agentes de modelos de linguagem para propor programas quânticos e provar, no verificador Lean, que cada um faz o cálculo pedido dentro de um orçamento de qubits lógicos vezes portas T. Resultados: simulação de poder de parada para fusão por confinamento inercial (218 elétrons) com custo 11 vezes menor e 4.374 qubits lógicos em vez de 5.650; fotoquímica (187 elétrons, 47 núcleos) 8 vezes; metabolismo de fármacos pelo citocromo P450 2,5 vezes; arco seno para preparação de estados 290 vezes; busca paralela 1,4 vezes. Biblioteca Lean, especificações e soluções serão abertas.",
+  "n": "Preprint (arXiv 2611.09822) sem revisão por pares. Mesmo após os cortes, as aplicações científicas exigem de bilhões a quatrilhões de operações, contra cerca de 1 milhão previsto para as primeiras máquinas tolerantes a falhas; faltam várias ordens de grandeza. O modelo de custo ignora código de correção, movimentação de qubits e leiaute do chip, que os autores dizem que vão incluir.",
+  "tags": [
+   "hw",
+   "adv"
+  ],
+  "s": "Google DeepMind / Google Quantum AI, arXiv",
+  "u": "https://arxiv.org/abs/2611.09822"
+ },
+ {
+  "d": "10 nov 2026",
+  "y": "2026",
+  "t": "D-Wave fatura US$ 4,5 milhões no trimestre e assina acordo de até US$ 100 milhões do CHIPS para máquinas maiores",
+  "w": "Receita do terceiro trimestre de 2026 subiu 21% sobre os US$ 3,7 milhões de um ano antes; nos nove meses, caiu de US$ 21,8 milhões para US$ 10,4 milhões, sem a venda de sistema de 2025. Prejuízo de US$ 48,2 milhões (contra US$ 140 milhões, inflado por warrants). Caixa e aplicações de US$ 503,4 milhões. Reservas de US$ 37,4 milhões no ano (alta de 611%), com US$ 38,3 milhões a reconhecer. O acordo definitivo com o Departamento de Comércio libera até US$ 100 milhões em parcelas por marcos para um recozedor de 100 mil qubits e um computador de portas de 10 mil qubits. A NTT DOCOMO pôs em produção a segunda aplicação, com corte de 65,3% nos sinais de pico de registro.",
+  "n": "Receita trimestral abaixo de US$ 5 milhões contra despesas operacionais de US$ 55,9 milhões (alta de 84%); margem bruta caiu de 71,4% para 52,9%. Os US$ 100 milhões são teto condicionado a marcos não divulgados, e as máquinas de 100 mil e 10 mil qubits não têm data. A alta de 611% nas reservas vem de uma venda de US$ 20 milhões no primeiro semestre. Resultado da DOCOMO é relato do cliente.",
+  "tags": [
+   "money",
+   "biz"
+  ],
+  "s": "D-Wave (Business Wire)",
+  "u": "https://www.businesswire.com/news/home/20261110935432/en/D-Wave-Reports-Third-Quarter-2026-Results"
+ },
+ {
   "d": "6 nov 2026",
   "y": "2026",
   "t": "Dois computadores quânticos chineses, de 20 e 100 qubits, chegam ao Porto de Suape a caminho do Ciquanta, na Paraíba",
